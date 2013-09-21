@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1552" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginScreenViewController">
+            <connections>
+                <outlet property="cancelButton" destination="76" id="103"/>
+                <outlet property="emailField" destination="71" id="102"/>
+                <outlet property="saveEmailButton" destination="80" id="138"/>
+                <outlet property="view" destination="1" id="3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1" customClass="UIControl">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" alpha="0.30000001192092896" contentMode="scaleToFill" image="largePulseBeat.png" translatesAutoresizingMaskIntoConstraints="NO" id="141">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Welcome to PulseBeat!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4">
+                    <rect key="frame" x="26" y="25" width="241" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="8"/>
+                        <constraint firstAttribute="width" constant="241" id="159"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Enter your email address to get started" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43">
+                    <rect key="frame" x="26" y="49" width="274" height="62"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="62" id="47"/>
+                        <constraint firstAttribute="width" constant="274" id="161"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="71">
+                    <rect key="frame" x="26" y="156" width="263" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="263" id="162"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="76">
+                    <rect key="frame" x="26" y="230" width="130" height="80"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="130" id="152"/>
+                        <constraint firstAttribute="height" constant="80" id="153"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <state key="normal" title="No, thanks" backgroundImage="fuzzyBlueButtonNoGlow.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="cancelSelected:" destination="-1" eventType="touchUpInside" id="140"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80">
+                    <rect key="frame" x="172" y="230" width="128" height="80"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="128" id="158"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                    <state key="normal" title="Save" backgroundImage="fuzzyGreenButtonNoGlow.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="saveEmail:" destination="-1" eventType="touchUpInside" id="139"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.96274201770000001" green="0.96274201770000001" blue="0.96274201770000001" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="4" firstAttribute="top" secondItem="1" secondAttribute="top" constant="25" id="39"/>
+                <constraint firstItem="71" firstAttribute="top" secondItem="1" secondAttribute="top" constant="156" id="72"/>
+                <constraint firstItem="71" firstAttribute="leading" secondItem="43" secondAttribute="leading" id="73"/>
+                <constraint firstItem="76" firstAttribute="leading" secondItem="71" secondAttribute="leading" id="78"/>
+                <constraint firstItem="80" firstAttribute="baseline" secondItem="76" secondAttribute="baseline" id="82"/>
+                <constraint firstItem="76" firstAttribute="top" secondItem="1" secondAttribute="top" constant="230" id="100"/>
+                <constraint firstItem="4" firstAttribute="leading" secondItem="43" secondAttribute="leading" id="114"/>
+                <constraint firstItem="43" firstAttribute="top" secondItem="1" secondAttribute="top" constant="49" id="124"/>
+                <constraint firstItem="141" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="146"/>
+                <constraint firstItem="141" firstAttribute="top" secondItem="1" secondAttribute="top" id="147"/>
+                <constraint firstItem="141" firstAttribute="trailing" secondItem="1" secondAttribute="trailing" id="148"/>
+                <constraint firstItem="141" firstAttribute="bottom" secondItem="1" secondAttribute="bottom" id="150"/>
+                <constraint firstItem="80" firstAttribute="top" secondItem="76" secondAttribute="top" id="154"/>
+                <constraint firstAttribute="trailing" secondItem="80" secondAttribute="trailing" constant="20" symbolic="YES" id="156"/>
+                <constraint firstItem="76" firstAttribute="bottom" secondItem="80" secondAttribute="bottom" id="157"/>
+                <constraint firstAttribute="trailing" secondItem="43" secondAttribute="trailing" constant="20" symbolic="YES" id="160"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <connections>
+                <action selector="backgroundTouched:" destination="-1" eventType="touchUpInside" id="151"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="fuzzyBlueButtonNoGlow.png" width="328" height="132"/>
+        <image name="fuzzyGreenButtonNoGlow.png" width="328" height="131"/>
+        <image name="largePulseBeat.png" width="1024" height="1024"/>
+    </resources>
+</document>

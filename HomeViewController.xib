@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1552" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController">
+            <connections>
+                <outlet property="customButton" destination="77" id="81"/>
+                <outlet property="diabetesButton" destination="82" id="86"/>
+                <outlet property="heartButton" destination="4" id="58"/>
+                <outlet property="lungButton" destination="87" id="93"/>
+                <outlet property="view" destination="1" id="3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <userGuides>
+                <userLayoutGuide location="160" affinity="minX"/>
+            </userGuides>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4">
+                    <rect key="frame" x="24" y="109" width="130" height="115"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="115" id="343"/>
+                        <constraint firstAttribute="width" constant="130" id="350"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="24"/>
+                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-73"/>
+                    <state key="normal" title="Heart" backgroundImage="heartButton.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="heartSelected:" destination="-1" eventType="touchUpInside" id="73"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77">
+                    <rect key="frame" x="168" y="248" width="128" height="115"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="24"/>
+                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-70"/>
+                    <state key="normal" title="Mind" backgroundImage="brainButton.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="customSelected:" destination="-1" eventType="touchUpInside" id="114"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="82">
+                    <rect key="frame" x="24" y="248" width="130" height="115"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="115" id="367"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="24"/>
+                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-68"/>
+                    <state key="normal" title="Metabolic" backgroundImage="diabetesButton.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="diabetesSelected:" destination="-1" eventType="touchUpInside" id="113"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="87">
+                    <rect key="frame" x="168" y="109" width="128" height="115"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="128" id="353"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="24"/>
+                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-72"/>
+                    <state key="normal" title="Lung" backgroundImage="lungButton.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="lungSelected:" destination="-1" eventType="touchUpInside" id="112"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.96274201770000001" green="0.96274201770000001" blue="0.96274201770000001" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="87" firstAttribute="top" secondItem="4" secondAttribute="top" id="159"/>
+                <constraint firstItem="4" firstAttribute="leading" secondItem="82" secondAttribute="leading" id="214"/>
+                <constraint firstItem="4" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="24" id="234"/>
+                <constraint firstItem="4" firstAttribute="bottom" secondItem="87" secondAttribute="bottom" id="344"/>
+                <constraint firstAttribute="trailing" secondItem="87" secondAttribute="trailing" constant="24" id="352"/>
+                <constraint firstItem="4" firstAttribute="trailing" secondItem="82" secondAttribute="trailing" id="354"/>
+                <constraint firstItem="4" firstAttribute="top" secondItem="1" secondAttribute="top" constant="109" id="360"/>
+                <constraint firstItem="82" firstAttribute="top" secondItem="1" secondAttribute="top" constant="248" id="366"/>
+                <constraint firstAttribute="trailing" secondItem="77" secondAttribute="trailing" constant="24" id="370"/>
+                <constraint firstItem="77" firstAttribute="bottom" secondItem="82" secondAttribute="bottom" id="371"/>
+                <constraint firstItem="77" firstAttribute="leading" secondItem="87" secondAttribute="leading" id="372"/>
+                <constraint firstItem="77" firstAttribute="top" secondItem="82" secondAttribute="top" id="373"/>
+                <constraint firstItem="77" firstAttribute="leading" secondItem="82" secondAttribute="trailing" constant="14" id="1WG-j3-coX"/>
+                <constraint firstItem="4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1" secondAttribute="leading" constant="24" id="1hS-FD-XSI"/>
+                <constraint firstItem="77" firstAttribute="top" secondItem="87" secondAttribute="bottom" constant="24" id="FxQ-0M-jrd"/>
+                <constraint firstItem="4" firstAttribute="top" relation="greaterThanOrEqual" secondItem="1" secondAttribute="top" constant="109" id="Gvc-Wn-lRA"/>
+                <constraint firstItem="87" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="168" id="Lq3-49-Egi"/>
+                <constraint firstItem="87" firstAttribute="leading" secondItem="4" secondAttribute="trailing" constant="14" id="afd-13-IIV"/>
+                <constraint firstItem="82" firstAttribute="top" secondItem="4" secondAttribute="bottom" constant="24" id="ebm-kJ-ha1"/>
+                <constraint firstItem="87" firstAttribute="top" secondItem="1" secondAttribute="top" constant="109" id="ffR-KC-Fab"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="brainButton.png" width="130" height="115"/>
+        <image name="diabetesButton.png" width="130" height="115"/>
+        <image name="heartButton.png" width="130" height="115"/>
+        <image name="lungButton.png" width="130" height="115"/>
+    </resources>
+</document>

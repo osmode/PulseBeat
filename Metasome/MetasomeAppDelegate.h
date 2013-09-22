@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "ParameterViewController.h"
 
-@interface MetasomeAppDelegate : UIResponder <UIApplicationDelegate>
+@interface MetasomeAppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
 {
+    UINavigationController *parameterNavController;
 }
 @property (strong, nonatomic) UIWindow *window;
 

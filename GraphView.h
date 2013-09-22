@@ -19,13 +19,15 @@ typedef enum {
 } ParameterInputType;
  */
 
-@class LineView;
+@class LineView, Legend;
 @interface GraphView : UIScrollView 
 {
     ParameterInput inputType;
     UILabel *titleLabel;
     UIWindow *thisWindow;
     NSMutableArray *hoveringLabels;
+    
+    Legend *legend;
     
 }
 @property NSString *name;
@@ -57,6 +59,7 @@ typedef enum {
 @property (nonatomic, weak) UIView *underViewPointer;
 @property (nonatomic, strong) LineView *hoveringVerticalLine;
 @property (nonatomic, copy) NSMutableArray *pointsToGraph;
+@property (nonatomic, strong) UIScrollView *parentScrollView;
 
 -(float)maxValue:(NSArray *)array;
 -(void)drawText:(NSString *)writeMe fontSize:(float)size horizontalLocation:(float)horizonal verticalLocation:(float)vertical rotation:(float)radians;

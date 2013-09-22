@@ -9,13 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "GraphView.h"
 
-@class MetasomeParameter, LineView;
+@class MetasomeParameter, LineView, HoveringLabel;
 
 @interface GraphViewController : UIViewController <UIScrollViewDelegate>
 {
     UIScrollView *scrollView;
     GraphView *graphView;
     UILabel *anotherLabel;
+    HoveringLabel *titleHoveringLabel;
+    
 }
 
 @property (nonatomic) UIView *underView;
@@ -26,5 +28,6 @@
 
 -(void)test;
 -(void)changeInterval;
+-(void)initializeSubViews;
 
 @end

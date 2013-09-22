@@ -8,8 +8,10 @@
 
 #import "MetasomeEventStore.h"
 #import "MetasomeEvent.h"
+#import "Legend.h"
 
 @implementation MetasomeEventStore
+float const EVENT_BAR_WIDTH = 30.0;
 
 +(MetasomeEventStore *)sharedStore
 {
@@ -30,7 +32,7 @@
     if (self) {
         NSString *path = [self itemArchivePath];
         allEvents = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-        NSLog(@"Number of events retrieved: %i", [allEvents count]);
+        allEventLabels = [[NSMutableArray alloc] init];
         
     }
     if (!allEvents) {
@@ -75,5 +77,56 @@
     return [NSKeyedArchiver archiveRootObject:allEvents toFile:path];
 }
 
+-(void)generateEventLabels:(Legend *)legend {
+    NSMutableArray *events = [[NSMutableArray alloc] initWithArray:allEvents];
+    float horizontalPos, verticalPos;
+    
+    [allEventLabels removeAllObjects];
+    
+    for (MetasomeEvent *ev in events) {
+        if ([[ev date] timeIntervalSince1970] > [legend since] && [ev visible]) {
+            
+            horizontalPos = ([[ev date] timeIntervalSince1970] - [legend minValueOnHorizontalAxis]) * [legend horizontalScaleFactor] + [legend originHorizontalOffset];
+            
+            verticalPos = [legend topBuffer];
+            
+            UILabel *eventLabel = [[UILabel alloc] initWithFrame:CGRectMake(horizontalPos, verticalPos, EVENT_BAR_WIDTH, [legend verticalAxisLength])];
+            
+            eventLabel.backgroundColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.5];
+            eventLabel.layer.cornerRadius = 5;
+            [eventLabel.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
+            
+            [eventLabel.layer setBorderWidth:1.0];
+            [eventLabel setText:[ev title]];
+            [eventLabel setTextAlignment:NSTextAlignmentCenter];
+            [eventLabel setTextColor:[UIColor redColor]];
+            [eventLabel setAdjustsFontSizeToFitWidth:YES];
+            eventLabel.layer.drawsAsynchronously = YES;
+            
+            [allEventLabels addObject:eventLabel];
+            
+        }
+    }
+        
+}
+
+-(void)drawEvents:(UIView *)v
+{
+    
+    for (UILabel *l in allEventLabels) {
+        //[l removeFromSuperview];
+        [v addSubview:l];
+    }
+    
+}
+
+-(void)removeLabelsFromSuperview:(UIView *)v
+{
+    //[allEventLabels removeAllObjects];
+    
+    for (UILabel *l in allEventLabels) {
+        
+    }
+}
 
 @end

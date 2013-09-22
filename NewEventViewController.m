@@ -242,14 +242,17 @@
 -(void)formatTextView:(UITextView *)tv
 {
     //To make the border look very close to a UITextField
+    
     [tv.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
     [tv.layer setBorderWidth:2.0];
     
     //The rounded corner part, where you specify your view's corner radius:
     tv.layer.cornerRadius = 5;
     tv.clipsToBounds = YES;
-    [tv setTextContainerInset:UIEdgeInsetsMake(-60.0, 0.0, 0.0, 0.0)];
-    [tv setTextColor:[UIColor blackColor]];
+    
+    //[tv setTextContainerInset:UIEdgeInsetsMake(-60.0, 0.0, 0.0, 0.0)];
+    //[tv setTextColor:[UIColor blackColor]];
+    
 }
 
 -(void)formatLabel:(UILabel *)label

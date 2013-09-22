@@ -16,7 +16,8 @@
 @property (nonatomic) CGPoint upperLeftCorner;
 @property (nonatomic) CGContextRef context;
 @property (nonatomic) CGAffineTransform transform;
-@property (nonatomic) float minValueOnHorizontalAxis, minValueOnVerticalAxis, horizontalScaleFactor, verticalScaleFactor, originHorizontalOffset, originVerticalOffset, scrollViewHeight;
+@property (nonatomic) float minValueOnHorizontalAxis, minValueOnVerticalAxis, horizontalScaleFactor, verticalScaleFactor, originHorizontalOffset, originVerticalOffset, scrollViewHeight, since;
+@property (nonatomic) float topBuffer, verticalAxisLength;
 
 -(id)initWithContext:(CGContextRef)ctx withTransformation:(CGAffineTransform)tf atPoint:(CGPoint)point;
 -(void)drawBackground;

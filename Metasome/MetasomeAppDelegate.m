@@ -42,7 +42,7 @@
     [hvc setParamViewController:pvc];
     
     UINavigationController *homeNavController = [[UINavigationController alloc] initWithRootViewController:hvc];
-    UINavigationController *parameterNavController = [[UINavigationController alloc]
+    parameterNavController = [[UINavigationController alloc]
                                              initWithRootViewController:pvc];
     
     UINavigationController *eventNavController = [[UINavigationController alloc] initWithRootViewController:evc];
@@ -104,6 +104,7 @@
     [tabBarController setViewControllers:viewControllers];
     [tabBarController setSelectedIndex:1];
     
+    [tabBarController setDelegate:self];
     [[self window] setRootViewController:tabBarController];
     
     // Override point for customization after application launch.
@@ -156,6 +157,21 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+{
+    NSLog(@"Selected tab bar controller index: %i", tabBarController.selectedIndex);
+    // index 1 contains ParameterViewController as the root view controller,
+    // a DetailViewController on top of it, and a GraphViewController on top of that
+    NSArray *allViewControllers = [[NSArray alloc] initWithArray:[[viewController navigationController] viewControllers]];
+    
+    if (tabBarController.selectedIndex == 1) {
+        
+        //for (UIViewController *vc in allViewControllers) {
+            //[[vc view] setNeedsDisplay];
+        //}
+    }
+    
+}
 
 /*
 -(NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window

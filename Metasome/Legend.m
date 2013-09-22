@@ -13,6 +13,8 @@
 
 @synthesize upperLeftCorner, transform;
 @synthesize minValueOnHorizontalAxis, minValueOnVerticalAxis, horizontalScaleFactor, verticalScaleFactor, originHorizontalOffset, originVerticalOffset, scrollViewHeight;
+@synthesize since, topBuffer, verticalAxisLength;
+
 
 -(id)initWithContext:(CGContextRef)ctx withTransformation:(CGAffineTransform)tf atPoint:(CGPoint)point;
 {
@@ -97,9 +99,9 @@
     int counter = 0;
     
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetLineWidth(context, 2.0);
+    CGContextSetLineWidth(context, 1.5);
     CGContextSetLineCap(context, kCGLineCapRound);
-    CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 0.9);
+    CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 0.6);
     CGPoint fromPoint = CGPointMake(0.0, 0.0);
     CGPoint toPoint = CGPointMake(0.0, 0.0);
     

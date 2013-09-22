@@ -16,6 +16,7 @@
 #import "GraphViewController.h"
 #import "HoveringLabel.h"
 #import "LineView.h"
+#import <QuartzCore/QuartzCore.h>
 
 
 @implementation GraphView
@@ -25,7 +26,7 @@ float const POINT_HEIGHT = 10;
 float const VERTICAL_NUMBER_OF_INTERVALS = 10.0;
 float const HORIZONTAL_NUMBER_OF_INTERVALS = 20.0;
 float const AXIS_LABEL_FONTSIZE = 12.0;
-float const EVENT_BAR_WIDTH = 30.0;
+//float const EVENT_BAR_WIDTH = 30.0;
 float const EVENT_FONT_SIZE = 15.0;
 float const ORIGIN_HORIZONTAL_OFFSET = 50.0;
 float const ORIGIN_VERTICAL_OFFSET = 50.0;
@@ -45,6 +46,7 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
 @synthesize ctx, transform;
 @synthesize clearSubviewBlock, underViewPointer, parentContext, hoveringVerticalLine;
 @synthesize pointsToGraph;
+@synthesize parentScrollView;
 
 
 - (id)initWithFrame:(CGRect)frame
@@ -52,35 +54,42 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
 
     self = [super initWithFrame:frame];
     if (self) {
-        [self setCtx: UIGraphicsGetCurrentContext()];
-        [self setTransform:CGAffineTransformConcat(CGContextGetTextMatrix([self ctx]), CGAffineTransformMake(1.0, 0.0, 0.0, -1.0, 0.0, 0.0))];
-        
-        [self setOriginHorizontalOffset:ORIGIN_HORIZONTAL_OFFSET];
-        [self setOriginVerticalOffset:ORIGIN_VERTICAL_OFFSET];
-        [self setTopBuffer:50];
-        [self setRightBuffer:200];
+        parentScrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
         
         [self setGraphTitle:[[[MetasomeDataPointStore sharedStore] toGraph] stringByAppendingString:@" vs time"]];
-        hoveringLabels = [[NSMutableArray alloc] init];
-        
-        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 0, 200, 30)];
-        titleLabel.adjustsFontSizeToFitWidth = YES;
-        titleLabel.text = [self graphTitle];
-        titleLabel.textColor = [UIColor blackColor];
-        titleLabel.backgroundColor = [UIColor clearColor];
-        titleLabel.font = [UIFont fontWithName:@"AvenirNext-Bold" size:15.0];
-        titleLabel.adjustsFontSizeToFitWidth = YES;
-        
-        
-        HoveringLabel *hl = [[HoveringLabel alloc] initWithLabel:titleLabel point:titleLabel.frame.origin];
-        [hoveringLabels addObject:hl];
-        
-    }
+       }
     return self;
 }
 
 -(void)drawRect:(CGRect)rect
 {
+
+    [self setCtx: UIGraphicsGetCurrentContext()];
+    [self setTransform:CGAffineTransformConcat(CGContextGetTextMatrix([self ctx]), CGAffineTransformMake(1.0, 0.0, 0.0, -1.0, 0.0, 0.0))];
+    
+    [self setOriginHorizontalOffset:ORIGIN_HORIZONTAL_OFFSET];
+    [self setOriginVerticalOffset:ORIGIN_VERTICAL_OFFSET];
+    [self setTopBuffer:50];
+    [self setRightBuffer:200];
+    
+
+    hoveringLabels = [[NSMutableArray alloc] init];
+    
+    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 0, 200, 30)];
+    titleLabel.adjustsFontSizeToFitWidth = YES;
+    titleLabel.text = [self graphTitle];
+    titleLabel.textColor = [UIColor blackColor];
+    titleLabel.backgroundColor = [UIColor
+                                  clearColor];
+    titleLabel.font = [UIFont fontWithName:@"AvenirNext-Bold" size:15.0];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.adjustsFontSizeToFitWidth = YES;
+    
+    
+    HoveringLabel *hl = [[HoveringLabel alloc] initWithLabel:titleLabel point:titleLabel.frame.origin];
+    [hoveringLabels addObject:hl];
+    
+
     //The order in which these methods are called is critical!
     inputType = [[[MetasomeDataPointStore sharedStore] parameterToGraph] inputType];
     NSString *n = [[[MetasomeDataPointStore sharedStore] parameterToGraph] parameterName];
@@ -95,11 +104,10 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
     pointsToGraph = [[NSMutableArray alloc] initWithArray:[[MetasomeDataPointStore sharedStore] pointsWithParameterName:n fromDate:from toDate:to]];
     [self graphPoints:[self pointsToGraph]];
     
-    [self drawEvents:[[MetasomeEventStore sharedStore] allEvents]];
-    
     CGPoint here = CGPointMake([self originHorizontalOffset] + [self horizontalAxisLength] + 40, [self topBuffer]);
     
-    Legend *legend = [[Legend alloc] initWithContext:[self ctx] withTransformation:[self transform] atPoint:here];
+    legend = [[Legend alloc] initWithContext:[self ctx] withTransformation:[self transform] atPoint:here];
+    
     [legend drawBackground];
     [legend drawLabels];
     [legend setMinValueOnHorizontalAxis:[self minValueOnHorizontalAxis]];
@@ -109,8 +117,28 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
     [legend setOriginHorizontalOffset:[self originHorizontalOffset]];
     [legend setOriginVerticalOffset:[self originVerticalOffset]];
     [legend setScrollViewHeight:[self scrollViewHeight]];
-    
+    [legend setSince:[[[MetasomeDataPointStore sharedStore] since] timeIntervalSince1970]];
+    [legend setTopBuffer:topBuffer];
+    [legend setVerticalAxisLength:verticalAxisLength];
+
     [legend connectTheDots:[self pointsToGraph]];
+
+    /** New Code **/
+    
+    
+    /** End new code **/
+    
+    UILabel *testLabel = [[UILabel alloc] initWithFrame:CGRectMake(100.0, 100.0, 100.0, 100.0)];
+    
+    testLabel.backgroundColor = [UIColor blueColor];
+    [self addSubview:testLabel];
+    [parentScrollView setNeedsDisplay];
+    
+    [[MetasomeEventStore sharedStore] generateEventLabels:legend];
+    [[MetasomeEventStore sharedStore] drawEvents:self];
+    
+    //[self drawEvents:[[MetasomeEventStore sharedStore] allEvents]];
+
     
 }
 
@@ -166,15 +194,33 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
     {
         if ( ([[event date] timeIntervalSince1970] > [[[MetasomeDataPointStore sharedStore] since] timeIntervalSince1970]) && ([event visible]) )
         {
+            
             horizontalPos = ([[event date] timeIntervalSince1970] - [self minValueOnHorizontalAxis]) * [self horizontalScaleFactor] + [self originHorizontalOffset];
             
             verticalPos = [self topBuffer];
             
-            CGContextSetRGBFillColor([self ctx], 0.2, 0.05, 0.8, 0.2);
+            /*
+            CGContextSetRGBFillColor([self ctx], 0.2, 0.05, 0.8, 0.5);
             drawInMe = CGRectMake(horizontalPos, verticalPos, EVENT_BAR_WIDTH, [self verticalAxisLength]);
             CGContextFillRect([self ctx], drawInMe);
+             */
 
-            [self drawText:[event title] fontSize:EVENT_FONT_SIZE horizontalLocation:horizontalPos+EVENT_BAR_WIDTH verticalLocation:([self scrollViewHeight] - [self originVerticalOffset] - 20) rotation:(M_PI / 2.0)];
+            // create UILabel within which to draw events
+            UILabel *eventLabel = [[UILabel alloc] initWithFrame:CGRectMake(horizontalPos, verticalPos, 30.0, verticalAxisLength)];
+            
+            eventLabel.backgroundColor = [UIColor colorWithRed:0.05 green:0.02 blue:0.8 alpha:0.3];
+            eventLabel.layer.cornerRadius = 5;
+            [eventLabel.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
+            
+            [eventLabel.layer setBorderWidth:1.0];
+            [eventLabel setText:[event title]];
+            [eventLabel setTextAlignment:NSTextAlignmentCenter];
+            [eventLabel setTextColor:[UIColor redColor]];
+            [eventLabel setAdjustsFontSizeToFitWidth:YES];
+            
+            [self addSubview:eventLabel];
+                                                                            
+            //[self drawText:[event title] fontSize:EVENT_FONT_SIZE horizontalLocation:horizontalPos+EVENT_BAR_WIDTH verticalLocation:([self scrollViewHeight] - [self originVerticalOffset] - 20) rotation:(M_PI / 2.0)];
             
         }
     }
@@ -292,6 +338,7 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
         l.backgroundColor = [UIColor whiteColor];
         l.font = [UIFont systemFontOfSize:AXIS_LABEL_FONTSIZE];
         l.adjustsFontSizeToFitWidth = YES;
+        //l.layer.drawsAsynchronously = YES;
         
         
         HoveringLabel *newLabel = [[HoveringLabel alloc] initWithLabel:l point:l.frame.origin];
@@ -336,6 +383,8 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    
+    /*
     CGPoint touched;
     
     // yValue and xValue are view coordinates converted into vertical axis values
@@ -349,9 +398,7 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
         }
         
         touched = [t locationInView:self];
-        /*
-        yValue = ( ([self scrollViewHeight] - touched.y - [self originVerticalOffset]) / [self verticalScaleFactor]) + [self minValueOnVerticalAxis];
-         */
+
         yValue = (touched.y + [self originVerticalOffset] - [self scrollViewHeight])/(-1*[self verticalScaleFactor]) + [self minValueOnVerticalAxis];
         
         xValue = (touched.x - [self originHorizontalOffset])/[self horizontalScaleFactor] + [self minValueOnHorizontalAxis];
@@ -381,10 +428,11 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
         [menu setMenuItems:[NSArray arrayWithObject:infoItem]];
         [menu setTargetRect:CGRectMake(touched.x, touched.y, 2, 2) inView:self];
         [menu setMenuVisible:YES animated:YES];
-        [self setNeedsDisplay];
+        //[self setNeedsDisplay];
                                 
-        NSLog(@"Touch at %@, %f", dateString, yValue);
+        //NSLog(@"Touch at %@, %f", dateString, yValue);
     }
+*/
 }
 -(BOOL)canBecomeFirstResponder
 {

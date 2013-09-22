@@ -12,6 +12,8 @@
 #import "AxisView.h"
 #import "HoveringLabel.h"
 #import "LineView.h"
+#import "MetasomeEventStore.h"
+
 
 @implementation GraphViewController
 UISegmentedControl *segmentControl;
@@ -32,14 +34,10 @@ float const SCROLL_VIEW_CORRECTION_FACTOR = 64.0;
 
 -(void)loadView
 {
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Test" style:UIBarButtonItemStylePlain target:self action:@selector(test:)];
-    [[[self navigationController] navigationItem] setRightBarButtonItem:item];
-    
+
     CGRect frame = [[UIScreen mainScreen] bounds];
     CGRect test = CGRectMake(0, 0, 50, 50);
     scrollView = [[UIScrollView alloc] initWithFrame:frame];
-
-    //[self setView: scrollView];
     
     CGRect bigRect;
     bigRect.size.width = frame.size.width*3;
@@ -54,6 +52,7 @@ float const SCROLL_VIEW_CORRECTION_FACTOR = 64.0;
     [graphView setParentContext:UIGraphicsGetCurrentContext()];
     
     [graphView setUnderViewPointer:underView];
+    [graphView setParentScrollView:scrollView];
 
     scrollView.delegate = self;
     
@@ -69,7 +68,14 @@ float const SCROLL_VIEW_CORRECTION_FACTOR = 64.0;
     [scrollView addSubview:graphView];
     [scrollView setContentSize:bigRect.size];
     
-        
+    
+    /****************************************************************************************/
+    float interval = [[NSDate date] timeIntervalSince1970] - 604800;
+    
+    NSDate *oneWeekAgo = [[NSDate alloc] initWithTimeIntervalSince1970:interval];
+    
+    [[MetasomeDataPointStore sharedStore] setSince:oneWeekAgo];
+    
     NSArray *itemArray = [NSArray arrayWithObjects:@"Week", @"Month", @"3 mo", @"1 yr", nil];
     segmentControl = [[UISegmentedControl alloc] initWithItems:itemArray];
     //segmentControl.frame = CGRectMake(35, 200, 250, 50);
@@ -77,20 +83,15 @@ float const SCROLL_VIEW_CORRECTION_FACTOR = 64.0;
     segmentControl.selectedSegmentIndex = 0;
     
     [segmentControl addTarget:self action:@selector(changeInterval) forControlEvents:UIControlEventValueChanged];
-    
-    float interval = [[NSDate date] timeIntervalSince1970] - 604800;
-    
-    NSDate *oneWeekAgo = [[NSDate alloc] initWithTimeIntervalSince1970:interval];
-    
-    [[MetasomeDataPointStore sharedStore] setSince:oneWeekAgo]; 
-            
     UIBarButtonItem *segmentButton = [[UIBarButtonItem alloc] initWithCustomView:segmentControl];
     self.navigationItem.rightBarButtonItem = segmentButton;
     
+    /****************************************************************************************/
 }
 
 -(void)changeInterval
 {
+    NSLog(@"Change interval called");
     int index = ( [segmentControl selectedSegmentIndex] );
     NSDate *date;
         
@@ -120,12 +121,73 @@ float const SCROLL_VIEW_CORRECTION_FACTOR = 64.0;
     }
     
     [[MetasomeDataPointStore sharedStore] setSince:date];
+    
+    /** New code **/
+    
+    CGRect frame = [[UIScreen mainScreen] bounds];
+    CGRect test = CGRectMake(0, 0, 50, 50);
+    
+    CGRect bigRect;
+    bigRect.size.width = frame.size.width*3;
+    bigRect.size.height = frame.size.height * 0.75;
+    
+    graphView = nil;
+    
+    graphView = [[GraphView alloc] initWithFrame:bigRect];
+    [graphView setParentContext:UIGraphicsGetCurrentContext()];
+    
+    [graphView setUnderViewPointer:underView];
+    
+    [graphView setScrollViewWidth:bigRect.size.width];
+    [graphView setScrollViewHeight:bigRect.size.height];
+    
+    [graphView setBackgroundColor:[UIColor whiteColor]];
+    [scrollView setBackgroundColor:[UIColor whiteColor]];
+    [graphView setMinimumZoomScale:1.0];
+    [graphView setMaximumZoomScale:5.0];
+    
+    [scrollView addSubview:graphView];
+    [scrollView setContentSize:bigRect.size];
+    
+    /** End new code **/
+    
+    UILabel *testLabel = [[UILabel alloc] initWithFrame:CGRectMake(50.0, 50.0, 100.0, 100.0)];
+    
+    testLabel.backgroundColor = [UIColor redColor];
+    [scrollView addSubview:testLabel];
+    
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 0, 200, 30)];
+    titleLabel.adjustsFontSizeToFitWidth = YES;
+    titleLabel.text = [graphView graphTitle];
+    titleLabel.textColor = [UIColor blackColor];
+    titleLabel.backgroundColor = [UIColor orangeColor];
+    titleLabel.font = [UIFont fontWithName:@"AvenirNext-Bold" size:15.0];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    
+    //[titleLabel setFrame:CGRectMake([scrollView contentOffset].x, [scrollView contentOffset].y, 200, 30)];
+    
+    
+    [scrollView addSubview:titleLabel];
     [graphView setNeedsDisplay];
+    titleHoveringLabel = [[HoveringLabel alloc] initWithLabel:titleLabel point:titleLabel.frame.origin];
+    //[[graphView hoveringLabels] addObject:hl];
+    
+    //[[self view] setNeedsDisplay];
+    
     
 }
+
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {    
     [[UIMenuController sharedMenuController] setMenuVisible:NO animated:YES];
+    
+    CGRect ff = titleHoveringLabel.label.frame;
+    ff.origin.x = titleHoveringLabel.initialPoint.x + scrollView.contentOffset.x;
+    
+    ff.origin.y = titleHoveringLabel.initialPoint.y + scrollView.contentOffset.y;
+    ff.origin.y += SCROLL_VIEW_CORRECTION_FACTOR;
+    
+    titleHoveringLabel.label.frame = ff;
     
     for (HoveringLabel *hl in [graphView hoveringLabels]) {
         CGRect fixedFrame = hl.label.frame;
@@ -205,7 +267,14 @@ float const SCROLL_VIEW_CORRECTION_FACTOR = 64.0;
 -(void)viewWillDisappear:(BOOL)animated
 {
     NSLog(@"View will disappear");
+    
+    if (self.isMovingFromParentViewController) {
+        [self removeFromParentViewController];
+    }
+        
+    [[self navigationController] popToRootViewControllerAnimated:YES];
 }
+
 /* setVerticalAxisBackgroundDimensions takes an array of UILabels
   representing vertical axis labels as arguments */
 -(void)setVerticalAxisBackgroundDimensions:(NSArray *)array
@@ -227,7 +296,6 @@ float const SCROLL_VIEW_CORRECTION_FACTOR = 64.0;
             verticalAxisBackgroundY = l.label.frame.origin.y;
         }
         
-        NSLog(@"Y = %f", l.label.frame.origin.y);
     }
     verticalAxisBackgroundX = 0.0;
     //verticalAxisBackgroundY -= 10.0;
@@ -237,5 +305,9 @@ float const SCROLL_VIEW_CORRECTION_FACTOR = 64.0;
     [self setVerticalAxisBackgroundHeight:VERTICAL_AXIS_BACKGROUND_HEIGHT];
 }
 
-
+-(void)initializeSubViews
+{
+    
+    
+}
 @end

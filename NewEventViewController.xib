@@ -10,7 +10,7 @@
                 <outlet property="dateButton" destination="132" id="334"/>
                 <outlet property="dateLabel" destination="121" id="333"/>
                 <outlet property="descriptionLabel" destination="174" id="336"/>
-                <outlet property="descriptionTextView" destination="41" id="96"/>
+                <outlet property="descriptionTextView" destination="Yhr-Tj-LnB" id="qre-HA-Zxo"/>
                 <outlet property="titleTextField" destination="44" id="95"/>
                 <outlet property="view" destination="1" id="46"/>
                 <outlet property="visibilityLabel" destination="146" id="335"/>
@@ -22,20 +22,8 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="41">
-                    <rect key="frame" x="20" y="148" width="290" height="86"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <accessibility key="accessibilityConfiguration" hint="Optional description"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="61" id="597"/>
-                    </constraints>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=" Enter title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="44">
-                    <rect key="frame" x="66" y="71" width="244" height="30"/>
+                    <rect key="frame" x="66" y="82" width="244" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
@@ -44,11 +32,11 @@
                     </connections>
                 </textField>
                 <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="113">
-                    <rect key="frame" x="210" y="324" width="51" height="31"/>
+                    <rect key="frame" x="210" y="352" width="51" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </switch>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="121">
-                    <rect key="frame" x="159" y="258" width="203" height="21"/>
+                    <rect key="frame" x="159" y="286" width="203" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="203" id="387"/>
@@ -59,7 +47,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="132">
-                    <rect key="frame" x="20" y="242" width="113" height="48"/>
+                    <rect key="frame" x="20" y="270" width="113" height="48"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="113" id="412"/>
@@ -75,7 +63,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Visible on graph?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="146">
-                    <rect key="frame" x="20" y="324" width="143" height="21"/>
+                    <rect key="frame" x="20" y="352" width="143" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="545"/>
@@ -97,8 +85,8 @@
                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="613">
-                    <rect key="frame" x="20" y="75" width="62" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="613">
+                    <rect key="frame" x="20" y="86" width="62" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="62" id="618"/>
@@ -107,25 +95,32 @@
                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yhr-Tj-LnB">
+                    <rect key="frame" x="20" y="154" width="242" height="99"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </subviews>
             <color key="backgroundColor" red="0.92936905569999995" green="0.92936905569999995" blue="0.92936905569999995" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="41" firstAttribute="leading" secondItem="174" secondAttribute="leading" id="347"/>
                 <constraint firstItem="132" firstAttribute="baseline" secondItem="121" secondAttribute="baseline" constant="-1" id="420"/>
-                <constraint firstItem="174" firstAttribute="trailing" secondItem="41" secondAttribute="trailing" id="459"/>
                 <constraint firstItem="121" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="159" id="487"/>
-                <constraint firstItem="132" firstAttribute="leading" secondItem="41" secondAttribute="leading" id="546"/>
                 <constraint firstItem="174" firstAttribute="top" secondItem="1" secondAttribute="top" constant="120" id="585"/>
-                <constraint firstItem="41" firstAttribute="top" secondItem="1" secondAttribute="top" constant="148" id="586"/>
-                <constraint firstItem="132" firstAttribute="top" secondItem="1" secondAttribute="top" constant="242" id="599"/>
-                <constraint firstItem="146" firstAttribute="top" secondItem="1" secondAttribute="top" constant="324" id="602"/>
+                <constraint firstItem="132" firstAttribute="top" secondItem="1" secondAttribute="top" constant="270" id="599"/>
+                <constraint firstItem="146" firstAttribute="top" secondItem="1" secondAttribute="top" constant="352" id="602"/>
                 <constraint firstItem="146" firstAttribute="leading" secondItem="132" secondAttribute="leading" id="603"/>
                 <constraint firstItem="113" firstAttribute="top" secondItem="146" secondAttribute="top" id="604"/>
                 <constraint firstAttribute="trailing" secondItem="113" secondAttribute="trailing" constant="61" id="605"/>
-                <constraint firstItem="121" firstAttribute="top" secondItem="1" secondAttribute="top" constant="258" id="606"/>
+                <constraint firstItem="121" firstAttribute="top" secondItem="1" secondAttribute="top" constant="286" id="606"/>
                 <constraint firstItem="613" firstAttribute="leading" secondItem="174" secondAttribute="leading" id="614"/>
                 <constraint firstItem="613" firstAttribute="top" secondItem="1" secondAttribute="top" constant="75" id="615"/>
-                <constraint firstItem="41" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" constant="5" id="624"/>
+                <constraint firstItem="Yhr-Tj-LnB" firstAttribute="top" secondItem="174" secondAttribute="bottom" constant="8" id="9iE-nH-gke"/>
+                <constraint firstItem="132" firstAttribute="top" secondItem="Yhr-Tj-LnB" secondAttribute="bottom" constant="17" id="B3W-nn-p0s"/>
+                <constraint firstAttribute="trailing" secondItem="Yhr-Tj-LnB" secondAttribute="trailing" constant="58" id="GRj-DG-Oj4"/>
+                <constraint firstItem="Yhr-Tj-LnB" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="WIE-Jr-oVn"/>
+                <constraint firstItem="132" firstAttribute="leading" secondItem="174" secondAttribute="leading" id="ZZq-et-Ncq"/>
                 <constraint firstItem="613" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="ghh-ix-TAa"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

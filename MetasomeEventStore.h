@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@class MetasomeEvent;
+@class MetasomeEvent, Legend;
 @interface MetasomeEventStore : NSObject
 {
     NSMutableArray *allEvents;
+    NSMutableArray *allEventLabels;
 }
+
 +(MetasomeEventStore *)sharedStore;
 -(id)init;
 -(NSArray *)allEvents;
@@ -21,8 +23,9 @@
 -(void)moveItemAtIndex:(int)from toIndex:(int)to;
 -(BOOL)saveChanges;
 -(NSString *)itemArchivePath;
--(void)drawEvents:(CGContextRef)ctx;
-
+-(void)drawEvents:(UIView *)v;
+-(void)generateEventLabels:(Legend *)legend;
+-(void)removeLabelsFromSuperview:(UIView *)v;
 
 @end
 

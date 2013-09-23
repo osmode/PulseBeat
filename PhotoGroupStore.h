@@ -16,7 +16,6 @@
 @property (nonatomic, copy) NSMutableArray *photoGroupArray;
 
 +(PhotoGroupStore *)sharedStore;
--(void)removePhotoGroup:(PhotoGroup *)g;
 -(void)moveItemAtIndex:(int)from toIndex:(int)to;
 -(NSString *)itemArchivePath;
 -(BOOL)saveChanges;

@@ -19,13 +19,11 @@ typedef enum {
 } ParameterInputType;
  */
 
-@class LineView, Legend;
+@class LineView, Legend, GraphViewController;
 @interface GraphView : UIScrollView 
 {
     ParameterInput inputType;
-    UILabel *titleLabel;
     UIWindow *thisWindow;
-    NSMutableArray *hoveringLabels;
     
     Legend *legend;
     
@@ -53,18 +51,15 @@ typedef enum {
 @property (nonatomic) CGContextRef ctx;
 @property (nonatomic) CGContextRef parentContext;
 
-
 @property (nonatomic) CGAffineTransform transform;
 @property (nonatomic, copy) void (^clearSubviewBlock)(void);
-@property (nonatomic, weak) UIView *underViewPointer;
-@property (nonatomic, strong) LineView *hoveringVerticalLine;
 @property (nonatomic, copy) NSMutableArray *pointsToGraph;
-@property (nonatomic, strong) UIScrollView *parentScrollView;
+@property (nonatomic, weak) GraphViewController *parentGraphViewController;
 
--(float)maxValue:(NSArray *)array;
 -(void)drawText:(NSString *)writeMe fontSize:(float)size horizontalLocation:(float)horizonal verticalLocation:(float)vertical rotation:(float)radians;
 -(void)drawLabels;
--(NSMutableArray *)hoveringLabels;
+-(void)initializeGraphView;
+-(void)generateAxisLabels;
 
 @end
 

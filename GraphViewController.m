@@ -16,77 +16,125 @@
 
 
 @implementation GraphViewController
+
 UISegmentedControl *segmentControl;
 float const VERTICAL_AXIS_BACKGROUND_WIDTH = 50;
 float const VERTICAL_AXIS_BACKGROUND_HEIGHT = 330;
 float const SCROLL_VIEW_CORRECTION_FACTOR = 64.0;
 
-@synthesize underView, ctx, verticalAxisLine, verticalAxisBackground, verticalAxisBackgroundX, verticalAxisBackgroundY, verticalAxisBackgroundWidth, verticalAxisBackgroundHeight;
+@synthesize ctx, verticalAxisLine, verticalAxisBackground, verticalAxisBackgroundX, verticalAxisBackgroundY, verticalAxisBackgroundWidth, verticalAxisBackgroundHeight;
+@synthesize hoveringLabels, titleLabel, hoveringVerticalAxisLine;
+@synthesize hoveringHorizontalLabels;
+@synthesize graphView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        verticalAxisLine = [[LineView alloc] init];
+        
+        hoveringLabels = [[NSMutableArray alloc] init];
+        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 0, 200, 30)];
+        titleHoveringLabel = [[HoveringLabel alloc] initWithLabel:titleLabel point:titleLabel.frame.origin];
+        titleLabel.backgroundColor = [UIColor clearColor];
+        titleLabel.text = [graphView graphTitle];
+        titleLabel.textColor = [UIColor blackColor];
+        titleLabel.font = [UIFont fontWithName:@"AvenirNext-Bold" size:15.0];
+        titleLabel.textAlignment = NSTextAlignmentCenter;
+        titleLabel.adjustsFontSizeToFitWidth = YES;
+        
+        verticalAxisLine = [[UILabel alloc] initWithFrame:CGRectZero];
+        verticalAxisLine.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
+        hoveringVerticalAxisLine = [[HoveringLabel alloc] initWithLabel:verticalAxisLine point:verticalAxisLine.frame.origin];
+        
+        hoveringHorizontalLabels = [[NSMutableArray alloc] init];
     }
+    
     return self;
+}
+
+-(void)addTitle
+{
+    [titleLabel removeFromSuperview];
+    [titleLabel setText:[graphView graphTitle]];
+    [scrollView addSubview:titleLabel];
+}
+
+-(void)addVerticalAxisLine
+{
+    [verticalAxisLine removeFromSuperview];
+    [verticalAxisLine setFrame:CGRectMake([graphView originHorizontalOffset], [graphView topBuffer], 3.0, [graphView scrollViewHeight] - [graphView originVerticalOffset] - [graphView topBuffer])];
+    
+    [hoveringVerticalAxisLine setInitialPoint:verticalAxisLine.frame.origin];
+    
+    [scrollView addSubview:verticalAxisLine];
+    
+}
+
+-(void)drawHorizontalAxisLabels
+{
+    for (UILabel *l in hoveringHorizontalLabels) {
+        [l removeFromSuperview];
+        [scrollView addSubview:l];
+    }
+}
+
+-(void)drawVerticalAxisLabels
+{
+    for (HoveringLabel *hl in hoveringLabels) {
+        [hl.label removeFromSuperview];
+        [scrollView addSubview:hl.label];
+    }
 }
 
 -(void)loadView
 {
-
     CGRect frame = [[UIScreen mainScreen] bounds];
-    CGRect test = CGRectMake(0, 0, 50, 50);
     scrollView = [[UIScrollView alloc] initWithFrame:frame];
     
     CGRect bigRect;
     bigRect.size.width = frame.size.width*3;
     bigRect.size.height = frame.size.height * 0.75;
     
-    underView = [[UIView alloc] initWithFrame:test];
-    underView.backgroundColor = [UIColor redColor];
-    
     [self setView:scrollView];
 
     graphView = [[GraphView alloc] initWithFrame:bigRect];
-    [graphView setParentContext:UIGraphicsGetCurrentContext()];
-    
-    [graphView setUnderViewPointer:underView];
-    [graphView setParentScrollView:scrollView];
-
+    [graphView setParentGraphViewController:self];
     scrollView.delegate = self;
     
     [graphView setScrollViewWidth:bigRect.size.width];
     [graphView setScrollViewHeight:bigRect.size.height];
+    [graphView setHorizontalAxisLength:[graphView scrollViewWidth] - [graphView originHorizontalOffset] - [graphView rightBuffer]];
 
     [graphView setBackgroundColor:[UIColor whiteColor]];
     [scrollView setBackgroundColor:[UIColor whiteColor]];
     [graphView setMinimumZoomScale:1.0];
     [graphView setMaximumZoomScale:5.0];
     
-    [underView addSubview:scrollView];
     [scrollView addSubview:graphView];
     [scrollView setContentSize:bigRect.size];
     
+    // after generateAxisLabels is called, GraphViewController's
+    // arrays which hold the vertical & horizontal axis labels
+    // are populated and ready to be drawn
+    [graphView generateAxisLabels];
+    [self drawHorizontalAxisLabels];
+    [self drawVerticalAxisLabels];
     
-    /****************************************************************************************/
+    [self addTitle];
+    [self addVerticalAxisLine];
+    
+    // set scale to last week's points by default
     float interval = [[NSDate date] timeIntervalSince1970] - 604800;
-    
     NSDate *oneWeekAgo = [[NSDate alloc] initWithTimeIntervalSince1970:interval];
-    
     [[MetasomeDataPointStore sharedStore] setSince:oneWeekAgo];
-    
     NSArray *itemArray = [NSArray arrayWithObjects:@"Week", @"Month", @"3 mo", @"1 yr", nil];
     segmentControl = [[UISegmentedControl alloc] initWithItems:itemArray];
-    //segmentControl.frame = CGRectMake(35, 200, 250, 50);
     segmentControl.segmentedControlStyle = UISegmentedControlStyleBar;
     segmentControl.selectedSegmentIndex = 0;
-    
     [segmentControl addTarget:self action:@selector(changeInterval) forControlEvents:UIControlEventValueChanged];
     UIBarButtonItem *segmentButton = [[UIBarButtonItem alloc] initWithCustomView:segmentControl];
     self.navigationItem.rightBarButtonItem = segmentButton;
     
-    /****************************************************************************************/
 }
 
 -(void)changeInterval
@@ -125,87 +173,67 @@ float const SCROLL_VIEW_CORRECTION_FACTOR = 64.0;
     /** New code **/
     
     CGRect frame = [[UIScreen mainScreen] bounds];
-    CGRect test = CGRectMake(0, 0, 50, 50);
     
     CGRect bigRect;
     bigRect.size.width = frame.size.width*3;
     bigRect.size.height = frame.size.height * 0.75;
     
+    [graphView removeFromSuperview];
     graphView = nil;
     
-    graphView = [[GraphView alloc] initWithFrame:bigRect];
-    [graphView setParentContext:UIGraphicsGetCurrentContext()];
     
-    [graphView setUnderViewPointer:underView];
+    graphView = [[GraphView alloc] initWithFrame:bigRect];
     
     [graphView setScrollViewWidth:bigRect.size.width];
     [graphView setScrollViewHeight:bigRect.size.height];
+
+    [graphView setHorizontalAxisLength:[graphView scrollViewWidth] - [graphView originHorizontalOffset] - [graphView rightBuffer]];
+
     
     [graphView setBackgroundColor:[UIColor whiteColor]];
     [scrollView setBackgroundColor:[UIColor whiteColor]];
     [graphView setMinimumZoomScale:1.0];
     [graphView setMaximumZoomScale:5.0];
+
     
     [scrollView addSubview:graphView];
     [scrollView setContentSize:bigRect.size];
-    
-    /** End new code **/
-    
-    UILabel *testLabel = [[UILabel alloc] initWithFrame:CGRectMake(50.0, 50.0, 100.0, 100.0)];
-    
-    testLabel.backgroundColor = [UIColor redColor];
-    [scrollView addSubview:testLabel];
-    
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 0, 200, 30)];
-    titleLabel.adjustsFontSizeToFitWidth = YES;
-    titleLabel.text = [graphView graphTitle];
-    titleLabel.textColor = [UIColor blackColor];
-    titleLabel.backgroundColor = [UIColor orangeColor];
-    titleLabel.font = [UIFont fontWithName:@"AvenirNext-Bold" size:15.0];
-    titleLabel.textAlignment = NSTextAlignmentCenter;
-    
-    //[titleLabel setFrame:CGRectMake([scrollView contentOffset].x, [scrollView contentOffset].y, 200, 30)];
-    
-    
+    [graphView generateAxisLabels];
+    [self drawHorizontalAxisLabels];
+    [self drawVerticalAxisLabels];
     [scrollView addSubview:titleLabel];
-    [graphView setNeedsDisplay];
-    titleHoveringLabel = [[HoveringLabel alloc] initWithLabel:titleLabel point:titleLabel.frame.origin];
-    //[[graphView hoveringLabels] addObject:hl];
+    [scrollView addSubview:verticalAxisLine];
     
-    //[[self view] setNeedsDisplay];
+    
+}
+-(void)updateLabelPosition:(HoveringLabel *)hl withinScrollView:(UIScrollView *)sv
+{
+    CGRect fixedFrame = hl.label.frame;
+    fixedFrame.origin.x = hl.initialPoint.x + sv.contentOffset.x;
+    fixedFrame.origin.y = hl.initialPoint.y + sv.contentOffset.y;
+    
+    // iOS 7-specific change (navigation bars are now transparent)
+    fixedFrame.origin.y += SCROLL_VIEW_CORRECTION_FACTOR;
+    hl.label.frame = fixedFrame;
     
     
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {    
+    // remove all menus
     [[UIMenuController sharedMenuController] setMenuVisible:NO animated:YES];
     
-    CGRect ff = titleHoveringLabel.label.frame;
-    ff.origin.x = titleHoveringLabel.initialPoint.x + scrollView.contentOffset.x;
+    [self updateLabelPosition:titleHoveringLabel withinScrollView:scrollView];
+    [self updateLabelPosition:hoveringVerticalAxisLine withinScrollView:scrollView];
     
-    ff.origin.y = titleHoveringLabel.initialPoint.y + scrollView.contentOffset.y;
-    ff.origin.y += SCROLL_VIEW_CORRECTION_FACTOR;
     
-    titleHoveringLabel.label.frame = ff;
     
-    for (HoveringLabel *hl in [graphView hoveringLabels]) {
-        CGRect fixedFrame = hl.label.frame;
-        fixedFrame.origin.x = hl.initialPoint.x + scrollView.contentOffset.x;
-        fixedFrame.origin.y = hl.initialPoint.y + scrollView.contentOffset.y;
-        fixedFrame.origin.y += SCROLL_VIEW_CORRECTION_FACTOR;
-        hl.label.frame = fixedFrame;
+    for (HoveringLabel *hl in hoveringLabels) {
+        
+        [self updateLabelPosition:hl withinScrollView:scrollView];
+        
     }
-    
-    //LineView *lv = [[LineView alloc] init];
-    //lv = [graphView hoveringVerticalLine];
-    CGRect fixedFrame2 = verticalAxisLine.frame;
-    fixedFrame2.origin.x = verticalAxisLine.initialOrigin.x + scrollView.contentOffset.x;
-    fixedFrame2.origin.y = verticalAxisLine.initialOrigin.y + scrollView.contentOffset.y;
-    
-    // the following line is to fix an iOS 7 UIScrollView bug
-    fixedFrame2.origin.y += SCROLL_VIEW_CORRECTION_FACTOR;
-    verticalAxisLine.frame = fixedFrame2;
     
     CGRect fixedFrame3 = verticalAxisBackground.frame;
     fixedFrame3.origin.x = [self verticalAxisBackgroundX] + scrollView.contentOffset.x;
@@ -230,25 +258,6 @@ float const SCROLL_VIEW_CORRECTION_FACTOR = 64.0;
 {
     [super viewDidAppear:YES];
     
-    // add background bar to UIScrollView
-    [self setVerticalAxisBackgroundDimensions:[graphView hoveringLabels]];
-    verticalAxisBackground = [[UIView alloc] initWithFrame:CGRectMake([self verticalAxisBackgroundX], [self verticalAxisBackgroundY], [self verticalAxisBackgroundWidth], [self verticalAxisBackgroundHeight])];
-    
-    // change to whiteColor in final version
-    verticalAxisBackground.backgroundColor = [UIColor whiteColor];
-    
-    [scrollView addSubview:verticalAxisBackground];
-    
-    for (HoveringLabel *hl in [graphView hoveringLabels]) {
-        [scrollView addSubview:hl.label];
-    }
-    
-    [scrollView addSubview:anotherLabel];
-    
-    // add vertical axis line to UIScrollView
-    verticalAxisLine = (UIView *)[graphView hoveringVerticalLine];
-    [scrollView addSubview:verticalAxisLine];
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -310,4 +319,6 @@ float const SCROLL_VIEW_CORRECTION_FACTOR = 64.0;
     
     
 }
+
+
 @end

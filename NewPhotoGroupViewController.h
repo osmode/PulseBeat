@@ -23,5 +23,5 @@
 }
 @property (nonatomic, strong) PhotoGroup *photoGroup;
 -(void)savePhotoGroup;
--(IBAction)takePicture;
+
 @end

@@ -72,7 +72,7 @@ NSString * const MetasomeNotificationPrefKey = @"MetasomeNotificationPrefKey";
         localNotification.soundName = UILocalNotificationDefaultSoundName;
         
         localNotification.applicationIconBadgeNumber = 1;
-        [localNotification setRepeatInterval:kCFCalendarUnitHour];
+        [localNotification setRepeatInterval:NSCalendarUnitDay];
         [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
         
     }

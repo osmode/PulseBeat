@@ -10,7 +10,6 @@
 
 @interface EventDetailViewController : UIViewController <UITextFieldDelegate>
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField;
-- (IBAction)backgroundTouched:(id)sender;
+
 
 @end

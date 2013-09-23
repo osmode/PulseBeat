@@ -159,18 +159,7 @@
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
 {
-    NSLog(@"Selected tab bar controller index: %i", tabBarController.selectedIndex);
-    // index 1 contains ParameterViewController as the root view controller,
-    // a DetailViewController on top of it, and a GraphViewController on top of that
-    NSArray *allViewControllers = [[NSArray alloc] initWithArray:[[viewController navigationController] viewControllers]];
-    
-    if (tabBarController.selectedIndex == 1) {
-        
-        //for (UIViewController *vc in allViewControllers) {
-            //[[vc view] setNeedsDisplay];
-        //}
-    }
-    
+
 }
 
 /*

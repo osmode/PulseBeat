@@ -31,6 +31,8 @@ float const EVENT_FONT_SIZE = 15.0;
 float const ORIGIN_HORIZONTAL_OFFSET = 50.0;
 float const ORIGIN_VERTICAL_OFFSET = 50.0;
 float const VERTICAL_AXIS_LINE_WIDTH = 3.0;
+float const TOP_BUFFER = 50;
+float const RIGHT_BUFFER = 180;
 
 // hovering labels are the vertical axis labels as UILabels
 float const HOVERING_AXIS_LABEL_WIDTH = 35;
@@ -38,15 +40,18 @@ float const HOVERING_AXIS_LABEL_HEIGHT = 20;
 float const HOVERING_AXIS_LABEL_X_OFFSET = -35;
 float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
 
+float const HORIZONTAL_AXIS_LABEL_WIDTH = 30.0;
+float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
+
 @synthesize name, scrollViewWidth, scrollViewHeight;
 @synthesize horizontalScaleFactor, verticalScaleFactor;
 @synthesize minValueOnHorizontalAxis, maxValueOnHorizontalAxis, minValueOnVerticalAxis, maxValueOnVerticalAxis;
 @synthesize originHorizontalOffset, originVerticalOffset, topBuffer, bottomBuffer, rightBuffer, leftBuffer;
 @synthesize horizontalAxisLength, verticalAxisLength, graphTitle;
 @synthesize ctx, transform;
-@synthesize clearSubviewBlock, underViewPointer, parentContext, hoveringVerticalLine;
+@synthesize clearSubviewBlock, parentContext;
 @synthesize pointsToGraph;
-@synthesize parentScrollView;
+@synthesize parentGraphViewController;
 
 
 - (id)initWithFrame:(CGRect)frame
@@ -54,60 +59,48 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
 
     self = [super initWithFrame:frame];
     if (self) {
-        parentScrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
+        //parentGraphViewController = [[GraphViewController alloc] init];
         
         [self setGraphTitle:[[[MetasomeDataPointStore sharedStore] toGraph] stringByAppendingString:@" vs time"]];
+        
+        [self initializeGraphView];
+        
        }
     return self;
 }
 
--(void)drawRect:(CGRect)rect
+-(void)initializeGraphView
 {
 
-    [self setCtx: UIGraphicsGetCurrentContext()];
-    [self setTransform:CGAffineTransformConcat(CGContextGetTextMatrix([self ctx]), CGAffineTransformMake(1.0, 0.0, 0.0, -1.0, 0.0, 0.0))];
-    
     [self setOriginHorizontalOffset:ORIGIN_HORIZONTAL_OFFSET];
     [self setOriginVerticalOffset:ORIGIN_VERTICAL_OFFSET];
-    [self setTopBuffer:50];
-    [self setRightBuffer:200];
+    [self setTopBuffer:TOP_BUFFER];
+    [self setRightBuffer:RIGHT_BUFFER];
     
-
-    hoveringLabels = [[NSMutableArray alloc] init];
-    
-    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 0, 200, 30)];
-    titleLabel.adjustsFontSizeToFitWidth = YES;
-    titleLabel.text = [self graphTitle];
-    titleLabel.textColor = [UIColor blackColor];
-    titleLabel.backgroundColor = [UIColor
-                                  clearColor];
-    titleLabel.font = [UIFont fontWithName:@"AvenirNext-Bold" size:15.0];
-    titleLabel.textAlignment = NSTextAlignmentCenter;
-    titleLabel.adjustsFontSizeToFitWidth = YES;
-    
-    
-    HoveringLabel *hl = [[HoveringLabel alloc] initWithLabel:titleLabel point:titleLabel.frame.origin];
-    [hoveringLabels addObject:hl];
-    
-
     //The order in which these methods are called is critical!
     inputType = [[[MetasomeDataPointStore sharedStore] parameterToGraph] inputType];
     NSString *n = [[[MetasomeDataPointStore sharedStore] parameterToGraph] parameterName];
     NSDate *from = [[MetasomeDataPointStore sharedStore] since];
     NSDate *to = [NSDate date];
-        
-    [self setScale:[[MetasomeDataPointStore sharedStore] allPoints]];
-    [self drawAxes];
-    [self drawLabels];
-
     
     pointsToGraph = [[NSMutableArray alloc] initWithArray:[[MetasomeDataPointStore sharedStore] pointsWithParameterName:n fromDate:from toDate:to]];
+
+    [self setScale:pointsToGraph];
+
+    //legend = [[Legend alloc] initWithContext:[self ctx] withTransformation:[self transform] atPoint:here];
+    
+}
+
+-(void)drawRect:(CGRect)rect
+{
+    [self setCtx: UIGraphicsGetCurrentContext()];
+    [self setTransform:CGAffineTransformConcat(CGContextGetTextMatrix([self ctx]), CGAffineTransformMake(1.0, 0.0, 0.0, -1.0, 0.0, 0.0))];
+    
+    [self drawAxes];
+    
     [self graphPoints:[self pointsToGraph]];
     
-    CGPoint here = CGPointMake([self originHorizontalOffset] + [self horizontalAxisLength] + 40, [self topBuffer]);
-    
-    legend = [[Legend alloc] initWithContext:[self ctx] withTransformation:[self transform] atPoint:here];
-    
+    /*
     [legend drawBackground];
     [legend drawLabels];
     [legend setMinValueOnHorizontalAxis:[self minValueOnHorizontalAxis]];
@@ -123,29 +116,24 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
 
     [legend connectTheDots:[self pointsToGraph]];
 
-    /** New Code **/
     
-    
-    /** End new code **/
-    
-    UILabel *testLabel = [[UILabel alloc] initWithFrame:CGRectMake(100.0, 100.0, 100.0, 100.0)];
-    
-    testLabel.backgroundColor = [UIColor blueColor];
-    [self addSubview:testLabel];
     [parentScrollView setNeedsDisplay];
     
     [[MetasomeEventStore sharedStore] generateEventLabels:legend];
     [[MetasomeEventStore sharedStore] drawEvents:self];
-    
-    //[self drawEvents:[[MetasomeEventStore sharedStore] allEvents]];
-
+    */
     
 }
 
 -(void)graphPoints:(NSArray *)array
 
 {
-    [self setCtx:UIGraphicsGetCurrentContext()];
+    [self setScale:pointsToGraph];
+    
+    NSLog(@"minValueOnHorizontalAxis: %f", minValueOnHorizontalAxis);
+    NSLog(@"horizontalScaleFactor: %f", horizontalScaleFactor);
+    NSLog(@"verticalScaleFactor: %f", verticalScaleFactor);
+    
     CGRect drawInMe;
     float radius = 1.0;
     float red, green, blue;
@@ -180,83 +168,24 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
     }
     
 }
--(void)drawEvents:(NSArray *)array
-{
-    [self setCtx:UIGraphicsGetCurrentContext()];
-    CGRect drawInMe;
-    float radius = 1.0;
-    CGContextSetLineWidth([self ctx], radius);
-    CGContextSetRGBFillColor([self ctx], 0.2, 0.05, 0.8, 0.2);
-    
-    float horizontalPos, verticalPos;
-    
-    for (MetasomeEvent *event in array)
-    {
-        if ( ([[event date] timeIntervalSince1970] > [[[MetasomeDataPointStore sharedStore] since] timeIntervalSince1970]) && ([event visible]) )
-        {
-            
-            horizontalPos = ([[event date] timeIntervalSince1970] - [self minValueOnHorizontalAxis]) * [self horizontalScaleFactor] + [self originHorizontalOffset];
-            
-            verticalPos = [self topBuffer];
-            
-            /*
-            CGContextSetRGBFillColor([self ctx], 0.2, 0.05, 0.8, 0.5);
-            drawInMe = CGRectMake(horizontalPos, verticalPos, EVENT_BAR_WIDTH, [self verticalAxisLength]);
-            CGContextFillRect([self ctx], drawInMe);
-             */
 
-            // create UILabel within which to draw events
-            UILabel *eventLabel = [[UILabel alloc] initWithFrame:CGRectMake(horizontalPos, verticalPos, 30.0, verticalAxisLength)];
-            
-            eventLabel.backgroundColor = [UIColor colorWithRed:0.05 green:0.02 blue:0.8 alpha:0.3];
-            eventLabel.layer.cornerRadius = 5;
-            [eventLabel.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
-            
-            [eventLabel.layer setBorderWidth:1.0];
-            [eventLabel setText:[event title]];
-            [eventLabel setTextAlignment:NSTextAlignmentCenter];
-            [eventLabel setTextColor:[UIColor redColor]];
-            [eventLabel setAdjustsFontSizeToFitWidth:YES];
-            
-            [self addSubview:eventLabel];
-                                                                            
-            //[self drawText:[event title] fontSize:EVENT_FONT_SIZE horizontalLocation:horizontalPos+EVENT_BAR_WIDTH verticalLocation:([self scrollViewHeight] - [self originVerticalOffset] - 20) rotation:(M_PI / 2.0)];
-            
-        }
-    }
-}
--(void)drawAxes
+-(void)generateAxisLabels
 {
+    NSLog(@"since: %@", [[MetasomeDataPointStore sharedStore] since]);
     
-    [self setCtx:UIGraphicsGetCurrentContext()];
+    // clear both NSMutableArrays holding vertical and horizontal
+    // axis labels in the parent view controller
+    [[parentGraphViewController hoveringHorizontalLabels] removeAllObjects];
+    [[parentGraphViewController hoveringLabels] removeAllObjects];
+    
     
     CGPoint begin = CGPointMake([self originHorizontalOffset], [self scrollViewHeight] - [self originVerticalOffset]);
-    CGPoint end = CGPointMake([self scrollViewWidth] - [self rightBuffer] , begin.y);
-    
-    //begin.y +=100;
+    CGPoint end = CGPointMake([self originHorizontalOffset], [self topBuffer]);
     
     //CGPoints used for drawing grid lines
     CGPoint beginGrid, endGrid;
     
-    [self setHorizontalAxisLength:(end.x - begin.x)];
-    
-    // Draw horizontal axis line
-    CGContextSetLineWidth([self ctx], 3.0);
-    CGContextSetLineCap([self ctx], kCGLineCapRound);
-    CGContextSetRGBStrokeColor([self ctx], 0, 0, 0, 1);
-    CGContextMoveToPoint([self ctx], begin.x, begin.y);
-    CGContextAddLineToPoint([self ctx], end.x, end.y);
-    
-
-    end = CGPointMake([self originHorizontalOffset], [self topBuffer]);
     [self setVerticalAxisLength:(begin.y - end.y)];
-    
-    hoveringVerticalLine = [[LineView alloc] initWithFrame:CGRectMake(end.x, end.y, VERTICAL_AXIS_LINE_WIDTH, abs(begin.y - end.y))];
-    
-    [hoveringVerticalLine setStartPoint:begin];
-    [hoveringVerticalLine setEndPoint:end];
-    [hoveringVerticalLine setInitialOrigin:hoveringVerticalLine.frame.origin];
-    hoveringVerticalLine.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
     
     //Step size while drawing axes
     float horizontalStep = [self horizontalAxisLength] / HORIZONTAL_NUMBER_OF_INTERVALS;
@@ -265,25 +194,14 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
     float valueStep = ([self maxValueOnVerticalAxis] - [self minValueOnVerticalAxis]) / VERTICAL_NUMBER_OF_INTERVALS;
     float dateStep = ([self maxValueOnHorizontalAxis] - [self minValueOnHorizontalAxis]) / HORIZONTAL_NUMBER_OF_INTERVALS;
     
-    /*
-    CGContextMoveToPoint([self ctx], [self originHorizontalOffset], [self scrollViewHeight] - [self originVerticalOffset]);
-    CGContextAddLineToPoint([self ctx], [self originHorizontalOffset], [self topBuffer]);
-    */
-    
-    //Draw axes and change line width before drawing grid lines
-    
-    CGContextStrokePath([self ctx]);
-    CGContextSetLineWidth([self ctx], 0.5);
-    CGContextSetRGBStrokeColor([self ctx], 0, 0, 0, 0.5);
-    CGContextSetRGBFillColor([self ctx], 1.0, 0, 0, 0.2);
-    
+    // Draw vertical grid lines
+
     float dateCounter = 1;
     float horizontalValue = [self minValueOnHorizontalAxis];
     float x;
     NSDate *runningDate;
     NSString *horizontalDisplay;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    //[dateFormatter setDateStyle:NSDateFormatterShortStyle];
     [dateFormatter setDateFormat:@"MM/dd"];
     
     for (
@@ -291,19 +209,26 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
     {
         beginGrid = CGPointMake(x, [self scrollViewHeight] - [self originVerticalOffset]);
         endGrid = CGPointMake(x, [self topBuffer]);
-        CGContextMoveToPoint([self ctx], beginGrid.x, beginGrid.y);
-        CGContextAddLineToPoint([self ctx], endGrid.x, endGrid.y);
         
         horizontalValue = [self minValueOnHorizontalAxis] + (dateCounter * dateStep);
         runningDate = [NSDate dateWithTimeIntervalSince1970:horizontalValue];
         horizontalDisplay = [dateFormatter stringFromDate:runningDate];
-                       
-        [self drawText:horizontalDisplay fontSize:AXIS_LABEL_FONTSIZE horizontalLocation:beginGrid.x verticalLocation:(beginGrid.y + [horizontalDisplay length]*AXIS_LABEL_FONTSIZE/2.0) rotation:(M_PI / 2.0) ];
+        
+        UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(beginGrid.x - (HORIZONTAL_AXIS_LABEL_WIDTH / 2.0), beginGrid.y, HORIZONTAL_AXIS_LABEL_WIDTH, HORIZONTAL_AXIS_LABEL_HEIGHT)];
+        dateLabel.text = horizontalDisplay;
+        dateLabel.textColor = [UIColor blackColor];
+        dateLabel.backgroundColor = [UIColor redColor];
+        dateLabel.font = [UIFont systemFontOfSize:20.0];
+        dateLabel.adjustsFontSizeToFitWidth = YES;
+        
+        [[parentGraphViewController hoveringHorizontalLabels] addObject:dateLabel];
+        dateLabel = nil;
+        
         dateCounter +=1;
         
     }
-    //[self drawText:@"Now" fontSize:AXIS_LABEL_FONTSIZE horizontalLocation:(x) verticalLocation:(beginGrid.y + (3 * AXIS_LABEL_FONTSIZE / 2.0)) rotation:(M_PI / 2.0)];
     
+    // Draw horizontal grid lines
     float valueCounter = 1;
     float verticalValue = [self minValueOnVerticalAxis];
     
@@ -313,10 +238,8 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
     {
         beginGrid = CGPointMake( [self originHorizontalOffset], y );
         endGrid = CGPointMake( [self scrollViewWidth] - [self rightBuffer], y);
-        CGContextMoveToPoint([self ctx], beginGrid.x, beginGrid.y);
-        CGContextAddLineToPoint([self ctx], endGrid.x, endGrid.y);
+
         verticalValue = [self minValueOnVerticalAxis] + (valueCounter * valueStep);
-        //verticalDisplay = [[NSNumber numberWithFloat:verticalValue] stringValue];
         
         // if input is an integer type (e.g. from a slider), get rid of decimal places
         if (inputType == ParameterInputSlider || inputType == ParameterInputInteger || inputType == ParameterBloodPressure) {
@@ -329,7 +252,6 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
         }
         
         //[self drawText:verticalDisplay fontSize:AXIS_LABEL_FONTSIZE horizontalLocation:(beginGrid.x - 60.0) verticalLocation:(beginGrid.y - 20.) rotation:0.0];
-
         
         UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(beginGrid.x + HOVERING_AXIS_LABEL_X_OFFSET, beginGrid.y + HOVERING_AXIS_LABEL_Y_OFFSET, HOVERING_AXIS_LABEL_WIDTH, HOVERING_AXIS_LABEL_HEIGHT)];
         
@@ -338,11 +260,77 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
         l.backgroundColor = [UIColor whiteColor];
         l.font = [UIFont systemFontOfSize:AXIS_LABEL_FONTSIZE];
         l.adjustsFontSizeToFitWidth = YES;
-        //l.layer.drawsAsynchronously = YES;
-        
+        l.layer.drawsAsynchronously = YES;
         
         HoveringLabel *newLabel = [[HoveringLabel alloc] initWithLabel:l point:l.frame.origin];
-        [hoveringLabels addObject:newLabel];
+        [[parentGraphViewController hoveringLabels] addObject:newLabel];
+        
+        l = nil;
+        
+        // add to the 'hoveringLabels array in GraphViewController
+        // GraphViewController handles drawing of labels
+        
+        valueCounter += 1;
+    }
+    
+}
+
+-(void)drawAxes
+{
+    
+    CGPoint begin = CGPointMake([self originHorizontalOffset], [self scrollViewHeight] - [self originVerticalOffset]);
+    CGPoint end = CGPointMake([self originHorizontalOffset], [self topBuffer]);
+    
+    //CGPoints used for drawing grid lines
+    CGPoint beginGrid, endGrid;
+    
+    [self setVerticalAxisLength:(begin.y - end.y)];
+    
+    //Step size while drawing axes
+    float horizontalStep = [self horizontalAxisLength] / HORIZONTAL_NUMBER_OF_INTERVALS;
+    float verticalStep = [self verticalAxisLength] / VERTICAL_NUMBER_OF_INTERVALS;
+    
+    float valueStep = ([self maxValueOnVerticalAxis] - [self minValueOnVerticalAxis]) / VERTICAL_NUMBER_OF_INTERVALS;
+    float dateStep = ([self maxValueOnHorizontalAxis] - [self minValueOnHorizontalAxis]) / HORIZONTAL_NUMBER_OF_INTERVALS;
+
+    //Draw axes and change line width before drawing grid lines
+    CGContextStrokePath([self ctx]);
+    CGContextSetLineWidth([self ctx], 0.5);
+    CGContextSetRGBStrokeColor([self ctx], 0, 0, 0, 0.5);
+    CGContextSetRGBFillColor([self ctx], 1.0, 0, 0, 0.2);
+    
+    float dateCounter = 1;
+    float horizontalValue = [self minValueOnHorizontalAxis];
+    float x;
+    NSDate *runningDate;
+    NSString *horizontalDisplay;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/dd"];
+    
+    // Draw vertical grid lines
+    for (
+         x = [self originHorizontalOffset] + horizontalStep; x < ( [self scrollViewWidth]  - [self rightBuffer] ); x += horizontalStep )
+    {
+        beginGrid = CGPointMake(x, [self scrollViewHeight] - [self originVerticalOffset]);
+        endGrid = CGPointMake(x, [self topBuffer]);
+        CGContextMoveToPoint([self ctx], beginGrid.x, beginGrid.y);
+        CGContextAddLineToPoint([self ctx], endGrid.x, endGrid.y);
+        
+        dateCounter +=1;
+        
+    }
+
+    // Draw horizontal grid lines
+    float valueCounter = 1;
+    float verticalValue = [self minValueOnVerticalAxis];
+    
+    for (float y = [self scrollViewHeight] - [self originVerticalOffset] - verticalStep; y > [self topBuffer]; y -= verticalStep)
+    {
+        beginGrid = CGPointMake( [self originHorizontalOffset], y );
+        endGrid = CGPointMake( [self scrollViewWidth] - [self rightBuffer], y);
+        CGContextMoveToPoint([self ctx], beginGrid.x, beginGrid.y);
+        CGContextAddLineToPoint([self ctx], endGrid.x, endGrid.y);
+        verticalValue = [self minValueOnVerticalAxis] + (valueCounter * valueStep);
         
         valueCounter += 1;
     }
@@ -352,10 +340,6 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
 }
 
 
--(void)drawLabels
-{
-    
-}
 -(void)willRemoveSubview:(UIView *)subview
 {
     
@@ -365,7 +349,6 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
 
 -(void)drawText:(NSString *)writeMe fontSize:(float)size horizontalLocation:(float)horizonal verticalLocation:(float)vertical rotation:(float)radians
 {
-    [self setCtx:UIGraphicsGetCurrentContext()];
     
     [self setTransform:CGAffineTransformRotate([self transform], radians)];
     CGContextSetTextMatrix([self ctx], [self transform]);
@@ -479,7 +462,7 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
     CGPoint begin = CGPointMake([self originHorizontalOffset], [self scrollViewHeight] - [self originVerticalOffset]);
     CGPoint end = CGPointMake([self scrollViewWidth] - [self rightBuffer] , begin.y);
     
-    [self setHorizontalAxisLength:(end.x - begin.x)];
+    //[self setHorizontalAxisLength:abs(end.x - begin.x)];
     
     end = CGPointMake([self originHorizontalOffset], [self topBuffer]);
     [self setVerticalAxisLength:(begin.y - end.y)];
@@ -488,10 +471,7 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
     [self setVerticalScaleFactor:([self verticalAxisLength] / ([self maxValueOnVerticalAxis] - [self minValueOnVerticalAxis])) ];
     
 }
--(NSMutableArray *)hoveringLabels
-{
-    return hoveringLabels;
-}
+
 
 
 @end

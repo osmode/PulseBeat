@@ -11,10 +11,6 @@
 #import "MetasomeParameterStore.h"
 #import "MetasomeDataPointStore.h"
 #import "MetasomeDataPoint.h"
-#import "OptionsTableViewDataSource.h"
-#import "OptionsTableView.h"
-#import "OptionsSwitchCell.h"
-#import "OptionsNormalCell.h"
 #import "NotificationsDetailViewController.h"
 
 @implementation OptionsViewController
@@ -24,8 +20,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        OptionsTableViewDataSource *ds = [[OptionsTableViewDataSource alloc] init];
-        tableView.dataSource = ds;
         
     }
     return self;

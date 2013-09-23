@@ -22,7 +22,7 @@ typedef enum {
 }
 @property (nonatomic, copy) NSMutableArray *sections;
 @property (nonatomic, copy) NSMutableArray *heartList, *lungList, *diabetesList, *customList, *userEmail;
-@property (nonatomic, weak) NSMutableArray *currentList;
+@property (nonatomic, strong) NSMutableArray *currentList;
 @property (nonatomic, copy) NSMutableArray *parameterArray;
 
 //used to create sections; populated with dictionaries,
@@ -30,7 +30,6 @@ typedef enum {
 
 + (MetasomeParameterStore *)sharedStore;
 -(void)addParameter:(MetasomeParameter *)p;
--(void)removeItem:(MetasomeParameter *)p;
 -(void)moveItemAtIndex:(int)from toIndex:(int)to inSection:(int)sec;
 -(void)loadDefaultParameters;
 -(NSString *)itemArchivePath;

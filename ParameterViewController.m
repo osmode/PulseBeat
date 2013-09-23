@@ -41,14 +41,8 @@
         [[self navigationItem] setLeftBarButtonItem:[self editButtonItem]];
         self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.75 green:0.90 blue:0.22 alpha:1.0];
         
-        // Check if app was previously loaded and recall the last selection
-        // This is also done in viewWillAppear
-        selectionTypeOnLaunch lastSelection = [[NSUserDefaults standardUserDefaults] integerForKey:@"lastSelection"];
-        
         titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         
-        //[self setCurrentSelection:lastSelection];
-        //[self updateTitle:[self titleLabel]];
     }
     
     return self;

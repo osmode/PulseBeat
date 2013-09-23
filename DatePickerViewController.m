@@ -109,4 +109,13 @@
 
     
 }
+
+-(void)formatTextView:(UITextView *)tv
+{
+    
+}
+-(void)formatLabel:(UILabel *)label
+{
+    
+}
 @end

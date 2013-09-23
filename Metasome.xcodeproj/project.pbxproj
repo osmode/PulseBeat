@@ -71,13 +71,7 @@
 		FA79654D17D940FA005A2DB6 /* cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = FA79654C17D940FA005A2DB6 /* cancel.png */; };
 		FA7DCEC017CC3E51005E5E3E /* EventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7DCEBE17CC3E51005E5E3E /* EventDetailViewController.m */; };
 		FA7DCEC117CC3E51005E5E3E /* EventDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA7DCEBF17CC3E51005E5E3E /* EventDetailViewController.xib */; };
-		FA95874817E61D83007D5EB8 /* OptionsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA95874717E61D83007D5EB8 /* OptionsTableView.m */; };
-		FA95874B17E62304007D5EB8 /* OptionsTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FA95874A17E62304007D5EB8 /* OptionsTableViewDataSource.m */; };
-		FA95874E17E63DD8007D5EB8 /* OptionsSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA95874D17E63DD8007D5EB8 /* OptionsSwitchCell.m */; };
-		FA95875017E63E63007D5EB8 /* OptionsSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA95874F17E63E63007D5EB8 /* OptionsSwitchCell.xib */; };
 		FA95875217E63F58007D5EB8 /* bell.png in Resources */ = {isa = PBXBuildFile; fileRef = FA95875117E63F58007D5EB8 /* bell.png */; };
-		FA95875517E64328007D5EB8 /* OptionsNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA95875417E64328007D5EB8 /* OptionsNormalCell.m */; };
-		FA95875717E64423007D5EB8 /* OptionsNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA95875617E64423007D5EB8 /* OptionsNormalCell.xib */; };
 		FA95875B17E65685007D5EB8 /* NotificationsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA95875917E65685007D5EB8 /* NotificationsDetailViewController.m */; };
 		FA95875C17E65685007D5EB8 /* NotificationsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA95875A17E65685007D5EB8 /* NotificationsDetailViewController.xib */; };
 		FAAAC11017D15B870046EA0E /* NewParameterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAAC10E17D15B860046EA0E /* NewParameterViewController.m */; };
@@ -201,17 +195,7 @@
 		FA7DCEBD17CC3E51005E5E3E /* EventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventDetailViewController.h; path = Metasome/EventDetailViewController.h; sourceTree = "<group>"; };
 		FA7DCEBE17CC3E51005E5E3E /* EventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventDetailViewController.m; path = Metasome/EventDetailViewController.m; sourceTree = "<group>"; };
 		FA7DCEBF17CC3E51005E5E3E /* EventDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EventDetailViewController.xib; path = Metasome/EventDetailViewController.xib; sourceTree = "<group>"; };
-		FA95874617E61D83007D5EB8 /* OptionsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsTableView.h; sourceTree = "<group>"; };
-		FA95874717E61D83007D5EB8 /* OptionsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsTableView.m; sourceTree = "<group>"; };
-		FA95874917E62304007D5EB8 /* OptionsTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsTableViewDataSource.h; sourceTree = "<group>"; };
-		FA95874A17E62304007D5EB8 /* OptionsTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsTableViewDataSource.m; sourceTree = "<group>"; };
-		FA95874C17E63DD8007D5EB8 /* OptionsSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsSwitchCell.h; sourceTree = "<group>"; };
-		FA95874D17E63DD8007D5EB8 /* OptionsSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsSwitchCell.m; sourceTree = "<group>"; };
-		FA95874F17E63E63007D5EB8 /* OptionsSwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptionsSwitchCell.xib; sourceTree = "<group>"; };
 		FA95875117E63F58007D5EB8 /* bell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bell.png; sourceTree = "<group>"; };
-		FA95875317E64328007D5EB8 /* OptionsNormalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsNormalCell.h; sourceTree = "<group>"; };
-		FA95875417E64328007D5EB8 /* OptionsNormalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsNormalCell.m; sourceTree = "<group>"; };
-		FA95875617E64423007D5EB8 /* OptionsNormalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptionsNormalCell.xib; sourceTree = "<group>"; };
 		FA95875817E65685007D5EB8 /* NotificationsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsDetailViewController.h; sourceTree = "<group>"; };
 		FA95875917E65685007D5EB8 /* NotificationsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsDetailViewController.m; sourceTree = "<group>"; };
 		FA95875A17E65685007D5EB8 /* NotificationsDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsDetailViewController.xib; sourceTree = "<group>"; };
@@ -362,16 +346,6 @@
 				FA4817C317C7F93400A4CA4A /* OptionsViewController.xib */,
 				FA4817C117C7F93400A4CA4A /* OptionsViewController.h */,
 				FA4817C217C7F93400A4CA4A /* OptionsViewController.m */,
-				FA95875317E64328007D5EB8 /* OptionsNormalCell.h */,
-				FA95875617E64423007D5EB8 /* OptionsNormalCell.xib */,
-				FA95875417E64328007D5EB8 /* OptionsNormalCell.m */,
-				FA95874C17E63DD8007D5EB8 /* OptionsSwitchCell.h */,
-				FA95874D17E63DD8007D5EB8 /* OptionsSwitchCell.m */,
-				FA95874F17E63E63007D5EB8 /* OptionsSwitchCell.xib */,
-				FA95874917E62304007D5EB8 /* OptionsTableViewDataSource.h */,
-				FA95874A17E62304007D5EB8 /* OptionsTableViewDataSource.m */,
-				FA95874617E61D83007D5EB8 /* OptionsTableView.h */,
-				FA95874717E61D83007D5EB8 /* OptionsTableView.m */,
 				FA95875817E65685007D5EB8 /* NotificationsDetailViewController.h */,
 				FA95875917E65685007D5EB8 /* NotificationsDetailViewController.m */,
 				FA95875A17E65685007D5EB8 /* NotificationsDetailViewController.xib */,
@@ -623,10 +597,8 @@
 				FAE697FB17EC061A00D2630E /* diarysaveButton.png in Resources */,
 				FA3DED8E17E44A5200D7FA87 /* Icon@2x.png in Resources */,
 				FA2162BF17E52C4D005C836C /* Icon.png in Resources */,
-				FA95875017E63E63007D5EB8 /* OptionsSwitchCell.xib in Resources */,
 				FAE697FC17EC061A00D2630E /* graphButton.png in Resources */,
 				FA95875217E63F58007D5EB8 /* bell.png in Resources */,
-				FA95875717E64423007D5EB8 /* OptionsNormalCell.xib in Resources */,
 				FA95875C17E65685007D5EB8 /* NotificationsDetailViewController.xib in Resources */,
 				FAE697FE17EC061A00D2630E /* listButton.png in Resources */,
 				FA59AE0417E9566C00CB0629 /* LoginScreenViewController.xib in Resources */,
@@ -672,10 +644,6 @@
 				FAF87ED017E27F8900C830D9 /* NewPhotoGroupViewController.m in Sources */,
 				FAF87ED417E293EF00C830D9 /* PhotoArchiveStore.m in Sources */,
 				FA3DED7217E40C7B00D7FA87 /* HomeViewController.m in Sources */,
-				FA95874817E61D83007D5EB8 /* OptionsTableView.m in Sources */,
-				FA95874B17E62304007D5EB8 /* OptionsTableViewDataSource.m in Sources */,
-				FA95874E17E63DD8007D5EB8 /* OptionsSwitchCell.m in Sources */,
-				FA95875517E64328007D5EB8 /* OptionsNormalCell.m in Sources */,
 				FA95875B17E65685007D5EB8 /* NotificationsDetailViewController.m in Sources */,
 				FADC0B6217E7896800829FCF /* AxisView.m in Sources */,
 				FADC0B6517E815DB00829FCF /* HoveringLabel.m in Sources */,

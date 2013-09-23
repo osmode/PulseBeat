@@ -19,7 +19,6 @@
 @property (nonatomic) double orderingValue;
 @property (nonatomic, strong) NSManagedObject *parameterType;
 
--(id)initWithParameterName:(NSString *)name value:(float)newValue date:(NSDate *)newDate;
 -(float)red;
 -(float)green;
 -(float)blue;

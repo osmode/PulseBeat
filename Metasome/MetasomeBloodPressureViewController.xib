@@ -20,13 +20,13 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Systolic (big number)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Systolic (big number)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4">
                     <rect key="frame" x="62" y="100" width="179" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Diastolic (small number)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="15">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Diastolic (small number)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="15">
                     <rect key="frame" x="62" y="143" width="179" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -100,7 +100,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <constraint firstItem="71" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="39" id="1Ty-Yw-bDW"/>
                 <constraint firstItem="71" firstAttribute="top" secondItem="68" secondAttribute="top" id="AxT-1t-VJf"/>
                 <constraint firstAttribute="trailing" secondItem="94" secondAttribute="trailing" id="CGG-rm-Ncs"/>
-                <constraint firstItem="71" firstAttribute="top" secondItem="15" secondAttribute="bottom" constant="16" id="J5D-t3-0Rs"/>
+                <constraint firstItem="71" firstAttribute="top" secondItem="15" secondAttribute="bottom" constant="26" id="J5D-t3-0Rs"/>
                 <constraint firstItem="15" firstAttribute="top" secondItem="4" secondAttribute="bottom" constant="13" id="KFc-iT-hlT"/>
                 <constraint firstItem="4" firstAttribute="trailing" secondItem="15" secondAttribute="trailing" id="PAg-4E-jXR"/>
                 <constraint firstItem="71" firstAttribute="baseline" secondItem="68" secondAttribute="baseline" id="a8v-9f-JHP"/>
@@ -109,7 +109,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <constraint firstAttribute="trailing" secondItem="4" secondAttribute="trailing" constant="79" id="kkz-6c-bTZ"/>
                 <constraint firstItem="94" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="laU-Ir-Teg"/>
                 <constraint firstItem="4" firstAttribute="leading" secondItem="15" secondAttribute="leading" id="myK-Vl-2s2"/>
-                <constraint firstItem="4" firstAttribute="top" secondItem="1" secondAttribute="top" constant="110" id="r1F-kY-nf8"/>
+                <constraint firstItem="4" firstAttribute="top" secondItem="1" secondAttribute="top" constant="100" id="r1F-kY-nf8"/>
                 <constraint firstItem="4" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="62" id="vf9-kC-eZM"/>
                 <constraint firstItem="68" firstAttribute="leading" secondItem="71" secondAttribute="trailing" constant="41" id="zTt-vK-aLn"/>
             </constraints>

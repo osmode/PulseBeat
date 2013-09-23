@@ -144,6 +144,8 @@
     else if ([pickerView tag] == 1) {
         return [inputChoices objectAtIndex:row];
     }
+    else
+        return nil;
     
 }
 - (void)didReceiveMemoryWarning

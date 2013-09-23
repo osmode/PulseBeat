@@ -14,20 +14,28 @@
 @interface GraphViewController : UIViewController <UIScrollViewDelegate>
 {
     UIScrollView *scrollView;
-    GraphView *graphView;
     UILabel *anotherLabel;
     HoveringLabel *titleHoveringLabel;
     
 }
 
-@property (nonatomic) UIView *underView;
 @property (nonatomic) CGContextRef ctx;
-@property (nonatomic, strong) LineView *verticalAxisLine;
 @property (nonatomic, strong) UILabel *verticalAxisBackground;
 @property (nonatomic) float verticalAxisBackgroundX, verticalAxisBackgroundY, verticalAxisBackgroundWidth, verticalAxisBackgroundHeight;
+@property (nonatomic, strong) NSMutableArray *hoveringLabels;
+@property (nonatomic, strong) NSMutableArray *hoveringHorizontalLabels;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) HoveringLabel *titleHoveringLabel;
+@property (nonatomic, strong) UILabel *verticalAxisLine;
+@property (nonatomic, strong) HoveringLabel *hoveringVerticalAxisLine;
+@property (nonatomic, strong) GraphView *graphView;
 
--(void)test;
+
 -(void)changeInterval;
 -(void)initializeSubViews;
+-(void)updateLabelPosition:(HoveringLabel *)hl withinScrollView:(UIScrollView *)sv;
+-(void)addTitle;
+-(void)drawHorizontalAxisLabels;
 
 @end
+

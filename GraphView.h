@@ -25,7 +25,6 @@ typedef enum {
     ParameterInput inputType;
     UIWindow *thisWindow;
     
-    Legend *legend;
     
 }
 @property NSString *name;
@@ -55,11 +54,14 @@ typedef enum {
 @property (nonatomic, copy) void (^clearSubviewBlock)(void);
 @property (nonatomic, copy) NSMutableArray *pointsToGraph;
 @property (nonatomic, weak) GraphViewController *parentGraphViewController;
+@property (nonatomic, strong) Legend *legend;
+@property (nonatomic) BOOL drawEventsFlag;
 
 -(void)drawText:(NSString *)writeMe fontSize:(float)size horizontalLocation:(float)horizonal verticalLocation:(float)vertical rotation:(float)radians;
 -(void)drawLabels;
 -(void)initializeGraphView;
 -(void)generateAxisLabels;
+-(void)drawAxes;
 
 @end
 

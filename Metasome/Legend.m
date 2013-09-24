@@ -20,7 +20,7 @@
 {
     self = [super init];
     if (self) {
-        [self setContext:ctx];
+        [self setContext:UIGraphicsGetCurrentContext()];
         [self setUpperLeftCorner:point];
         [self setTransform:tf];
         //CGAffineTransformMake already called once in GraphView

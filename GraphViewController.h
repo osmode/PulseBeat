@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GraphView.h"
 
-@class MetasomeParameter, LineView, HoveringLabel;
+@class MetasomeParameter, LineView, HoveringLabel, Legend;
 
 @interface GraphViewController : UIViewController <UIScrollViewDelegate>
 {
@@ -29,13 +29,17 @@
 @property (nonatomic, strong) UILabel *verticalAxisLine;
 @property (nonatomic, strong) HoveringLabel *hoveringVerticalAxisLine;
 @property (nonatomic, strong) GraphView *graphView;
-
+@property (nonatomic, strong) Legend *legend;
+@property (nonatomic, strong) NSMutableArray *hoveringVerticalLabels;
 
 -(void)changeInterval;
 -(void)initializeSubViews;
 -(void)updateLabelPosition:(HoveringLabel *)hl withinScrollView:(UIScrollView *)sv;
 -(void)addTitle;
 -(void)drawHorizontalAxisLabels;
+-(void)drawVerticalAxisBackground;
+-(void)generateHorizontalAxisLabels;
+
 
 @end
 

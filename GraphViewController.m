@@ -26,7 +26,7 @@ float const SCROLL_VIEW_CORRECTION_FACTOR = 64.0;
 
 // hovering labels are the vertical axis labels as UILabels
 
-float const VERTICAL_NUMBER_OF_INTERVALS = 10.0;
+float const VERTICAL_INTERVALS = 10.0;
 float const HOVERING_AXIS_LABEL_WIDTH = 35;
 float const HOVERING_AXIS_LABEL_HEIGHT = 20;
 float const HOVERING_AXIS_LABEL_X_OFFSET = -35;
@@ -92,8 +92,10 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
 -(void)drawVerticalAxisBackground
 {
     
-    UILabel *backgroundLabel = [[UILabel alloc] initWithFrame:CGRectMake(graphView.originHorizontalOffset - VERTICAL_AXIS_BACKGROUND_WIDTH, [graphView scrollViewHeight] - graphView.originVerticalOffset - graphView.verticalAxisLength, VERTICAL_AXIS_BACKGROUND_WIDTH, graphView.verticalAxisLength)];
+    UILabel *backgroundLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0 , 0.0, graphView.originHorizontalOffset, graphView.scrollViewHeight)];
     backgroundLabel.backgroundColor = [UIColor whiteColor];
+    backgroundLabel.layer.zPosition = 10.0;
+
     HoveringLabel *hoveringBackgroundLabel = [[HoveringLabel alloc] initWithLabel:backgroundLabel point:backgroundLabel.frame.origin];
     
     [hoveringLabels addObject:hoveringBackgroundLabel];
@@ -129,10 +131,7 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
     [scrollView addSubview:graphView];
     [scrollView setContentSize:bigRect.size];
     
-    // after generateAxisLabels is called, GraphViewController's
-    // arrays which hold the vertical & horizontal axis labels
-    // are populated and ready to be drawn
-    //[self drawVerticalAxisBackground];
+    [self drawVerticalAxisBackground];
 
     [graphView generateAxisLabels];
     [self generateHorizontalAxisLabels];
@@ -329,9 +328,9 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
     [graphView setVerticalAxisLength:(begin.y - end.y)];
     
     //Step size while drawing axes
-    float verticalStep = [graphView verticalAxisLength] / VERTICAL_NUMBER_OF_INTERVALS;
+    float verticalStep = [graphView verticalAxisLength] / VERTICAL_INTERVALS;
     
-    float valueStep = ([graphView maxValueOnVerticalAxis] - [graphView minValueOnVerticalAxis]) / VERTICAL_NUMBER_OF_INTERVALS;
+    float valueStep = ([graphView maxValueOnVerticalAxis] - [graphView minValueOnVerticalAxis]) / VERTICAL_INTERVALS;
     
 
     // Draw horizontal grid lines
@@ -364,6 +363,7 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
         l.backgroundColor = [UIColor whiteColor];
         l.font = [UIFont systemFontOfSize:20.0];
         l.adjustsFontSizeToFitWidth = YES;
+        l.layer.zPosition = 15;
         //l.layer.drawsAsynchronously = YES;
         
         HoveringLabel *newLabel = [[HoveringLabel alloc] initWithLabel:l point:l.frame.origin];
@@ -427,6 +427,7 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
         dateLabel.font = [UIFont systemFontOfSize:20.0];
         dateLabel.adjustsFontSizeToFitWidth = YES;
         dateLabel.layer.drawsAsynchronously = YES;
+        dateLabel.layer.zPosition = 5;
         
         // rotate the date label
         dateLabel.transform = CGAffineTransformMakeRotation(M_PI_4);

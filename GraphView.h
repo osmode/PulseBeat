@@ -56,12 +56,16 @@ typedef enum {
 @property (nonatomic, weak) GraphViewController *parentGraphViewController;
 @property (nonatomic, strong) Legend *legend;
 @property (nonatomic) BOOL drawEventsFlag;
+@property (nonatomic, copy) NSMutableArray *dataPointCoordinates;
 
 -(void)drawText:(NSString *)writeMe fontSize:(float)size horizontalLocation:(float)horizonal verticalLocation:(float)vertical rotation:(float)radians;
 -(void)drawLabels;
 -(void)initializeGraphView;
 -(void)generateAxisLabels;
 -(void)drawAxes;
+-(void)convertDataPointsToCoordinates:(NSMutableArray *)dataPoints;
+-(void)showMenuAtPoint:(NSValue *)point;
+
 
 @end
 

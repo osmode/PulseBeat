@@ -33,6 +33,7 @@ float const VERTICAL_AXIS_LINE_WIDTH = 3.0;
 float const TOP_BUFFER = 50;
 float const RIGHT_BUFFER = 180;
 float const VERTICAL_NUMBER_OF_INTERVALS = 10.0;
+float const MINIMUM_TOUCH_DISTANCE = 100.0;
 
 
 float const HORIZONTAL_AXIS_LABEL_WIDTH = 30.0;
@@ -47,7 +48,7 @@ float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
 @synthesize clearSubviewBlock, parentContext;
 @synthesize pointsToGraph;
 @synthesize parentGraphViewController;
-@synthesize legend, drawEventsFlag;
+@synthesize legend, drawEventsFlag, dataPointCoordinates;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -64,10 +65,103 @@ float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
 
         [self initializeGraphView];
         
+        UILongPressGestureRecognizer *longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
+        [self addGestureRecognizer:longPressRecognizer];
+        
        }
     return self;
 }
 
+-(void)longPress:(UIGestureRecognizer *)gr
+{
+    if ( [gr state] == UIGestureRecognizerStateBegan ) {
+        CGPoint touchedPoint = [gr locationInView:self];
+        
+        [self performSelectorInBackground:@selector(showMenuAtPoint:) withObject:[NSValue valueWithCGPoint:touchedPoint]];
+    }
+}
+
+-(void)showMenuAtPoint:(NSValue *)point
+{
+    NSLog(@"number of coordinates: %i", [dataPointCoordinates count]);
+    
+    CGPoint touched = [point CGPointValue];
+    
+    CGPoint currentPoint;
+    
+    // iterate through dataPointCoordinates until a nearby
+    // coordinate is found
+    
+    float smallestX, smallestY;
+    float smallestDistance = 1000.0;
+    
+    for (NSValue *val in dataPointCoordinates) {
+        
+        currentPoint = [val CGPointValue];
+        
+        if ( [self distanceBetweenPoint:currentPoint andPoint:touched] < smallestDistance) {
+            
+            smallestDistance = [self distanceBetweenPoint:currentPoint andPoint:touched];
+        
+            smallestX = currentPoint.x;
+            smallestY = currentPoint.y;
+        
+        }
+        
+    }
+    
+    // check for minimum distance before showing menu
+    if (smallestDistance > MINIMUM_TOUCH_DISTANCE)
+        return;
+    
+    // convert screen coordinates of closest point to
+    // a value/date pair
+    float yValue = (smallestY + [self originVerticalOffset] - [self scrollViewHeight])/(-1*[self verticalScaleFactor]) + [self minValueOnVerticalAxis];
+    
+    float xValue = (smallestX - [self originHorizontalOffset])/[self horizontalScaleFactor] + [self minValueOnHorizontalAxis];
+    
+    NSDate *date = [[NSDate alloc] initWithTimeIntervalSince1970:xValue];
+    NSString *dateString, *valueString, *displayString;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd MMM"];
+    
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setMaximumFractionDigits:0];
+    [numberFormatter setRoundingMode:NSNumberFormatterRoundUp];
+    
+    valueString = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:yValue]];
+    
+    dateString = [dateFormatter stringFromDate:date];
+    //valueString = [[NSNumber numberWithFloat:yValue] stringValue];
+    
+    
+    displayString = [[[[[[MetasomeDataPointStore sharedStore] toGraph] stringByAppendingString:@": "] stringByAppendingString:valueString] stringByAppendingString:@" on "] stringByAppendingString:dateString];
+    
+    // Must set view to first responder in order to use UIMenu
+    [self becomeFirstResponder];
+    UIMenuController *menu = [UIMenuController sharedMenuController];
+    UIMenuItem *infoItem = [[UIMenuItem alloc] initWithTitle:displayString action:@selector(hideMenu)];
+    [menu setMenuItems:[NSArray arrayWithObject:infoItem]];
+    [menu setTargetRect:CGRectMake(smallestX, smallestY, 2, 2) inView:self];
+    [menu setMenuVisible:YES animated:YES];
+    
+    [self setNeedsDisplay];
+    NSLog(@"Touch at %@, %f", dateString, yValue);
+}
+
+-(float)distanceBetweenPoint:(CGPoint)pointOne andPoint:(CGPoint)pointTwo
+{
+    float xDist = (pointOne.x - pointTwo.x)*(pointOne.x - pointTwo.x);
+    float yDist = (pointOne.y - pointTwo.y)*(pointOne.y - pointTwo.y);
+    
+    //float distance = sqrt( pow(abs(pointOne.x - pointTwo.x), 2) + pow(abs(pointOne.y - pointTwo.y), 2) );
+    //float distance =
+    float distance = sqrtf(xDist + yDist);
+    
+    return distance;
+
+}
 -(void)initializeGraphView
 {
 
@@ -78,7 +172,40 @@ float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
     pointsToGraph = [[NSMutableArray alloc] initWithArray:[[MetasomeDataPointStore sharedStore] pointsWithParameterName:n fromDate:from toDate:to]];
 
     [self setScale:pointsToGraph];
+    [self convertDataPointsToCoordinates:pointsToGraph];
 
+}
+
+/* convertDataPointsToCoordinates takes a mutable array of 
+ MetasomeDataPoints as an argument, iteratively converts the 
+ points into an array of CGPoints, and returns this array. 
+ -Note: Call this method only after calling initializeGraphView
+*/
+-(void)convertDataPointsToCoordinates:(NSMutableArray *)dataPoints
+{
+    dataPointCoordinates = [[NSMutableArray alloc] init];
+    
+    float horizontalPos, verticalPos;
+
+    for (MetasomeDataPoint *p in dataPoints) {
+
+        horizontalPos = ( [p pDate]  - [self minValueOnHorizontalAxis]) * [self horizontalScaleFactor] + [self originHorizontalOffset];
+        verticalPos = ([p parameterValue] - [self minValueOnVerticalAxis]) * [self verticalScaleFactor] ;
+        
+        verticalPos = [self scrollViewHeight] - verticalPos - [self originVerticalOffset];
+        
+        // Adjust points' location based on size
+        verticalPos -= POINT_HEIGHT/2;
+        horizontalPos -= POINT_WIDTH/2;
+        
+        CGPoint point = CGPointMake(horizontalPos, verticalPos);
+        
+        [dataPointCoordinates addObject:[NSValue valueWithCGPoint:point]];
+    }
+        /* to retrieve the value of the point:
+       CGPoint b = [(NSValue *)[array objectAtIndex:0] CGPointValue];
+        */
+                               
 }
 
 -(void)drawRect:(CGRect)rect

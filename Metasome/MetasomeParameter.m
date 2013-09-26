@@ -9,7 +9,7 @@
 #import "MetasomeParameter.h"
 
 @implementation MetasomeParameter
-@synthesize parameterName, inputType, inputCategory, checkedStatus, lastChecked, maxValue;
+@synthesize parameterName, inputType, inputCategory, checkedStatus, lastChecked, maxValue, sadOnRightSide;
 
 
 -(id)initWithParameterName:(NSString *)name inputType:(int)type category:(int)newCategory maximumValue:(float)value

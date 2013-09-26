@@ -13,6 +13,7 @@
 #import "HoveringLabel.h"
 #import "LineView.h"
 #import "MetasomeEventStore.h"
+#import "MetasomeEvent.h"
 #import "Legend.h"
 #import "MetasomeParameter.h"
 #import "HoveringLabel.h"
@@ -35,7 +36,8 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
 @synthesize ctx, verticalAxisLine, verticalAxisBackground, verticalAxisBackgroundX, verticalAxisBackgroundY, verticalAxisBackgroundWidth, verticalAxisBackgroundHeight;
 @synthesize hoveringLabels, titleLabel, hoveringVerticalAxisLine;
 @synthesize hoveringHorizontalLabels;
-@synthesize graphView, legend, hoveringVerticalLabels;
+@synthesize graphView, hoveringVerticalLabels, allEventLabels;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -57,6 +59,9 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
         hoveringVerticalAxisLine = [[HoveringLabel alloc] initWithLabel:verticalAxisLine point:verticalAxisLine.frame.origin];
         hoveringHorizontalLabels = [[NSMutableArray alloc] init];
         hoveringVerticalLabels = [[NSMutableArray alloc] init];
+        
+        allEventLabels = [[NSMutableArray alloc] init];
+        
 
     }
     
@@ -106,6 +111,11 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
 
 -(void)loadView
 {
+    // set scale to last week's points by default
+    float interval = [[NSDate date] timeIntervalSince1970] - 604800;
+    NSDate *oneWeekAgo = [[NSDate alloc] initWithTimeIntervalSince1970:interval];
+    [[MetasomeDataPointStore sharedStore] setSince:oneWeekAgo];
+    
     CGRect frame = [[UIScreen mainScreen] bounds];
     scrollView = [[UIScrollView alloc] initWithFrame:frame];
     
@@ -140,14 +150,9 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
     
     [self addTitle];
     [self addVerticalAxisLine];
-    //[self drawVerticalAxisLabels];
-    //[[MetasomeEventStore sharedStore] generateEventLabels:[graphView legend]];
-    //[[MetasomeEventStore sharedStore] drawEvents:graphView];
-    
-    // set scale to last week's points by default
-    float interval = [[NSDate date] timeIntervalSince1970] - 604800;
-    NSDate *oneWeekAgo = [[NSDate alloc] initWithTimeIntervalSince1970:interval];
-    [[MetasomeDataPointStore sharedStore] setSince:oneWeekAgo];
+    [self generateEventLabels:[[MetasomeEventStore sharedStore] allEvents]];
+    [self drawEventLabels];
+
     NSArray *itemArray = [NSArray arrayWithObjects:@"Week", @"Month", @"3 mo", @"1 yr", nil];
     segmentControl = [[UISegmentedControl alloc] initWithItems:itemArray];
     segmentControl.segmentedControlStyle = UISegmentedControlStyleBar;
@@ -155,7 +160,6 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
     [segmentControl addTarget:self action:@selector(changeInterval) forControlEvents:UIControlEventValueChanged];
     UIBarButtonItem *segmentButton = [[UIBarButtonItem alloc] initWithCustomView:segmentControl];
     self.navigationItem.rightBarButtonItem = segmentButton;
-    
     
 }
 
@@ -195,11 +199,18 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
     
     // must re-initialize graphView
     [graphView initializeGraphView];
+    [graphView setParentGraphViewController:self];
     
     // clear graphView's horizontal axis labels
     [hoveringHorizontalLabels makeObjectsPerformSelector:@selector(removeFromSuperview) withObject:nil];
+    
+    // clear event labels
+    [allEventLabels makeObjectsPerformSelector:@selector(removeFromSuperview) withObject:nil];
+    
     [self generateHorizontalAxisLabels];
     [self drawHorizontalAxisLabels];
+    [self generateEventLabels:[[MetasomeEventStore sharedStore] allEvents]];
+    [self drawEventLabels];
     
     [graphView setNeedsDisplay];
     [scrollView setNeedsDisplay];
@@ -439,8 +450,67 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
         
     }
     
-    NSLog(@"%i objects in hoveringHorizontalLabels", [hoveringHorizontalLabels count]);
+}
+
+
+-(void)generateEventLabels:(NSArray *)events
+{
     
+    float horizontalPos, verticalPos;
+    [allEventLabels removeAllObjects];
+    
+    for (MetasomeEvent *ev in events) {
+        if ([[ev date] timeIntervalSince1970] > [[[MetasomeDataPointStore sharedStore] since] timeIntervalSince1970] && [ev visible]) {
+            
+            horizontalPos = ([[ev date] timeIntervalSince1970] - [graphView minValueOnHorizontalAxis]) * [graphView horizontalScaleFactor] + [graphView originHorizontalOffset];
+            
+            horizontalPos -= graphView.verticalAxisLength / 2.0;
+            verticalPos = graphView.scrollViewHeight - graphView.originVerticalOffset - graphView.verticalAxisLength/2.0;
+            verticalPos -= 15;
+            
+            UILabel *eventLabel = [[UILabel alloc] initWithFrame:CGRectMake(horizontalPos, verticalPos, [graphView verticalAxisLength], 30.0)];
+            
+            eventLabel.backgroundColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.5];
+            eventLabel.layer.cornerRadius = 5;
+            [eventLabel.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
+            
+            [eventLabel.layer setBorderWidth:1.0];
+            [eventLabel setText:[ev title]];
+            [eventLabel setTextAlignment:NSTextAlignmentCenter];
+            [eventLabel setTextColor:[UIColor whiteColor]];
+            [eventLabel setAdjustsFontSizeToFitWidth:YES];
+            
+            eventLabel.transform = CGAffineTransformMakeRotation(-M_PI_2);
+            eventLabel.layer.drawsAsynchronously = YES;
+            
+            [allEventLabels addObject:eventLabel];
+            eventLabel = nil;
+            
+           // NSLog(@"horizontalPos, verticalPos = %f, %f", horizontalPos, verticalPos);
+            
+        }
+    }
+    
+}
+
+-(void)removeEventLabels
+{
+    [allEventLabels makeObjectsPerformSelector:@selector(removeFromSuperview) withObject:nil];
+}
+
+-(void)drawEventLabels
+{
+    for (UILabel *l in allEventLabels) {
+        [scrollView addSubview:l];
+        
+        /*
+        CGRect test = l.frame;
+        UILabel *yellow = [[UILabel alloc] initWithFrame:test];
+        yellow.backgroundColor = [UIColor yellowColor];
+        [graphView addSubview:yellow];
+         */
+        NSLog(@"X: %f, Y: %f", l.frame.origin.x, l.frame.origin.y);
+    }
 }
 
 

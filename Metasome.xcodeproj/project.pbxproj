@@ -65,6 +65,11 @@
 		FA59AE0317E9566C00CB0629 /* LoginScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA59AE0117E9566C00CB0629 /* LoginScreenViewController.m */; };
 		FA59AE0417E9566C00CB0629 /* LoginScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA59AE0217E9566C00CB0629 /* LoginScreenViewController.xib */; };
 		FA59AE0617E9570800CB0629 /* largePulseBeat.png in Resources */ = {isa = PBXBuildFile; fileRef = FA59AE0517E9570700CB0629 /* largePulseBeat.png */; };
+		FA63096E17F3640300AD02E6 /* smiley0.png in Resources */ = {isa = PBXBuildFile; fileRef = FA63096917F3640300AD02E6 /* smiley0.png */; };
+		FA63096F17F3640300AD02E6 /* smiley1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA63096A17F3640300AD02E6 /* smiley1.png */; };
+		FA63097017F3640300AD02E6 /* smiley2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA63096B17F3640300AD02E6 /* smiley2.png */; };
+		FA63097117F3640300AD02E6 /* smiley3.png in Resources */ = {isa = PBXBuildFile; fileRef = FA63096C17F3640300AD02E6 /* smiley3.png */; };
+		FA63097217F3640300AD02E6 /* smiley4.png in Resources */ = {isa = PBXBuildFile; fileRef = FA63096D17F3640300AD02E6 /* smiley4.png */; };
 		FA79654817D93E19005A2DB6 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA79654617D93E19005A2DB6 /* DatePickerViewController.m */; };
 		FA79654917D93E19005A2DB6 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA79654717D93E19005A2DB6 /* DatePickerViewController.xib */; };
 		FA79654B17D940F2005A2DB6 /* OK.png in Resources */ = {isa = PBXBuildFile; fileRef = FA79654A17D940F2005A2DB6 /* OK.png */; };
@@ -187,6 +192,11 @@
 		FA59AE0117E9566C00CB0629 /* LoginScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginScreenViewController.m; sourceTree = "<group>"; };
 		FA59AE0217E9566C00CB0629 /* LoginScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginScreenViewController.xib; sourceTree = "<group>"; };
 		FA59AE0517E9570700CB0629 /* largePulseBeat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = largePulseBeat.png; sourceTree = "<group>"; };
+		FA63096917F3640300AD02E6 /* smiley0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smiley0.png; sourceTree = "<group>"; };
+		FA63096A17F3640300AD02E6 /* smiley1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smiley1.png; sourceTree = "<group>"; };
+		FA63096B17F3640300AD02E6 /* smiley2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smiley2.png; sourceTree = "<group>"; };
+		FA63096C17F3640300AD02E6 /* smiley3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smiley3.png; sourceTree = "<group>"; };
+		FA63096D17F3640300AD02E6 /* smiley4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smiley4.png; sourceTree = "<group>"; };
 		FA79654517D93E19005A2DB6 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		FA79654617D93E19005A2DB6 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		FA79654717D93E19005A2DB6 /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
@@ -419,6 +429,11 @@
 		FA4E9EF217C1D04D00E421DE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FA63096917F3640300AD02E6 /* smiley0.png */,
+				FA63096A17F3640300AD02E6 /* smiley1.png */,
+				FA63096B17F3640300AD02E6 /* smiley2.png */,
+				FA63096C17F3640300AD02E6 /* smiley3.png */,
+				FA63096D17F3640300AD02E6 /* smiley4.png */,
 				FAE697E917EC061900D2630E /* changeDateButton.png */,
 				FAE697EA17EC061900D2630E /* inputMethodButton.png */,
 				FAE697EB17EC061900D2630E /* highlightedListButton.png */,
@@ -547,6 +562,7 @@
 				FAE697F917EC061A00D2630E /* brainButton.png in Resources */,
 				FA4E9EFE17C1D04D00E421DE /* Default.png in Resources */,
 				FA4E9F0017C1D04D00E421DE /* Default@2x.png in Resources */,
+				FA63097117F3640300AD02E6 /* smiley3.png in Resources */,
 				FA4E9F0217C1D04D00E421DE /* Default-568h@2x.png in Resources */,
 				FA4E9F1717C2A9C000E421DE /* HeaderView.xib in Resources */,
 				FA4E9F1C17C2C1D500E421DE /* DetailViewController.xib in Resources */,
@@ -560,6 +576,7 @@
 				FAE697F517EC061A00D2630E /* changeDateButton.png in Resources */,
 				FA7DCEC117CC3E51005E5E3E /* EventDetailViewController.xib in Resources */,
 				FAE697F617EC061A00D2630E /* inputMethodButton.png in Resources */,
+				FA63097017F3640300AD02E6 /* smiley2.png in Resources */,
 				FA264CC917CC4D7D002ACEDD /* NewEventViewController.xib in Resources */,
 				FAAAC11117D15B870046EA0E /* NewParameterViewController.xib in Resources */,
 				FA39816717D7A94100EB9948 /* dot.png in Resources */,
@@ -586,16 +603,19 @@
 				FA3DED7717E4462A00D7FA87 /* home@2x.png in Resources */,
 				FA3DED7817E4462A00D7FA87 /* homex.png in Resources */,
 				FA3DED7B17E4473E00D7FA87 /* diary.png in Resources */,
+				FA63096E17F3640300AD02E6 /* smiley0.png in Resources */,
 				FAE697FD17EC061A00D2630E /* heartButton.png in Resources */,
 				FA3DED7C17E4473E00D7FA87 /* diary@2x.png in Resources */,
 				FA3DED7F17E4475E00D7FA87 /* options.png in Resources */,
 				FA3DED8017E4475E00D7FA87 /* options@2x.png in Resources */,
 				FA3DED8317E4477400D7FA87 /* tracker.png in Resources */,
 				FA3DED8417E4477400D7FA87 /* tracker@2x.png in Resources */,
+				FA63096F17F3640300AD02E6 /* smiley1.png in Resources */,
 				FA3DED8B17E44A3C00D7FA87 /* Icon.png in Resources */,
 				FA3DED8C17E44A3C00D7FA87 /* Icon@2x.png in Resources */,
 				FAE697FB17EC061A00D2630E /* diarysaveButton.png in Resources */,
 				FA3DED8E17E44A5200D7FA87 /* Icon@2x.png in Resources */,
+				FA63097217F3640300AD02E6 /* smiley4.png in Resources */,
 				FA2162BF17E52C4D005C836C /* Icon.png in Resources */,
 				FAE697FC17EC061A00D2630E /* graphButton.png in Resources */,
 				FA95875217E63F58007D5EB8 /* bell.png in Resources */,

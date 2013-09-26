@@ -26,6 +26,7 @@
 -(void)drawEvents:(UIView *)v;
 -(void)generateEventLabels:(Legend *)legend;
 -(void)removeLabelsFromSuperview:(UIView *)v;
+-(NSMutableArray *)allEventLabels;
 
 @end
 

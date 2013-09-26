@@ -77,58 +77,6 @@ float const EVENT_BAR_WIDTH = 30.0;
     return [NSKeyedArchiver archiveRootObject:allEvents toFile:path];
 }
 
--(void)generateEventLabels:(Legend *)legend {
-    NSMutableArray *events = [[NSMutableArray alloc] initWithArray:allEvents];
-    float horizontalPos, verticalPos;
-    
-    [allEventLabels removeAllObjects];
-    
-    for (MetasomeEvent *ev in events) {
-        if ([[ev date] timeIntervalSince1970] > [legend since] && [ev visible]) {
-            
-            horizontalPos = ([[ev date] timeIntervalSince1970] - [legend minValueOnHorizontalAxis]) * [legend horizontalScaleFactor] + [legend originHorizontalOffset];
-            
-            //verticalPos = [legend topBuffer];
-            
-            horizontalPos -= legend.verticalAxisLength / 2.0;
-            //verticalPos += legend.verticalAxisLength / 2.0;
-            verticalPos = legend.scrollViewHeight - legend.originVerticalOffset - legend.verticalAxisLength/2.0;
-            verticalPos -= 15;
-            
-            UILabel *eventLabel = [[UILabel alloc] initWithFrame:CGRectMake(horizontalPos, verticalPos, [legend verticalAxisLength], EVENT_BAR_WIDTH)];
-            
-            eventLabel.backgroundColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.5];
-            eventLabel.layer.cornerRadius = 5;
-            [eventLabel.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
-            
-            [eventLabel.layer setBorderWidth:1.0];
-            [eventLabel setText:[ev title]];
-            [eventLabel setTextAlignment:NSTextAlignmentCenter];
-            [eventLabel setTextColor:[UIColor whiteColor]];
-            [eventLabel setAdjustsFontSizeToFitWidth:YES];
-            
-            //eventLabel.center = CGPointMake(horizontalPos, verticalPos);
-            eventLabel.transform = CGAffineTransformMakeRotation(-M_PI_2);
-            eventLabel.layer.drawsAsynchronously = YES;
-            
-            [allEventLabels addObject:eventLabel];
-            
-            eventLabel = nil;
-            
-        }
-    }
-        
-}
-
--(void)drawEvents:(UIView *)v
-{
-    
-    for (UILabel *l in allEventLabels) {
-        
-        [v addSubview:l];
-    }
-        
-}
 
 -(void)removeLabelsFromSuperview:(UIView *)v
 {
@@ -140,6 +88,11 @@ float const EVENT_BAR_WIDTH = 30.0;
     
     //[allEventLabels removeAllObjects];
 
+}
+
+-(NSMutableArray *)allEventLabels
+{
+    return allEventLabels;
 }
 
 @end

@@ -25,13 +25,14 @@
         [self setTransform:tf];
         //CGAffineTransformMake already called once in GraphView
         /*
-        [self setTransform:CGAffineTransformConcat(CGContextGetTextMatrix([self context]), CGAffineTransformMake(1.0, 0.0, 0.0, -1.0, 0.0, 0.0))];
+         [self setTransform:CGAffineTransformConcat(CGContextGetTextMatrix([self context]), CGAffineTransformMake(1.0, 0.0, 0.0, -1.0, 0.0, 0.0))];
          */
-    
+        
     }
     
     return self;
 }
+
      
 -(void)drawBackground
 {

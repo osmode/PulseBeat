@@ -15,6 +15,9 @@
 
 @implementation DetailViewController_slider
 @synthesize parameter, isDataPointStoreNonEmpty;
+@synthesize smileyImage;
+
+const int NUM_SLIDER_SECTIONS = 5;
 
 -(id)init
 {
@@ -25,6 +28,8 @@
     
     saveButtonChecked = [UIImage imageNamed:@"checkedButton.png"];
     saveButtonPreChecked = [UIImage imageNamed:@"saveButton.png"];
+    [smileyImage setImage:[UIImage imageNamed:@"smiley2.png"]];
+    
     
     return self;
     
@@ -33,10 +38,10 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    UIColor *clr = [UIColor colorWithRed:0.875 green:0.88 blue:0.91 alpha:1];
+    //UIColor *clr = [UIColor colorWithRed:0.875 green:0.88 blue:0.91 alpha:1];
     
-    [[self view] setBackgroundColor:clr];
-    [valueSlider addTarget:self action:@selector(sliderValueChanged) forControlEvents:UIControlEventTouchDown];
+    //[[self view] setBackgroundColor:clr];
+    [valueSlider addTarget:self action:@selector(sliderValueChanged) forControlEvents:UIControlEventValueChanged];
 
 }
 
@@ -111,6 +116,46 @@
 -(void)sliderValueChanged
 {
     [self changeToSaved:NO];
+    
+    // divide slider into pieces
+    int position = (int)([valueSlider value]*100) / (100/NUM_SLIDER_SECTIONS);
+    
+    
+    
+    switch (position) {
+        case 0:
+            if ([parameter sadOnRightSide])
+                [smileyImage setImage:[UIImage imageNamed:@"smiley0.png"]];
+            else
+                [smileyImage setImage:[UIImage imageNamed:@"smiley4.png"]];
+            break;
+            
+        case 1:
+            if ([parameter sadOnRightSide])
+                [smileyImage setImage:[UIImage imageNamed:@"smiley1.png"]];
+            else
+                [smileyImage setImage:[UIImage imageNamed:@"smiley3.png"]];
+            break;
+        
+        case 2:
+            [smileyImage setImage:[UIImage imageNamed:@"smiley2.png"]];
+            break;
+        
+        case 3:
+            if ([parameter sadOnRightSide])
+                [smileyImage setImage:[UIImage imageNamed:@"smiley3.png"]];
+            else
+                [smileyImage setImage:[UIImage imageNamed:@"smiley1.png"]];
+            break;
+            
+        case 4:
+            if ([parameter sadOnRightSide])
+                [smileyImage setImage:[UIImage imageNamed:@"smiley4.png"]];
+            else
+                [smileyImage setImage:[UIImage imageNamed:@"smiley0.png"]];
+            break;
+            
+    }
 }
 
 -(void)changeToSaved:(BOOL)savedState

@@ -10,6 +10,7 @@
                 <outlet property="datePicker" destination="25" id="62"/>
                 <outlet property="graphButton" destination="48" id="91"/>
                 <outlet property="saveButton" destination="93" id="135"/>
+                <outlet property="smileyImage" destination="yFh-ab-0Tw" id="bWv-oE-hxv"/>
                 <outlet property="valueSlider" destination="82" id="92"/>
                 <outlet property="view" destination="1" id="90"/>
             </connections>
@@ -19,12 +20,9 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="25">
-                    <rect key="frame" x="0.0" y="352" width="320" height="216"/>
+                <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="25">
+                    <rect key="frame" x="0.0" y="288" width="320" height="162"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="216" id="GK1-2V-b3E"/>
-                    </constraints>
                     <date key="date" timeIntervalSinceReferenceDate="398639966.30480498">
                         <!--2013-08-19 21:19:26 +0000-->
                     </date>
@@ -51,7 +49,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </timeZone>
                 </datePicker>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="48">
-                    <rect key="frame" x="37" y="151" width="88" height="59"/>
+                    <rect key="frame" x="37" y="217" width="88" height="59"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="15"/>
                     <state key="normal" title="Graph" backgroundImage="graphButton.png">
@@ -63,11 +61,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </button>
                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="82">
-                    <rect key="frame" x="35" y="98" width="267" height="34"/>
+                    <rect key="frame" x="35" y="173" width="267" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </slider>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93">
-                    <rect key="frame" x="198" y="151" width="88" height="59"/>
+                    <rect key="frame" x="198" y="217" width="88" height="59"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="15"/>
                     <state key="normal" title="Save" backgroundImage="saveButton.png">
@@ -78,19 +76,28 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <action selector="savePoint:" destination="-1" eventType="touchUpInside" id="136"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smiley2.png" translatesAutoresizingMaskIntoConstraints="NO" id="yFh-ab-0Tw">
+                    <rect key="frame" x="120" y="76" width="80" height="80"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="6UV-un-5At"/>
+                    </constraints>
+                </imageView>
             </subviews>
-            <color key="backgroundColor" red="0.85222061819999995" green="0.85222061819999995" blue="0.85222061819999995" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="48" firstAttribute="baseline" secondItem="93" secondAttribute="baseline" id="9Eq-Rp-wZ4"/>
-                <constraint firstItem="82" firstAttribute="leading" secondItem="48" secondAttribute="leading" id="Cc6-Ba-AaJ"/>
-                <constraint firstItem="82" firstAttribute="top" secondItem="1" secondAttribute="top" constant="98" id="IGF-U7-hSu"/>
-                <constraint firstAttribute="trailing" secondItem="25" secondAttribute="trailing" id="ZKP-Hg-iPV"/>
-                <constraint firstItem="48" firstAttribute="top" secondItem="82" secondAttribute="bottom" constant="20" id="hfU-kM-nrP"/>
-                <constraint firstAttribute="bottom" secondItem="25" secondAttribute="bottom" id="kjZ-rB-663"/>
-                <constraint firstItem="25" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="r6f-YX-mKr"/>
-                <constraint firstAttribute="trailing" secondItem="82" secondAttribute="trailing" constant="20" symbolic="YES" id="rfp-Rc-sXA"/>
-                <constraint firstItem="93" firstAttribute="leading" secondItem="48" secondAttribute="trailing" constant="73" id="y97-qd-MKS"/>
-                <constraint firstItem="82" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="37" id="zgh-Nq-YPR"/>
+                <constraint firstItem="82" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="37" id="2iX-GW-Xet"/>
+                <constraint firstItem="82" firstAttribute="leading" secondItem="48" secondAttribute="leading" id="62v-IA-Wxw"/>
+                <constraint firstItem="yFh-ab-0Tw" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="7gu-FU-M1t"/>
+                <constraint firstItem="48" firstAttribute="top" secondItem="1" secondAttribute="top" constant="217" id="Ajq-hf-tAu"/>
+                <constraint firstItem="82" firstAttribute="top" secondItem="yFh-ab-0Tw" secondAttribute="bottom" constant="17" id="HDI-AB-Xh6"/>
+                <constraint firstItem="25" firstAttribute="top" secondItem="1" secondAttribute="top" constant="288" id="N2w-tb-AG8"/>
+                <constraint firstItem="82" firstAttribute="top" secondItem="1" secondAttribute="top" constant="173" id="Wk0-Hg-QXg"/>
+                <constraint firstItem="yFh-ab-0Tw" firstAttribute="top" secondItem="1" secondAttribute="top" constant="76" id="YJp-QD-ppS"/>
+                <constraint firstItem="yFh-ab-0Tw" firstAttribute="centerX" secondItem="25" secondAttribute="centerX" id="ZJP-Hv-V8L"/>
+                <constraint firstItem="93" firstAttribute="top" secondItem="1" secondAttribute="top" constant="217" id="hOH-JI-eQ6"/>
+                <constraint firstAttribute="trailing" secondItem="82" secondAttribute="trailing" constant="20" symbolic="YES" id="wCm-oC-tll"/>
+                <constraint firstItem="93" firstAttribute="leading" secondItem="48" secondAttribute="trailing" constant="73" id="zHw-kG-dIF"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -102,5 +109,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     <resources>
         <image name="graphButton.png" width="88" height="59"/>
         <image name="saveButton.png" width="88" height="59"/>
+        <image name="smiley2.png" width="80" height="80"/>
     </resources>
 </document>

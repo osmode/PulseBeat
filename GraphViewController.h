@@ -31,6 +31,7 @@
 @property (nonatomic, strong) GraphView *graphView;
 @property (nonatomic, strong) Legend *legend;
 @property (nonatomic, strong) NSMutableArray *hoveringVerticalLabels;
+@property (nonatomic, strong) NSMutableArray *allEventLabels;
 
 -(void)changeInterval;
 -(void)initializeSubViews;

@@ -46,6 +46,7 @@ typedef enum {
 @property (nonatomic) BOOL checkedStatus;
 @property (nonatomic, strong) NSDate *lastChecked;
 @property (nonatomic) float maxValue;
+@property (nonatomic) BOOL sadOnRightSide;
 
 -(id)initWithParameterName:(NSString *)name inputType:(int)type category:(int)newCategory maximumValue:(float)value;
 -(void)resetCheckmark;

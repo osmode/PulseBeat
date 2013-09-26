@@ -174,6 +174,11 @@ float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
     [self setScale:pointsToGraph];
     [self convertDataPointsToCoordinates:pointsToGraph];
 
+    CGPoint here = CGPointMake([self originHorizontalOffset] + [self horizontalAxisLength] + 40, [self topBuffer]);
+    
+
+    
+
 }
 
 /* convertDataPointsToCoordinates takes a mutable array of 
@@ -215,13 +220,11 @@ float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
     [self setTransform:CGAffineTransformConcat(CGContextGetTextMatrix([self ctx]), CGAffineTransformMake(1.0, 0.0, 0.0, -1.0, 0.0, 0.0))];
     
     [self drawAxes];
-    
     [self graphPoints:[self pointsToGraph]];
     
     CGPoint here = CGPointMake([self originHorizontalOffset] + [self horizontalAxisLength] + 40, [self topBuffer]);
     
     legend = [[Legend alloc] initWithContext:[self ctx] withTransformation:[self transform] atPoint:here];
-    
     
     [legend drawBackground];
     [legend drawLabels];
@@ -235,10 +238,12 @@ float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
     [legend setSince:[[[MetasomeDataPointStore sharedStore] since] timeIntervalSince1970]];
     [legend setTopBuffer:topBuffer];
     [legend setVerticalAxisLength:verticalAxisLength];
-
+    
     [legend connectTheDots:[self pointsToGraph]];
     
-    legend = nil;
+    //[self drawEventLabels];
+    
+    //legend = nil;
     parentGraphViewController = nil;
 }
 
@@ -308,8 +313,6 @@ float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
     //CGPoints used for drawing grid lines
     CGPoint beginGrid, endGrid;
     
-    //[self setVerticalAxisLength:(begin.y - end.y)];
-    
     //Step size while drawing axes
     float horizontalStep = [self horizontalAxisLength] / HORIZONTAL_NUMBER_OF_INTERVALS;
     float verticalStep = [self verticalAxisLength] / VERTICAL_NUMBER_OF_INTERVALS;
@@ -367,59 +370,6 @@ float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
     [super removeFromSuperview];
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    
-    /*
-    CGPoint touched;
-    
-    // yValue and xValue are view coordinates converted into vertical axis values
-    float xValue, yValue;
-    
-    for (UITouch *t in touches) {
-        
-        // Is this a double tap?
-        if ([t tapCount] > 1) {
-            return;
-        }
-        
-        touched = [t locationInView:self];
-
-        yValue = (touched.y + [self originVerticalOffset] - [self scrollViewHeight])/(-1*[self verticalScaleFactor]) + [self minValueOnVerticalAxis];
-        
-        xValue = (touched.x - [self originHorizontalOffset])/[self horizontalScaleFactor] + [self minValueOnHorizontalAxis];
-        
-        NSDate *date = [[NSDate alloc] initWithTimeIntervalSince1970:xValue];
-        NSString *dateString, *valueString, *displayString;
-        
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"dd MMM"];
-        
-        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-        [numberFormatter setMaximumFractionDigits:0];
-        [numberFormatter setRoundingMode:NSNumberFormatterRoundUp];
-        
-        valueString = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:yValue]];
-        
-        dateString = [dateFormatter stringFromDate:date];
-        //valueString = [[NSNumber numberWithFloat:yValue] stringValue];
-        
-        
-        displayString = [[[[[[MetasomeDataPointStore sharedStore] toGraph] stringByAppendingString:@": "] stringByAppendingString:valueString] stringByAppendingString:@" on "] stringByAppendingString:dateString];
-        
-        // Must set view to first responder in order to use UIMenu
-        [self becomeFirstResponder];
-        UIMenuController *menu = [UIMenuController sharedMenuController];
-        UIMenuItem *infoItem = [[UIMenuItem alloc] initWithTitle:displayString action:@selector(hideMenu)];
-        [menu setMenuItems:[NSArray arrayWithObject:infoItem]];
-        [menu setTargetRect:CGRectMake(touched.x, touched.y, 2, 2) inView:self];
-        [menu setMenuVisible:YES animated:YES];
-        //[self setNeedsDisplay];
-                                
-        //NSLog(@"Touch at %@, %f", dateString, yValue);
-    }
-*/
-}
 -(BOOL)canBecomeFirstResponder
 {
     return YES;

@@ -132,46 +132,41 @@ float const MAX_SLIDER_VALUE = 100.0;
 
 -(void)loadDefaultParameters
 {
-    //sections = [[NSMutableArray alloc] initWithObjects:@"Vitals", @"Mind", @"Body", nil];
     
     parameterArray = [[NSMutableArray alloc] init];
     
-    MetasomeParameter *a = [[MetasomeParameter alloc] initWithParameterName:@"Heart rate" inputType:ParameterInputInteger category:ParameterCategoryHeart maximumValue:200.0];
+    // heart-related parameters
+    
+    MetasomeParameter *heartRate = [[MetasomeParameter alloc] initWithParameterName:@"Heart rate" inputType:ParameterInputInteger category:ParameterCategoryHeart maximumValue:200.0];
+    MetasomeParameter *bloodPressure = [[MetasomeParameter alloc] initWithParameterName:@"Blood pressure" inputType:ParameterBloodPressure category:ParameterCategoryHeart maximumValue:220.0];
+    MetasomeParameter *legSwelling = [[MetasomeParameter alloc] initWithParameterName:@"Leg swelling" inputType:ParameterInputSlider category:ParameterCategoryHeart maximumValue:MAX_SLIDER_VALUE];
+    [legSwelling setSadOnRightSide:YES];
   
-    MetasomeParameter *a2 = [[MetasomeParameter alloc] initWithParameterName:@"Heart rate" inputType:ParameterInputInteger category:ParameterCategoryLung maximumValue:200.0];
+    // lung-related parameters
+    MetasomeParameter *shortnessOfBreath = [[MetasomeParameter alloc] initWithParameterName:@"Shortness of breath" inputType:ParameterInputSlider category:ParameterCategoryLung maximumValue:MAX_SLIDER_VALUE];
+    [shortnessOfBreath setSadOnRightSide:YES];
     
-    MetasomeParameter *b = [[MetasomeParameter alloc] initWithParameterName:@"Blood pressure" inputType:ParameterBloodPressure category:ParameterCategoryHeart maximumValue:220.0] ;
+    MetasomeParameter *cough = [[MetasomeParameter alloc] initWithParameterName:@"Cough" inputType:ParameterInputSlider category:ParameterCategoryLung maximumValue:MAX_SLIDER_VALUE];
+    [cough setSadOnRightSide:YES];
+    MetasomeParameter *rescueInhalerPuffs = [[MetasomeParameter alloc] initWithParameterName:@"Rescue inhaler puffs" inputType:ParameterInputInteger category:ParameterCategoryHeart maximumValue:10.0];
     
-    MetasomeParameter *b2 = [[MetasomeParameter alloc] initWithParameterName:@"Blood pressure" inputType:ParameterBloodPressure category:ParameterCategoryLung maximumValue:220.0] ;
+    // metabolic-related parameters
+    MetasomeParameter *bloodSugar = [[MetasomeParameter alloc] initWithParameterName:@"Blood sugar" inputType:ParameterInputInteger category:ParameterCategoryDiabetes maximumValue:600.0] ;
+    MetasomeParameter *weight = [[MetasomeParameter alloc] initWithParameterName:@"Weight" inputType:ParameterInputFloat category:ParameterCategoryDiabetes maximumValue:800.0] ;
     
-    MetasomeParameter *b3 = [[MetasomeParameter alloc] initWithParameterName:@"Blood pressure" inputType:ParameterBloodPressure category:ParameterCategoryDiabetes maximumValue:220.0] ;
-    
-    MetasomeParameter *d = [[MetasomeParameter alloc] initWithParameterName:@"Blood sugar" inputType:ParameterInputInteger category:ParameterCategoryDiabetes maximumValue:600.0] ;
-    
-    MetasomeParameter *f = [[MetasomeParameter alloc] initWithParameterName:@"Weight" inputType:ParameterInputFloat category:ParameterCategoryHeart maximumValue:800.0] ;
-    
-    MetasomeParameter *f2 = [[MetasomeParameter alloc] initWithParameterName:@"Weight" inputType:ParameterInputFloat category:ParameterCategoryDiabetes maximumValue:800.0] ;
-    
-    MetasomeParameter *dd = [[MetasomeParameter alloc] initWithParameterName:@"Energy" inputType:ParameterInputSlider category:ParameterCategoryHeart maximumValue:MAX_SLIDER_VALUE];
-    
-    MetasomeParameter *aaa = [[MetasomeParameter alloc] initWithParameterName:@"Shortness of breath" inputType:ParameterInputSlider category:ParameterCategoryHeart maximumValue:MAX_SLIDER_VALUE];
-    
-     MetasomeParameter *aaa2 = [[MetasomeParameter alloc] initWithParameterName:@"Shortness of breath" inputType:ParameterInputSlider category:ParameterCategoryLung maximumValue:MAX_SLIDER_VALUE];
-    
-    MetasomeParameter *bbb = [[MetasomeParameter alloc] initWithParameterName:@"Leg swelling" inputType:ParameterInputSlider category:ParameterCategoryHeart maximumValue:MAX_SLIDER_VALUE];
-    
-    MetasomeParameter *ccc = [[MetasomeParameter alloc] initWithParameterName:@"Cough" inputType:ParameterInputSlider category:ParameterCategoryHeart maximumValue:MAX_SLIDER_VALUE];
-    
-   MetasomeParameter *ccc2 = [[MetasomeParameter alloc] initWithParameterName:@"Cough" inputType:ParameterInputSlider category:ParameterCategoryLung maximumValue:MAX_SLIDER_VALUE];
-    
-    MetasomeParameter *eee = [[MetasomeParameter alloc] initWithParameterName:@"Rescue inhaler puffs" inputType:ParameterInputInteger category:ParameterCategoryLung maximumValue:20.0];
+    // mind-related parameters
+    MetasomeParameter *mood = [[MetasomeParameter alloc] initWithParameterName:@"Mood" inputType:ParameterInputSlider category:ParameterCategoryCustom maximumValue:200.0];
+    [mood setSadOnRightSide:NO];
+    MetasomeParameter *energy = [[MetasomeParameter alloc] initWithParameterName:@"Energy" inputType:ParameterInputSlider category:ParameterCategoryCustom maximumValue:200.0];
+    [energy setSadOnRightSide:NO];
+    MetasomeParameter *sleepHours = [[MetasomeParameter alloc] initWithParameterName:@"Sleep hours" inputType:ParameterInputFloat category:ParameterCategoryCustom maximumValue:20.0];
     
     // Each parameter can only belong to one list!
     
-    heartList = [[NSMutableArray alloc] initWithObjects:aaa, bbb, ccc, a, b, f, dd, nil];
-    lungList = [[NSMutableArray alloc] initWithObjects:a2, b2, aaa2, ccc2, eee, nil];
-    diabetesList = [[NSMutableArray alloc] initWithObjects:d, f2, b3, nil];
-    customList = [[NSMutableArray alloc] init];
+    heartList = [[NSMutableArray alloc] initWithObjects:heartRate, bloodPressure, legSwelling, nil];
+    lungList = [[NSMutableArray alloc] initWithObjects:shortnessOfBreath, cough, rescueInhalerPuffs, nil];
+    diabetesList = [[NSMutableArray alloc] initWithObjects:bloodSugar, weight, nil];
+    customList = [[NSMutableArray alloc] initWithObjects:mood, energy, sleepHours, nil];
     
     NSMutableDictionary *heartListArrayDict = [NSMutableDictionary dictionaryWithObject:heartList forKey:@"list"];
     NSMutableDictionary *lungListArrayDict = [NSMutableDictionary dictionaryWithObject:lungList forKey:@"list"];

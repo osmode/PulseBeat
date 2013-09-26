@@ -51,12 +51,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </timeZone>
                 </datePicker>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter value" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="43">
-                    <rect key="frame" x="64" y="112" width="193" height="30"/>
+                    <rect key="frame" x="83" y="108" width="154" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="193" id="204"/>
+                        <constraint firstAttribute="width" constant="154" id="204"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="48">
@@ -91,13 +91,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="0.96274201770000001" green="0.96274201770000001" blue="0.96274201770000001" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="25" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="33"/>
                 <constraint firstItem="25" firstAttribute="trailing" secondItem="1" secondAttribute="trailing" id="34"/>
                 <constraint firstItem="25" firstAttribute="bottom" secondItem="1" secondAttribute="bottom" constant="-45" id="36"/>
-                <constraint firstItem="43" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="64" id="78"/>
-                <constraint firstItem="43" firstAttribute="top" secondItem="1" secondAttribute="top" constant="112" id="80"/>
+                <constraint firstItem="43" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="83" id="78"/>
+                <constraint firstItem="43" firstAttribute="top" secondItem="1" secondAttribute="top" constant="108" id="80"/>
                 <constraint firstItem="48" firstAttribute="top" secondItem="1" secondAttribute="top" constant="169" id="195"/>
                 <constraint firstItem="48" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="50" id="196"/>
                 <constraint firstItem="48" firstAttribute="top" secondItem="197" secondAttribute="top" id="200"/>

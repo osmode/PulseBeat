@@ -11,6 +11,8 @@
 #import "MetasomeDataPointStore.h"
 #import "GraphViewController.h"
 #import "TextFormatter.h"
+#import "MetasomeParameterStore.h"
+
 
 @interface MetasomeBloodPressureViewController ()
 
@@ -81,6 +83,12 @@
     [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:diastolicTextField.text.integerValue date:datePicker.date.timeIntervalSince1970];
     
     BOOL result = [[MetasomeDataPointStore sharedStore] saveChanges];
+    
+    // mark parameter as checked
+    [[self parameter] setCheckedStatus:YES];
+    [[self parameter] setLastChecked:[NSDate date]];
+    [[MetasomeParameterStore sharedStore] saveChanges];
+    
     if (!result) {
         
         NSError *err;

@@ -47,6 +47,11 @@
 - (IBAction)heartSelected:(id)sender {
     [[MetasomeParameterStore sharedStore] setCurrentList:[[MetasomeParameterStore sharedStore] heartList]];
     
+    // Remember that this app has now been opened once and remember the selection
+    int currentLoadCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"launchCount"];
+    [[NSUserDefaults standardUserDefaults] setInteger:(currentLoadCount + 1) forKey:@"launchCount"];
+    [[NSUserDefaults standardUserDefaults] setInteger:heartSelection forKey:@"lastSelection"];
+    
     [[self paramViewController] setCurrentSelection:heartSelection];
     [[[self paramViewController] titleLabel] setText:@"Heart"];
     [self.paramViewController updateTitle:self.paramViewController.titleLabel];
@@ -55,14 +60,17 @@
     [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
     [[self tabBarController] setSelectedIndex:1];
     
-    // Remember that this app has now been opened once and remember the selection
-    int currentLoadCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"launchCount"];
-    [[NSUserDefaults standardUserDefaults] setInteger:(currentLoadCount + 1) forKey:@"launchCount"];
-    [[NSUserDefaults standardUserDefaults] setInteger:heartSelection forKey:@"lastSelection"];
 }
 
 - (IBAction)lungSelected:(id)sender {
     [[MetasomeParameterStore sharedStore] setCurrentList:[[MetasomeParameterStore sharedStore] lungList]];
+    
+    // Remember that this app has now been opened once and remember the selection
+    int currentLoadCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"launchCount"];
+    [[NSUserDefaults standardUserDefaults] setInteger:(currentLoadCount + 1) forKey:@"launchCount"];
+    [[NSUserDefaults standardUserDefaults] setInteger:lungSelection forKey:@"lastSelection"];
+    
+    [[self paramViewController] setCurrentSelection:lungSelection];
     
     [[self paramViewController] setCurrentSelection:lungSelection];
     self.paramViewController.titleLabel.text = @"Lung";
@@ -72,18 +80,16 @@
     [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
     [[self tabBarController] setSelectedIndex:1];
     
-    // Remember that this app has now been opened once and remember the selection
-    int currentLoadCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"launchCount"];
-    [[NSUserDefaults standardUserDefaults] setInteger:(currentLoadCount + 1) forKey:@"launchCount"];
-    [[NSUserDefaults standardUserDefaults] setInteger:lungSelection forKey:@"lastSelection"];
-    
-    [[self paramViewController] setCurrentSelection:lungSelection];
-    
-    NSLog(@"setting lastSelection to %i ", [[NSUserDefaults standardUserDefaults] integerForKey:@"lastSelection"]);
-
 }
 
 - (IBAction)diabetesSelected:(id)sender {
+    
+    int currentLoadCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"launchCount"];
+    [[NSUserDefaults standardUserDefaults] setInteger:(currentLoadCount + 1) forKey:@"launchCount"];
+    [[NSUserDefaults standardUserDefaults] setInteger:diabetesSelection forKey:@"lastSelection"];
+    
+    [[self paramViewController] setCurrentSelection:diabetesSelection];
+    
     [[MetasomeParameterStore sharedStore] setCurrentList:[[MetasomeParameterStore sharedStore] diabetesList]];
     [[self paramViewController] setCurrentSelection:diabetesSelection];
     self.paramViewController.titleLabel.text = @"Metabolic";
@@ -92,19 +98,17 @@
     
     [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
     [[self tabBarController] setSelectedIndex:1];
-        
-    int currentLoadCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"launchCount"];
-    [[NSUserDefaults standardUserDefaults] setInteger:(currentLoadCount + 1) forKey:@"launchCount"];
-    [[NSUserDefaults standardUserDefaults] setInteger:diabetesSelection forKey:@"lastSelection"];
     
-    [[self paramViewController] setCurrentSelection:diabetesSelection];
-    
-    NSLog(@"setting lastSelection to %i ", [[NSUserDefaults standardUserDefaults] integerForKey:@"lastSelection"]);
-
-
 }
 
 - (IBAction)customSelected:(id)sender {
+   
+    int currentLoadCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"launchCount"];
+    [[NSUserDefaults standardUserDefaults] setInteger:(currentLoadCount + 1) forKey:@"launchCount"];
+    [[NSUserDefaults standardUserDefaults] setInteger:customSelection forKey:@"lastSelection"];
+    
+    [[self paramViewController] setCurrentSelection:customSelection];
+    
     [[MetasomeParameterStore sharedStore] setCurrentList:[[MetasomeParameterStore sharedStore] customList]];
     
     [[self paramViewController] setCurrentSelection:customSelection];
@@ -115,16 +119,7 @@
     [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
     [[self tabBarController] setSelectedIndex:1];
     
-    int currentLoadCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"launchCount"];
-    [[NSUserDefaults standardUserDefaults] setInteger:(currentLoadCount + 1) forKey:@"launchCount"];
-    [[NSUserDefaults standardUserDefaults] setInteger:customSelection forKey:@"lastSelection"];
-    
-    [[self paramViewController] setCurrentSelection:customSelection];
-    
-    NSLog(@"setting lastSelection to %i ", [[NSUserDefaults standardUserDefaults] integerForKey:@"lastSelection"]);
-    
-    
-
-    
 }
+
+
 @end

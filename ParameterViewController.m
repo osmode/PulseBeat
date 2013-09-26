@@ -69,15 +69,13 @@
     selectionTypeOnLaunch lastSelection = [[NSUserDefaults standardUserDefaults] integerForKey:@"lastSelection"];
     
     [self setCurrentSelection:lastSelection];
+    [self updateTitle:titleLabel];
     
     // If the current list is empty, set to heart list by default
     if ([[self tableView] numberOfRowsInSection:0] == 0) {
         [[MetasomeParameterStore sharedStore] setCurrentList:[[MetasomeParameterStore sharedStore] heartList]];
-    
     }
     
-    //[self updateTitle:[self titleLabel]];
-    NSLog(@"current title: %@", [[self titleLabel] text]);
     [[self tableView] reloadData];
     
 }
@@ -117,18 +115,17 @@
     int currentLaunchCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"launchCount"];
 
     // Launch HomeViewController modally only if loading app for the first time
+    
     if (currentLaunchCount == 0) {
-       // HomeViewController *hvc = [[HomeViewController alloc] init];
-        // [self presentViewController:hvc animated:YES completion:nil];
-        LoginScreenViewController *lvc = [[LoginScreenViewController alloc] init];
-       [self presentViewController:lvc animated:YES completion:nil];
+       HomeViewController *hvc = [[HomeViewController alloc] init];
+        [self presentViewController:hvc animated:YES completion:nil];
+        //LoginScreenViewController *lvc = [[LoginScreenViewController alloc] init];
+      // [self presentViewController:lvc animated:YES completion:nil];
         
     }
 
-    //[self updateTitle:[self titleLabel]];
-    NSLog(@"curent selection: %i", [self currentSelection]);
-    //[[self view] setNeedsDisplay];
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -245,10 +242,9 @@ toIndexPath:(NSIndexPath *)destinationIndexPath
     MetasomeParameter *p = [[[MetasomeParameterStore sharedStore] currentList] objectAtIndex:indexPath.row];
     
     // Set parameter as marked
-    [p setCheckedStatus:YES];
-    [p setLastChecked:[NSDate date]];
-    [[MetasomeParameterStore sharedStore] saveChanges];
-    
+    //[p setCheckedStatus:YES];
+    //[p setLastChecked:[NSDate date]];
+    //[[MetasomeParameterStore sharedStore] saveChanges];
     
     // Create block to check for presence of at least one data point
     BOOL (^block)(void) = ^ {
@@ -306,7 +302,7 @@ toIndexPath:(NSIndexPath *)destinationIndexPath
 
 -(void)updateTitle:(UILabel *)label
 {
-    /*
+    
     switch ([self currentSelection]) {
         case heartSelection:
             [self setTitleString:@"Heart"];
@@ -321,7 +317,7 @@ toIndexPath:(NSIndexPath *)destinationIndexPath
             [self setTitleString:@"Mind"];
             break;
     }
-     */
+    
     
     [TextFormatter formatTitleLabel:label withTitle:[self titleString]];
     [[self navigationItem] setTitleView:label];

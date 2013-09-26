@@ -7,6 +7,7 @@
 //
 
 #import "NotificationsDetailViewController.h"
+#import "TextFormatter.h"
 
 @interface NotificationsDetailViewController ()
 
@@ -20,7 +21,11 @@ NSString * const MetasomeNotificationPrefKey = @"MetasomeNotificationPrefKey";
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        [[self navigationItem] setTitle:@"Notifications"];
+
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        [TextFormatter formatTitleLabel:titleLabel withTitle:@"Notifications"];
+        [[self navigationItem] setTitleView:titleLabel];
+    
     }
     return self;
 }

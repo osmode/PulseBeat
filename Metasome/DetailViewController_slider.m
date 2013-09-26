@@ -12,6 +12,8 @@
 #import "MetasomeDataPointStore.h"
 #import "GraphViewController.h"
 #import "TextFormatter.h"
+#import "MetasomeParameterStore.h"
+
 
 @implementation DetailViewController_slider
 @synthesize parameter, isDataPointStoreNonEmpty;
@@ -87,6 +89,12 @@ const int NUM_SLIDER_SECTIONS = 5;
     [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:[valueSlider value]*100 date:datePicker.date.timeIntervalSince1970];
     
     BOOL result = [[MetasomeDataPointStore sharedStore] saveChanges];
+    
+    // mark parameter as checked
+    [[self parameter] setCheckedStatus:YES];
+    [[self parameter] setLastChecked:[NSDate date]];
+    [[MetasomeParameterStore sharedStore] saveChanges];
+    
     if (!result) {
         
         NSError *err;

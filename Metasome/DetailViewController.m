@@ -13,6 +13,8 @@
 #import "GraphViewController.h"
 #import "ParameterViewController.h"
 #import "TextFormatter.h"
+#import "MetasomeParameterStore.h"
+
 
 @implementation DetailViewController
 @synthesize parameter, isDataPointStoreNonEmpty, isSaved;
@@ -116,6 +118,12 @@
     
     
     BOOL result = [[MetasomeDataPointStore sharedStore] saveChanges];
+    
+    // mark parameter as checked
+    [[self parameter] setCheckedStatus:YES];
+    [[self parameter] setLastChecked:[NSDate date]];
+    [[MetasomeParameterStore sharedStore] saveChanges];
+    
     if (!result) {
         
         NSError *err;

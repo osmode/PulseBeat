@@ -44,7 +44,7 @@ float const MAX_SLIDER_VALUE = 100.0;
     if (self) {
         NSString *path = [self itemArchivePath];
         
-        sections = [[NSMutableArray alloc] initWithObjects:@"Heart", @"Lung", @"Diabetes", @"Custom", nil];
+        sections = [[NSMutableArray alloc] initWithObjects:@"Heart", @"Lung", @"Diabetes", @"Mind", nil];
             
         parameterArray = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
         

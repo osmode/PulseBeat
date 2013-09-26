@@ -96,14 +96,15 @@
 		FAE697F617EC061A00D2630E /* inputMethodButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE697EA17EC061900D2630E /* inputMethodButton.png */; };
 		FAE697F717EC061A00D2630E /* highlightedListButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE697EB17EC061900D2630E /* highlightedListButton.png */; };
 		FAE697F817EC061A00D2630E /* highlightedInputmethodButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE697EC17EC061900D2630E /* highlightedInputmethodButton.png */; };
-		FAE697F917EC061A00D2630E /* brainButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE697ED17EC061900D2630E /* brainButton.png */; };
-		FAE697FA17EC061A00D2630E /* diabetesButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE697EE17EC061900D2630E /* diabetesButton.png */; };
 		FAE697FB17EC061A00D2630E /* diarysaveButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE697EF17EC061900D2630E /* diarysaveButton.png */; };
 		FAE697FC17EC061A00D2630E /* graphButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE697F017EC061900D2630E /* graphButton.png */; };
-		FAE697FD17EC061A00D2630E /* heartButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE697F117EC061900D2630E /* heartButton.png */; };
 		FAE697FE17EC061A00D2630E /* listButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE697F217EC061900D2630E /* listButton.png */; };
-		FAE697FF17EC061A00D2630E /* lungButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE697F317EC061900D2630E /* lungButton.png */; };
 		FAE6980017EC061A00D2630E /* saveButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE697F417EC061A00D2630E /* saveButton.png */; };
+		FAE7CE2617F3E1A00019E970 /* brainButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE7CE2217F3E1A00019E970 /* brainButton.png */; };
+		FAE7CE2717F3E1A00019E970 /* diabetesButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE7CE2317F3E1A00019E970 /* diabetesButton.png */; };
+		FAE7CE2817F3E1A00019E970 /* heartButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE7CE2417F3E1A00019E970 /* heartButton.png */; };
+		FAE7CE2917F3E1A00019E970 /* lungButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE7CE2517F3E1A00019E970 /* lungButton.png */; };
+		FAE7CE2B17F3E1B30019E970 /* checkedButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE7CE2A17F3E1B30019E970 /* checkedButton.png */; };
 		FAF87EB517E2085C00C830D9 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF87EB317E2085C00C830D9 /* PhotoViewController.m */; };
 		FAF87EB617E2085C00C830D9 /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF87EB417E2085C00C830D9 /* PhotoViewController.xib */; };
 		FAF87EBA17E20E8F00C830D9 /* PhotoStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF87EB917E20E8F00C830D9 /* PhotoStore.m */; };
@@ -235,14 +236,15 @@
 		FAE697EA17EC061900D2630E /* inputMethodButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inputMethodButton.png; sourceTree = "<group>"; };
 		FAE697EB17EC061900D2630E /* highlightedListButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highlightedListButton.png; sourceTree = "<group>"; };
 		FAE697EC17EC061900D2630E /* highlightedInputmethodButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highlightedInputmethodButton.png; sourceTree = "<group>"; };
-		FAE697ED17EC061900D2630E /* brainButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brainButton.png; sourceTree = "<group>"; };
-		FAE697EE17EC061900D2630E /* diabetesButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diabetesButton.png; sourceTree = "<group>"; };
 		FAE697EF17EC061900D2630E /* diarysaveButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diarysaveButton.png; sourceTree = "<group>"; };
 		FAE697F017EC061900D2630E /* graphButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = graphButton.png; sourceTree = "<group>"; };
-		FAE697F117EC061900D2630E /* heartButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heartButton.png; sourceTree = "<group>"; };
 		FAE697F217EC061900D2630E /* listButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = listButton.png; sourceTree = "<group>"; };
-		FAE697F317EC061900D2630E /* lungButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lungButton.png; sourceTree = "<group>"; };
 		FAE697F417EC061A00D2630E /* saveButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saveButton.png; sourceTree = "<group>"; };
+		FAE7CE2217F3E1A00019E970 /* brainButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brainButton.png; sourceTree = "<group>"; };
+		FAE7CE2317F3E1A00019E970 /* diabetesButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diabetesButton.png; sourceTree = "<group>"; };
+		FAE7CE2417F3E1A00019E970 /* heartButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heartButton.png; sourceTree = "<group>"; };
+		FAE7CE2517F3E1A00019E970 /* lungButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lungButton.png; sourceTree = "<group>"; };
+		FAE7CE2A17F3E1B30019E970 /* checkedButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkedButton.png; sourceTree = "<group>"; };
 		FAF87EB217E2085C00C830D9 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		FAF87EB317E2085C00C830D9 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		FAF87EB417E2085C00C830D9 /* PhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
@@ -429,22 +431,23 @@
 		FA4E9EF217C1D04D00E421DE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FAE7CE2217F3E1A00019E970 /* brainButton.png */,
+				FAE7CE2317F3E1A00019E970 /* diabetesButton.png */,
+				FAE7CE2417F3E1A00019E970 /* heartButton.png */,
+				FAE7CE2517F3E1A00019E970 /* lungButton.png */,
 				FA63096917F3640300AD02E6 /* smiley0.png */,
 				FA63096A17F3640300AD02E6 /* smiley1.png */,
 				FA63096B17F3640300AD02E6 /* smiley2.png */,
 				FA63096C17F3640300AD02E6 /* smiley3.png */,
 				FA63096D17F3640300AD02E6 /* smiley4.png */,
+				FAE7CE2A17F3E1B30019E970 /* checkedButton.png */,
 				FAE697E917EC061900D2630E /* changeDateButton.png */,
 				FAE697EA17EC061900D2630E /* inputMethodButton.png */,
 				FAE697EB17EC061900D2630E /* highlightedListButton.png */,
 				FAE697EC17EC061900D2630E /* highlightedInputmethodButton.png */,
-				FAE697ED17EC061900D2630E /* brainButton.png */,
-				FAE697EE17EC061900D2630E /* diabetesButton.png */,
 				FAE697EF17EC061900D2630E /* diarysaveButton.png */,
 				FAE697F017EC061900D2630E /* graphButton.png */,
-				FAE697F117EC061900D2630E /* heartButton.png */,
 				FAE697F217EC061900D2630E /* listButton.png */,
-				FAE697F317EC061900D2630E /* lungButton.png */,
 				FAE697F417EC061A00D2630E /* saveButton.png */,
 				FA59AE0517E9570700CB0629 /* largePulseBeat.png */,
 				FA95875117E63F58007D5EB8 /* bell.png */,
@@ -559,28 +562,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA4E9EF617C1D04D00E421DE /* InfoPlist.strings in Resources */,
-				FAE697F917EC061A00D2630E /* brainButton.png in Resources */,
 				FA4E9EFE17C1D04D00E421DE /* Default.png in Resources */,
 				FA4E9F0017C1D04D00E421DE /* Default@2x.png in Resources */,
 				FA63097117F3640300AD02E6 /* smiley3.png in Resources */,
 				FA4E9F0217C1D04D00E421DE /* Default-568h@2x.png in Resources */,
 				FA4E9F1717C2A9C000E421DE /* HeaderView.xib in Resources */,
 				FA4E9F1C17C2C1D500E421DE /* DetailViewController.xib in Resources */,
+				FAE7CE2917F3E1A00019E970 /* lungButton.png in Resources */,
 				FAC592B817C555AD0004747C /* ParameterViewController.xib in Resources */,
 				FAC592BD17C55E970004747C /* EventViewController.xib in Resources */,
 				FAE697F817EC061A00D2630E /* highlightedInputmethodButton.png in Resources */,
-				FAE697FA17EC061A00D2630E /* diabetesButton.png in Resources */,
 				FAC592C517C562D70004747C /* GraphViewController.xib in Resources */,
 				FA4817BD17C672CE00A4CA4A /* DetailViewController_slider.xib in Resources */,
 				FA4817C517C7F93400A4CA4A /* OptionsViewController.xib in Resources */,
 				FAE697F517EC061A00D2630E /* changeDateButton.png in Resources */,
+				FAE7CE2B17F3E1B30019E970 /* checkedButton.png in Resources */,
 				FA7DCEC117CC3E51005E5E3E /* EventDetailViewController.xib in Resources */,
 				FAE697F617EC061A00D2630E /* inputMethodButton.png in Resources */,
 				FA63097017F3640300AD02E6 /* smiley2.png in Resources */,
+				FAE7CE2717F3E1A00019E970 /* diabetesButton.png in Resources */,
+				FAE7CE2817F3E1A00019E970 /* heartButton.png in Resources */,
 				FA264CC917CC4D7D002ACEDD /* NewEventViewController.xib in Resources */,
 				FAAAC11117D15B870046EA0E /* NewParameterViewController.xib in Resources */,
 				FA39816717D7A94100EB9948 /* dot.png in Resources */,
-				FAE697FF17EC061A00D2630E /* lungButton.png in Resources */,
 				FA79654917D93E19005A2DB6 /* DatePickerViewController.xib in Resources */,
 				FA79654B17D940F2005A2DB6 /* OK.png in Resources */,
 				FA79654D17D940FA005A2DB6 /* cancel.png in Resources */,
@@ -589,6 +593,7 @@
 				FA269C9317DBB2B4007AE540 /* red3DButton.png in Resources */,
 				FA269C9617DBB3C2007AE540 /* fuzzyGreenButton.png in Resources */,
 				FA269C9717DBB3C2007AE540 /* fuzzyRedButton.png in Resources */,
+				FAE7CE2617F3E1A00019E970 /* brainButton.png in Resources */,
 				FAE697F717EC061A00D2630E /* highlightedListButton.png in Resources */,
 				FA269C9917DBB509007AE540 /* fuzzyBlueButton.png in Resources */,
 				FA269C9C17DBBA3B007AE540 /* fuzzyGreenButtonNoGlow.png in Resources */,
@@ -604,7 +609,6 @@
 				FA3DED7817E4462A00D7FA87 /* homex.png in Resources */,
 				FA3DED7B17E4473E00D7FA87 /* diary.png in Resources */,
 				FA63096E17F3640300AD02E6 /* smiley0.png in Resources */,
-				FAE697FD17EC061A00D2630E /* heartButton.png in Resources */,
 				FA3DED7C17E4473E00D7FA87 /* diary@2x.png in Resources */,
 				FA3DED7F17E4475E00D7FA87 /* options.png in Resources */,
 				FA3DED8017E4475E00D7FA87 /* options@2x.png in Resources */,

@@ -11,6 +11,7 @@
 #import "MetasomeEvent.h"
 #import "EventDetailViewController.h"
 #import "NewEventViewController.h"
+#import "TextFormatter.h"
 
 @implementation EventViewController
 @synthesize emptyListLabel;
@@ -19,7 +20,7 @@
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        [[self navigationItem] setTitle:@"Diary"];
+        //[[self navigationItem] setTitle:@"Diary"];
         
         UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewItem)];
         
@@ -33,6 +34,10 @@
         emptyListLabel.textAlignment = NSTextAlignmentCenter;
         emptyListLabel.font = [UIFont fontWithName:@"Avenir" size:22.0];
         emptyListLabel.adjustsFontSizeToFitWidth = YES;
+        
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        [TextFormatter formatTitleLabel:titleLabel withTitle:@"Diary"];
+        [[self navigationItem] setTitleView:titleLabel];
         
     }
     return self;

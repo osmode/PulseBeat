@@ -11,7 +11,7 @@
 #import "MetasomeEvent.h"
 #import "DatePickerViewController.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "TextFormatter.h"
 
 @implementation NewEventViewController
 
@@ -22,22 +22,18 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = @"New Event";
+        //self.title = @"New Event";
         [self setEventSelected:nil];
         
         UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveEvent)];
         
         [[self navigationItem] setRightBarButtonItem:saveButton];
-        //hintText = @"Log events like changes in medication, lifestyle changes, or recent illnesses.\nFor example:\nWhat makes it better? Worse?\nDescribe your complaint.\nWhere is your complaint? Does it move?\nHow bad is it on a 0 to 10 scale?\nAny other changes in your health?\nWhen did it start? What brings it on?\nWhat do you think it is?\n";
         hintText = @"";
         
-        //Create notifications to move allow movement of view up and down while editing TextView
-        offset = 150;
-        
-        //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(enterTextView:) name:UITextViewTextDidBeginEditingNotification object:nil];
-        
-        //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(exitTextView:) name:UITextViewTextDidEndEditingNotification object:nil];
-        
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        [TextFormatter formatTitleLabel:titleLabel withTitle:@"New Diary Entry"];
+        [[self navigationItem] setTitleView:titleLabel];
+
     }
     return self;
 }
@@ -45,27 +41,6 @@
 -(void)enterTextView:(NSNotification *)note
 {
     
-    // If no text has been entered yet, clear the TextView
-    /*
-    if ( [[[self descriptionTextView] text] isEqualToString:hintText] ) {
-        [[self descriptionTextView] setText:@""];
-        self.descriptionTextView.textColor = [UIColor blackColor];
-    }
-    
-    self.originalPoint = self.view.center;
-    [self setToPoint:CGPointMake(self.originalPoint.x, self.originalPoint.y - offset)];
-    
-    CABasicAnimation *up = [CABasicAnimation animationWithKeyPath:@"position"];
-    CAMediaTimingFunction *tf = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    
-    [up setFromValue:[NSValue valueWithCGPoint:self.originalPoint]];
-    [up setToValue:[NSValue valueWithCGPoint:self.toPoint]];
-    [up setDuration:0.25];
-    [up setDelegate:self];
-    [up setTimingFunction:tf];
-    
-    [[[self view] layer] addAnimation:up forKey:@"moveUp"];
-    */
     
 }
 

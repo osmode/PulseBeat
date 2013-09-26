@@ -12,6 +12,7 @@
 #import "MetasomeDataPointStore.h"
 #import "MetasomeDataPoint.h"
 #import "NotificationsDetailViewController.h"
+#import "TextFormatter.h"
 
 @implementation OptionsViewController
 @synthesize selectedActionBlock;
@@ -20,6 +21,10 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        [TextFormatter formatTitleLabel:titleLabel withTitle:@"Options"];
+        [[self navigationItem] setTitleView:titleLabel];
         
     }
     return self;
@@ -34,8 +39,7 @@
     // Register this NIB which contains the cell
     [tableView  registerNib:nibSwitch forCellReuseIdentifier:@"OptionsSwitchCell"];
     [tableView registerNib:nibNormal forCellReuseIdentifier:@"OptionsNormalCell"];
-     [[self navigationItem] setTitle:@"Options"];
-    
+
 
 }
 

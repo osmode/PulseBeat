@@ -95,7 +95,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </timeZone>
                 </datePicker>
             </subviews>
-            <color key="backgroundColor" red="0.90907353940000002" green="0.90907353940000002" blue="0.90907353940000002" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="71" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="39" id="1Ty-Yw-bDW"/>
                 <constraint firstItem="71" firstAttribute="top" secondItem="68" secondAttribute="top" id="AxT-1t-VJf"/>

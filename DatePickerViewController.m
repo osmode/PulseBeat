@@ -7,6 +7,7 @@
 //
 
 #import "DatePickerViewController.h"
+#import "TextFormatter.h"
 
 @interface DatePickerViewController ()
 
@@ -40,22 +41,12 @@
     // If an event (and corresponding date) already exist, initialize the UIDatePicker
     if ( [[self parentDateController] eventSelected] ) {
         [[self datePicker] setDate:[[[self parentDateController] eventSelected] date]];
+        
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        [TextFormatter formatTitleLabel:titleLabel withTitle:@"Select New Date"];
+        [[self navigationItem] setTitleView:titleLabel];
+        
     }
-    
-    /*
-    UIImage *buttonImage = [UIImage imageNamed:@"cancel.png"];
-    UIButton *button = [UIButton buttonWithTyp
-     e:UIButtonTypeCustom];
-    [button setImage:buttonImage forState:UIControlStateNormal];
-    [button setTitle:@"blah" forState:UIControlStateNormal];
-    button.frame = CGRectMake(0, 0, 60, 20);
-    [button addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem *customBarItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-    [customBarItem setTitle:@"TITLE!"];
-    self.navigationItem.leftBarButtonItem = customBarItem;
-     */
-    
     
 }
 -(void)goBack
@@ -100,7 +91,7 @@
     
     [[self navigationItem] setRightBarButtonItem:saveButton];
     [[self navigationItem] setLeftBarButtonItem:cancelButon];
-    [[self navigationItem] setTitle:@"Select new date"];
+    
 }
 
 

@@ -58,8 +58,19 @@
 
     return self;
 }
+
 -(void)addPointWithName:(NSString *)pName value:(float)pValue date:(float)pDate
 {
+    // derive the hour of the day to insert into "hour" column
+    NSDate *tempDate = [NSDate dateWithTimeIntervalSince1970:pDate];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:tempDate];
+    
+    int newHour = [components hour];
+    NSLog(@"hour: %i", newHour);
+    
+    
+    // set the order
     double order;
     if ([allPoints count] == 0) {
         order = 1.0;
@@ -68,14 +79,19 @@
         
     }
     
+    // create point object and add to 'allPoints' array
     MetasomeDataPoint *newPoint = [NSEntityDescription insertNewObjectForEntityForName:@"DataPoints" inManagedObjectContext:context];
     
     [newPoint setParameterName:pName];
     [newPoint setParameterValue:pValue];
     [newPoint setPDate:pDate];
     [newPoint setOrderingValue:order];
+    [newPoint setHour:newHour];
     
+    NSLog(@"saving with hour: %i", [newPoint hour]);
     [allPoints addObject:newPoint];
+    
+    
 
 }
 -(void)removePoint:(MetasomeDataPoint *)p
@@ -143,7 +159,6 @@
     NSSortDescriptor *sd = [NSSortDescriptor sortDescriptorWithKey:@"pDate" ascending:YES];
     
     NSDate *def = [[NSDate alloc] initWithTimeIntervalSince1970:[fromDate timeIntervalSince1970]];
-    NSLog(@"since: %@", def);
     
     NSPredicate *p = [NSPredicate predicateWithFormat:@"(parameterName like %@) AND (pDate > %f)", pn, fromDate.timeIntervalSince1970];
     [request setPredicate:p];
@@ -152,9 +167,6 @@
     
     NSError *error;
     NSArray *result = [context executeFetchRequest:request error:&error];
-    NSLog(@"Number of points pulled: %i", [result count]);
-    
-    //[[result objectAtIndex:0] parameterName];
     
     if (!result) {
         [NSException raise:@"Fetch failed" format:@"Reason: %@", [error localizedDescription]];
@@ -163,6 +175,7 @@
     return result;
     
 }
+
 -(void)loadAllPoints
 {
     if (!allPoints) {

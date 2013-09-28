@@ -46,6 +46,9 @@
     //[[self parameterCategory] setHidden:YES];
     [[self parameterInput] setHidden:YES];
     
+    inputButton.layer.cornerRadius = 5.0;
+    categoryButton.layer.cornerRadius = 5.0;
+    
 }
 -(IBAction)changeCategory:(id)sender
 {

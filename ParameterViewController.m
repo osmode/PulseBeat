@@ -183,6 +183,9 @@
     // Check if it's time to reset the checkmark each time the cell loads
     [p resetCheckmark];
     
+    // highlight color when cell is selected
+    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+    
     if ([p checkedStatus] == YES) {
         [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
     }

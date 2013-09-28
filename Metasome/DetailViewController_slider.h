@@ -14,10 +14,11 @@
         
     __weak IBOutlet UIButton *saveButton;
     __weak IBOutlet UISlider *valueSlider;
-    __weak IBOutlet UIButton *graphButton;
     __weak IBOutlet UIDatePicker *datePicker;
+    __weak IBOutlet UIButton *graphButton;
 
     UIImage *saveButtonPreChecked, *saveButtonChecked;
+    UIColor *initialColor;
     
 }
 

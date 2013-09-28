@@ -24,6 +24,8 @@ typedef  enum {
     __weak IBOutlet UIButton *diabetesButton;
     __weak IBOutlet UIButton *customButton;
     
+    UIColor *normalColor;
+    
 }
 
 // create pointer to pvc to change title before it loads

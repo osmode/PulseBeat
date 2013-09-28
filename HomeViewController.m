@@ -27,15 +27,59 @@
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [TextFormatter formatTitleLabel:titleLabel withTitle:@"PulseBeat"];
         [[self navigationItem] setTitleView:titleLabel];
+        
+
+        
     }
     return self;
+}
+
+-(IBAction)buttonHighlight:(id)sender
+{
+    UIColor *highlightColor = [UIColor greenColor];
+  
+    UIButton *button = (UIButton *)sender;
+    button.backgroundColor = highlightColor;
+    
+}
+
+-(IBAction)buttonNormal:(id)sender
+{
+    UIButton *button = (UIButton *)sender;
+    button.backgroundColor = normalColor;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    heartButton.layer.cornerRadius = 10.0;
+    lungButton.layer.cornerRadius = 10.0;
+    diabetesButton.layer.cornerRadius = 10.0;
+    customButton.layer.cornerRadius = 10.0;
 
-    // Do any additional setup after loading the view from its nib.
+    normalColor = heartButton.backgroundColor;
+    
+    // change background colors when buttons are clicked
+    [heartButton addTarget:self action:@selector(buttonHighlight:) forControlEvents:UIControlEventTouchDown];
+    [heartButton addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchUpOutside];
+    
+    [lungButton addTarget:self action:@selector(buttonHighlight:) forControlEvents:UIControlEventTouchDown];
+    [lungButton addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchUpOutside];
+    
+    [diabetesButton addTarget:self action:@selector(buttonHighlight:) forControlEvents:UIControlEventTouchDown];
+    [diabetesButton addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchUpOutside];
+    
+    [customButton addTarget:self action:@selector(buttonHighlight:) forControlEvents:UIControlEventTouchDown];
+    [customButton addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchUpOutside];
+
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    heartButton.backgroundColor = normalColor;
+    lungButton.backgroundColor = normalColor;
+    diabetesButton.backgroundColor = normalColor;
+    customButton.backgroundColor = normalColor;
 }
 
 - (void)didReceiveMemoryWarning

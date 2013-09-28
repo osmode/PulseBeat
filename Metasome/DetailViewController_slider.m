@@ -28,9 +28,9 @@ const int NUM_SLIDER_SECTIONS = 5;
     
     //[[self navigationItem] setRightBarButtonItem:saveButton];
     
-    saveButtonChecked = [UIImage imageNamed:@"checkedButton.png"];
-    saveButtonPreChecked = [UIImage imageNamed:@"saveButton.png"];
-    [smileyImage setImage:[UIImage imageNamed:@"smiley2.png"]];
+    //saveButtonChecked = [UIImage imageNamed:@"checkedButton.png"];
+    //saveButtonPreChecked = [UIImage imageNamed:@"saveButton.png"];
+    //[smileyImage setImage:[UIImage imageNamed:@"smiley2.png"]];
     
     
     return self;
@@ -40,10 +40,11 @@ const int NUM_SLIDER_SECTIONS = 5;
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    //UIColor *clr = [UIColor colorWithRed:0.875 green:0.88 blue:0.91 alpha:1];
-    
-    //[[self view] setBackgroundColor:clr];
     [valueSlider addTarget:self action:@selector(sliderValueChanged) forControlEvents:UIControlEventValueChanged];
+    
+    initialColor = [graphButton backgroundColor];
+    saveButton.layer.cornerRadius = 10.0;
+    graphButton.layer.cornerRadius = 10.0;
 
 }
 
@@ -102,6 +103,13 @@ const int NUM_SLIDER_SECTIONS = 5;
         [a show];
     }
     
+    // make sure entered date is not past today's date
+    if ( [[datePicker date] timeIntervalSince1970] > [[NSDate date] timeIntervalSince1970] ) {
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Future dates are not allowed!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        return;
+    }
+    
     [self changeToSaved:YES];
     //[[self navigationController]popViewControllerAnimated:YES];
  
@@ -128,6 +136,10 @@ const int NUM_SLIDER_SECTIONS = 5;
     // divide slider into pieces
     int position = (int)([valueSlider value]*100) / (100/NUM_SLIDER_SECTIONS);
     
+    if ([parameter sadOnRightSide])
+        NSLog(@"sadOnRightSide");
+    else
+        NSLog(@"sadOnLeftSide");
     
     
     switch (position) {
@@ -169,12 +181,10 @@ const int NUM_SLIDER_SECTIONS = 5;
 -(void)changeToSaved:(BOOL)savedState
 {
     if (savedState == YES ) {
-        //[[self saveButton] setBackgroundImage:[UIImage imageNamed:@"fuzzyGreenButtonNoGlow.png"] forState:UIControlStateNormal];
-        [saveButton setBackgroundImage:saveButtonChecked forState:UIControlStateNormal];
-        [saveButton setTitle:@"" forState:UIControlStateNormal];
+        [saveButton setBackgroundColor:[UIColor colorWithRed:0.0 green:1.0 blue:0.0 alpha:0.7]];
+        [saveButton setTitle:@"Saved!" forState:UIControlStateNormal];
     } else {
-        //[[self saveButton] setBackgroundImage:[UIImage imageNamed:@"fuzzyRedButtonNoGlow"] forState:UIControlStateNormal];
-        [saveButton setBackgroundImage:saveButtonPreChecked forState:UIControlStateNormal];
+        [saveButton setBackgroundColor:initialColor];
         [saveButton setTitle:@"Save" forState:UIControlStateNormal];
     }
     

@@ -83,7 +83,6 @@ float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
 
 -(void)showMenuAtPoint:(NSValue *)point
 {
-    NSLog(@"number of coordinates: %i", [dataPointCoordinates count]);
     
     CGPoint touched = [point CGPointValue];
     
@@ -147,7 +146,6 @@ float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
     [menu setMenuVisible:YES animated:YES];
     
     [self setNeedsDisplay];
-    NSLog(@"Touch at %@, %f", dateString, yValue);
 }
 
 -(float)distanceBetweenPoint:(CGPoint)pointOne andPoint:(CGPoint)pointTwo
@@ -265,12 +263,13 @@ float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
     
     for (MetasomeDataPoint *p in array) {
         
+        NSLog(@"hour in graphPoints: %i", [p hour]);
             red = [p red];
             green = [p green];
             blue = [p blue];
         
             CGContextSetRGBFillColor([self ctx], red, green, blue, 0.7);
-            
+        
             horizontalPos = ( [p pDate]  - [self minValueOnHorizontalAxis]) * [self horizontalScaleFactor] + [self originHorizontalOffset];
             verticalPos = ([p parameterValue] - [self minValueOnVerticalAxis]) * [self verticalScaleFactor] ;
         
@@ -405,9 +404,9 @@ float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
         [self setMinValueOnVerticalAxis:0];
     
     // Add slack to the vertical and horizontal axes
-   // maxValueOnVerticalAxis += 0.2*(maxValueOnVerticalAxis - minValueOnVerticalAxis);
+    maxValueOnVerticalAxis += 0.2*(maxValueOnVerticalAxis - minValueOnVerticalAxis);
     //maxValueOnHorizontalAxis += 0.2*(maxValueOnHorizontalAxis - minValueOnHorizontalAxis);
-    //minValueOnVerticalAxis -= 0.3*(maxValueOnVerticalAxis - minValueOnVerticalAxis);
+    minValueOnVerticalAxis -= 0.3*(maxValueOnVerticalAxis - minValueOnVerticalAxis);
     
     if (minValueOnVerticalAxis < 0)
         minValueOnVerticalAxis = 0;

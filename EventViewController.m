@@ -52,8 +52,8 @@
     [super viewDidLoad];
     [[self view] addSubview:emptyListLabel];
     
-    UIColor *clr = [UIColor colorWithRed:0.875 green:0.88 blue:0.91 alpha:1.0];
-    [[self view] setBackgroundColor:clr];
+    //UIColor *clr = [UIColor colorWithRed:0.875 green:0.88 blue:0.91 alpha:1.0];
+    //[[self view] setBackgroundColor:clr];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

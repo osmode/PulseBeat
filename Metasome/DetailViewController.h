@@ -16,6 +16,7 @@
     __weak IBOutlet UIDatePicker *datePicker;
     
     UIImage *saveButtonPreChecked, *saveButtonChecked;
+    UIColor *initialColor;
     
 }
 

@@ -27,15 +27,7 @@
 {
     [super awakeFromInsert];
     
-    NSDate *tempDate = [NSDate dateWithTimeIntervalSince1970:[self pDate]];
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:tempDate];
-    
-    NSInteger newHour = [components hour];
-    [self setHour:newHour];
-    
 }
-
 
 -(id)copyWithZone:(NSZone *)zone
 {
@@ -44,6 +36,7 @@
     
     return dp;
 }
+
 -(float)red
 {
     if ([self hour] >=4 && [self hour] <9)
@@ -51,6 +44,7 @@
     else
         return 0.0;
 }
+
 -(float)green
 {
     if ([self hour] >=9 && [self hour] < 19)
@@ -58,6 +52,7 @@
     else
         return 0.0;
 }
+
 -(float)blue
 {
     if ([self hour] >=19 || [self hour] <4)

@@ -22,16 +22,7 @@
 -(id)init
 {
     self = [super init];
-    //UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(savePoint:)];
-    
-    //[[self navigationItem] setRightBarButtonItem:button];
 
-    //saveButtonPreChecked = [[UIImage alloc] initWithContentsOfFile:@"fuzzyRedButtonNoGlow.png"];
-    //saveButtonPreChecked = [[UIImage alloc] initWithContentsOfFile:@"fuzzyGreenButtonNoGlow.png"];
-    
-    saveButtonChecked = [UIImage imageNamed:@"checkedButton.png"];
-    saveButtonPreChecked = [UIImage imageNamed:@"saveButton.png"];
-    
     [valueField setDelegate:self];
     return self;
     
@@ -45,11 +36,17 @@
         valueField.keyboardType = UIKeyboardTypeNumberPad;
     
     valueField.delegate = self;
-    
-    UIColor *clr = [UIColor colorWithRed:0.875 green:0.88 blue:0.91 alpha:1];
-    [[self view] setBackgroundColor:clr];
   
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow) name:UIKeyboardWillShowNotification object:nil];
+    
+    // add units if this is the weight parameter
+    if ([[[self parameter] parameterName] isEqualToString:@"Weight"]) {
+        valueField.placeholder = @"Enter lbs";
+    }
+    
+    initialColor = [[self saveButton] backgroundColor];
+    _saveButton.layer.cornerRadius = 10.0;
+    _graphButton.layer.cornerRadius = 10.0;
     
 }
 
@@ -95,6 +92,13 @@
     // make sure entered value is not greater than parameter's max allowed value before saving
     if ( [parameter isWithinMaxValue:[[valueField text] floatValue]] == NO) {
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Entered value is too large!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [av show];
+        return;
+    }
+    
+    // make sure entered date is not past today's date
+    if ( [[datePicker date] timeIntervalSince1970] > [[NSDate date] timeIntervalSince1970] ) {
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Future dates are not allowed!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [av show];
         return;
     }
@@ -154,12 +158,10 @@
 -(void)changeToSaved:(BOOL)savedState
 {
     if (savedState == YES ) {
-        //[[self saveButton] setBackgroundImage:[UIImage imageNamed:@"fuzzyGreenButtonNoGlow.png"] forState:UIControlStateNormal];
-        [[self saveButton] setBackgroundImage:saveButtonChecked forState:UIControlStateNormal];
-        [[self saveButton] setTitle:@"" forState:UIControlStateNormal];
+        [[self saveButton] setBackgroundColor:[UIColor colorWithRed:0.0 green:1.0 blue:0.0 alpha:0.7]];
+        [[self saveButton] setTitle:@"Saved!" forState:UIControlStateNormal];
     } else {
-        //[[self saveButton] setBackgroundImage:[UIImage imageNamed:@"fuzzyRedButtonNoGlow"] forState:UIControlStateNormal];
-        [[self saveButton] setBackgroundImage:saveButtonPreChecked forState:UIControlStateNormal];
+        [[self saveButton] setBackgroundColor:initialColor];
         [[self saveButton] setTitle:@"Save" forState:UIControlStateNormal];
     }
     

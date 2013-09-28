@@ -23,7 +23,7 @@
     if (self) {
         
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        [TextFormatter formatTitleLabel:titleLabel withTitle:@"Options"];
+        [TextFormatter formatTitleLabel:titleLabel withTitle:@"Settings"];
         [[self navigationItem] setTitleView:titleLabel];
         
     }
@@ -100,7 +100,7 @@
     
     switch (indexPath.row) {
         case 0:  // Notifications cell
-            [[cell textLabel] setText:@"Notifications"];
+            [[cell textLabel] setText:@"Reminders"];
             break;
         case 1:  // Reset default parameters
             [[cell textLabel] setText:@"Reset default lists"];

@@ -23,9 +23,6 @@
     // Handle launching from notification
     UILocalNotification *locationNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
     if (locationNotification) {
-        // Set icon badge number to zero
-        NSLog(@"Resetting badge number");
-
         application.applicationIconBadgeNumber = 0;
     }
     
@@ -114,11 +111,11 @@
 }
 -(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
-    NSLog(@"didReceiveLocalNotification");
+    //NSLog(@"didReceiveLocalNotification");
     
     UIApplicationState state = [application applicationState];
     if (state == UIApplicationStateActive || state == UIApplicationStateBackground || state == UIApplicationStateInactive) {
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Reminder" message:@"Remember to log your PulseBeat info!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Cancel", nil];
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Reminder" message:@"Remember to log your PulseBeat info!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         
         [av show];
         application.applicationIconBadgeNumber = 0;

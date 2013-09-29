@@ -18,23 +18,20 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Daily reminder" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="131" translatesAutoresizingMaskIntoConstraints="NO" id="4">
-                    <rect key="frame" x="33" y="118" width="131" height="39"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="Daily reminder" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="168" translatesAutoresizingMaskIntoConstraints="NO" id="4">
+                    <rect key="frame" x="33" y="104" width="168" height="39"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="24"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <switch opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="16">
-                    <rect key="frame" x="228" y="122" width="51" height="31"/>
+                <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="16">
+                    <rect key="frame" x="238" y="108" width="51" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </switch>
                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="25">
-                    <rect key="frame" x="0.0" y="309" width="320" height="216"/>
+                    <rect key="frame" x="0.0" y="251" width="320" height="162"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="216" id="29"/>
-                    </constraints>
                     <date key="date" timeIntervalSinceReferenceDate="400971624.36949301">
                         <!--2013-09-15 21:00:24 +0000-->
                     </date>
@@ -60,21 +57,30 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
 </data>
                     </timeZone>
                 </datePicker>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remind me each day at" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffa-9u-DS3">
+                    <rect key="frame" x="33" y="189" width="267" height="41"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="41" id="arT-Xr-vWu"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="24"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="25" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="27"/>
-                <constraint firstItem="25" firstAttribute="trailing" secondItem="1" secondAttribute="trailing" id="28"/>
-                <constraint firstItem="25" firstAttribute="bottom" secondItem="1" secondAttribute="bottom" constant="-43" id="30"/>
-                <constraint firstItem="4" firstAttribute="leading" secondItem="16" secondAttribute="leading" constant="-195" id="2Ic-eP-lFL"/>
-                <constraint firstAttribute="bottom" secondItem="25" secondAttribute="bottom" constant="43" id="7l2-bt-vvK"/>
-                <constraint firstItem="16" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="228" id="NNy-oM-ES4"/>
-                <constraint firstAttribute="bottom" secondItem="25" secondAttribute="bottom" constant="43" id="VZL-nd-Bww"/>
-                <constraint firstItem="4" firstAttribute="top" relation="greaterThanOrEqual" secondItem="1" secondAttribute="top" constant="20" id="ede-6U-E0g"/>
-                <constraint firstItem="16" firstAttribute="top" secondItem="1" secondAttribute="top" constant="85" id="fiu-ar-fhc"/>
-                <constraint firstItem="16" firstAttribute="top" secondItem="4" secondAttribute="bottom" constant="-35" id="fjJ-ie-OCk"/>
-                <constraint firstItem="16" firstAttribute="top" secondItem="4" secondAttribute="bottom" constant="-35" id="kZe-uj-6EI"/>
-                <constraint firstItem="4" firstAttribute="top" secondItem="1" secondAttribute="top" constant="81" id="kdc-9X-Agd"/>
+                <constraint firstItem="ffa-9u-DS3" firstAttribute="top" secondItem="4" secondAttribute="bottom" constant="46" id="0nZ-kN-j0i"/>
+                <constraint firstItem="4" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="33" id="TIy-g1-z5N"/>
+                <constraint firstItem="25" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="UqN-WW-vZe"/>
+                <constraint firstItem="4" firstAttribute="leading" secondItem="ffa-9u-DS3" secondAttribute="leading" id="Ye2-ek-SfS"/>
+                <constraint firstAttribute="trailing" secondItem="ffa-9u-DS3" secondAttribute="trailing" constant="20" symbolic="YES" id="YoZ-6Q-HTL"/>
+                <constraint firstItem="4" firstAttribute="top" secondItem="1" secondAttribute="top" constant="104" id="ZQZ-Q0-hqT"/>
+                <constraint firstItem="4" firstAttribute="centerY" secondItem="16" secondAttribute="centerY" id="ZWu-qJ-50p"/>
+                <constraint firstItem="ffa-9u-DS3" firstAttribute="top" secondItem="16" secondAttribute="bottom" constant="50" id="nlF-O9-7aH"/>
+                <constraint firstItem="25" firstAttribute="top" secondItem="ffa-9u-DS3" secondAttribute="bottom" constant="21" id="s8h-0S-xxc"/>
+                <constraint firstAttribute="trailing" secondItem="25" secondAttribute="trailing" id="vho-fu-fBT"/>
+                <constraint firstItem="16" firstAttribute="leading" secondItem="4" secondAttribute="trailing" constant="37" id="xua-7J-deE"/>
+                <constraint firstAttribute="trailing" secondItem="16" secondAttribute="trailing" constant="33" id="znH-Fw-Ctn"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

@@ -14,6 +14,7 @@
 #import "NotificationsDetailViewController.h"
 #import "TextFormatter.h"
 
+
 @implementation OptionsViewController
 @synthesize selectedActionBlock;
 
@@ -25,6 +26,7 @@
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [TextFormatter formatTitleLabel:titleLabel withTitle:@"Settings"];
         [[self navigationItem] setTitleView:titleLabel];
+        MetasomeNotificationPrefKey = @"MetasomeNotificationPrefKey";
         
     }
     return self;
@@ -92,6 +94,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    if ( [[NSUserDefaults standardUserDefaults] boolForKey:@"MetasomeNotificationPrefKey"] )
+        NSLog(@"ON");
+    else
+        NSLog(@"OFF");
+    
+        
     static NSString *CellIdentifier = @"UITableViewCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -101,7 +110,16 @@
     switch (indexPath.row) {
         case 0:  // Notifications cell
             [[cell textLabel] setText:@"Reminders"];
+            if ( [[NSUserDefaults standardUserDefaults] boolForKey:MetasomeNotificationPrefKey] ) {
+                [[cell detailTextLabel] setText:@"Reminders on"];
+                [[cell detailTextLabel] setTextColor:[UIColor redColor]];
+            } else {
+                [[cell detailTextLabel] setText:@"Reminders off"];
+                [[cell detailTextLabel] setTextColor:[UIColor blueColor]];
+                
+            }
             break;
+            
         case 1:  // Reset default parameters
             [[cell textLabel] setText:@"Reset default lists"];
             break;
@@ -192,6 +210,12 @@
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Warning" message:prompt delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Proceed", nil];
     [av setDelegate:self];
     [av show];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
 

@@ -98,7 +98,6 @@
         cell.detailTextLabel.textColor = [UIColor grayColor];
     }
     
-    
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     //[[cell imageView] setImage
     

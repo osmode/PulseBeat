@@ -13,7 +13,8 @@
 {
 
     IBOutlet UITableView *tableView;
-    
+    NSString *MetasomeNotificationPrefKey;
+
 }
 -(void)resetParameters;
 -(void)promptWithString:(NSString *)prompt;

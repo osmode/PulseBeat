@@ -17,6 +17,9 @@
 @dynamic hour;
 @dynamic orderingValue;
 @dynamic parameterType;
+@dynamic red, green, blue;
+@dynamic options;
+
 
 -(void)awakeFromFetch
 {
@@ -37,27 +40,5 @@
     return dp;
 }
 
--(float)red
-{
-    if ([self hour] >=4 && [self hour] <9)
-        return  1.0;
-    else
-        return 0.0;
-}
 
--(float)green
-{
-    if ([self hour] >=9 && [self hour] < 19)
-        return 1.0;
-    else
-        return 0.0;
-}
-
--(float)blue
-{
-    if ([self hour] >=19 || [self hour] <4)
-        return 1.0;
-    else
-        return 0.0;
-}
 @end

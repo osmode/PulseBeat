@@ -83,7 +83,6 @@ float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
 
 -(void)showMenuAtPoint:(NSValue *)point
 {
-    
     CGPoint touched = [point CGPointValue];
     
     CGPoint currentPoint;
@@ -97,6 +96,8 @@ float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
     for (NSValue *val in dataPointCoordinates) {
         
         currentPoint = [val CGPointValue];
+        
+        NSLog(@"x, y = %f, %f", currentPoint.x, currentPoint.y);
         
         if ( [self distanceBetweenPoint:currentPoint andPoint:touched] < smallestDistance) {
             
@@ -218,7 +219,9 @@ float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
     [self setTransform:CGAffineTransformConcat(CGContextGetTextMatrix([self ctx]), CGAffineTransformMake(1.0, 0.0, 0.0, -1.0, 0.0, 0.0))];
     
     [self drawAxes];
+    
     [self graphPoints:[self pointsToGraph]];
+    
     
     CGPoint here = CGPointMake([self originHorizontalOffset] + [self horizontalAxisLength] + 40, [self topBuffer]);
     
@@ -237,11 +240,12 @@ float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
     [legend setTopBuffer:topBuffer];
     [legend setVerticalAxisLength:verticalAxisLength];
     
-    [legend connectTheDots:[self pointsToGraph]];
+    if ( [[[[MetasomeDataPointStore sharedStore] parameterToGraph] parameterName] isEqualToString:@"Blood pressure"] )
+        [legend connectTheBloodPressureDots:[self pointsToGraph]];
+    else
+        [legend connectTheDots:[self pointsToGraph]];
     
-    //[self drawEventLabels];
     
-    //legend = nil;
     parentGraphViewController = nil;
 }
 
@@ -263,7 +267,6 @@ float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
     
     for (MetasomeDataPoint *p in array) {
         
-        NSLog(@"hour in graphPoints: %i", [p hour]);
             red = [p red];
             green = [p green];
             blue = [p blue];
@@ -286,6 +289,8 @@ float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
     }
     
 }
+
+
 
 -(void)generateAxisLabels
 {

@@ -59,7 +59,7 @@
     return self;
 }
 
--(void)addPointWithName:(NSString *)pName value:(float)pValue date:(float)pDate
+-(void)addPointWithName:(NSString *)pName value:(float)pValue date:(float)pDate options:(int)optionsValue
 {
     // derive the hour of the day to insert into "hour" column
     NSDate *tempDate = [NSDate dateWithTimeIntervalSince1970:pDate];
@@ -67,8 +67,9 @@
     NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:tempDate];
     
     int newHour = [components hour];
-    NSLog(@"hour: %i", newHour);
-    
+    float red = 0.0;
+    float green = 0.0;
+    float blue = 0.0;
     
     // set the order
     double order;
@@ -87,8 +88,19 @@
     [newPoint setPDate:pDate];
     [newPoint setOrderingValue:order];
     [newPoint setHour:newHour];
+    [newPoint setOptions:optionsValue];
     
-    NSLog(@"saving with hour: %i", [newPoint hour]);
+    // set the points' RGB values
+    if ( newHour>= 4 && newHour < 9 )
+        red = 1.0;
+    else if ( newHour >=9 && newHour < 19 )
+        green = 1.0;
+    else
+        blue = 1.0;
+    
+    [newPoint setRed:red];
+    [newPoint setGreen:green];
+    [newPoint setBlue:blue];
     [allPoints addObject:newPoint];
     
     
@@ -130,6 +142,7 @@
     
     [p setOrderingValue:newOrderValue];
 }
+
 -(NSString *)itemArchivePath
 {
     NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -139,6 +152,7 @@
     
     return [documentDirectory stringByAppendingPathComponent:@"datapoints.data"];
 }
+
 -(BOOL)saveChanges
 {
     NSError *err = nil;
@@ -175,6 +189,7 @@
     return result;
     
 }
+
 
 -(void)loadAllPoints
 {

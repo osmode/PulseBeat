@@ -48,6 +48,7 @@ typedef enum {
 @property (nonatomic) float maxValue;
 @property (nonatomic) BOOL sadOnRightSide;
 
+
 -(id)initWithParameterName:(NSString *)name inputType:(int)type category:(int)newCategory maximumValue:(float)value;
 -(void)resetCheckmark;
 -(BOOL)isWithinMaxValue:(float)value;

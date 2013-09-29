@@ -45,14 +45,39 @@ const int NUM_SLIDER_SECTIONS = 5;
     initialColor = [graphButton backgroundColor];
     saveButton.layer.cornerRadius = 10.0;
     graphButton.layer.cornerRadius = 10.0;
+    
+    // change background colors when buttons are clicked
+    
+    [graphButton addTarget:self action:@selector(buttonHighlight:) forControlEvents:UIControlEventTouchDown];
+    [graphButton addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchUpOutside];
+    
+    [saveButton addTarget:self action:@selector(buttonHighlight:) forControlEvents:UIControlEventTouchDown];
+    [saveButton addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchUpOutside];
 
 }
 
+-(IBAction)buttonHighlight:(id)sender
+{
+    UIColor *highlightColor = [UIColor greenColor];
+    
+    UIButton *button = (UIButton *)sender;
+    button.backgroundColor = highlightColor;
+    
+}
+
+-(IBAction)buttonNormal:(id)sender
+{
+    UIButton *button = (UIButton *)sender;
+    button.backgroundColor = initialColor;
+}
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self changeToSaved:NO];
+    
+    graphButton.backgroundColor = initialColor;
+    saveButton.backgroundColor = initialColor;
   
 }
 -(void)setParameter:(MetasomeParameter *)p
@@ -87,7 +112,7 @@ const int NUM_SLIDER_SECTIONS = 5;
     //actual write to disk occurs on
     //applicationDidEnterBackground
     
-    [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:[valueSlider value]*100 date:datePicker.date.timeIntervalSince1970];
+    [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:[valueSlider value]*100 date:datePicker.date.timeIntervalSince1970 options:noOptions];
     
     BOOL result = [[MetasomeDataPointStore sharedStore] saveChanges];
     
@@ -183,6 +208,8 @@ const int NUM_SLIDER_SECTIONS = 5;
     if (savedState == YES ) {
         [saveButton setBackgroundColor:[UIColor colorWithRed:0.0 green:1.0 blue:0.0 alpha:0.7]];
         [saveButton setTitle:@"Saved!" forState:UIControlStateNormal];
+        [[self view] endEditing:YES];
+
     } else {
         [saveButton setBackgroundColor:initialColor];
         [saveButton setTitle:@"Save" forState:UIControlStateNormal];

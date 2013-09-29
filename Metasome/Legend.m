@@ -8,6 +8,7 @@
 
 #import "Legend.h"
 #import "MetasomeDataPoint.h"
+#import "MetasomeDataPointStore.h"
 
 @implementation Legend
 
@@ -131,6 +132,95 @@
 
         
     }
+}
+
+-(void)connectTheBloodPressureDots:(NSMutableArray *)allPoints
+{
+    
+    if ([allPoints count] <2)
+        return;
+    
+    NSMutableArray *systolicPointsArray = [[NSMutableArray alloc] init];
+    NSMutableArray *diastolicPointsArray = [[NSMutableArray alloc] init];
+    
+    // iterate through allPoints and populate systolicPointsArray and diastolicPointsArray
+    for (MetasomeDataPoint *dp in allPoints) {
+        
+        NSLog(@"options: %i", [dp options]);
+        
+        if ( [dp options] == systolicOptions ) {
+            [systolicPointsArray addObject:dp];
+        }
+        else if ( [dp options] == diastolicOptions ) {
+            [diastolicPointsArray addObject:dp];
+        }
+        
+    }
+    
+    int numPoints = [allPoints count];
+    int counter = 0;
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetLineWidth(context, 1.5);
+    CGContextSetLineCap(context, kCGLineCapRound);
+    CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 0.6);
+    CGPoint fromPoint = CGPointMake(0.0, 0.0);
+    CGPoint toPoint = CGPointMake(0.0, 0.0);
+    
+    // connect systolic points first
+    
+    while (counter < ( [systolicPointsArray count] -1) ) {
+        
+        MetasomeDataPoint *fromDataPoint = [systolicPointsArray objectAtIndex:counter];
+        MetasomeDataPoint *toDataPoint = [systolicPointsArray objectAtIndex:(counter + 1)];
+        
+        fromPoint.x = ( [fromDataPoint pDate]  - [self minValueOnHorizontalAxis]) * [self horizontalScaleFactor] + [self originHorizontalOffset];
+        fromPoint.y = ([fromDataPoint parameterValue] - [self minValueOnVerticalAxis]) * [self verticalScaleFactor] ;
+        
+        toPoint.x = ( [toDataPoint pDate]  - [self minValueOnHorizontalAxis]) * [self horizontalScaleFactor] + [self originHorizontalOffset];
+        toPoint.y = ([toDataPoint parameterValue] - [self minValueOnVerticalAxis]) * [self verticalScaleFactor] ;
+        
+        toPoint.y = [self scrollViewHeight] - toPoint.y - [self originVerticalOffset];
+        
+        fromPoint.y = [self scrollViewHeight] - fromPoint.y - [self originVerticalOffset];
+        
+        // Draw the lines
+        CGContextMoveToPoint(context, fromPoint.x, fromPoint.y);
+        CGContextAddLineToPoint(context, toPoint.x, toPoint.y);
+        CGContextStrokePath(context);
+        
+        counter += 1;
+        
+    }
+    
+    // connect diastolic points
+    counter = 0;
+    
+    while (counter < ( [diastolicPointsArray count] -1) ) {
+        
+        MetasomeDataPoint *fromDataPoint = [diastolicPointsArray objectAtIndex:counter];
+        MetasomeDataPoint *toDataPoint = [diastolicPointsArray objectAtIndex:(counter + 1)];
+        
+        fromPoint.x = ( [fromDataPoint pDate]  - [self minValueOnHorizontalAxis]) * [self horizontalScaleFactor] + [self originHorizontalOffset];
+        fromPoint.y = ([fromDataPoint parameterValue] - [self minValueOnVerticalAxis]) * [self verticalScaleFactor] ;
+        
+        toPoint.x = ( [toDataPoint pDate]  - [self minValueOnHorizontalAxis]) * [self horizontalScaleFactor] + [self originHorizontalOffset];
+        toPoint.y = ([toDataPoint parameterValue] - [self minValueOnVerticalAxis]) * [self verticalScaleFactor] ;
+        
+        toPoint.y = [self scrollViewHeight] - toPoint.y - [self originVerticalOffset];
+        
+        fromPoint.y = [self scrollViewHeight] - fromPoint.y - [self originVerticalOffset];
+        
+        // Draw the lines
+        CGContextMoveToPoint(context, fromPoint.x, fromPoint.y);
+        CGContextAddLineToPoint(context, toPoint.x, toPoint.y);
+        CGContextStrokePath(context);
+        
+        counter += 1;
+        
+    }
+    
+    
 }
 
 

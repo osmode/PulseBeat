@@ -18,6 +18,8 @@
 @property (nonatomic) int32_t hour;
 @property (nonatomic) double orderingValue;
 @property (nonatomic, strong) NSManagedObject *parameterType;
+@property (nonatomic) float red, green, blue;
+@property (nonatomic) int32_t options;
 
 -(float)red;
 -(float)green;

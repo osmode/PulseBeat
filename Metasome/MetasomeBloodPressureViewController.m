@@ -45,7 +45,30 @@
     initialColor = [graphButton backgroundColor];
     saveButton.layer.cornerRadius = 10.0;
     graphButton.layer.cornerRadius = 10.0;
+    
+    // change background colors when buttons are clicked
+    
+    [graphButton addTarget:self action:@selector(buttonHighlight:) forControlEvents:UIControlEventTouchDown];
+    [graphButton addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchUpOutside];
+    
+    [saveButton addTarget:self action:@selector(buttonHighlight:) forControlEvents:UIControlEventTouchDown];
+    [saveButton addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchUpOutside];
 
+}
+
+-(IBAction)buttonHighlight:(id)sender
+{
+    UIColor *highlightColor = [UIColor greenColor];
+    
+    UIButton *button = (UIButton *)sender;
+    button.backgroundColor = highlightColor;
+    
+}
+
+-(IBAction)buttonNormal:(id)sender
+{
+    UIButton *button = (UIButton *)sender;
+    button.backgroundColor = initialColor;
 }
 
 -(void)keyboardWillShow
@@ -80,16 +103,16 @@
         return;
     }
     
-    // make sure entered date is not past today's date
+    // make sure entered date is not past today's datex
     if ( [[datePicker date] timeIntervalSince1970] > [[NSDate date] timeIntervalSince1970] ) {
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Future dates are not allowed!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [av show];
         return;
     }
     
-    [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:systolicTextField.text.integerValue date:datePicker.date.timeIntervalSince1970];
+    [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:systolicTextField.text.integerValue date:datePicker.date.timeIntervalSince1970 options:systolicOptions];
     
-    [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:diastolicTextField.text.integerValue date:datePicker.date.timeIntervalSince1970];
+    [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:diastolicTextField.text.integerValue date:datePicker.date.timeIntervalSince1970 options:diastolicOptions];
     
     BOOL result = [[MetasomeDataPointStore sharedStore] saveChanges];
     
@@ -114,6 +137,10 @@
     [super viewWillAppear:animated];
     [self setIsSaved:NO];
     [self changeToSaved:NO];
+    
+    // reset background colors
+    graphButton.backgroundColor = initialColor;
+    saveButton.backgroundColor = initialColor;
 }
 
 -(void)graphParameter:(id)sender
@@ -141,6 +168,8 @@
     if (savedState == YES ) {
         [saveButton setBackgroundColor:[UIColor colorWithRed:0.0 green:1.0 blue:0.0 alpha:0.7]];
         [saveButton setTitle:@"Saved!" forState:UIControlStateNormal];
+        [[self view] endEditing:YES];
+
     } else {
         [saveButton setBackgroundColor:initialColor];
         [saveButton setTitle:@"Save" forState:UIControlStateNormal];

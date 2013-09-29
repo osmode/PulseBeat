@@ -11,7 +11,6 @@
 @implementation MetasomeParameter
 @synthesize parameterName, inputType, inputCategory, checkedStatus, lastChecked, maxValue, sadOnRightSide;
 
-
 -(id)initWithParameterName:(NSString *)name inputType:(int)type category:(int)newCategory maximumValue:(float)value
 {
     self = [super init];
@@ -38,6 +37,7 @@
     [aCoder encodeBool:checkedStatus forKey:@"checkedStatus"];
     [aCoder encodeFloat:maxValue forKey:@"maxValue"];
 }
+
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super init];

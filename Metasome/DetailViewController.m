@@ -30,8 +30,8 @@
 
 -(void)viewDidLoad
 {
-    
     [super viewDidLoad];
+    
     if ([[self parameter] inputType] == ParameterInputInteger)
         valueField.keyboardType = UIKeyboardTypeNumberPad;
     
@@ -48,6 +48,29 @@
     _saveButton.layer.cornerRadius = 10.0;
     _graphButton.layer.cornerRadius = 10.0;
     
+    // change background colors when buttons are clicked
+    
+    [[self graphButton] addTarget:self action:@selector(buttonHighlight:) forControlEvents:UIControlEventTouchDown];
+    [[self graphButton] addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchUpOutside];
+    
+    [[self saveButton] addTarget:self action:@selector(buttonHighlight:) forControlEvents:UIControlEventTouchDown];
+    [[self saveButton] addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchUpOutside];
+    
+}
+
+-(IBAction)buttonHighlight:(id)sender
+{
+    UIColor *highlightColor = [UIColor greenColor];
+    
+    UIButton *button = (UIButton *)sender;
+    button.backgroundColor = highlightColor;
+    
+}
+
+-(IBAction)buttonNormal:(id)sender
+{
+    UIButton *button = (UIButton *)sender;
+    button.backgroundColor = initialColor;
 }
 
 -(void)keyboardWillShow
@@ -60,6 +83,10 @@
     [super viewWillAppear:animated];
     [self setIsSaved:NO];
     [self changeToSaved:NO];
+    
+    // reset button colors
+    self.graphButton.backgroundColor = initialColor;
+    self.saveButton.backgroundColor = initialColor;
 }
 
 -(void)setParameter:(MetasomeParameter *)p
@@ -113,11 +140,11 @@
     
     if ([[self parameter] inputType] == ParameterInputFloat) {
         floatToSave = [[valueField text] floatValue];
-        [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:floatToSave date:datePicker.date.timeIntervalSince1970 ];
+        [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:floatToSave date:datePicker.date.timeIntervalSince1970 options:noOptions];
         
     } else {
         intToSave = [[valueField text] integerValue];
-        [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:intToSave date:datePicker.date.timeIntervalSince1970 ];
+        [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:intToSave date:datePicker.date.timeIntervalSince1970 options:noOptions];
     }
     
     
@@ -160,6 +187,8 @@
     if (savedState == YES ) {
         [[self saveButton] setBackgroundColor:[UIColor colorWithRed:0.0 green:1.0 blue:0.0 alpha:0.7]];
         [[self saveButton] setTitle:@"Saved!" forState:UIControlStateNormal];
+        [[self view] endEditing:YES];
+        
     } else {
         [[self saveButton] setBackgroundColor:initialColor];
         [[self saveButton] setTitle:@"Save" forState:UIControlStateNormal];

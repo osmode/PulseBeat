@@ -161,6 +161,10 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
     UIBarButtonItem *segmentButton = [[UIBarButtonItem alloc] initWithCustomView:segmentControl];
     self.navigationItem.rightBarButtonItem = segmentButton;
     
+    
+    //new addition
+    [graphView initializeGraphView];
+    
 }
 
 -(void)changeInterval

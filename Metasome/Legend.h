@@ -24,6 +24,7 @@
 -(void)drawLabels;
 -(void)drawText:(NSString *)writeMe fontSize:(float)size horizontalLocation:(float)horizonal verticalLocation:(float)vertical rotation:(float)radians;
 -(void)connectTheDots:(NSMutableArray *)allPoints;
+-(void)connectTheBloodPressureDots:(NSMutableArray *)allPoints;
 
 
 @end

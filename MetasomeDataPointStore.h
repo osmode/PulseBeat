@@ -12,6 +12,12 @@
 @class MetasomeDataPoint;
 @class MetasomeParameter;
 
+typedef enum {
+    noOptions,
+    systolicOptions,
+    diastolicOptions
+} DataPointOptions;
+
 @interface MetasomeDataPointStore : NSObject
 {
     NSMutableArray *allPoints;
@@ -31,7 +37,7 @@
 
 +(MetasomeDataPointStore *)sharedStore;
 -(NSMutableArray *)allPoints;
--(void)addPointWithName:(NSString *)pName value:(float)pValue date:(float)pDate;
+-(void)addPointWithName:(NSString *)pName value:(float)pValue date:(float)pDate options:(int)optionsValue;
 -(void)removePoint:(MetasomeDataPoint *)p;
 -(NSString *)itemArchivePath;
 -(BOOL)saveChanges;

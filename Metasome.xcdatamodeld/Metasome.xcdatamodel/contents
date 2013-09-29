@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12E55" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3396" systemVersion="12E55" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="DataPoints" representedClassName="MetasomeDataPoint" syncable="YES">
+        <attribute name="blue" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="green" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="hour" optional="YES" transient="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="options" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="orderingValue" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="parameterName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="parameterValue" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="pDate" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="red" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <relationship name="parameterType" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Parameter" inverseName="datapoints" inverseEntity="Parameter" syncable="YES"/>
     </entity>
     <entity name="Parameter" syncable="YES">
@@ -22,8 +26,8 @@
         <attribute name="photoName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="DataPoints" positionX="160" positionY="192" width="128" height="135"/>
-        <element name="Parameter" positionX="160" positionY="192" width="128" height="105"/>
-        <element name="Photo" positionX="160" positionY="192" width="128" height="120"/>
+        <element name="DataPoints" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Parameter" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Photo" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

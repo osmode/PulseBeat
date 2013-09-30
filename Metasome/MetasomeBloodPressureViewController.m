@@ -20,17 +20,13 @@
 
 @implementation MetasomeBloodPressureViewController
 @synthesize parameter, isDataPointStoreNonEmpty, isSaved;
+@synthesize lastPointSavedSystolic, lastPointSavedDiastolic;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-       // UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(savePoint:)];
-        
-        //[[self navigationItem] setRightBarButtonItem:button];
-        
-        //saveButtonPreChecked = [UIImage imageNamed:@"saveButton.png"];
-        //saveButtonChecked = [UIImage imageNamed:@"checkedButton.png"];
+
             
     }
     return self;
@@ -110,11 +106,12 @@
         return;
     }
     
-    [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:systolicTextField.text.integerValue date:datePicker.date.timeIntervalSince1970 options:systolicOptions];
+    lastPointSavedSystolic = [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:systolicTextField.text.integerValue date:datePicker.date.timeIntervalSince1970 options:systolicOptions];
     
-    [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:diastolicTextField.text.integerValue date:datePicker.date.timeIntervalSince1970 options:diastolicOptions];
+    lastPointSavedDiastolic = [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:diastolicTextField.text.integerValue date:datePicker.date.timeIntervalSince1970 options:diastolicOptions];
     
     BOOL result = [[MetasomeDataPointStore sharedStore] saveChanges];
+    [self addUndoButton];
     
     // mark parameter as checked
     [[self parameter] setCheckedStatus:YES];
@@ -177,6 +174,24 @@
     
     [self setIsSaved:savedState];
     
+}
+
+-(void)addUndoButton
+{
+    UIBarButtonItem *undoButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemUndo target:self action:@selector(undoSavePoint)];
+    
+    [[self navigationItem] setRightBarButtonItem:undoButton];
+    
+}
+
+-(void)undoSavePoint
+{
+    [[MetasomeDataPointStore sharedStore] removePoint:lastPointSavedSystolic];
+    [[MetasomeDataPointStore sharedStore] removePoint:lastPointSavedDiastolic];
+    
+    [[MetasomeDataPointStore sharedStore] saveChanges];
+    
+    [[self navigationItem] setRightBarButtonItem:nil];
 }
 
 @end

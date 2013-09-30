@@ -59,7 +59,7 @@
     return self;
 }
 
--(void)addPointWithName:(NSString *)pName value:(float)pValue date:(float)pDate options:(int)optionsValue
+-(MetasomeDataPoint *)addPointWithName:(NSString *)pName value:(float)pValue date:(float)pDate options:(int)optionsValue
 {
     // derive the hour of the day to insert into "hour" column
     NSDate *tempDate = [NSDate dateWithTimeIntervalSince1970:pDate];
@@ -103,14 +103,18 @@
     [newPoint setBlue:blue];
     [allPoints addObject:newPoint];
     
-    
+    // method returns a pointer to a MetasomeDataPoint object
+    NSLog(@"returning pointer to newPoint");
+    return newPoint;
 
 }
+
 -(void)removePoint:(MetasomeDataPoint *)p
 {
     [context deleteObject:p];
     [allPoints removeObjectIdenticalTo:p];
 }
+
 -(void)moveItemAtIndex:(int)from toIndex:(int)to
 {
     if (from == to) return;
@@ -261,5 +265,11 @@
     [self saveChanges];
 
 }
+
+-(NSManagedObjectContext *)context
+{
+    return context;
+}
+
 
 @end

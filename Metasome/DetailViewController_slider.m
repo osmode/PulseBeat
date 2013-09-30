@@ -1,5 +1,5 @@
 //
-//  DetailViewController.m
+//  DetailViewController_slider.m
 //  Metasome
 //
 //  Created by Omar Metwally on 8/19/13.
@@ -18,20 +18,14 @@
 @implementation DetailViewController_slider
 @synthesize parameter, isDataPointStoreNonEmpty;
 @synthesize smileyImage;
+@synthesize lastPointSaved;
 
 const int NUM_SLIDER_SECTIONS = 5;
 
 -(id)init
 {
     self = [super init];
-    //UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(savePoint:)];
-    
-    //[[self navigationItem] setRightBarButtonItem:saveButton];
-    
-    //saveButtonChecked = [UIImage imageNamed:@"checkedButton.png"];
-    //saveButtonPreChecked = [UIImage imageNamed:@"saveButton.png"];
-    //[smileyImage setImage:[UIImage imageNamed:@"smiley2.png"]];
-    
+    //lastPointSaved = [[MetasomeDataPoint alloc] init];
     
     return self;
     
@@ -112,14 +106,16 @@ const int NUM_SLIDER_SECTIONS = 5;
     //actual write to disk occurs on
     //applicationDidEnterBackground
     
-    [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:[valueSlider value]*100 date:datePicker.date.timeIntervalSince1970 options:noOptions];
+    lastPointSaved = [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:[valueSlider value]*100 date:datePicker.date.timeIntervalSince1970 options:noOptions];
     
     BOOL result = [[MetasomeDataPointStore sharedStore] saveChanges];
+    [self addUndoButton];
     
     // mark parameter as checked
     [[self parameter] setCheckedStatus:YES];
     [[self parameter] setLastChecked:[NSDate date]];
     [[MetasomeParameterStore sharedStore] saveChanges];
+    
     
     if (!result) {
         
@@ -139,6 +135,7 @@ const int NUM_SLIDER_SECTIONS = 5;
     //[[self navigationController]popViewControllerAnimated:YES];
  
 }
+
 -(IBAction)graphParameter:(id)sender
 {
     [[MetasomeDataPointStore sharedStore] setToGraph:[parameter parameterName]];
@@ -218,5 +215,23 @@ const int NUM_SLIDER_SECTIONS = 5;
     [self setIsSaved:savedState];
     
 }
+
+-(void)addUndoButton
+{
+    UIBarButtonItem *undoButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemUndo target:self action:@selector(undoSavePoint)];
+    
+    [[self navigationItem] setRightBarButtonItem:undoButton];
+    
+}
+
+-(void)undoSavePoint
+{
+    [[MetasomeDataPointStore sharedStore] removePoint:lastPointSaved];
+    [[MetasomeDataPointStore sharedStore] saveChanges];
+    
+    [[self navigationItem] setRightBarButtonItem:nil];
+}
+
+
 
 @end

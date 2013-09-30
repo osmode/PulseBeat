@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class MetasomeParameter;
+@class MetasomeParameter, MetasomeDataPoint;
 
 @interface DetailViewController_slider : UIViewController <UITextFieldDelegate>
 {
@@ -22,7 +22,7 @@
     
 }
 
-
+@property (nonatomic, strong) MetasomeDataPoint *lastPointSaved;
 @property (strong, nonatomic) MetasomeParameter *parameter;
 @property (nonatomic, copy) BOOL (^isDataPointStoreNonEmpty)(void);
 @property (nonatomic) BOOL isSaved;

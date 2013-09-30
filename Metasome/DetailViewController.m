@@ -17,7 +17,7 @@
 
 
 @implementation DetailViewController
-@synthesize parameter, isDataPointStoreNonEmpty, isSaved;
+@synthesize parameter, isDataPointStoreNonEmpty, isSaved, lastPointSaved;
 
 -(id)init
 {
@@ -25,6 +25,8 @@
 
     [valueField setDelegate:self];
     return self;
+    
+    //lastPointSaved = [[MetasomeDataPoint alloc] init];
     
 }
 
@@ -55,6 +57,7 @@
     
     [[self saveButton] addTarget:self action:@selector(buttonHighlight:) forControlEvents:UIControlEventTouchDown];
     [[self saveButton] addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchUpOutside];
+    
     
 }
 
@@ -113,8 +116,7 @@
 //button on nav bar is clicked
 -(void)savePoint:(id)sender
 {
-    
-    NSLog(@"entered value: %f, max value: %f", [[valueField text] floatValue], [[self parameter] maxValue]);
+
     
     // make sure entered value is not greater than parameter's max allowed value before saving
     if ( [parameter isWithinMaxValue:[[valueField text] floatValue]] == NO) {
@@ -140,15 +142,15 @@
     
     if ([[self parameter] inputType] == ParameterInputFloat) {
         floatToSave = [[valueField text] floatValue];
-        [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:floatToSave date:datePicker.date.timeIntervalSince1970 options:noOptions];
+        lastPointSaved = [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:floatToSave date:datePicker.date.timeIntervalSince1970 options:noOptions];
         
     } else {
         intToSave = [[valueField text] integerValue];
-        [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:intToSave date:datePicker.date.timeIntervalSince1970 options:noOptions];
+        lastPointSaved = [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:intToSave date:datePicker.date.timeIntervalSince1970 options:noOptions];
     }
     
-    
     BOOL result = [[MetasomeDataPointStore sharedStore] saveChanges];
+    [self addUndoButton];
     
     // mark parameter as checked
     [[self parameter] setCheckedStatus:YES];
@@ -196,6 +198,22 @@
     
     [self setIsSaved:savedState];
 
+}
+
+-(void)addUndoButton
+{
+    UIBarButtonItem *undoButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemUndo target:self action:@selector(undoSavePoint)];
+    
+    [[self navigationItem] setRightBarButtonItem:undoButton];
+    
+}
+
+-(void)undoSavePoint
+{
+    [[MetasomeDataPointStore sharedStore] removePoint:lastPointSaved];
+    [[MetasomeDataPointStore sharedStore] saveChanges];
+    
+    [[self navigationItem] setRightBarButtonItem:nil];
 }
 
 

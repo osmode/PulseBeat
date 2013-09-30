@@ -37,12 +37,13 @@ typedef enum {
 
 +(MetasomeDataPointStore *)sharedStore;
 -(NSMutableArray *)allPoints;
--(void)addPointWithName:(NSString *)pName value:(float)pValue date:(float)pDate options:(int)optionsValue;
+-(MetasomeDataPoint *)addPointWithName:(NSString *)pName value:(float)pValue date:(float)pDate options:(int)optionsValue;
 -(void)removePoint:(MetasomeDataPoint *)p;
 -(NSString *)itemArchivePath;
 -(BOOL)saveChanges;
 -(NSArray *)pointsWithParameterName:(NSString *)pn fromDate:(NSDate *)fromDate toDate:(NSDate *)toDate;
 -(void)deleteAllPoints;
 -(void)deleteTodayPoints;
+-(NSManagedObjectContext *)context;
 
 @end

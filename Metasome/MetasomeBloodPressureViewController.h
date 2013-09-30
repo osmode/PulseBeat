@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class MetasomeParameter;
+@class MetasomeParameter, MetasomeDataPoint;
 @interface MetasomeBloodPressureViewController : UIViewController
 {
     
@@ -22,6 +22,9 @@
     UIColor *initialColor;
     
 }
+
+@property (nonatomic, strong) MetasomeDataPoint *lastPointSavedSystolic;
+@property (nonatomic, strong) MetasomeDataPoint *lastPointSavedDiastolic;
 
 @property (strong, nonatomic) MetasomeParameter *parameter;
 @property (nonatomic, copy) BOOL (^isDataPointStoreNonEmpty)(void);

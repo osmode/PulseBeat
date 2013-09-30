@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class MetasomeParameter;
+@class MetasomeParameter, MetasomeDataPoint;
 
 @interface DetailViewController : UIViewController <UITextFieldDelegate>
 {
@@ -22,6 +22,7 @@
 
 
 @property (strong, nonatomic) MetasomeParameter *parameter;
+@property (strong, nonatomic) MetasomeDataPoint *lastPointSaved;
 @property (nonatomic, copy) BOOL (^isDataPointStoreNonEmpty)(void);
 @property (nonatomic) BOOL isSaved;
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;

@@ -80,9 +80,17 @@
     
 }
 
+- (void)preferredContentSizeChanged:(NSNotification *)aNotification
+{
+    [[self view] setNeedsLayout];
+    NSLog(@"Font size changed");
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
+    
 
     switch ([self currentSelection]) {
         case heartSelection:
@@ -179,7 +187,8 @@
         
     NSString *cellValue = [p parameterName];
     [[cell textLabel] setText:cellValue];
-    
+    cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+
     // Check if it's time to reset the checkmark each time the cell loads
     [p resetCheckmark];
     

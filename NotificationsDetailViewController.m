@@ -30,9 +30,18 @@ NSString * const MetasomeNotificationPrefKey = @"MetasomeNotificationPrefKey";
     return self;
 }
 
+-(void)preferredContentSizeChanged:(NSNotification *)aNotification
+{
+    [promptLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
+    [promptLabel2 setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
+
+    [self.view setNeedsLayout];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
+    
     [notificationSwitch addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
 
     BOOL onState = [[NSUserDefaults standardUserDefaults] boolForKey:MetasomeNotificationPrefKey];

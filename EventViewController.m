@@ -47,9 +47,14 @@
     return [self init];
 }
 
+-(void)preferredContentSizeChanged:(NSNotificationCenter *)aNotification
+{
+    [self.view setNeedsLayout];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
     [[self view] addSubview:emptyListLabel];
     
     //UIColor *clr = [UIColor colorWithRed:0.875 green:0.88 blue:0.91 alpha:1.0];
@@ -99,7 +104,9 @@
     }
     
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-    //[[cell imageView] setImage
+    
+    [[cell textLabel] setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
+    [[cell detailTextLabel] setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]];
     
     return cell;
 }

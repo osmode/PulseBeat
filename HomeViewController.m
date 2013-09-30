@@ -28,8 +28,6 @@
         [TextFormatter formatTitleLabel:titleLabel withTitle:@"PulseBeat"];
         [[self navigationItem] setTitleView:titleLabel];
         
-
-        
     }
     return self;
 }
@@ -49,9 +47,27 @@
     button.backgroundColor = normalColor;
 }
 
+
+- (void)preferredContentSizeChanged:(NSNotification *)aNotification {
+    
+    /*
+    [[heartButton titleLabel] setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
+    [[lungButton titleLabel] setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
+    [[diabetesButton titleLabel] setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
+    [[customButton titleLabel] setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
+    */
+    
+    [self.view setNeedsLayout];
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
+    
+    
     heartButton.layer.cornerRadius = 10.0;
     lungButton.layer.cornerRadius = 10.0;
     diabetesButton.layer.cornerRadius = 10.0;
@@ -60,17 +76,23 @@
     normalColor = heartButton.backgroundColor;
     
     // change background colors when buttons are clicked
+    
     [heartButton addTarget:self action:@selector(buttonHighlight:) forControlEvents:UIControlEventTouchDown];
     [heartButton addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchUpOutside];
+    [heartButton addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchDragOutside];
     
     [lungButton addTarget:self action:@selector(buttonHighlight:) forControlEvents:UIControlEventTouchDown];
     [lungButton addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchUpOutside];
+    [lungButton addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchDragOutside];
     
     [diabetesButton addTarget:self action:@selector(buttonHighlight:) forControlEvents:UIControlEventTouchDown];
     [diabetesButton addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchUpOutside];
+    [diabetesButton addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchDragOutside];
     
     [customButton addTarget:self action:@selector(buttonHighlight:) forControlEvents:UIControlEventTouchDown];
     [customButton addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchUpOutside];
+    [customButton addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchDragOutside];
+
     
 
 }

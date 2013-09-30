@@ -32,9 +32,15 @@
     return self;
 }
 
+-(void)preferredContentSizeChanged:(NSNotification *)aNotification
+{
+    [self.view setNeedsLayout];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
+    
     UINib *nibSwitch = [UINib nibWithNibName:@"OptionsSwitchCell" bundle:nil];
     UINib *nibNormal = [UINib nibWithNibName:@"OptionsNormalCell" bundle:nil];
     
@@ -132,6 +138,8 @@
     }
     
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    [[cell textLabel] setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
+    [[cell detailTextLabel] setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]];
     
     return  cell;
 }

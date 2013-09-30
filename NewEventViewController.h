@@ -28,6 +28,7 @@
 - (IBAction)changeDate:(id)sender;
 
 
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
 @property (weak, nonatomic) IBOutlet UISwitch *visibilitySwitch;

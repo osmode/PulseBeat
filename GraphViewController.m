@@ -50,7 +50,8 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
         titleLabel.backgroundColor = [UIColor clearColor];
         titleLabel.text = [graphView graphTitle];
         titleLabel.textColor = [UIColor blackColor];
-        titleLabel.font = [UIFont fontWithName:@"AvenirNext-Bold" size:15.0];
+        //titleLabel.font = [UIFont fontWithName:@"AvenirNext-Bold" size:15.0];
+        [titleLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
         titleLabel.textAlignment = NSTextAlignmentCenter;
         titleLabel.adjustsFontSizeToFitWidth = YES;
         
@@ -260,7 +261,11 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
     
 }
     
-
+-(void)preferredContentSizeChanged:(NSNotification *)aNotification
+{
+    [titleLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
+    [graphView setNeedsLayout];
+}
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
@@ -269,6 +274,7 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
     
 }
 -(void)viewDidAppear:(BOOL)animated
@@ -439,7 +445,8 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
         
         dateLabel.textColor = [UIColor blackColor];
         dateLabel.backgroundColor = [UIColor clearColor];
-        dateLabel.font = [UIFont systemFontOfSize:20.0];
+        //dateLabel.font = [UIFont systemFontOfSize:20.0];
+        dateLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         dateLabel.adjustsFontSizeToFitWidth = YES;
         dateLabel.layer.drawsAsynchronously = YES;
         dateLabel.layer.zPosition = 5;

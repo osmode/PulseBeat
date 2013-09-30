@@ -13,6 +13,7 @@
     __weak IBOutlet UILabel *promptLabel;
     __weak IBOutlet UISwitch *notificationSwitch;
     __weak IBOutlet UIDatePicker *timePicker;
+    __weak IBOutlet UILabel *promptLabel2;
     
 }
 

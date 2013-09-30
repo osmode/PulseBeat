@@ -16,6 +16,7 @@
 @implementation NewEventViewController
 
 @synthesize titleTextField, descriptionTextView, visibilitySwitch, dateLabel, dateButton, visibilityLabel, descriptionLabel, dateSelected;
+@synthesize titleLabel;
 @synthesize originalPoint, toPoint;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -164,13 +165,30 @@
 
 }
 
+-(void)preferredContentSizeChanged:(NSNotification *)aNotification {
+    
+    titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    titleTextField.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    descriptionTextView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    descriptionLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    dateLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    //dateButton.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    //dateButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    visibilityLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    
+    
+    [self.view setNeedsLayout];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
+    
     [[self visibilitySwitch] addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"dd MMM yyyy HH:mm"];
+    //[dateFormatter setDateFormat:@"dd MMM yyyy HH:mm"];
+    [dateFormatter setDateFormat:@"MMM dd yyyy"];
     
     if ([[self eventSelected] date]) {
         dateSelected = self.eventSelected.date;

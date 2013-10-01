@@ -33,7 +33,7 @@ float const VERTICAL_AXIS_LINE_WIDTH = 3.0;
 float const TOP_BUFFER = 50;
 float const RIGHT_BUFFER = 180;
 float const VERTICAL_NUMBER_OF_INTERVALS = 10.0;
-float const MINIMUM_TOUCH_DISTANCE = 100.0;
+float const MINIMUM_TOUCH_DISTANCE = 20.0;
 
 
 float const HORIZONTAL_AXIS_LABEL_WIDTH = 30.0;
@@ -66,6 +66,7 @@ float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
         [self initializeGraphView];
         
         UILongPressGestureRecognizer *longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
+        [longPressRecognizer setMinimumPressDuration:0.1];
         [self addGestureRecognizer:longPressRecognizer];
         
        }

@@ -37,6 +37,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *visibilityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (nonatomic, strong) NSDate *dateSelected;
+@property (nonatomic, strong) UIColor *initialColor;
 
 @property (nonatomic) CGPoint originalPoint, toPoint;
 @property (nonatomic, strong) NSMutableString *oldText;

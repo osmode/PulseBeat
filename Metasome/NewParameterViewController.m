@@ -49,7 +49,19 @@
     inputButton.layer.cornerRadius = 5.0;
     categoryButton.layer.cornerRadius = 5.0;
     
+    // create notification to know when text size is changed
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
+    
 }
+
+-(void)preferredContentSizeChanged:(NSNotification *)aNotification
+{
+    newParameterName.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    
+    [[self view] setNeedsLayout];
+    
+}
+
 -(IBAction)changeCategory:(id)sender
 {
     [self performSelector:@selector(flipButton:) withObject:categoryButton afterDelay:0.0];

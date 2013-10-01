@@ -22,7 +22,7 @@
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="Daily reminder" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="168" translatesAutoresizingMaskIntoConstraints="NO" id="4">
                     <rect key="frame" x="33" y="104" width="168" height="39"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -31,7 +31,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </switch>
                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="25">
-                    <rect key="frame" x="0.0" y="251" width="320" height="162"/>
+                    <rect key="frame" x="0.0" y="230" width="320" height="162"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <date key="date" timeIntervalSinceReferenceDate="400971624.36949301">
                         <!--2013-09-15 21:00:24 +0000-->
@@ -62,26 +62,26 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <rect key="frame" x="33" y="189" width="267" height="41"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="41" id="arT-Xr-vWu"/>
+                        <constraint firstAttribute="height" constant="41" id="yUQ-CI-9Af"/>
                     </constraints>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" red="0.97025464429999997" green="0.97456492179999998" blue="0.98749575410000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="ffa-9u-DS3" firstAttribute="top" secondItem="4" secondAttribute="bottom" constant="46" id="0nZ-kN-j0i"/>
-                <constraint firstItem="4" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="33" id="TIy-g1-z5N"/>
-                <constraint firstItem="25" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="UqN-WW-vZe"/>
-                <constraint firstItem="4" firstAttribute="leading" secondItem="ffa-9u-DS3" secondAttribute="leading" id="Ye2-ek-SfS"/>
-                <constraint firstAttribute="trailing" secondItem="ffa-9u-DS3" secondAttribute="trailing" constant="20" symbolic="YES" id="YoZ-6Q-HTL"/>
-                <constraint firstItem="4" firstAttribute="top" secondItem="1" secondAttribute="top" constant="104" id="ZQZ-Q0-hqT"/>
-                <constraint firstItem="4" firstAttribute="centerY" secondItem="16" secondAttribute="centerY" id="ZWu-qJ-50p"/>
-                <constraint firstItem="ffa-9u-DS3" firstAttribute="top" secondItem="16" secondAttribute="bottom" constant="50" id="nlF-O9-7aH"/>
-                <constraint firstItem="25" firstAttribute="top" secondItem="ffa-9u-DS3" secondAttribute="bottom" constant="21" id="s8h-0S-xxc"/>
-                <constraint firstAttribute="trailing" secondItem="25" secondAttribute="trailing" id="vho-fu-fBT"/>
-                <constraint firstItem="16" firstAttribute="leading" secondItem="4" secondAttribute="trailing" constant="37" id="xua-7J-deE"/>
-                <constraint firstAttribute="trailing" secondItem="16" secondAttribute="trailing" constant="33" id="znH-Fw-Ctn"/>
+                <constraint firstAttribute="trailing" secondItem="ffa-9u-DS3" secondAttribute="trailing" constant="20" symbolic="YES" id="1Xl-QC-ZiR"/>
+                <constraint firstAttribute="trailing" secondItem="16" secondAttribute="trailing" constant="33" id="3PG-NL-jOY"/>
+                <constraint firstItem="25" firstAttribute="top" secondItem="ffa-9u-DS3" secondAttribute="bottom" id="C59-Uj-Eth"/>
+                <constraint firstItem="16" firstAttribute="leading" secondItem="4" secondAttribute="trailing" constant="37" id="E4n-Pe-OnD"/>
+                <constraint firstItem="ffa-9u-DS3" firstAttribute="leading" secondItem="4" secondAttribute="leading" id="HPv-AH-y83"/>
+                <constraint firstAttribute="trailing" secondItem="25" secondAttribute="trailing" id="KQM-7C-W0Q"/>
+                <constraint firstItem="ffa-9u-DS3" firstAttribute="top" secondItem="4" secondAttribute="bottom" constant="46" id="baa-Kx-L0D"/>
+                <constraint firstItem="4" firstAttribute="top" secondItem="1" secondAttribute="top" constant="104" id="bwr-fX-ua5"/>
+                <constraint firstItem="4" firstAttribute="centerY" secondItem="16" secondAttribute="centerY" id="hyc-vW-m1f"/>
+                <constraint firstItem="25" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="i5T-tE-NIR"/>
+                <constraint firstItem="ffa-9u-DS3" firstAttribute="top" secondItem="16" secondAttribute="bottom" constant="50" id="nhd-Ll-C6o"/>
+                <constraint firstItem="4" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="33" id="q0O-qD-1N2"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

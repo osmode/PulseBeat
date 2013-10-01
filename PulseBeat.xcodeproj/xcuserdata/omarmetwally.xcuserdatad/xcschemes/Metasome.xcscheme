@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FA4E9EE717C1D04D00E421DE"
-               BuildableName = "Metasome.app"
-               BlueprintName = "Metasome"
-               ReferencedContainer = "container:Metasome.xcodeproj">
+               BuildableName = "PulseBeat.app"
+               BlueprintName = "PulseBeat"
+               ReferencedContainer = "container:PulseBeat.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FA4E9EE717C1D04D00E421DE"
-            BuildableName = "Metasome.app"
-            BlueprintName = "Metasome"
-            ReferencedContainer = "container:Metasome.xcodeproj">
+            BuildableName = "PulseBeat.app"
+            BlueprintName = "PulseBeat"
+            ReferencedContainer = "container:PulseBeat.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -52,9 +52,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FA4E9EE717C1D04D00E421DE"
-            BuildableName = "Metasome.app"
-            BlueprintName = "Metasome"
-            ReferencedContainer = "container:Metasome.xcodeproj">
+            BuildableName = "PulseBeat.app"
+            BlueprintName = "PulseBeat"
+            ReferencedContainer = "container:PulseBeat.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -70,9 +70,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FA4E9EE717C1D04D00E421DE"
-            BuildableName = "Metasome.app"
-            BlueprintName = "Metasome"
-            ReferencedContainer = "container:Metasome.xcodeproj">
+            BuildableName = "PulseBeat.app"
+            BlueprintName = "PulseBeat"
+            ReferencedContainer = "container:PulseBeat.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

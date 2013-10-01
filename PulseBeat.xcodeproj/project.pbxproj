@@ -65,6 +65,7 @@
 		FA59AE0317E9566C00CB0629 /* LoginScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA59AE0117E9566C00CB0629 /* LoginScreenViewController.m */; };
 		FA59AE0417E9566C00CB0629 /* LoginScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA59AE0217E9566C00CB0629 /* LoginScreenViewController.xib */; };
 		FA59AE0617E9570800CB0629 /* largePulseBeat.png in Resources */ = {isa = PBXBuildFile; fileRef = FA59AE0517E9570700CB0629 /* largePulseBeat.png */; };
+		FA72FA7C17FA6B080072942F /* Icon120x120@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA72FA7B17FA6B080072942F /* Icon120x120@2x.png */; };
 		FA79654817D93E19005A2DB6 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA79654617D93E19005A2DB6 /* DatePickerViewController.m */; };
 		FA79654917D93E19005A2DB6 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA79654717D93E19005A2DB6 /* DatePickerViewController.xib */; };
 		FA79654B17D940F2005A2DB6 /* OK.png in Resources */ = {isa = PBXBuildFile; fileRef = FA79654A17D940F2005A2DB6 /* OK.png */; };
@@ -170,14 +171,14 @@
 		FA4817C217C7F93400A4CA4A /* OptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OptionsViewController.m; path = Metasome/OptionsViewController.m; sourceTree = "<group>"; };
 		FA4817C317C7F93400A4CA4A /* OptionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OptionsViewController.xib; path = Metasome/OptionsViewController.xib; sourceTree = "<group>"; };
 		FA4817C817C91D8B00A4CA4A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		FA4E9EE817C1D04D00E421DE /* Metasome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Metasome.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA4E9EE817C1D04D00E421DE /* PulseBeat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PulseBeat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA4E9EEB17C1D04D00E421DE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FA4E9EED17C1D04D00E421DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FA4E9EEF17C1D04D00E421DE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		FA4E9EF317C1D04D00E421DE /* Metasome-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Metasome-Info.plist"; sourceTree = "<group>"; };
+		FA4E9EF317C1D04D00E421DE /* PulseBeat-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PulseBeat-Info.plist"; sourceTree = "<group>"; };
 		FA4E9EF517C1D04D00E421DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FA4E9EF717C1D04D00E421DE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		FA4E9EF917C1D04D00E421DE /* Metasome-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Metasome-Prefix.pch"; sourceTree = "<group>"; };
+		FA4E9EF917C1D04D00E421DE /* PulseBeat-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PulseBeat-Prefix.pch"; sourceTree = "<group>"; };
 		FA4E9EFA17C1D04D00E421DE /* MetasomeAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetasomeAppDelegate.h; sourceTree = "<group>"; };
 		FA4E9EFB17C1D04D00E421DE /* MetasomeAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MetasomeAppDelegate.m; sourceTree = "<group>"; };
 		FA4E9EFD17C1D04D00E421DE /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -199,6 +200,7 @@
 		FA59AE0117E9566C00CB0629 /* LoginScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginScreenViewController.m; sourceTree = "<group>"; };
 		FA59AE0217E9566C00CB0629 /* LoginScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginScreenViewController.xib; sourceTree = "<group>"; };
 		FA59AE0517E9570700CB0629 /* largePulseBeat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = largePulseBeat.png; sourceTree = "<group>"; };
+		FA72FA7B17FA6B080072942F /* Icon120x120@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon120x120@2x.png"; sourceTree = "<group>"; };
 		FA79654517D93E19005A2DB6 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		FA79654617D93E19005A2DB6 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		FA79654717D93E19005A2DB6 /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
@@ -412,7 +414,7 @@
 		FA4E9EE917C1D04D00E421DE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FA4E9EE817C1D04D00E421DE /* Metasome.app */,
+				FA4E9EE817C1D04D00E421DE /* PulseBeat.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -469,6 +471,7 @@
 				FAE697EF17EC061900D2630E /* diarysaveButton.png */,
 				FAE697F017EC061900D2630E /* graphButton.png */,
 				FA59AE0517E9570700CB0629 /* largePulseBeat.png */,
+				FA72FA7B17FA6B080072942F /* Icon120x120@2x.png */,
 				FA2162BA17E52C4D005C836C /* Icon.png */,
 				FA3DED8917E44A3C00D7FA87 /* Icon.png */,
 				FA3DED8A17E44A3C00D7FA87 /* Icon@2x.png */,
@@ -493,10 +496,10 @@
 				FA79654C17D940FA005A2DB6 /* cancel.png */,
 				FA79654A17D940F2005A2DB6 /* OK.png */,
 				FA39816617D7A94100EB9948 /* dot.png */,
-				FA4E9EF317C1D04D00E421DE /* Metasome-Info.plist */,
+				FA4E9EF317C1D04D00E421DE /* PulseBeat-Info.plist */,
 				FA4E9EF417C1D04D00E421DE /* InfoPlist.strings */,
 				FA4E9EF717C1D04D00E421DE /* main.m */,
-				FA4E9EF917C1D04D00E421DE /* Metasome-Prefix.pch */,
+				FA4E9EF917C1D04D00E421DE /* PulseBeat-Prefix.pch */,
 				FA4E9EFD17C1D04D00E421DE /* Default.png */,
 				FA4E9EFF17C1D04D00E421DE /* Default@2x.png */,
 				FA4E9F0117C1D04D00E421DE /* Default-568h@2x.png */,
@@ -530,9 +533,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FA4E9EE717C1D04D00E421DE /* Metasome */ = {
+		FA4E9EE717C1D04D00E421DE /* PulseBeat */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FA4E9F0517C1D04D00E421DE /* Build configuration list for PBXNativeTarget "Metasome" */;
+			buildConfigurationList = FA4E9F0517C1D04D00E421DE /* Build configuration list for PBXNativeTarget "PulseBeat" */;
 			buildPhases = (
 				FA4E9EE417C1D04D00E421DE /* Sources */,
 				FA4E9EE517C1D04D00E421DE /* Frameworks */,
@@ -542,9 +545,9 @@
 			);
 			dependencies = (
 			);
-			name = Metasome;
+			name = PulseBeat;
 			productName = Metasome;
-			productReference = FA4E9EE817C1D04D00E421DE /* Metasome.app */;
+			productReference = FA4E9EE817C1D04D00E421DE /* PulseBeat.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -557,7 +560,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = Logisome;
 			};
-			buildConfigurationList = FA4E9EE317C1D04D00E421DE /* Build configuration list for PBXProject "Metasome" */;
+			buildConfigurationList = FA4E9EE317C1D04D00E421DE /* Build configuration list for PBXProject "PulseBeat" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -569,7 +572,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FA4E9EE717C1D04D00E421DE /* Metasome */,
+				FA4E9EE717C1D04D00E421DE /* PulseBeat */,
 			);
 		};
 /* End PBXProject section */
@@ -589,6 +592,7 @@
 				FAC592BD17C55E970004747C /* EventViewController.xib in Resources */,
 				FAE697F817EC061A00D2630E /* highlightedInputmethodButton.png in Resources */,
 				FA997FE817F7CB6400AE5CBB /* smiley2.png in Resources */,
+				FA72FA7C17FA6B080072942F /* Icon120x120@2x.png in Resources */,
 				FAC592C517C562D70004747C /* GraphViewController.xib in Resources */,
 				FA4817BD17C672CE00A4CA4A /* DetailViewController_slider.xib in Resources */,
 				FA997FE917F7CB6400AE5CBB /* smiley2@2x.png in Resources */,
@@ -774,9 +778,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Metasome/Metasome-Prefix.pch";
-				INFOPLIST_FILE = "Metasome/Metasome-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Metasome/PulseBeat-Prefix.pch";
+				INFOPLIST_FILE = "Metasome/PulseBeat-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = PulseBeat;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -785,9 +790,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Metasome/Metasome-Prefix.pch";
-				INFOPLIST_FILE = "Metasome/Metasome-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Metasome/PulseBeat-Prefix.pch";
+				INFOPLIST_FILE = "Metasome/PulseBeat-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = PulseBeat;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -795,7 +801,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FA4E9EE317C1D04D00E421DE /* Build configuration list for PBXProject "Metasome" */ = {
+		FA4E9EE317C1D04D00E421DE /* Build configuration list for PBXProject "PulseBeat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FA4E9F0317C1D04D00E421DE /* Debug */,
@@ -804,7 +810,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FA4E9F0517C1D04D00E421DE /* Build configuration list for PBXNativeTarget "Metasome" */ = {
+		FA4E9F0517C1D04D00E421DE /* Build configuration list for PBXNativeTarget "PulseBeat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FA4E9F0617C1D04D00E421DE /* Debug */,

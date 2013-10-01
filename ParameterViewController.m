@@ -200,7 +200,7 @@
         
     NSString *cellValue = [p parameterName];
     [[cell textLabel] setText:cellValue];
-    cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
 
     // Check if it's time to reset the checkmark each time the cell loads
     [p resetCheckmark];

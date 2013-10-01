@@ -49,7 +49,22 @@
     
     [saveButton addTarget:self action:@selector(buttonHighlight:) forControlEvents:UIControlEventTouchDown];
     [saveButton addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchUpOutside];
+    
+    // create notification to know when text size is changed
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
+    
+    systolicTextField.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    diastolicTextField.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
 
+}
+
+-(void)preferredContentSizeChanged:(NSNotification *)aNotification
+{
+    systolicTextField.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    diastolicTextField.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    
+    [[self view] setNeedsLayout];
+    
 }
 
 -(IBAction)buttonHighlight:(id)sender
@@ -138,6 +153,7 @@
     // reset background colors
     graphButton.backgroundColor = initialColor;
     saveButton.backgroundColor = initialColor;
+    
 }
 
 -(void)graphParameter:(id)sender

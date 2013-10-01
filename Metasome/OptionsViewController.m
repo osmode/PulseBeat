@@ -139,8 +139,8 @@
     }
     
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-    [[cell textLabel] setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
-    [[cell detailTextLabel] setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleCaption1]];
+    [[cell textLabel] setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
+    [[cell detailTextLabel] setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]];
     
     return  cell;
 }

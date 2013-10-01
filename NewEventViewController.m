@@ -18,6 +18,8 @@
 @synthesize titleTextField, descriptionTextView, visibilitySwitch, dateLabel, dateButton, visibilityLabel, descriptionLabel, dateSelected;
 @synthesize titleLabel;
 @synthesize originalPoint, toPoint;
+@synthesize initialColor;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -179,9 +181,32 @@
     
     [self.view setNeedsLayout];
 }
+
+-(IBAction)buttonHighlight:(id)sender
+{
+    UIColor *highlightColor = [UIColor greenColor];
+    
+    UIButton *button = (UIButton *)sender;
+    button.backgroundColor = highlightColor;
+    
+}
+
+-(IBAction)buttonNormal:(id)sender
+{
+    UIButton *button = (UIButton *)sender;
+    button.backgroundColor = initialColor;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    initialColor = [[self dateButton] backgroundColor];
+    dateButton.layer.cornerRadius = 10.0;
+    [dateButton addTarget:self action:@selector(buttonHighlight:) forControlEvents:UIControlEventTouchDown];
+    [dateButton addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchUpOutside];
+    [dateButton addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchDragOutside];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
     
     [[self visibilitySwitch] addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
@@ -199,7 +224,7 @@
     }
     
     self.dateLabel.textColor = [UIColor blueColor];
-    
+    [dateButton sizeToFit];
     
     //If eventSelected is set to point to a pre-existing event in MetasomeEventStore,
     //populate text field/view and date picker

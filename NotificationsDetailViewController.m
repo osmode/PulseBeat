@@ -32,8 +32,8 @@ NSString * const MetasomeNotificationPrefKey = @"MetasomeNotificationPrefKey";
 
 -(void)preferredContentSizeChanged:(NSNotification *)aNotification
 {
-    [promptLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
-    [promptLabel2 setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
+    [promptLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
+    [promptLabel2 setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
 
     [self.view setNeedsLayout];
 }

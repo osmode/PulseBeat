@@ -68,6 +68,18 @@
     [[self saveButton] addTarget:self action:@selector(buttonHighlight:) forControlEvents:UIControlEventTouchDown];
     [[self saveButton] addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchUpOutside];
     
+    // create notification to know when text size is changed
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
+    
+}
+
+-(void)preferredContentSizeChanged:(NSNotification *)aNotification
+{
+    valueField.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    valueField.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    
+    [[self view] setNeedsLayout];
+    
 }
 
 -(IBAction)buttonHighlight:(id)sender

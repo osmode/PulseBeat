@@ -408,11 +408,17 @@ float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
     if ( [self minValueOnVerticalAxis] == [self maxValueOnVerticalAxis])
         [self setMinValueOnVerticalAxis:0];
     
-    // Add slack to the vertical and horizontal axes
-    maxValueOnVerticalAxis += 0.2*(maxValueOnVerticalAxis - minValueOnVerticalAxis);
-    //maxValueOnHorizontalAxis += 0.2*(maxValueOnHorizontalAxis - minValueOnHorizontalAxis);
-    minValueOnVerticalAxis -= 0.3*(maxValueOnVerticalAxis - minValueOnVerticalAxis);
-    
+    // Add slack to the vertical and horizontal axes -- only if the input is not from a slider
+    if (inputType != ParameterInputSlider) {
+        maxValueOnVerticalAxis += 0.2*(maxValueOnVerticalAxis - minValueOnVerticalAxis);
+        minValueOnVerticalAxis -= 0.3*(maxValueOnVerticalAxis - minValueOnVerticalAxis);
+    }
+    //if it is slider input, set minimum value to zero
+    else {
+        minValueOnVerticalAxis = 0.0;
+        maxValueOnVerticalAxis = 100.0;
+    }
+        
     if (minValueOnVerticalAxis < 0)
         minValueOnVerticalAxis = 0;
     

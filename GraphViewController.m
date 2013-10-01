@@ -73,6 +73,7 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
 {
     [titleLabel removeFromSuperview];
     [titleLabel setText:[graphView graphTitle]];
+    [[titleLabel layer] setDrawsAsynchronously:YES];
     [scrollView addSubview:titleLabel];
 }
 
@@ -82,7 +83,6 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
     [verticalAxisLine setFrame:CGRectMake([graphView originHorizontalOffset], [graphView topBuffer], 3.0, [graphView scrollViewHeight] - [graphView originVerticalOffset] - [graphView topBuffer])];
     
     [hoveringVerticalAxisLine setInitialPoint:verticalAxisLine.frame.origin];
-    
     [scrollView addSubview:verticalAxisLine];
     
 }
@@ -99,7 +99,8 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
 {
     
     UILabel *backgroundLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0 , 0.0, graphView.originHorizontalOffset, graphView.scrollViewHeight)];
-    backgroundLabel.backgroundColor = [UIColor whiteColor];
+    //backgroundLabel.backgroundColor = [UIColor whiteColor];
+    backgroundLabel.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.9];
     backgroundLabel.layer.zPosition = 10.0;
 
     HoveringLabel *hoveringBackgroundLabel = [[HoveringLabel alloc] initWithLabel:backgroundLabel point:backgroundLabel.frame.origin];
@@ -131,6 +132,7 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
     scrollView.delegate = self;
     
     [graphView setScrollViewWidth:bigRect.size.width];
+    
     [graphView setScrollViewHeight:bigRect.size.height];
     [graphView setHorizontalAxisLength:[graphView scrollViewWidth] - [graphView originHorizontalOffset] - [graphView rightBuffer]];
 
@@ -251,13 +253,9 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
         
     }
     
-    /*
-    CGRect fixedFrame3 = verticalAxisBackground.frame;
-    fixedFrame3.origin.x = [self verticalAxisBackgroundX] + scrollView.contentOffset.x;
-    fixedFrame3.origin.y = [self verticalAxisBackgroundY] + scrollView.contentOffset.y;
-    fixedFrame3.origin.y += SCROLL_VIEW_CORRECTION_FACTOR;
-    verticalAxisBackground.frame = fixedFrame3;
-     */
+    // print out contentInset/Offset
+   // NSLog(@"content: %f", scrollView.contentOffset.x);
+    
     
 }
     
@@ -269,6 +267,7 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
+    [scrollView setContentOffset:CGPointMake(640.0, 0)];
     
 }
 - (void)viewDidLoad
@@ -298,7 +297,6 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
-    NSLog(@"View will disappear");
     
     if (self.isMovingFromParentViewController) {
         [self removeFromParentViewController];
@@ -381,11 +379,11 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
         
         l.text = verticalDisplay;
         l.textColor = [UIColor blackColor];
-        l.backgroundColor = [UIColor whiteColor];
+        l.backgroundColor = [UIColor clearColor];
         l.font = [UIFont systemFontOfSize:20.0];
         l.adjustsFontSizeToFitWidth = YES;
         l.layer.zPosition = 15;
-        //l.layer.drawsAsynchronously = YES;
+        l.layer.drawsAsynchronously = YES;
         
         HoveringLabel *newLabel = [[HoveringLabel alloc] initWithLabel:l point:l.frame.origin];
         
@@ -481,7 +479,8 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
             
             UILabel *eventLabel = [[UILabel alloc] initWithFrame:CGRectMake(horizontalPos, verticalPos, [graphView verticalAxisLength], 30.0)];
             
-            eventLabel.backgroundColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.5];
+            //eventLabel.backgroundColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.5];
+            eventLabel.backgroundColor = [UIColor colorWithRed:0.2 green:0.0 blue:1.0 alpha:0.3];
             eventLabel.layer.cornerRadius = 5;
             [eventLabel.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
             
@@ -514,13 +513,6 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
     for (UILabel *l in allEventLabels) {
         [scrollView addSubview:l];
         
-        /*
-        CGRect test = l.frame;
-        UILabel *yellow = [[UILabel alloc] initWithFrame:test];
-        yellow.backgroundColor = [UIColor yellowColor];
-        [graphView addSubview:yellow];
-         */
-        NSLog(@"X: %f, Y: %f", l.frame.origin.x, l.frame.origin.y);
     }
 }
 

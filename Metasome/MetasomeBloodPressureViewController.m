@@ -152,6 +152,9 @@
         [[self navigationController] pushViewController:gvc animated:YES];
         
     }
+    
+    [graphButton setBackgroundColor:initialColor];
+
 }
 
 - (void)didReceiveMemoryWarning

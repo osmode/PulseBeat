@@ -85,6 +85,7 @@
 - (void)resetParameters {
     NSLog(@"resetting paramter lists");
     [[MetasomeParameterStore sharedStore] loadDefaultParameters];
+    [[MetasomeParameterStore sharedStore] resetAllCheckmarks];
     
     [[MetasomeParameterStore sharedStore] saveChanges];
 }
@@ -178,6 +179,8 @@
             
             [self setSelectedActionBlock:^{
                 [[MetasomeDataPointStore sharedStore] deleteAllPoints];
+                [[MetasomeParameterStore sharedStore] resetAllCheckmarks];
+                [[MetasomeParameterStore sharedStore] saveChanges];
             
             }];
             

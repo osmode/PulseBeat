@@ -204,6 +204,7 @@
         
         NSSortDescriptor *sd = [NSSortDescriptor sortDescriptorWithKey:@"pDate" ascending:YES];
         [request setSortDescriptors:[NSArray arrayWithObject:sd]];
+        [request setIncludesPropertyValues:NO]; // only create pointers but does not fetch objects values
         
         NSError *error;
         NSArray *result = [context executeFetchRequest:request error:&error];

@@ -87,7 +87,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="0.5" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.97025464429999997" green="0.97456492179999998" blue="0.98749575410000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="82" firstAttribute="centerX" secondItem="yFh-ab-0Tw" secondAttribute="centerX" id="8hp-Ev-6eo"/>
                 <constraint firstItem="yFh-ab-0Tw" firstAttribute="top" secondItem="1" secondAttribute="top" constant="68" id="L6E-vZ-2iU"/>

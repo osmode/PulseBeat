@@ -84,7 +84,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="0.5" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.97025464434521969" green="0.97456492177793641" blue="0.98749575407608692" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="25" firstAttribute="top" secondItem="48" secondAttribute="bottom" constant="40" id="JX6-0M-xKs"/>
                 <constraint firstItem="197" firstAttribute="leading" secondItem="48" secondAttribute="trailing" constant="39" id="KZi-0c-1PU"/>

@@ -97,6 +97,7 @@
     NSInteger category = [[self parameterCategory] selectedRowInComponent:0];
     
     MetasomeParameter *newParameter = [[MetasomeParameter alloc] initWithParameterName:newName inputType:input category:category maximumValue:100.0];
+    [newParameter setIsCustomMade:YES];
     
     if (input != ParameterInputSlider)
         [newParameter setMaxValue:1000];
@@ -104,6 +105,8 @@
     [[MetasomeParameterStore sharedStore] addParameter:newParameter];
     
     [[MetasomeParameterStore sharedStore] saveChanges];
+    
+    NSLog(@"newParameter added: %i", newParameter.inputCategory);
     
     [[self navigationController] popViewControllerAnimated:YES];
     
@@ -151,6 +154,7 @@
         return nil;
     
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

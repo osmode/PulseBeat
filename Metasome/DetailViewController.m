@@ -37,6 +37,13 @@
     if ([[self parameter] inputType] == ParameterInputInteger)
         valueField.keyboardType = UIKeyboardTypeNumberPad;
     
+    // if recording sleep hours, we only want a time picker
+    if ([[[self parameter] parameterName] isEqualToString:@"Sleep hours"]) {
+        
+        [datePicker setDatePickerMode:UIDatePickerModeDate];
+        
+    }
+    
     valueField.delegate = self;
   
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow) name:UIKeyboardWillShowNotification object:nil];
@@ -50,6 +57,9 @@
     _saveButton.layer.cornerRadius = 10.0;
     _graphButton.layer.cornerRadius = 10.0;
     
+    _saveButton.layer.drawsAsynchronously = YES;
+    _graphButton.layer.drawsAsynchronously = YES;
+    
     // change background colors when buttons are clicked
     
     [[self graphButton] addTarget:self action:@selector(buttonHighlight:) forControlEvents:UIControlEventTouchDown];
@@ -57,7 +67,6 @@
     
     [[self saveButton] addTarget:self action:@selector(buttonHighlight:) forControlEvents:UIControlEventTouchDown];
     [[self saveButton] addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchUpOutside];
-    
     
 }
 
@@ -90,6 +99,12 @@
     // reset button colors
     self.graphButton.backgroundColor = initialColor;
     self.saveButton.backgroundColor = initialColor;
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    NSLog(@"view will disappear");
 }
 
 -(void)setParameter:(MetasomeParameter *)p
@@ -181,6 +196,9 @@
         [[self navigationController] pushViewController:gvc animated:YES];
         
     }
+    
+    [[self graphButton] setBackgroundColor:initialColor];
+
 
 }
 

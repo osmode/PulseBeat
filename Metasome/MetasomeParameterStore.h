@@ -34,6 +34,7 @@ typedef enum {
 -(void)loadDefaultParameters;
 -(NSString *)itemArchivePath;
 -(BOOL)saveChanges;
+-(void)resetAllCheckmarks;
 
 
 @end

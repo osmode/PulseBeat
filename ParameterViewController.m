@@ -78,6 +78,13 @@
     
     [[self tableView] reloadData];
     
+    
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.tableView setEditing:NO animated:YES];
 }
 
 - (void)preferredContentSizeChanged:(NSNotification *)aNotification
@@ -88,6 +95,7 @@
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
     
@@ -183,7 +191,12 @@
     NSString *cellValue = [[array objectAtIndex:indexPath.row] parameterName];
     */
     
-    MetasomeParameter *p = [[[MetasomeParameterStore sharedStore] currentList] objectAtIndex:indexPath.row];
+    //MetasomeParameter *p = [[[MetasomeParameterStore sharedStore] currentList] objectAtIndex:indexPath.row];
+    
+    NSLog(@"currentSelection: %i", currentSelection);
+    NSLog(@"total: %i", [[[[[MetasomeParameterStore sharedStore] parameterArray] objectAtIndex:currentSelection] valueForKey:@"list"] count]);
+    
+    MetasomeParameter *p = [[[[[MetasomeParameterStore sharedStore] parameterArray] objectAtIndex:[self currentSelection]] valueForKey:@"list"] objectAtIndex:indexPath.row];
         
     NSString *cellValue = [p parameterName];
     [[cell textLabel] setText:cellValue];
@@ -207,7 +220,10 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[[MetasomeParameterStore sharedStore] currentList] count];
+    //return [[[MetasomeParameterStore sharedStore] currentList] count];
+    
+    return  [[[[[MetasomeParameterStore sharedStore] parameterArray] objectAtIndex:[self currentSelection]] valueForKey:@"list"] count];
+
 }
 
 
@@ -251,7 +267,9 @@ toIndexPath:(NSIndexPath *)destinationIndexPath
     MetasomeParameter *p = [array objectAtIndex:indexPath.row];
     */
     
-    MetasomeParameter *p = [[[MetasomeParameterStore sharedStore] currentList] objectAtIndex:indexPath.row];
+    //MetasomeParameter *p = [[[MetasomeParameterStore sharedStore] currentList] objectAtIndex:indexPath.row];
+    
+    MetasomeParameter *p = [[[[[MetasomeParameterStore sharedStore] parameterArray] objectAtIndex:[self currentSelection]] valueForKey:@"list"] objectAtIndex:indexPath.row];
     
     // Set parameter as marked
     //[p setCheckedStatus:YES];

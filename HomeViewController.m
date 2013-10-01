@@ -72,6 +72,12 @@
     lungButton.layer.cornerRadius = 10.0;
     diabetesButton.layer.cornerRadius = 10.0;
     customButton.layer.cornerRadius = 10.0;
+    
+    heartButton.layer.drawsAsynchronously = YES;
+    lungButton.layer.drawsAsynchronously = YES;
+    diabetesButton.layer.drawsAsynchronously = YES;
+    customButton.layer.drawsAsynchronously = YES;
+    
 
     normalColor = heartButton.backgroundColor;
     

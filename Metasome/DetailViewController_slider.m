@@ -47,7 +47,17 @@ const int NUM_SLIDER_SECTIONS = 5;
     
     [saveButton addTarget:self action:@selector(buttonHighlight:) forControlEvents:UIControlEventTouchDown];
     [saveButton addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchUpOutside];
-
+    
+    // if this is a custom-made parameter, get rid of the smiley face
+    if ([[self parameter] isCustomMade]) {
+        
+        NSLog(@"custom made");
+        [smileyImage setImage:nil];
+    }
+    
+    smileyImage.layer.drawsAsynchronously = YES;
+    graphButton.layer.drawsAsynchronously = YES;
+    saveButton.layer.drawsAsynchronously = YES;
 }
 
 -(IBAction)buttonHighlight:(id)sender
@@ -101,12 +111,19 @@ const int NUM_SLIDER_SECTIONS = 5;
 //button on nav bar is clicked
 -(void)savePoint:(id)sender
 {
-    //create new data point object
-    //and save it to data point store
-    //actual write to disk occurs on
-    //applicationDidEnterBackground
+    // make sure entered date is not past today's date
+    if ( [[datePicker date] timeIntervalSince1970] > [[NSDate date] timeIntervalSince1970] ) {
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Future dates are not allowed!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        return;
+    }
     
-    lastPointSaved = [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:[valueSlider value]*100 date:datePicker.date.timeIntervalSince1970 options:noOptions];
+    float floatValue = [valueSlider value]*100;
+    int intValue = (int)floatValue;
+    
+    // addPointWithName method in MetasomeDataPointStore returns a pointer to last saved point
+    // used for manual undo management
+    lastPointSaved = [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:intValue date:datePicker.date.timeIntervalSince1970 options:noOptions];
     
     BOOL result = [[MetasomeDataPointStore sharedStore] saveChanges];
     [self addUndoButton];
@@ -123,13 +140,7 @@ const int NUM_SLIDER_SECTIONS = 5;
         UIAlertView *a = [[UIAlertView alloc] initWithTitle:@"Write to file failed!" message:[err localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [a show];
     }
-    
-    // make sure entered date is not past today's date
-    if ( [[datePicker date] timeIntervalSince1970] > [[NSDate date] timeIntervalSince1970] ) {
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Future dates are not allowed!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [av show];
-        return;
-    }
+
     
     [self changeToSaved:YES];
     //[[self navigationController]popViewControllerAnimated:YES];
@@ -149,20 +160,21 @@ const int NUM_SLIDER_SECTIONS = 5;
         
     }
     
+    [graphButton setBackgroundColor:initialColor];
+
+    
 }
 
 -(void)sliderValueChanged
 {
     [self changeToSaved:NO];
     
+    // if this is a custom-made parameter, don't set any images
+    if ([[self parameter] isCustomMade])
+        return;
+    
     // divide slider into pieces
     int position = (int)([valueSlider value]*100) / (100/NUM_SLIDER_SECTIONS);
-    
-    if ([parameter sadOnRightSide])
-        NSLog(@"sadOnRightSide");
-    else
-        NSLog(@"sadOnLeftSide");
-    
     
     switch (position) {
         case 0:

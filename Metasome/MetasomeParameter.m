@@ -10,6 +10,8 @@
 
 @implementation MetasomeParameter
 @synthesize parameterName, inputType, inputCategory, checkedStatus, lastChecked, maxValue, sadOnRightSide;
+@synthesize isCustomMade;
+
 
 -(id)initWithParameterName:(NSString *)name inputType:(int)type category:(int)newCategory maximumValue:(float)value
 {
@@ -36,6 +38,8 @@
     [aCoder encodeObject:lastChecked forKey:@"lastChecked"];
     [aCoder encodeBool:checkedStatus forKey:@"checkedStatus"];
     [aCoder encodeFloat:maxValue forKey:@"maxValue"];
+    [aCoder encodeBool:sadOnRightSide forKey:@"sadOnRightSide"];
+    [aCoder encodeBool:isCustomMade forKey:@"isCustomMade"];
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder
@@ -48,6 +52,8 @@
         [self setLastChecked:[aDecoder decodeObjectForKey:@"lastChecked"]];
         [self setCheckedStatus:[aDecoder decodeBoolForKey:@"checkedStatus"]];
         [self setMaxValue:[aDecoder decodeFloatForKey:@"maxValue"]];
+        [self setSadOnRightSide:[aDecoder decodeBoolForKey:@"sadOnRightSide"]];
+        [self setIsCustomMade:[aDecoder decodeBoolForKey:@"isCustomMade"]];
     }
          return self;
 }

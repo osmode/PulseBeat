@@ -85,10 +85,12 @@ float const MAX_SLIDER_VALUE = 100.0;
     return self;
 }
 
-
 -(void)addParameter:(MetasomeParameter *)p
 {
     [[[[[MetasomeParameterStore sharedStore] parameterArray] objectAtIndex:[p inputCategory] ]objectForKey:@"list"] addObject:p];
+    
+    NSLog(@"number of parameters in category: %i", [[[[[MetasomeParameterStore sharedStore] parameterArray] objectAtIndex:p.inputCategory] objectForKey:@"list"] count]);
+    
 }
 
 -(void)moveItemAtIndex:(int)from toIndex:(int)to inSection:(int)sec
@@ -100,6 +102,20 @@ float const MAX_SLIDER_VALUE = 100.0;
     MetasomeParameter *p = [currentList objectAtIndex:from];
     [currentList removeObjectAtIndex:from];
     [currentList insertObject:p atIndex:to];
+    
+}
+
+-(void)resetAllCheckmarks
+{
+    int numCategories = [[[MetasomeParameterStore sharedStore] parameterArray] count];
+    int counter = 0;
+    while (counter < numCategories - 1) {
+        for (MetasomeParameter *p in [[[[MetasomeParameterStore sharedStore] parameterArray] objectAtIndex:counter] objectForKey:@"list"] )
+        {
+            [p setCheckedStatus:NO];
+        }
+        counter += 1;
+    }
     
 }
 

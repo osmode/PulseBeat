@@ -34,14 +34,21 @@
     return self;
 }
 
-     
 -(void)drawBackground
 {
-    CGRect drawInMe = CGRectMake([self upperLeftCorner].x, [self upperLeftCorner].y, 150, 200);
+    CGRect drawInMe = CGRectMake([self upperLeftCorner].x, [self upperLeftCorner].y, 135, 180);
     CGContextSetRGBFillColor([self context], 0.54, 0.74, 0.91, 0.25);
-    CGContextFillRect([self context], drawInMe);
     
+    UIColor *lineColor = [UIColor blackColor];
+    [lineColor setStroke];
+    //CGContextAddEllipseInRect([self context], drawInMe);
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:drawInMe cornerRadius:10.0];
+    [path stroke];
+    [path fill];
+    CGContextFillPath([self context]);
+
 }
+
 -(void)drawLabels
 {
     CGRect drawInMe = CGRectMake([self upperLeftCorner].x + 20, [self upperLeftCorner].y + 20, 20, 20);
@@ -50,7 +57,7 @@
     
     CGContextFillPath([self context]);
     
-    [self drawText:@"4AM - 9AM" fontSize:15 horizontalLocation:drawInMe.origin.x + 25 verticalLocation:drawInMe.origin.y rotation:0];
+    [self drawText:@"4am - 9am" fontSize:15 horizontalLocation:drawInMe.origin.x + 25 verticalLocation:drawInMe.origin.y rotation:0];
     
     
     drawInMe = CGRectMake(drawInMe.origin.x, drawInMe.origin.y + 60, 20, 20);
@@ -59,7 +66,7 @@
     
     CGContextFillPath([self context]);
     
-    [self drawText:@"9AM - 7PM" fontSize:15 horizontalLocation:drawInMe.origin.x + 25 verticalLocation:drawInMe.origin.y rotation:0];
+    [self drawText:@"9am - 7pm" fontSize:15 horizontalLocation:drawInMe.origin.x + 25 verticalLocation:drawInMe.origin.y rotation:0];
     
     drawInMe = CGRectMake(drawInMe.origin.x, drawInMe.origin.y + 60, 20, 20);
     CGContextSetRGBFillColor([self context], 0.0, 0.0, 1.0, 1.0);
@@ -67,7 +74,7 @@
     
     CGContextFillPath([self context]);
     
-    [self drawText:@"7PM - 4AM" fontSize:15 horizontalLocation:drawInMe.origin.x + 25 verticalLocation:drawInMe.origin.y rotation:0];
+    [self drawText:@"7pm - 4am" fontSize:15 horizontalLocation:drawInMe.origin.x + 25 verticalLocation:drawInMe.origin.y rotation:0];
     
     
 }

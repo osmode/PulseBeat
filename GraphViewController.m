@@ -403,6 +403,8 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
 
 -(void)generateHorizontalAxisLabels
 {
+    int lastDay = 0;
+    
     // clear hoveringHorizontalLabels array before (re-)populating it
     [hoveringHorizontalLabels removeAllObjects];
     
@@ -436,9 +438,15 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
         
         horizontalValue = [graphView minValueOnHorizontalAxis] + (dateCounter * dateStep);
         runningDate = [NSDate dateWithTimeIntervalSince1970:horizontalValue];
+        
+        
+        NSDate *currentDate = runningDate;
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDateComponents *components = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:currentDate]; // Get necessary date components
+        
         horizontalDisplay = [dateFormatter stringFromDate:runningDate];
         
-        UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(beginGrid.x - (30.0 / 2.0), beginGrid.y, 30.0, 30.0)];
+        UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(beginGrid.x - (30.0 / 2.0), beginGrid.y, 50.0, 50.0)];
         dateLabel.text = horizontalDisplay;
         
         dateLabel.textColor = [UIColor blackColor];
@@ -453,6 +461,17 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
         dateLabel.transform = CGAffineTransformMakeRotation(M_PI_4);
         
         [hoveringHorizontalLabels addObject:dateLabel];
+        
+        
+       // NSLog(@"day: %i, lastDay = %i", [components day], lastDay);
+        if (lastDay == [components day]) {
+            //NSLog(@"equal");
+        }
+        else {
+            lastDay = [components day];
+            dateLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+           // NSLog(@"not equal");
+        }
         
         dateLabel = nil;
         dateCounter +=1;
@@ -495,9 +514,7 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
             
             [allEventLabels addObject:eventLabel];
             eventLabel = nil;
-            
-           // NSLog(@"horizontalPos, verticalPos = %f, %f", horizontalPos, verticalPos);
-            
+
         }
     }
     

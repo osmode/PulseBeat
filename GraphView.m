@@ -93,23 +93,34 @@ float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
     
     float smallestX, smallestY;
     float smallestDistance = 1000.0;
+    int pointIndex = 0;
+    int pointIndexCounter = 0;
+    
     
     for (NSValue *val in dataPointCoordinates) {
         
         currentPoint = [val CGPointValue];
         
-        NSLog(@"x, y = %f, %f", currentPoint.x, currentPoint.y);
+        //NSLog(@"x, y = %f, %f", currentPoint.x, currentPoint.y);
         
         if ( [self distanceBetweenPoint:currentPoint andPoint:touched] < smallestDistance) {
             
             smallestDistance = [self distanceBetweenPoint:currentPoint andPoint:touched];
-        
             smallestX = currentPoint.x;
             smallestY = currentPoint.y;
+            
+            pointIndex = pointIndexCounter;
         
         }
         
+        pointIndexCounter += 1;
+        
     }
+    
+    NSLog(@"pointIndex: %i", pointIndex);
+    
+    // return pointIndex to last index position
+    pointIndexCounter -= 1;
     
     // check for minimum distance before showing menu
     if (smallestDistance > MINIMUM_TOUCH_DISTANCE)
@@ -131,10 +142,9 @@ float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
     [numberFormatter setMaximumFractionDigits:0];
     [numberFormatter setRoundingMode:NSNumberFormatterRoundUp];
     
-    valueString = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:yValue]];
-    
+    //valueString = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:yValue]];
+    valueString = [[NSNumber numberWithFloat:[[pointsToGraph objectAtIndex:pointIndex] parameterValue]] stringValue];
     dateString = [dateFormatter stringFromDate:date];
-    //valueString = [[NSNumber numberWithFloat:yValue] stringValue];
     
     
     displayString = [[[[[[MetasomeDataPointStore sharedStore] toGraph] stringByAppendingString:@": "] stringByAppendingString:valueString] stringByAppendingString:@" on "] stringByAppendingString:dateString];
@@ -419,7 +429,13 @@ float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
         minValueOnVerticalAxis = 0.0;
         maxValueOnVerticalAxis = 100.0;
     }
+    
+    // for rescue inhaler puffs, set maximum to 10
+    if ([[[[MetasomeDataPointStore sharedStore] parameterToGraph] parameterName] isEqualToString:@"Rescue inhaler puffs"]) {
         
+        maxValueOnVerticalAxis = 10;
+    }
+    
     if (minValueOnVerticalAxis < 0)
         minValueOnVerticalAxis = 0;
     

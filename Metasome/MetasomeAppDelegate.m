@@ -103,8 +103,17 @@
     //eventNavController.navigationBar.tintColor = [UIColor colorWithRed:1.0 green:0.4 blue:0 alpha:1.0];
     
     [tabBarController setViewControllers:viewControllers];
-    [tabBarController setSelectedIndex:1];
     
+    // start
+    
+    int currentLaunchCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"launchCount"];
+    
+    if (currentLaunchCount == 0) {
+        [tabBarController setSelectedIndex:0];
+    } else {
+        [tabBarController setSelectedIndex:1];
+    }
+        
     [tabBarController setDelegate:self];
     [[self window] setRootViewController:tabBarController];
     

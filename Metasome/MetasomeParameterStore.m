@@ -167,13 +167,13 @@ float const MAX_SLIDER_VALUE = 100.0;
     MetasomeParameter *rescueInhalerPuffs = [[MetasomeParameter alloc] initWithParameterName:@"Rescue inhaler puffs" inputType:ParameterInputInteger category:ParameterCategoryHeart maximumValue:10.0];
     
     // metabolic-related parameters
-    MetasomeParameter *bloodSugar = [[MetasomeParameter alloc] initWithParameterName:@"Blood sugar" inputType:ParameterInputInteger category:ParameterCategoryDiabetes maximumValue:600.0] ;
-    MetasomeParameter *weight = [[MetasomeParameter alloc] initWithParameterName:@"Weight" inputType:ParameterInputFloat category:ParameterCategoryDiabetes maximumValue:800.0] ;
+    MetasomeParameter *bloodSugar = [[MetasomeParameter alloc] initWithParameterName:@"Blood sugar" inputType:ParameterInputInteger category:ParameterCategoryDiabetes maximumValue:1000.0] ;
+    MetasomeParameter *weight = [[MetasomeParameter alloc] initWithParameterName:@"Weight" inputType:ParameterInputFloat category:ParameterCategoryDiabetes maximumValue:1000.0] ;
     
     // mind-related parameters
-    MetasomeParameter *mood = [[MetasomeParameter alloc] initWithParameterName:@"Mood" inputType:ParameterInputSlider category:ParameterCategoryCustom maximumValue:200.0];
+    MetasomeParameter *mood = [[MetasomeParameter alloc] initWithParameterName:@"Mood" inputType:ParameterInputSlider category:ParameterCategoryCustom maximumValue:MAX_SLIDER_VALUE];
     [mood setSadOnRightSide:NO];
-    MetasomeParameter *energy = [[MetasomeParameter alloc] initWithParameterName:@"Energy" inputType:ParameterInputSlider category:ParameterCategoryCustom maximumValue:200.0];
+    MetasomeParameter *energy = [[MetasomeParameter alloc] initWithParameterName:@"Energy" inputType:ParameterInputSlider category:ParameterCategoryCustom maximumValue:MAX_SLIDER_VALUE];
     [energy setSadOnRightSide:NO];
     MetasomeParameter *sleepHours = [[MetasomeParameter alloc] initWithParameterName:@"Sleep hours" inputType:ParameterInputFloat category:ParameterCategoryCustom maximumValue:20.0];
     

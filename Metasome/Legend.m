@@ -36,7 +36,7 @@
 
 -(void)drawBackground
 {
-    CGRect drawInMe = CGRectMake([self upperLeftCorner].x, [self upperLeftCorner].y, 135, 180);
+    CGRect drawInMe = CGRectMake([self upperLeftCorner].x, [self upperLeftCorner].y, 135, 120);
     CGContextSetRGBFillColor([self context], 0.54, 0.74, 0.91, 0.25);
     
     UIColor *lineColor = [UIColor blackColor];
@@ -60,7 +60,7 @@
     [self drawText:@"4am - 9am" fontSize:15 horizontalLocation:drawInMe.origin.x + 25 verticalLocation:drawInMe.origin.y rotation:0];
     
     
-    drawInMe = CGRectMake(drawInMe.origin.x, drawInMe.origin.y + 60, 20, 20);
+    drawInMe = CGRectMake(drawInMe.origin.x, drawInMe.origin.y + 30, 20, 20);
     CGContextSetRGBFillColor([self context], 0.0, 1.0, 0.0, 1.0);
     CGContextAddEllipseInRect([self context], drawInMe);
     
@@ -68,7 +68,7 @@
     
     [self drawText:@"9am - 7pm" fontSize:15 horizontalLocation:drawInMe.origin.x + 25 verticalLocation:drawInMe.origin.y rotation:0];
     
-    drawInMe = CGRectMake(drawInMe.origin.x, drawInMe.origin.y + 60, 20, 20);
+    drawInMe = CGRectMake(drawInMe.origin.x, drawInMe.origin.y + 30, 20, 20);
     CGContextSetRGBFillColor([self context], 0.0, 0.0, 1.0, 1.0);
     CGContextAddEllipseInRect([self context], drawInMe);
     

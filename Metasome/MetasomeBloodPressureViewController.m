@@ -108,6 +108,22 @@
 }
 -(void)savePoint:(id)sender
 {
+    
+    // make sure entered value is not greater than parameter's max allowed value before saving
+    if ( [parameter isWithinMaxValue:[[systolicTextField text] floatValue]] == NO) {
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Systolic value is too large!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [av show];
+        return;
+    }
+    
+    // make sure entered value is not greater than parameter's max allowed value before saving
+    if ( [parameter isWithinMaxValue:[[diastolicTextField text] floatValue]] == NO) {
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Diastolic value is too large!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [av show];
+        return;
+    }
+    
+    // make sure a value was entered
     if (systolicTextField.text.length * diastolicTextField.text.length == 0) {
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Text field(s) is empty!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [av show];

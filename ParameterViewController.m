@@ -81,11 +81,6 @@
     
 }
 
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [self.tableView setEditing:NO animated:YES];
-}
 
 - (void)preferredContentSizeChanged:(NSNotification *)aNotification
 {
@@ -128,17 +123,6 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
-    int currentLaunchCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"launchCount"];
-
-    // Launch HomeViewController modally only if loading app for the first time
-    
-    if (currentLaunchCount == 0) {
-       HomeViewController *hvc = [[HomeViewController alloc] init];
-        [self presentViewController:hvc animated:YES completion:nil];
-        //LoginScreenViewController *lvc = [[LoginScreenViewController alloc] init];
-      // [self presentViewController:lvc animated:YES completion:nil];
-        
-    }
 
 }
 

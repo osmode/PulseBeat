@@ -81,11 +81,15 @@
     
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self setEditing:NO animated:YES];
+}
 
 - (void)preferredContentSizeChanged:(NSNotification *)aNotification
 {
     [[self view] setNeedsLayout];
-    NSLog(@"Font size changed");
 }
 
 - (void)viewDidLoad

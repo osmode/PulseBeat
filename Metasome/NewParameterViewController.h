@@ -19,6 +19,8 @@
     __weak IBOutlet UIButton *categoryButton;
     __weak IBOutlet UIButton *inputButton;
     
+    UIColor *initialColor;
+    
 }
 
 - (IBAction)changeCategory:(id)sender;

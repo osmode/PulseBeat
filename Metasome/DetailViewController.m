@@ -186,6 +186,8 @@
     BOOL result = [[MetasomeDataPointStore sharedStore] saveChanges];
     [self addUndoButton];
     
+    NSLog(@"value: %@", [datePicker date]);
+    
     // mark parameter as checked
     [[self parameter] setCheckedStatus:YES];
     [[self parameter] setLastChecked:[NSDate date]];
@@ -251,6 +253,10 @@
     [[MetasomeDataPointStore sharedStore] saveChanges];
     
     [[self navigationItem] setRightBarButtonItem:nil];
+    
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Undo" message:@"The last data point was successfully removed!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [av show];
+    
 }
 
 

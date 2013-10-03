@@ -49,6 +49,8 @@ float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
 @synthesize pointsToGraph;
 @synthesize parentGraphViewController;
 @synthesize legend, drawEventsFlag, dataPointCoordinates;
+@synthesize selectedPointIndex;
+
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -110,6 +112,7 @@ float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
             smallestY = currentPoint.y;
             
             pointIndex = pointIndexCounter;
+            [self setSelectedPointIndex:pointIndex];
         
         }
         
@@ -153,10 +156,23 @@ float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
     [self becomeFirstResponder];
     UIMenuController *menu = [UIMenuController sharedMenuController];
     UIMenuItem *infoItem = [[UIMenuItem alloc] initWithTitle:displayString action:@selector(hideMenu)];
-    [menu setMenuItems:[NSArray arrayWithObject:infoItem]];
+    UIMenuItem *deleteItem = [[UIMenuItem alloc] initWithTitle:@"delete" action:@selector(deletePoint)];
+    
+    [menu setMenuItems:[NSArray arrayWithObjects:infoItem, deleteItem, nil]];
     [menu setTargetRect:CGRectMake(smallestX, smallestY, 2, 2) inView:self];
     [menu setMenuVisible:YES animated:YES];
     
+    [self setNeedsDisplay];
+}
+
+-(void)deletePoint
+{
+    MetasomeDataPoint *pointToDelete = [[self pointsToGraph] objectAtIndex:selectedPointIndex];
+    
+    [[self pointsToGraph] removeObjectAtIndex:selectedPointIndex];
+    [[MetasomeDataPointStore sharedStore] removePoint:pointToDelete];
+    [[MetasomeDataPointStore sharedStore] saveChanges];
+    [self initializeGraphView];
     [self setNeedsDisplay];
 }
 
@@ -391,8 +407,10 @@ float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
 }
 -(void)hideMenu
 {
-
+    //UIAlertView *av = [UIAlertView alloc] initWithTitle:@"Warning" message:@" delegate:<#(id)#> cancelButtonTitle:<#(NSString *)#> otherButtonTitles:<#(NSString *), ...#>, nil
+    
 }
+
 -(void)setScale:(NSArray *)array
 {    
     [self setMaxValueOnHorizontalAxis:[[NSDate date] timeIntervalSince1970]];

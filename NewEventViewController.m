@@ -279,4 +279,11 @@
     label.clipsToBounds = YES;
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    NSLog(@"view will disappear");
+    [super viewWillDisappear:animated];
+    [dateButton setBackgroundColor:initialColor];
+}
+
 @end

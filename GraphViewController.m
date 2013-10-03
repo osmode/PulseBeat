@@ -153,8 +153,7 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
     
     [self addTitle];
     [self addVerticalAxisLine];
-    [self generateEventLabels:[[MetasomeEventStore sharedStore] allEvents]];
-    [self drawEventLabels];
+
 
     NSArray *itemArray = [NSArray arrayWithObjects:@"Week", @"Month", @"3 mo", @"1 yr", nil];
     segmentControl = [[UISegmentedControl alloc] initWithItems:itemArray];
@@ -167,6 +166,8 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
     
     //new addition
     [graphView initializeGraphView];
+    [self generateEventLabels:[[MetasomeEventStore sharedStore] allEvents]];
+    [self drawEventLabels];
     
 }
 
@@ -499,7 +500,8 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
             UILabel *eventLabel = [[UILabel alloc] initWithFrame:CGRectMake(horizontalPos, verticalPos, [graphView verticalAxisLength], 30.0)];
             
             //eventLabel.backgroundColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.5];
-            eventLabel.backgroundColor = [UIColor colorWithRed:0.2 green:0.0 blue:1.0 alpha:0.3];
+            eventLabel.backgroundColor = [UIColor colorWithRed:0.65 green:0.51 blue:0.93 alpha:0.5];
+            
             eventLabel.layer.cornerRadius = 5;
             [eventLabel.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
             

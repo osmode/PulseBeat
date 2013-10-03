@@ -42,7 +42,7 @@
     categoryChoices = [[NSArray alloc] initWithArray:[[MetasomeParameterStore sharedStore] sections]];
     inputChoices = [[NSArray alloc] initWithObjects:@"Slider bar", @"Text field (no decimals)", @"Text field (allow decimals)",  nil];
     
-    [categoryButton setHighlighted:YES];
+    //[categoryButton setHighlighted:YES];
     //[[self parameterCategory] setHidden:YES];
     [[self parameterInput] setHidden:YES];
     
@@ -51,6 +51,10 @@
     
     // create notification to know when text size is changed
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
+    
+    // capture original button colors
+    initialColor = [inputButton backgroundColor];
+    [self flipButton:categoryButton];
     
 }
 
@@ -81,10 +85,14 @@
 
 -(void)flipButton:(UIButton *)buttonToSelect
 {
-    categoryButton.highlighted = NO;
-    inputButton.highlighted = NO;
+    //categoryButton.highlighted = NO;
+    //inputButton.highlighted = NO;
+    //buttonToSelect.highlighted = YES;
     
-    buttonToSelect.highlighted = YES;
+    [categoryButton setBackgroundColor:initialColor];
+    [inputButton setBackgroundColor:initialColor];
+    
+    [buttonToSelect setBackgroundColor:[UIColor greenColor]];
 }
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {

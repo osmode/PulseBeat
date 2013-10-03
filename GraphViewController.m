@@ -157,7 +157,7 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
 
     NSArray *itemArray = [NSArray arrayWithObjects:@"Week", @"Month", @"3 mo", @"1 yr", nil];
     segmentControl = [[UISegmentedControl alloc] initWithItems:itemArray];
-    segmentControl.segmentedControlStyle = UISegmentedControlStyleBar;
+    //segmentControl.segmentedControlStyle = UISegmentedControlStyleBar;
     segmentControl.selectedSegmentIndex = 0;
     [segmentControl addTarget:self action:@selector(changeInterval) forControlEvents:UIControlEventValueChanged];
     UIBarButtonItem *segmentButton = [[UIBarButtonItem alloc] initWithCustomView:segmentControl];

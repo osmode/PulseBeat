@@ -9,6 +9,7 @@
 #import "Legend.h"
 #import "MetasomeDataPoint.h"
 #import "MetasomeDataPointStore.h"
+#import <CoreText/CoreText.h>
 
 @implementation Legend
 
@@ -51,7 +52,7 @@
 
 -(void)drawLabels
 {
-    CGRect drawInMe = CGRectMake([self upperLeftCorner].x + 20, [self upperLeftCorner].y + 20, 20, 20);
+    CGRect drawInMe = CGRectMake([self upperLeftCorner].x + 10, [self upperLeftCorner].y + 20, 20, 20);
     CGContextSetRGBFillColor([self context], 1.0, 0.0, 0.0, 1.0);
     CGContextAddEllipseInRect([self context], drawInMe);
     
@@ -76,22 +77,40 @@
     
     [self drawText:@"7pm - 4am" fontSize:15 horizontalLocation:drawInMe.origin.x + 25 verticalLocation:drawInMe.origin.y rotation:0];
     
-    
 }
+
 -(void)drawText:(NSString *)writeMe fontSize:(float)size horizontalLocation:(float)horizonal verticalLocation:(float)vertical rotation:(float)radians
 {
 
     [self setTransform:CGAffineTransformRotate([self transform], radians)];
     CGContextSetTextMatrix([self context], [self transform]);
-    
+
     CGContextSetRGBFillColor([self context], 0, 0, 0, 1);
-    CGContextSelectFont([self context], "Helvetica", size, kCGEncodingMacRoman);
+    //CGContextSelectFont([self context], "Helvetica", size, kCGEncodingMacRoman);
     CGContextSetCharacterSpacing([self context], 1.5);
     CGContextSetTextDrawingMode([self context], kCGTextFill);
     
-    CGContextShowTextAtPoint([self context], horizonal, vertical + size, [writeMe UTF8String], [writeMe length]);
+    //CGContextShowTextAtPoint([self context], horizonal, vertical + size, [writeMe UTF8String], [writeMe length]);
     [self setTransform:CGAffineTransformRotate([self transform], -radians)];
     CGContextSetTextMatrix([self context], [self transform]);
+    
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathAddRect(path, NULL, CGRectMake(horizonal, vertical - 88, 135, 120) );
+    
+    NSMutableAttributedString *attString = [[NSMutableAttributedString alloc]
+                                      initWithString:writeMe];
+    [attString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:18.0] range:NSMakeRange(0, [attString length])];
+     
+    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)attString);
+    
+    CTFrameRef frame = CTFramesetterCreateFrame(framesetter,
+                             CFRangeMake(0, [attString length]), path, NULL);
+    
+    CTFrameDraw(frame, [self context]);
+    
+    CFRelease(frame);
+    CFRelease(path);
+    CFRelease(framesetter);
     
 }
 

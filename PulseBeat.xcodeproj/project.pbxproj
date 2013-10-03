@@ -125,6 +125,7 @@
 		FAF87ED017E27F8900C830D9 /* NewPhotoGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF87ECE17E27F8900C830D9 /* NewPhotoGroupViewController.m */; };
 		FAF87ED117E27F8900C830D9 /* NewPhotoGroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF87ECF17E27F8900C830D9 /* NewPhotoGroupViewController.xib */; };
 		FAF87ED417E293EF00C830D9 /* PhotoArchiveStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF87ED317E293EE00C830D9 /* PhotoArchiveStore.m */; };
+		FAF9443A17FD364B00DD7F71 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF9443917FD364B00DD7F71 /* CoreText.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -283,6 +284,7 @@
 		FAF87ECF17E27F8900C830D9 /* NewPhotoGroupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewPhotoGroupViewController.xib; sourceTree = "<group>"; };
 		FAF87ED217E293EE00C830D9 /* PhotoArchiveStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoArchiveStore.h; sourceTree = "<group>"; };
 		FAF87ED317E293EE00C830D9 /* PhotoArchiveStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoArchiveStore.m; sourceTree = "<group>"; };
+		FAF9443917FD364B00DD7F71 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,6 +292,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAF9443A17FD364B00DD7F71 /* CoreText.framework in Frameworks */,
 				FA34640A17DD49AD008B5163 /* CoreData.framework in Frameworks */,
 				FA4817C917C91D8B00A4CA4A /* QuartzCore.framework in Frameworks */,
 				FA4E9EEC17C1D04D00E421DE /* UIKit.framework in Frameworks */,
@@ -430,6 +433,7 @@
 		FA4E9EEA17C1D04D00E421DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FAF9443917FD364B00DD7F71 /* CoreText.framework */,
 				FA34640917DD49AD008B5163 /* CoreData.framework */,
 				FA4817C817C91D8B00A4CA4A /* QuartzCore.framework */,
 				FA4E9EEB17C1D04D00E421DE /* UIKit.framework */,

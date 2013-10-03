@@ -93,7 +93,7 @@
                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tlv-E9-gei">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tlv-E9-gei">
                     <rect key="frame" x="176" y="270" width="116" height="48"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -105,7 +105,7 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Yhr-Tj-LnB" secondAttribute="trailing" constant="58" id="15C-ch-PMm"/>
                 <constraint firstItem="113" firstAttribute="leading" secondItem="146" secondAttribute="trailing" constant="26" id="3tA-nI-mGj"/>
-                <constraint firstItem="174" firstAttribute="trailing" secondItem="Tlv-E9-gei" secondAttribute="trailing" id="4Kx-LG-NcT"/>
+                <constraint firstItem="174" firstAttribute="trailing" secondItem="Tlv-E9-gei" secondAttribute="trailing" constant="18" id="4Kx-LG-NcT"/>
                 <constraint firstItem="Tlv-E9-gei" firstAttribute="top" secondItem="132" secondAttribute="top" id="5jk-qy-qmO"/>
                 <constraint firstItem="Yhr-Tj-LnB" firstAttribute="top" secondItem="174" secondAttribute="bottom" constant="8" symbolic="YES" id="81x-kt-HjT"/>
                 <constraint firstItem="132" firstAttribute="leading" secondItem="146" secondAttribute="leading" id="D9z-H3-DfV"/>
@@ -113,7 +113,7 @@
                 <constraint firstAttribute="trailing" secondItem="44" secondAttribute="trailing" constant="10" id="Iw3-Ec-UMV"/>
                 <constraint firstItem="174" firstAttribute="leading" secondItem="Yhr-Tj-LnB" secondAttribute="leading" id="LPu-Ri-0Da"/>
                 <constraint firstItem="132" firstAttribute="top" secondItem="Yhr-Tj-LnB" secondAttribute="bottom" constant="17" id="LdY-dY-vVs"/>
-                <constraint firstItem="Tlv-E9-gei" firstAttribute="leading" secondItem="132" secondAttribute="trailing" constant="11" id="NPL-L3-vyi"/>
+                <constraint firstItem="Tlv-E9-gei" firstAttribute="leading" secondItem="132" secondAttribute="trailing" constant="32" id="NPL-L3-vyi"/>
                 <constraint firstItem="132" firstAttribute="leading" secondItem="Yhr-Tj-LnB" secondAttribute="leading" id="Phx-Nm-Ex0"/>
                 <constraint firstItem="44" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="66" id="V9b-tQ-I5l"/>
                 <constraint firstItem="613" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" symbolic="YES" id="Wlp-Z8-ypJ"/>

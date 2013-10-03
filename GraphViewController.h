@@ -34,7 +34,6 @@
 @property (nonatomic, strong) NSMutableArray *allEventLabels;
 
 -(void)changeInterval;
--(void)initializeSubViews;
 -(void)updateLabelPosition:(HoveringLabel *)hl withinScrollView:(UIScrollView *)sv;
 -(void)addTitle;
 -(void)drawHorizontalAxisLabels;

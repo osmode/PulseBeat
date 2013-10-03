@@ -23,8 +23,6 @@
 -(void)moveItemAtIndex:(int)from toIndex:(int)to;
 -(BOOL)saveChanges;
 -(NSString *)itemArchivePath;
--(void)drawEvents:(UIView *)v;
--(void)generateEventLabels:(Legend *)legend;
 -(void)removeLabelsFromSuperview:(UIView *)v;
 -(NSMutableArray *)allEventLabels;
 

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HomeViewController.h"
 
-@interface ParameterViewController : UITableViewController
+@interface ParameterViewController : UITableViewController 
 {
 }
 

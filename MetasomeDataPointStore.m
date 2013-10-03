@@ -175,9 +175,7 @@
     [request setEntity:e];
     
     NSSortDescriptor *sd = [NSSortDescriptor sortDescriptorWithKey:@"pDate" ascending:YES];
-    
-    NSDate *def = [[NSDate alloc] initWithTimeIntervalSince1970:[fromDate timeIntervalSince1970]];
-    
+        
     NSPredicate *p = [NSPredicate predicateWithFormat:@"(parameterName like %@) AND (pDate > %f)", pn, fromDate.timeIntervalSince1970];
     [request setPredicate:p];
 

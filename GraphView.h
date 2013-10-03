@@ -59,14 +59,12 @@ typedef enum {
 @property (nonatomic, copy) NSMutableArray *dataPointCoordinates;
 @property (nonatomic) int selectedPointIndex;
 
--(void)drawText:(NSString *)writeMe fontSize:(float)size horizontalLocation:(float)horizonal verticalLocation:(float)vertical rotation:(float)radians;
--(void)drawLabels;
 -(void)initializeGraphView;
 -(void)generateAxisLabels;
 -(void)drawAxes;
 -(void)convertDataPointsToCoordinates:(NSMutableArray *)dataPoints;
 -(void)showMenuAtPoint:(NSValue *)point;
--(void)deletePoint:(int)indexPosition;
+-(void)deletePoint;
 
 
 @end

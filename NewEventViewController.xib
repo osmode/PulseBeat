@@ -39,13 +39,13 @@
                         <constraint firstAttribute="width" constant="49" id="O4k-9m-GPt"/>
                     </constraints>
                 </switch>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="132">
-                    <rect key="frame" x="20" y="270" width="132" height="48"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="132">
+                    <rect key="frame" x="20" y="270" width="124" height="48"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="O8B-aq-iye"/>
-                        <constraint firstAttribute="width" constant="113" id="cQZ-ZP-A8G"/>
+                        <constraint firstAttribute="width" constant="124" id="fyn-Eq-mqD"/>
                     </constraints>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <state key="normal" title="Change Date">

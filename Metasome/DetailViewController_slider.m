@@ -84,6 +84,13 @@ const int NUM_SLIDER_SECTIONS = 5;
     saveButton.backgroundColor = initialColor;
   
 }
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+
+}
+
 -(void)setParameter:(MetasomeParameter *)p
 {
     parameter = p;

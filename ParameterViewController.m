@@ -121,8 +121,12 @@
             //[[MetasomeParameterStore sharedStore] setCurrentList:[[[[MetasomeParameterStore sharedStore] parameterArray] objectAtIndex:0] valueForKey:@"list"]];
             
     }
+    
 
 }
+
+
+
 
 -(void)viewDidAppear:(BOOL)animated
 {

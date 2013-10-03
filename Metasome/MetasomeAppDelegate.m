@@ -169,7 +169,11 @@
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
 {
-
+   // NSLog(@"current tab index: %i", [tabBarController selectedIndex]);
+    //NSLog(@"changing to index: %i", [[tabBarController viewControllers] indexOfObjectIdenticalTo:viewController]);
+    if ([tabBarController selectedIndex] != 1)
+        [parameterNavController popToRootViewControllerAnimated:YES];
+    
 }
 
 /*

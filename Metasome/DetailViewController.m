@@ -70,7 +70,7 @@
     
     // create notification to know when text size is changed
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
-    
+        
 }
 
 -(void)preferredContentSizeChanged:(NSNotification *)aNotification
@@ -113,10 +113,11 @@
     self.saveButton.backgroundColor = initialColor;
 }
 
+
+
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    NSLog(@"view will disappear");
 }
 
 -(void)setParameter:(MetasomeParameter *)p

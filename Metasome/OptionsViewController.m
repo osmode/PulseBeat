@@ -13,10 +13,12 @@
 #import "MetasomeDataPoint.h"
 #import "NotificationsDetailViewController.h"
 #import "TextFormatter.h"
-
+#import "FitbitLoginViewController.h"
+#import "OAuth1Controller.h"
+#import "FitbitApiDataStore.h"
 
 @implementation OptionsViewController
-@synthesize selectedActionBlock;
+@synthesize selectedActionBlock, oauth1Controller;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -96,7 +98,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -115,7 +117,11 @@
     }
     
     switch (indexPath.row) {
-        case 0:  // Notifications cell
+        case 0:  // Sync FitBit cell
+            [[cell textLabel] setText:@"Sync FitBit account"];
+            break;
+            
+        case 1:  // Notifications cell
             [[cell textLabel] setText:@"Reminders"];
             if ( [[NSUserDefaults standardUserDefaults] boolForKey:MetasomeNotificationPrefKey] ) {
                 [[cell detailTextLabel] setText:@"Reminders on"];
@@ -127,13 +133,13 @@
             }
             break;
             
-        case 1:  // Reset default parameters
+        case 2:  // Reset default parameters
             [[cell textLabel] setText:@"Reset default lists"];
             break;
-        case 2:  //Delete all records cell
+        case 3:  //Delete all records cell
             [[cell textLabel] setText:@"Delete all records"];
             break;
-        case 3:
+        case 4:
             [[cell textLabel] setText:@"Delete today's records"];
             break;
     }
@@ -152,15 +158,44 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     switch (indexPath.row) {
         case 0:
+        {
+            FitbitLoginViewController *flvc = [[FitbitLoginViewController alloc] init];
+            
+            [[self navigationController] presentViewController:flvc animated:YES completion:^{
+                [self.oauth1Controller loginWithWebView:flvc.webView completion:^(NSDictionary *oauthTokens, NSError *error) {
+                    if (!error) {
+                        // Store your tokens for authenticating your later requests, consider storing the tokens in the Keychain
+                        self.oauthToken = oauthTokens[@"oauth_token"];
+                        self.oauthTokenSecret = oauthTokens[@"oauth_token_secret"];
+                        
+                       // populate local database with fitbit data
+                    
+                        [[FitbitApiDataStore sharedStore] getStepData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
+                    }
+                    else
+                    {
+                        NSLog(@"Error authenticating: %@", error.localizedDescription);
+                    }
+                    [self dismissViewControllerAnimated:YES completion: ^{
+                        self.oauth1Controller = nil;
+                    }];
+                }];
+            }];
+                
+            break;
+        }
+            
+        case 1:
         {
             NotificationsDetailViewController *ndvc = [[NotificationsDetailViewController alloc] init];
             [[self navigationController] pushViewController:ndvc animated:YES];
             
             break;
         }
-        case 1:
+        case 2:
         {
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             [self setSelectedActionBlock:^{
@@ -173,7 +208,7 @@
             
             break;
         }
-        case 2:
+        case 3:
         {
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             
@@ -188,7 +223,7 @@
             
             break;
         }
-        case 3:
+        case 4:
         {
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             [self setSelectedActionBlock:^{
@@ -228,6 +263,15 @@
     [super viewWillAppear:animated];
     [self.tableView reloadData];
 }
+
+- (OAuth1Controller *)oauth1Controller
+{
+    if (oauth1Controller == nil) {
+        oauth1Controller = [[OAuth1Controller alloc] init];
+    }
+    return oauth1Controller;
+}
+
 
 
 @end

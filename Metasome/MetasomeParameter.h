@@ -45,6 +45,7 @@ typedef enum {
 @property (nonatomic) int inputCategory;
 @property (nonatomic) BOOL checkedStatus;
 @property (nonatomic, strong) NSDate *lastChecked;
+@property (nonatomic) int consecutiveEntries;
 @property (nonatomic) float maxValue;
 @property (nonatomic) BOOL sadOnRightSide;
 @property (nonatomic) bool isCustomMade;
@@ -52,6 +53,7 @@ typedef enum {
 -(id)initWithParameterName:(NSString *)name inputType:(int)type category:(int)newCategory maximumValue:(float)value;
 -(void)resetCheckmark;
 -(BOOL)isWithinMaxValue:(float)value;
+-(BOOL)incrementConsecutiveCounter;
 
 
 @end

@@ -10,7 +10,7 @@
 
 @implementation MetasomeParameter
 @synthesize parameterName, inputType, inputCategory, checkedStatus, lastChecked, maxValue, sadOnRightSide;
-@synthesize isCustomMade;
+@synthesize isCustomMade, consecutiveEntries;
 
 
 -(id)initWithParameterName:(NSString *)name inputType:(int)type category:(int)newCategory maximumValue:(float)value
@@ -26,6 +26,8 @@
         [self setCheckedStatus:NO];
         lastChecked = [[NSDate alloc] init];
         
+        consecutiveEntries = 0;
+        
     }
     return self;
 }
@@ -40,6 +42,7 @@
     [aCoder encodeFloat:maxValue forKey:@"maxValue"];
     [aCoder encodeBool:sadOnRightSide forKey:@"sadOnRightSide"];
     [aCoder encodeBool:isCustomMade forKey:@"isCustomMade"];
+    [aCoder encodeInt:consecutiveEntries forKey:@"consecutiveEntries"];
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder
@@ -54,6 +57,7 @@
         [self setMaxValue:[aDecoder decodeFloatForKey:@"maxValue"]];
         [self setSadOnRightSide:[aDecoder decodeBoolForKey:@"sadOnRightSide"]];
         [self setIsCustomMade:[aDecoder decodeBoolForKey:@"isCustomMade"]];
+        [self setConsecutiveEntries:[aDecoder decodeIntForKey:@"consecutiveEntries"]];
     }
          return self;
 }
@@ -93,5 +97,46 @@
     return NO;
 }
 
+-(BOOL)incrementConsecutiveCounter
+{
+    /*
+    NSDate *currentDate = [NSDate date];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *todayComponents = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:currentDate]; // Get necessary date components
+    
+    int todayDay = [todayComponents day];
+    
+    // get last entered date's day
+    NSDateComponents *lastEnteredDateComponents = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:[self lastChecked]];
+                                                   
+   int lastEnteredDay = [lastEnteredDateComponents day];
+    
+    // was the last entry today?
+    return (todayDay == lastEnteredDay);
+    */
+    
+    NSTimeInterval distanceBetweenDates = [[NSDate date] timeIntervalSinceDate:[self lastChecked]];
+    double secondsInAnHour = 3600.0;
+    int hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
+    NSLog(@"distanceBetweenDates: %f", distanceBetweenDates);
+    
+    NSLog(@"hoursBetweenDates: %i", hoursBetweenDates);
+    
+    if (hoursBetweenDates < 36 && hoursBetweenDates > 20) {
+        consecutiveEntries += 1;
+        
+        return YES;
+    }
+    else {
+        consecutiveEntries = 0;
+        
+        return NO;
+    }
+        
+    NSLog(@"consecutiveEntries in 'incrementConsecutiveConter': %i", consecutiveEntries);
+    
+    return YES;
+    
+}
 
 @end

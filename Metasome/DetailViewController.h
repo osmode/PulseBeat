@@ -14,6 +14,9 @@
         
     __weak IBOutlet UITextField *valueField;
     __weak IBOutlet UIDatePicker *datePicker;
+    __weak IBOutlet UILabel *saluteLabel;
+    __weak IBOutlet UIImageView *saluteImage;
+    
     
     UIImage *saveButtonPreChecked, *saveButtonChecked;
     UIColor *initialColor;

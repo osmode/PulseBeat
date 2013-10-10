@@ -70,7 +70,10 @@
     
     // create notification to know when text size is changed
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
-        
+    
+    // initially hide saluteLabel and saluteLabel
+    saluteLabel.hidden = YES;
+    saluteImage.hidden = YES;
 }
 
 -(void)preferredContentSizeChanged:(NSNotification *)aNotification
@@ -114,7 +117,6 @@
 }
 
 
-
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -144,7 +146,6 @@
 //button on nav bar is clicked
 -(void)savePoint:(id)sender
 {
-
     
     // make sure entered value is not greater than parameter's max allowed value before saving
     if ( [parameter isWithinMaxValue:[[valueField text] floatValue]] == NO) {
@@ -187,7 +188,12 @@
     BOOL result = [[MetasomeDataPointStore sharedStore] saveChanges];
     [self addUndoButton];
     
-    NSLog(@"value: %@", [datePicker date]);
+    // check to see if the last entry was within past 36 hours; increment if YES,
+    // otherwise reset consecutive counter to zero
+    if ( [[self parameter] incrementConsecutiveCounter] ) {
+
+        [self animateSaveResponse];
+    }
     
     // mark parameter as checked
     [[self parameter] setCheckedStatus:YES];
@@ -260,5 +266,35 @@
     
 }
 
+-(void)animateSaveResponse
+{
+    // hide UITextField and buttons
+    //valueField.hidden = YES;
+    //[[self graphButton] setHidden:YES];
+    //[[self saveButton] setHidden:YES];
+    
+    // make saluteLabel and saluteText visible
+    saluteLabel.hidden = NO;
+    
+    switch ( [[self parameter] consecutiveEntries] ) {
+        case 0:
+            break;
+        case 1:
+            saluteLabel.text = @"Great work! An apple a day keeps the doctor away!";
+            break;
+        case 2:
+            saluteLabel.text = @"2 days in a row! You're on a roll!";
+            break;
+        case 3:
+            saluteLabel.text = @"3 days in a row! You're on a roll!";
+            break;
+        case 4:
+            saluteLabel.text = @"4 days in a row! Your're on fire!";
+            break;
+        case 5:
+            saluteLabel.text = @"5 days in a row! Awesome!!!";
+            break;
+    }
+}
 
 @end

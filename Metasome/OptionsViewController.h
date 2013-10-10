@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class OptionsTableView;
+@class OptionsTableView, OAuth1Controller;
 @interface OptionsViewController : UITableViewController <UIAlertViewDelegate>
 {
 
@@ -20,5 +20,8 @@
 -(void)promptWithString:(NSString *)prompt;
 
 @property (nonatomic, copy) void (^selectedActionBlock)(void);
+@property (nonatomic, strong) OAuth1Controller *oauth1Controller;
+@property (nonatomic, strong) NSString *oauthToken;
+@property (nonatomic, strong) NSString *oauthTokenSecret;
 
 @end

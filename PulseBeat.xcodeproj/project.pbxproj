@@ -11,17 +11,8 @@
 		FA2162BF17E52C4D005C836C /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2162BA17E52C4D005C836C /* Icon.png */; };
 		FA264CC817CC4D7D002ACEDD /* NewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA264CC617CC4D7D002ACEDD /* NewEventViewController.m */; };
 		FA264CC917CC4D7D002ACEDD /* NewEventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA264CC717CC4D7D002ACEDD /* NewEventViewController.xib */; };
-		FA269C8F17DB90F7007AE540 /* blue3DButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA269C8E17DB90F7007AE540 /* blue3DButton.png */; };
-		FA269C9117DBAF6B007AE540 /* green3DButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA269C9017DBAF6B007AE540 /* green3DButton.png */; };
-		FA269C9317DBB2B4007AE540 /* red3DButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA269C9217DBB2B4007AE540 /* red3DButton.png */; };
-		FA269C9617DBB3C2007AE540 /* fuzzyGreenButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA269C9417DBB3C2007AE540 /* fuzzyGreenButton.png */; };
-		FA269C9717DBB3C2007AE540 /* fuzzyRedButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA269C9517DBB3C2007AE540 /* fuzzyRedButton.png */; };
-		FA269C9917DBB509007AE540 /* fuzzyBlueButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA269C9817DBB509007AE540 /* fuzzyBlueButton.png */; };
-		FA269C9C17DBBA3B007AE540 /* fuzzyGreenButtonNoGlow.png in Resources */ = {isa = PBXBuildFile; fileRef = FA269C9A17DBBA3B007AE540 /* fuzzyGreenButtonNoGlow.png */; };
-		FA269C9D17DBBA3B007AE540 /* fuzzyRedButtonNoGlow.png in Resources */ = {isa = PBXBuildFile; fileRef = FA269C9B17DBBA3B007AE540 /* fuzzyRedButtonNoGlow.png */; };
 		FA2B1A6B17DE978900ACD9C7 /* MetasomeBloodPressureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2B1A6917DE978900ACD9C7 /* MetasomeBloodPressureViewController.m */; };
 		FA2B1A6C17DE978900ACD9C7 /* MetasomeBloodPressureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA2B1A6A17DE978900ACD9C7 /* MetasomeBloodPressureViewController.xib */; };
-		FA34640817DCDFD7008B5163 /* fuzzyBlueButtonNoGlow.png in Resources */ = {isa = PBXBuildFile; fileRef = FA34640717DCDFD6008B5163 /* fuzzyBlueButtonNoGlow.png */; };
 		FA34640A17DD49AD008B5163 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA34640917DD49AD008B5163 /* CoreData.framework */; };
 		FA34640D17DD4A64008B5163 /* Metasome.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA34640B17DD4A64008B5163 /* Metasome.xcdatamodeld */; };
 		FA34641017DD5030008B5163 /* MetasomeDataPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = FA34640F17DD5030008B5163 /* MetasomeDataPoint.m */; };
@@ -65,6 +56,13 @@
 		FA59AE0317E9566C00CB0629 /* LoginScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA59AE0117E9566C00CB0629 /* LoginScreenViewController.m */; };
 		FA59AE0417E9566C00CB0629 /* LoginScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA59AE0217E9566C00CB0629 /* LoginScreenViewController.xib */; };
 		FA59AE0617E9570800CB0629 /* largePulseBeat.png in Resources */ = {isa = PBXBuildFile; fileRef = FA59AE0517E9570700CB0629 /* largePulseBeat.png */; };
+		FA5FAFDC1806011F00813DF3 /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = FA5FAFD21806011F00813DF3 /* Base64Transcoder.c */; };
+		FA5FAFDD1806011F00813DF3 /* hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = FA5FAFD41806011F00813DF3 /* hmac.c */; };
+		FA5FAFDE1806011F00813DF3 /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = FA5FAFD61806011F00813DF3 /* sha1.c */; };
+		FA5FAFDF1806011F00813DF3 /* OAuth1Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5FAFD91806011F00813DF3 /* OAuth1Controller.m */; };
+		FA5FAFE01806011F00813DF3 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5FAFDB1806011F00813DF3 /* NSString+URLEncoding.m */; };
+		FA5FAFE418061ABA00813DF3 /* FitbitLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5FAFE218061ABA00813DF3 /* FitbitLoginViewController.m */; };
+		FA5FAFE518061ABA00813DF3 /* FitbitLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA5FAFE318061ABA00813DF3 /* FitbitLoginViewController.xib */; };
 		FA72FA7C17FA6B080072942F /* Icon120x120@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA72FA7B17FA6B080072942F /* Icon120x120@2x.png */; };
 		FA79654817D93E19005A2DB6 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA79654617D93E19005A2DB6 /* DatePickerViewController.m */; };
 		FA79654917D93E19005A2DB6 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA79654717D93E19005A2DB6 /* DatePickerViewController.xib */; };
@@ -104,6 +102,7 @@
 		FAC592C017C561680004747C /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC592BF17C561670004747C /* GraphView.m */; };
 		FAC592C417C562D70004747C /* GraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC592C217C562D60004747C /* GraphViewController.m */; };
 		FAC592C517C562D70004747C /* GraphViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC592C317C562D60004747C /* GraphViewController.xib */; };
+		FADA9811180624C100BB228E /* FitbitApiDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FADA9810180624C100BB228E /* FitbitApiDataStore.m */; };
 		FADC0B6217E7896800829FCF /* AxisView.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC0B6117E7896800829FCF /* AxisView.m */; };
 		FADC0B6517E815DB00829FCF /* HoveringLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC0B6417E815DB00829FCF /* HoveringLabel.m */; };
 		FADC0B6817E8303C00829FCF /* LineView.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC0B6717E8303B00829FCF /* LineView.m */; };
@@ -134,18 +133,9 @@
 		FA264CC517CC4D7D002ACEDD /* NewEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewEventViewController.h; sourceTree = "<group>"; };
 		FA264CC617CC4D7D002ACEDD /* NewEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewEventViewController.m; sourceTree = "<group>"; };
 		FA264CC717CC4D7D002ACEDD /* NewEventViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewEventViewController.xib; sourceTree = "<group>"; };
-		FA269C8E17DB90F7007AE540 /* blue3DButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue3DButton.png; sourceTree = "<group>"; };
-		FA269C9017DBAF6B007AE540 /* green3DButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green3DButton.png; sourceTree = "<group>"; };
-		FA269C9217DBB2B4007AE540 /* red3DButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red3DButton.png; sourceTree = "<group>"; };
-		FA269C9417DBB3C2007AE540 /* fuzzyGreenButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fuzzyGreenButton.png; sourceTree = "<group>"; };
-		FA269C9517DBB3C2007AE540 /* fuzzyRedButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fuzzyRedButton.png; sourceTree = "<group>"; };
-		FA269C9817DBB509007AE540 /* fuzzyBlueButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fuzzyBlueButton.png; sourceTree = "<group>"; };
-		FA269C9A17DBBA3B007AE540 /* fuzzyGreenButtonNoGlow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fuzzyGreenButtonNoGlow.png; sourceTree = "<group>"; };
-		FA269C9B17DBBA3B007AE540 /* fuzzyRedButtonNoGlow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fuzzyRedButtonNoGlow.png; sourceTree = "<group>"; };
 		FA2B1A6817DE978900ACD9C7 /* MetasomeBloodPressureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MetasomeBloodPressureViewController.h; path = Metasome/MetasomeBloodPressureViewController.h; sourceTree = "<group>"; };
 		FA2B1A6917DE978900ACD9C7 /* MetasomeBloodPressureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MetasomeBloodPressureViewController.m; path = Metasome/MetasomeBloodPressureViewController.m; sourceTree = "<group>"; };
 		FA2B1A6A17DE978900ACD9C7 /* MetasomeBloodPressureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MetasomeBloodPressureViewController.xib; path = Metasome/MetasomeBloodPressureViewController.xib; sourceTree = "<group>"; };
-		FA34640717DCDFD6008B5163 /* fuzzyBlueButtonNoGlow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fuzzyBlueButtonNoGlow.png; path = ../../Graphics/Buttons/fuzzyBlueButtonNoGlow.png; sourceTree = "<group>"; };
 		FA34640917DD49AD008B5163 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		FA34640C17DD4A64008B5163 /* Metasome.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Metasome.xcdatamodel; sourceTree = "<group>"; };
 		FA34640E17DD502F008B5163 /* MetasomeDataPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetasomeDataPoint.h; sourceTree = SOURCE_ROOT; };
@@ -205,6 +195,19 @@
 		FA59AE0117E9566C00CB0629 /* LoginScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginScreenViewController.m; sourceTree = "<group>"; };
 		FA59AE0217E9566C00CB0629 /* LoginScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginScreenViewController.xib; sourceTree = "<group>"; };
 		FA59AE0517E9570700CB0629 /* largePulseBeat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = largePulseBeat.png; sourceTree = "<group>"; };
+		FA5FAFD21806011F00813DF3 /* Base64Transcoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Base64Transcoder.c; sourceTree = "<group>"; };
+		FA5FAFD31806011F00813DF3 /* Base64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Transcoder.h; sourceTree = "<group>"; };
+		FA5FAFD41806011F00813DF3 /* hmac.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hmac.c; sourceTree = "<group>"; };
+		FA5FAFD51806011F00813DF3 /* hmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hmac.h; sourceTree = "<group>"; };
+		FA5FAFD61806011F00813DF3 /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha1.c; sourceTree = "<group>"; };
+		FA5FAFD71806011F00813DF3 /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha1.h; sourceTree = "<group>"; };
+		FA5FAFD81806011F00813DF3 /* OAuth1Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuth1Controller.h; sourceTree = "<group>"; };
+		FA5FAFD91806011F00813DF3 /* OAuth1Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuth1Controller.m; sourceTree = "<group>"; };
+		FA5FAFDA1806011F00813DF3 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		FA5FAFDB1806011F00813DF3 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
+		FA5FAFE118061ABA00813DF3 /* FitbitLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitbitLoginViewController.h; sourceTree = "<group>"; };
+		FA5FAFE218061ABA00813DF3 /* FitbitLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitbitLoginViewController.m; sourceTree = "<group>"; };
+		FA5FAFE318061ABA00813DF3 /* FitbitLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FitbitLoginViewController.xib; sourceTree = "<group>"; };
 		FA72FA7B17FA6B080072942F /* Icon120x120@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon120x120@2x.png"; sourceTree = "<group>"; };
 		FA79654517D93E19005A2DB6 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		FA79654617D93E19005A2DB6 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
@@ -251,6 +254,8 @@
 		FAC592C117C562D60004747C /* GraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphViewController.h; sourceTree = "<group>"; };
 		FAC592C217C562D60004747C /* GraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphViewController.m; sourceTree = "<group>"; };
 		FAC592C317C562D60004747C /* GraphViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GraphViewController.xib; sourceTree = "<group>"; };
+		FADA980F180624C100BB228E /* FitbitApiDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitbitApiDataStore.h; sourceTree = "<group>"; };
+		FADA9810180624C100BB228E /* FitbitApiDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitbitApiDataStore.m; sourceTree = "<group>"; };
 		FADC0B6017E7896800829FCF /* AxisView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AxisView.h; sourceTree = "<group>"; };
 		FADC0B6117E7896800829FCF /* AxisView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AxisView.m; sourceTree = "<group>"; };
 		FADC0B6317E815DB00829FCF /* HoveringLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HoveringLabel.h; sourceTree = "<group>"; };
@@ -386,6 +391,9 @@
 				FA95875817E65685007D5EB8 /* NotificationsDetailViewController.h */,
 				FA95875917E65685007D5EB8 /* NotificationsDetailViewController.m */,
 				FA95875A17E65685007D5EB8 /* NotificationsDetailViewController.xib */,
+				FA5FAFE118061ABA00813DF3 /* FitbitLoginViewController.h */,
+				FA5FAFE218061ABA00813DF3 /* FitbitLoginViewController.m */,
+				FA5FAFE318061ABA00813DF3 /* FitbitLoginViewController.xib */,
 			);
 			name = Options;
 			sourceTree = "<group>";
@@ -408,6 +416,7 @@
 		FA4E9EDF17C1D04D00E421DE = {
 			isa = PBXGroup;
 			children = (
+				FA5FAFD1180600F000813DF3 /* Fitbit */,
 				FA3DED8D17E44A5200D7FA87 /* Icon@2x.png */,
 				FA34640B17DD4A64008B5163 /* Metasome.xcdatamodeld */,
 				FA3DED7417E40C9500D7FA87 /* Home */,
@@ -500,15 +509,6 @@
 				FA3DED7517E4462A00D7FA87 /* home@2x.png */,
 				FA3DED7617E4462A00D7FA87 /* homex.png */,
 				FA19226017E0983300CA0ADF /* iOSDeveloperProfile.developerprofile */,
-				FA34640717DCDFD6008B5163 /* fuzzyBlueButtonNoGlow.png */,
-				FA269C9A17DBBA3B007AE540 /* fuzzyGreenButtonNoGlow.png */,
-				FA269C9B17DBBA3B007AE540 /* fuzzyRedButtonNoGlow.png */,
-				FA269C9817DBB509007AE540 /* fuzzyBlueButton.png */,
-				FA269C9417DBB3C2007AE540 /* fuzzyGreenButton.png */,
-				FA269C9517DBB3C2007AE540 /* fuzzyRedButton.png */,
-				FA269C9017DBAF6B007AE540 /* green3DButton.png */,
-				FA269C9217DBB2B4007AE540 /* red3DButton.png */,
-				FA269C8E17DB90F7007AE540 /* blue3DButton.png */,
 				FA79654C17D940FA005A2DB6 /* cancel.png */,
 				FA79654A17D940F2005A2DB6 /* OK.png */,
 				FA39816617D7A94100EB9948 /* dot.png */,
@@ -521,6 +521,25 @@
 				FA4E9F0117C1D04D00E421DE /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FA5FAFD1180600F000813DF3 /* Fitbit */ = {
+			isa = PBXGroup;
+			children = (
+				FA5FAFD21806011F00813DF3 /* Base64Transcoder.c */,
+				FA5FAFD31806011F00813DF3 /* Base64Transcoder.h */,
+				FA5FAFD41806011F00813DF3 /* hmac.c */,
+				FA5FAFD51806011F00813DF3 /* hmac.h */,
+				FA5FAFD61806011F00813DF3 /* sha1.c */,
+				FA5FAFD71806011F00813DF3 /* sha1.h */,
+				FA5FAFD81806011F00813DF3 /* OAuth1Controller.h */,
+				FA5FAFD91806011F00813DF3 /* OAuth1Controller.m */,
+				FA5FAFDA1806011F00813DF3 /* NSString+URLEncoding.h */,
+				FA5FAFDB1806011F00813DF3 /* NSString+URLEncoding.m */,
+				FADA980F180624C100BB228E /* FitbitApiDataStore.h */,
+				FADA9810180624C100BB228E /* FitbitApiDataStore.m */,
+			);
+			name = Fitbit;
 			sourceTree = "<group>";
 		};
 		FAF87EB717E2086800C830D9 /* Photos */ = {
@@ -621,23 +640,15 @@
 				FAAAC11117D15B870046EA0E /* NewParameterViewController.xib in Resources */,
 				FA39816717D7A94100EB9948 /* dot.png in Resources */,
 				FA79654917D93E19005A2DB6 /* DatePickerViewController.xib in Resources */,
+				FA5FAFE518061ABA00813DF3 /* FitbitLoginViewController.xib in Resources */,
 				FA79654B17D940F2005A2DB6 /* OK.png in Resources */,
 				FA79654D17D940FA005A2DB6 /* cancel.png in Resources */,
 				FA997FD817F7CB1E00AE5CBB /* heartButton.png in Resources */,
-				FA269C8F17DB90F7007AE540 /* blue3DButton.png in Resources */,
-				FA269C9117DBAF6B007AE540 /* green3DButton.png in Resources */,
 				FA9EE06B17FCA013006C4C04 /* Icon58x58.png in Resources */,
-				FA269C9317DBB2B4007AE540 /* red3DButton.png in Resources */,
-				FA269C9617DBB3C2007AE540 /* fuzzyGreenButton.png in Resources */,
-				FA269C9717DBB3C2007AE540 /* fuzzyRedButton.png in Resources */,
 				FAE697F717EC061A00D2630E /* highlightedListButton.png in Resources */,
 				FA99F12017F77D0800B19297 /* brainButton.png in Resources */,
-				FA269C9917DBB509007AE540 /* fuzzyBlueButton.png in Resources */,
-				FA269C9C17DBBA3B007AE540 /* fuzzyGreenButtonNoGlow.png in Resources */,
 				FA997FE417F7CB6400AE5CBB /* smiley0.png in Resources */,
-				FA269C9D17DBBA3B007AE540 /* fuzzyRedButtonNoGlow.png in Resources */,
 				FA997FD917F7CB1E00AE5CBB /* heartButton@2x.png in Resources */,
-				FA34640817DCDFD7008B5163 /* fuzzyBlueButtonNoGlow.png in Resources */,
 				FA2B1A6C17DE978900ACD9C7 /* MetasomeBloodPressureViewController.xib in Resources */,
 				FA19226117E0983300CA0ADF /* iOSDeveloperProfile.developerprofile in Resources */,
 				FA99F12917F77D7A00B19297 /* lungButton@2x.png in Resources */,
@@ -685,6 +696,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA5FAFDD1806011F00813DF3 /* hmac.c in Sources */,
 				FA4E9EF817C1D04D00E421DE /* main.m in Sources */,
 				FA4E9EFC17C1D04D00E421DE /* MetasomeAppDelegate.m in Sources */,
 				FA4E9F0E17C26C1500E421DE /* ParameterViewController.m in Sources */,
@@ -692,9 +704,11 @@
 				FA4E9F1517C277F200E421DE /* MetasomeParameterStore.m in Sources */,
 				FA4E9F1B17C2C1D500E421DE /* DetailViewController.m in Sources */,
 				FA4E9F2217C3807C00E421DE /* MetasomeDataPointStore.m in Sources */,
+				FA5FAFDC1806011F00813DF3 /* Base64Transcoder.c in Sources */,
 				FAC592BC17C55E970004747C /* EventViewController.m in Sources */,
 				FAC592C017C561680004747C /* GraphView.m in Sources */,
 				FAC592C417C562D70004747C /* GraphViewController.m in Sources */,
+				FA5FAFE01806011F00813DF3 /* NSString+URLEncoding.m in Sources */,
 				FA4817BF17C672D900A4CA4A /* DetailViewController_slider.m in Sources */,
 				FA4817C417C7F93400A4CA4A /* OptionsViewController.m in Sources */,
 				FADC204E17CC10D200C02F1B /* MetasomeEventStore.m in Sources */,
@@ -703,11 +717,13 @@
 				FA264CC817CC4D7D002ACEDD /* NewEventViewController.m in Sources */,
 				FAAAC11017D15B870046EA0E /* NewParameterViewController.m in Sources */,
 				FA455D9817D6C59A0032BD23 /* Legend.m in Sources */,
+				FA5FAFDE1806011F00813DF3 /* sha1.c in Sources */,
 				FA79654817D93E19005A2DB6 /* DatePickerViewController.m in Sources */,
 				FA34640D17DD4A64008B5163 /* Metasome.xcdatamodeld in Sources */,
 				FA34641017DD5030008B5163 /* MetasomeDataPoint.m in Sources */,
 				FA2B1A6B17DE978900ACD9C7 /* MetasomeBloodPressureViewController.m in Sources */,
 				FAF87EB517E2085C00C830D9 /* PhotoViewController.m in Sources */,
+				FADA9811180624C100BB228E /* FitbitApiDataStore.m in Sources */,
 				FAF87EBA17E20E8F00C830D9 /* PhotoStore.m in Sources */,
 				FAF87EC317E21C0D00C830D9 /* Photo.m in Sources */,
 				FAF87EC617E2786B00C830D9 /* PhotoGroupStore.m in Sources */,
@@ -715,11 +731,13 @@
 				FA44EDE117ECB20100E40094 /* TextFormatter.m in Sources */,
 				FAF87ED017E27F8900C830D9 /* NewPhotoGroupViewController.m in Sources */,
 				FAF87ED417E293EF00C830D9 /* PhotoArchiveStore.m in Sources */,
+				FA5FAFE418061ABA00813DF3 /* FitbitLoginViewController.m in Sources */,
 				FA3DED7217E40C7B00D7FA87 /* HomeViewController.m in Sources */,
 				FA95875B17E65685007D5EB8 /* NotificationsDetailViewController.m in Sources */,
 				FADC0B6217E7896800829FCF /* AxisView.m in Sources */,
 				FADC0B6517E815DB00829FCF /* HoveringLabel.m in Sources */,
 				FADC0B6817E8303C00829FCF /* LineView.m in Sources */,
+				FA5FAFDF1806011F00813DF3 /* OAuth1Controller.m in Sources */,
 				FA59AE0317E9566C00CB0629 /* LoginScreenViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

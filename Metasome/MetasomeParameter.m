@@ -10,7 +10,7 @@
 
 @implementation MetasomeParameter
 @synthesize parameterName, inputType, inputCategory, checkedStatus, lastChecked, maxValue, sadOnRightSide;
-@synthesize isCustomMade, consecutiveEntries;
+@synthesize isCustomMade, consecutiveEntries, isFitbit;
 
 
 -(id)initWithParameterName:(NSString *)name inputType:(int)type category:(int)newCategory maximumValue:(float)value
@@ -24,6 +24,9 @@
         
         // Parameters are not checked by default;
         [self setCheckedStatus:NO];
+        
+        // not a fitbit-derived parameter unless other specified
+        [self setIsFitbit:NO];
         lastChecked = [[NSDate alloc] init];
         
         consecutiveEntries = 0;
@@ -43,6 +46,7 @@
     [aCoder encodeBool:sadOnRightSide forKey:@"sadOnRightSide"];
     [aCoder encodeBool:isCustomMade forKey:@"isCustomMade"];
     [aCoder encodeInt:consecutiveEntries forKey:@"consecutiveEntries"];
+    [aCoder encodeBool:isFitbit forKey:@"isFitbit"];
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder
@@ -58,6 +62,7 @@
         [self setSadOnRightSide:[aDecoder decodeBoolForKey:@"sadOnRightSide"]];
         [self setIsCustomMade:[aDecoder decodeBoolForKey:@"isCustomMade"]];
         [self setConsecutiveEntries:[aDecoder decodeIntForKey:@"consecutiveEntries"]];
+        [self setIsFitbit:[aDecoder decodeBoolForKey:@"isFitbit"]];
     }
          return self;
 }

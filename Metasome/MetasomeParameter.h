@@ -48,7 +48,8 @@ typedef enum {
 @property (nonatomic) int consecutiveEntries;
 @property (nonatomic) float maxValue;
 @property (nonatomic) BOOL sadOnRightSide;
-@property (nonatomic) bool isCustomMade;
+@property (nonatomic) BOOL isCustomMade;
+@property (nonatomic) BOOL isFitbit;
 
 -(id)initWithParameterName:(NSString *)name inputType:(int)type category:(int)newCategory maximumValue:(float)value;
 -(void)resetCheckmark;

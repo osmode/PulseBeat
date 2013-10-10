@@ -7,6 +7,7 @@
 //
 
 #import "FitbitApiDataStore.h"
+#import "FitbitJSONData.h"
 #import "OAuth1Controller.h"
 
 @implementation FitbitApiDataStore
@@ -51,12 +52,20 @@
         queue:NSOperationQueue.mainQueue
         completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
             dispatch_async(dispatch_get_main_queue(), ^{
+                
                 NSLog(@"path35 %@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-                                   
+                
                 if (error) {
                     NSLog(@"Error in API request: %@", error.localizedDescription);
                 } else {
                     
+                    // Turn JSON data into basic model objects
+                    NSDictionary *d = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                    //NSLog(@"count: %i", [[d objectForKey:@"activities-steps"] count]);
+                    
+                    FitbitJSONData *fitbitJSONData = [[FitbitJSONData alloc] initWithDictionary:d dataName:@"activities-steps"];
+                    
+                    [fitbitJSONData saveToDataPointStore:@"Steps"];
                 }
                 
                 });

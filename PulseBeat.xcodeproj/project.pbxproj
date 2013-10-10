@@ -103,6 +103,7 @@
 		FAC592C417C562D70004747C /* GraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC592C217C562D60004747C /* GraphViewController.m */; };
 		FAC592C517C562D70004747C /* GraphViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC592C317C562D60004747C /* GraphViewController.xib */; };
 		FADA9811180624C100BB228E /* FitbitApiDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FADA9810180624C100BB228E /* FitbitApiDataStore.m */; };
+		FADA981418066DF200BB228E /* FitbitJSONData.m in Sources */ = {isa = PBXBuildFile; fileRef = FADA981318066DF200BB228E /* FitbitJSONData.m */; };
 		FADC0B6217E7896800829FCF /* AxisView.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC0B6117E7896800829FCF /* AxisView.m */; };
 		FADC0B6517E815DB00829FCF /* HoveringLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC0B6417E815DB00829FCF /* HoveringLabel.m */; };
 		FADC0B6817E8303C00829FCF /* LineView.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC0B6717E8303B00829FCF /* LineView.m */; };
@@ -256,6 +257,8 @@
 		FAC592C317C562D60004747C /* GraphViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GraphViewController.xib; sourceTree = "<group>"; };
 		FADA980F180624C100BB228E /* FitbitApiDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitbitApiDataStore.h; sourceTree = "<group>"; };
 		FADA9810180624C100BB228E /* FitbitApiDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitbitApiDataStore.m; sourceTree = "<group>"; };
+		FADA981218066DF200BB228E /* FitbitJSONData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitbitJSONData.h; sourceTree = "<group>"; };
+		FADA981318066DF200BB228E /* FitbitJSONData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitbitJSONData.m; sourceTree = "<group>"; };
 		FADC0B6017E7896800829FCF /* AxisView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AxisView.h; sourceTree = "<group>"; };
 		FADC0B6117E7896800829FCF /* AxisView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AxisView.m; sourceTree = "<group>"; };
 		FADC0B6317E815DB00829FCF /* HoveringLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HoveringLabel.h; sourceTree = "<group>"; };
@@ -538,6 +541,8 @@
 				FA5FAFDB1806011F00813DF3 /* NSString+URLEncoding.m */,
 				FADA980F180624C100BB228E /* FitbitApiDataStore.h */,
 				FADA9810180624C100BB228E /* FitbitApiDataStore.m */,
+				FADA981218066DF200BB228E /* FitbitJSONData.h */,
+				FADA981318066DF200BB228E /* FitbitJSONData.m */,
 			);
 			name = Fitbit;
 			sourceTree = "<group>";
@@ -717,6 +722,7 @@
 				FA264CC817CC4D7D002ACEDD /* NewEventViewController.m in Sources */,
 				FAAAC11017D15B870046EA0E /* NewParameterViewController.m in Sources */,
 				FA455D9817D6C59A0032BD23 /* Legend.m in Sources */,
+				FADA981418066DF200BB228E /* FitbitJSONData.m in Sources */,
 				FA5FAFDE1806011F00813DF3 /* sha1.c in Sources */,
 				FA79654817D93E19005A2DB6 /* DatePickerViewController.m in Sources */,
 				FA34640D17DD4A64008B5163 /* Metasome.xcdatamodeld in Sources */,

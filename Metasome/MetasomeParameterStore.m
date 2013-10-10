@@ -169,6 +169,8 @@ float const MAX_SLIDER_VALUE = 100.0;
     // metabolic-related parameters
     MetasomeParameter *bloodSugar = [[MetasomeParameter alloc] initWithParameterName:@"Blood sugar" inputType:ParameterInputInteger category:ParameterCategoryDiabetes maximumValue:1000.0] ;
     MetasomeParameter *weight = [[MetasomeParameter alloc] initWithParameterName:@"Weight" inputType:ParameterInputFloat category:ParameterCategoryDiabetes maximumValue:1000.0] ;
+    MetasomeParameter *steps = [[MetasomeParameter alloc] initWithParameterName:@"Steps" inputType:ParameterInputInteger category:ParameterCategoryDiabetes maximumValue:500000];
+    [steps setIsFitbit:YES];
     
     // mind-related parameters
     MetasomeParameter *mood = [[MetasomeParameter alloc] initWithParameterName:@"Mood" inputType:ParameterInputSlider category:ParameterCategoryCustom maximumValue:MAX_SLIDER_VALUE];
@@ -181,7 +183,7 @@ float const MAX_SLIDER_VALUE = 100.0;
     
     heartList = [[NSMutableArray alloc] initWithObjects:heartRate, bloodPressure, legSwelling, nil];
     lungList = [[NSMutableArray alloc] initWithObjects:shortnessOfBreath, cough, rescueInhalerPuffs, nil];
-    diabetesList = [[NSMutableArray alloc] initWithObjects:bloodSugar, weight, nil];
+    diabetesList = [[NSMutableArray alloc] initWithObjects:bloodSugar, weight, steps, nil];
     customList = [[NSMutableArray alloc] initWithObjects:mood, energy, sleepHours, nil];
     
     NSMutableDictionary *heartListArrayDict = [NSMutableDictionary dictionaryWithObject:heartList forKey:@"list"];

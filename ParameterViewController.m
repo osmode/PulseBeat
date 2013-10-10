@@ -207,6 +207,11 @@
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     }
     
+    // color Fitbit parameters blue
+    if ([p isFitbit]) {
+        cell.textLabel.textColor = [UIColor blueColor];
+    }
+    
     return cell;
 }
 

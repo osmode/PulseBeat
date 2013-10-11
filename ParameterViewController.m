@@ -208,8 +208,10 @@
     }
     
     // color Fitbit parameters blue
-    if ([p isFitbit]) {
+    if ([p isFitbit] == YES) {
         cell.textLabel.textColor = [UIColor blueColor];
+    } else {
+        cell.textLabel.textColor = [UIColor blackColor];
     }
     
     return cell;

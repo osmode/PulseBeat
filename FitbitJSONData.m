@@ -36,13 +36,20 @@
         NSString *dateString = [d objectForKey:@"dateTime"];
         NSString *valueString = [d objectForKey:@"value"];
         
-        NSLog(@"dateString = %@, valueString = %@", dateString, valueString);
+       // NSLog(@"dateString = %@, valueString = %@", dateString, valueString);
         
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"yyyy-MM-dd"];
         NSDate *date = [dateFormat dateFromString:dateString];
         
-        [[MetasomeDataPointStore sharedStore] addPointWithName:parameterName value:[valueString intValue] date:date.timeIntervalSince1970 options:noOptions];
+        float valueToSave = [valueString floatValue];
+        
+        // in case of sleep, convert minutes asleep to hours
+        if ( [parameterName isEqualToString:@"Sleep hours"] ) {
+            valueToSave = (valueToSave / 60.0);
+        }
+        
+        [[MetasomeDataPointStore sharedStore] addPointWithName:parameterName value:valueToSave date:date.timeIntervalSince1970 options:noOptions];
         
     }
 

@@ -103,13 +103,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    if ( [[NSUserDefaults standardUserDefaults] boolForKey:@"MetasomeNotificationPrefKey"] )
-        NSLog(@"ON");
-    else
-        NSLog(@"OFF");
-    
-        
+
     static NSString *CellIdentifier = @"UITableViewCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -164,7 +158,10 @@
         {
             FitbitLoginViewController *flvc = [[FitbitLoginViewController alloc] init];
             
-            [[self navigationController] presentViewController:flvc animated:YES completion:^{
+            self.navigationController.delegate = self;
+
+            [flvc setCompletionBlock:^{
+  
                 [self.oauth1Controller loginWithWebView:flvc.webView completion:^(NSDictionary *oauthTokens, NSError *error) {
                     if (!error) {
                         // Store your tokens for authenticating your later requests, consider storing the tokens in the Keychain
@@ -172,8 +169,16 @@
                         self.oauthTokenSecret = oauthTokens[@"oauth_token_secret"];
                         
                        // populate local database with fitbit data
-                    
                         [[FitbitApiDataStore sharedStore] getStepData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
+                        [[FitbitApiDataStore sharedStore] getDistanceData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
+                        [[FitbitApiDataStore sharedStore] getWeightData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
+                        [[FitbitApiDataStore sharedStore] getSleepDurationData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
+                        
+                        [[FitbitApiDataStore sharedStore] getBMIData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
+                        
+                        // save changes to database
+                        [[MetasomeDataPointStore sharedStore] saveChanges];
+                        
                     }
                     else
                     {
@@ -184,7 +189,10 @@
                     }];
                 }];
             }];
-                
+            
+            
+            [[self navigationController] pushViewController:flvc animated:YES];
+            
             break;
         }
             
@@ -237,6 +245,8 @@
     
 }
 
+
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     // the first button is cancel
@@ -272,6 +282,10 @@
     return oauth1Controller;
 }
 
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    NSLog(@"finished showing view controller");
+}
 
 
 @end

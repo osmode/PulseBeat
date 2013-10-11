@@ -16,5 +16,10 @@
 +(FitbitApiDataStore *)sharedStore;
 
 - (void)getStepData:(NSString *)oauthTokenIn oauthSecretIn:oauthSecretIn;
+- (void)getDistanceData:(NSString *)oauthTokenIn oauthSecretIn:oauthSecretIn;
+- (void)getWeightData:(NSString *)oauthTokenIn oauthSecretIn:oauthSecretIn;
+- (void)getBMIData:(NSString *)oauthTokenIn oauthSecretIn:oauthSecretIn;
+- (void)getSleepDurationData:(NSString *)oauthTokenIn oauthSecretIn:oauthSecretIn;
+
 
 @end

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class OptionsTableView, OAuth1Controller;
-@interface OptionsViewController : UITableViewController <UIAlertViewDelegate>
+@interface OptionsViewController : UITableViewController <UIAlertViewDelegate, UINavigationControllerDelegate>
 {
 
     IBOutlet UITableView *tableView;

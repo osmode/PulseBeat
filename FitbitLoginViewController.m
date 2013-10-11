@@ -13,6 +13,7 @@
 @end
 
 @implementation FitbitLoginViewController
+@synthesize completionBlock;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,7 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    completionBlock();
 }
 
 - (void)didReceiveMemoryWarning

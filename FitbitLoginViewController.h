@@ -11,5 +11,6 @@
 @interface FitbitLoginViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (nonatomic, copy) void (^completionBlock)(void);
 
 @end

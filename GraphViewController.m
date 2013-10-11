@@ -214,9 +214,15 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
     
     // clear event labels
     [allEventLabels makeObjectsPerformSelector:@selector(removeFromSuperview) withObject:nil];
+    [hoveringVerticalLabels makeObjectsPerformSelector:@selector(removeFromSuperview) withObject:nil];
     
     [self generateHorizontalAxisLabels];
     [self drawHorizontalAxisLabels];
+    
+    // start new code
+    //[self drawVerticalAxisLabels];
+    // end new code
+    
     [self generateEventLabels:[[MetasomeEventStore sharedStore] allEvents]];
     [self drawEventLabels];
     
@@ -395,7 +401,6 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
         
         l = nil;
         newLabel = nil;
-        
         
         valueCounter += 1;
     }

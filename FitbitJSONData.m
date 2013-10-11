@@ -51,6 +51,12 @@
         
         [[MetasomeDataPointStore sharedStore] addPointWithName:parameterName value:valueToSave date:date.timeIntervalSince1970 options:noOptions];
         
+        BOOL result = [[MetasomeDataPointStore sharedStore] saveChanges];
+        
+        if (!result) {
+            NSLog(@"Error saving Fitbit data to CoreData!");
+        }
+        
     }
 
 }

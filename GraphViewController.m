@@ -148,6 +148,7 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
 
     [graphView generateAxisLabels];
     [self generateHorizontalAxisLabels];
+    [self generateVerticalAxisLabels];
     [self drawHorizontalAxisLabels];
     [self drawVerticalAxisLabels];
     
@@ -201,7 +202,6 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
             NSLog(@"Invalid segmented bar selection.");
     }
     
-    
     [[MetasomeDataPointStore sharedStore] setSince:date];
     date = nil;
     
@@ -211,20 +211,28 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
     
     // clear graphView's horizontal axis labels
     [hoveringHorizontalLabels makeObjectsPerformSelector:@selector(removeFromSuperview) withObject:nil];
+    [hoveringVerticalLabels makeObjectsPerformSelector:@selector(removeFromSuperview) withObject:nil];
     
     // clear event labels
     [allEventLabels makeObjectsPerformSelector:@selector(removeFromSuperview) withObject:nil];
-    [hoveringVerticalLabels makeObjectsPerformSelector:@selector(removeFromSuperview) withObject:nil];
     
     [self generateHorizontalAxisLabels];
+    [self generateVerticalAxisLabels];
     [self drawHorizontalAxisLabels];
+    [self drawVerticalAxisLabels];
     
     // start new code
-    //[self drawVerticalAxisLabels];
+    [self drawVerticalAxisLabels];
     // end new code
     
     [self generateEventLabels:[[MetasomeEventStore sharedStore] allEvents]];
     [self drawEventLabels];
+    
+    for (HoveringLabel *hl in hoveringLabels) {
+        
+        [self updateLabelPosition:hl withinScrollView:scrollView];
+        
+    }
     
     [graphView setNeedsDisplay];
     [scrollView setNeedsDisplay];
@@ -241,8 +249,8 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
     fixedFrame.origin.y += SCROLL_VIEW_CORRECTION_FACTOR;
     hl.label.frame = fixedFrame;
     
-    
 }
+
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {    
@@ -252,13 +260,12 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
     [self updateLabelPosition:titleHoveringLabel withinScrollView:scrollView];
     [self updateLabelPosition:hoveringVerticalAxisLine withinScrollView:scrollView];
     
-    
-    
     for (HoveringLabel *hl in hoveringLabels) {
         
         [self updateLabelPosition:hl withinScrollView:scrollView];
         
     }
+    
     
     // print out contentInset/Offset
    // NSLog(@"content: %f", scrollView.contentOffset.x);
@@ -342,8 +349,12 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
     [self setVerticalAxisBackgroundHeight:VERTICAL_AXIS_BACKGROUND_HEIGHT];
 }
 
--(void)drawVerticalAxisLabels
+
+-(void)generateVerticalAxisLabels
 {
+    
+    // clear hoveringVerticalLabels array before re-populating it
+    [hoveringVerticalLabels removeAllObjects];
     
     CGPoint begin = CGPointMake([graphView originHorizontalOffset], [graphView scrollViewHeight] - [graphView originVerticalOffset]);
     CGPoint end = CGPointMake([graphView originHorizontalOffset], [graphView topBuffer]);
@@ -358,7 +369,6 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
     
     float valueStep = ([graphView maxValueOnVerticalAxis] - [graphView minValueOnVerticalAxis]) / VERTICAL_INTERVALS;
     
-
     // Draw horizontal grid lines
     float valueCounter = 1;
     float verticalValue = [graphView minValueOnVerticalAxis];
@@ -392,21 +402,27 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
         l.layer.zPosition = 15;
         l.layer.drawsAsynchronously = YES;
         
-        HoveringLabel *newLabel = [[HoveringLabel alloc] initWithLabel:l point:l.frame.origin];
-        
-        [scrollView addSubview:l];
         [hoveringVerticalLabels addObject:l];
         
-        [hoveringLabels addObject:newLabel];
+        HoveringLabel *hl = [[HoveringLabel alloc] initWithLabel:l point:l.frame.origin];
+        
+        [hoveringLabels addObject:hl];
         
         l = nil;
-        newLabel = nil;
         
         valueCounter += 1;
     }
     
 }
 
+-(void)drawVerticalAxisLabels
+{
+    for (UILabel *l in hoveringVerticalLabels) {
+        [l removeFromSuperview];
+        [scrollView addSubview:l];
+    }
+    
+}
 -(void)generateHorizontalAxisLabels
 {
     int lastDay = 0;
@@ -467,7 +483,6 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
         dateLabel.transform = CGAffineTransformMakeRotation(M_PI_4);
         
         [hoveringHorizontalLabels addObject:dateLabel];
-        
         
        // NSLog(@"day: %i, lastDay = %i", [components day], lastDay);
         if (lastDay == [components day]) {

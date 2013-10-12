@@ -51,7 +51,6 @@ const int NUM_SLIDER_SECTIONS = 5;
     // if this is a custom-made parameter, get rid of the smiley face
     if ([[self parameter] isCustomMade]) {
         
-        NSLog(@"custom made");
         [smileyImage setImage:nil];
     }
     

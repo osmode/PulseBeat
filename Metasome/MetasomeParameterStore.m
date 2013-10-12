@@ -88,9 +88,7 @@ float const MAX_SLIDER_VALUE = 100.0;
 -(void)addParameter:(MetasomeParameter *)p
 {
     [[[[[MetasomeParameterStore sharedStore] parameterArray] objectAtIndex:[p inputCategory] ]objectForKey:@"list"] addObject:p];
-    
-    NSLog(@"number of parameters in category: %i", [[[[[MetasomeParameterStore sharedStore] parameterArray] objectAtIndex:p.inputCategory] objectForKey:@"list"] count]);
-    
+        
 }
 
 -(void)moveItemAtIndex:(int)from toIndex:(int)to inSection:(int)sec

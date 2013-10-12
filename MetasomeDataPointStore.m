@@ -104,7 +104,6 @@
     [allPoints addObject:newPoint];
     
     // method returns a pointer to a MetasomeDataPoint object
-    NSLog(@"returning pointer to newPoint");
     return newPoint;
 
 }
@@ -255,8 +254,6 @@
         [NSException raise:@"Fetch failed" format:@"Reason: %@", [error localizedDescription]];
     }
     
-    NSLog(@"number of records in past day: %i", [result count]);
-
     for (NSManagedObject *obj in result) {
         [context deleteObject:obj];
     }

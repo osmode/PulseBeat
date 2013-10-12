@@ -148,7 +148,6 @@
         else {            
             
             MetasomeEvent *newEvent = [[MetasomeEvent alloc] initWithEventTitle:[[self titleTextField] text] details:[[self descriptionTextView] text] date:self.dateSelected];
-            NSLog(@"date of eventSelected: %@", self.eventSelected.date);
             [[MetasomeEventStore sharedStore] addEvent:newEvent];
         }
         
@@ -281,7 +280,6 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    NSLog(@"view will disappear");
     [super viewWillDisappear:animated];
     [dateButton setBackgroundColor:initialColor];
 }

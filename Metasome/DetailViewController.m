@@ -266,15 +266,44 @@
     
 }
 
+-(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    // after the animation is complete, hide saluteLabel,
+    // saluteImage, and re-display the buttons and text field
+    saluteLabel.hidden = YES;
+    saluteImage.hidden = YES;
+    
+    [[self graphButton] setHidden:NO];
+    [[self saveButton] setHidden:NO];
+    valueField.hidden = NO;
+    
+    
+}
 -(void)animateSaveResponse
 {
+    NSLog(@"consecutiveEntries: %i", [[self parameter] consecutiveEntries]);
     // hide UITextField and buttons
-    //valueField.hidden = YES;
-    //[[self graphButton] setHidden:YES];
-    //[[self saveButton] setHidden:YES];
+    valueField.hidden = YES;
+    [[self graphButton] setHidden:YES];
+    [[self saveButton] setHidden:YES];
     
     // make saluteLabel and saluteText visible
     saluteLabel.hidden = NO;
+    saluteImage.hidden = NO;
+    [saluteImage setImage:[UIImage imageNamed:@"heartButton.png"]];
+    
+    // fade in saluteLabel and saluteImage
+
+    
+    CAKeyframeAnimation *fade = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
+    [fade setDelegate:self];
+    [fade setDuration:5.0];
+    NSMutableArray *vals = [NSMutableArray array];
+    [vals addObject:[NSNumber numberWithFloat:0.0]];
+    [vals addObject:[NSNumber numberWithFloat:1.0]];
+    [vals addObject:[NSNumber numberWithFloat:0.0]];
+    [fade setValues:vals];
+    
     
     switch ( [[self parameter] consecutiveEntries] ) {
         case 0:
@@ -294,7 +323,15 @@
         case 5:
             saluteLabel.text = @"5 days in a row! Awesome!!!";
             break;
+        default:
+            saluteLabel.text = @"Great job tracking your health!";
     }
+    
+    // associated animation with saluteLabel and saluteImage
+    [saluteLabel.layer addAnimation:fade forKey:@"fadeInAnimation"];
+    [saluteImage.layer addAnimation:fade forKey:@"fadeInAnimation"];
+    
 }
+
 
 @end

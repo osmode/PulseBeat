@@ -71,7 +71,6 @@
 
     // nevc points to NewEventViewController
     [[[self parentDateController] eventSelected] setDate:[[self datePicker] date] ];
-    NSLog(@"event selected date set to: %@", self.parentDateController.eventSelected.date);
     
     [[[self parentDateController] view] setNeedsDisplay];
     

@@ -89,7 +89,6 @@ NSString * const MetasomeNotificationPrefKey = @"MetasomeNotificationPrefKey";
     [calendar setTimeZone: [NSTimeZone defaultTimeZone]];
     
     NSDate *dateToFire = [calendar dateFromComponents:components];
-    NSLog(@"date to fire: %@", dateToFire);
     
     localNotification.fireDate = dateToFire;
     localNotification.alertBody = @"Remember to log your PulseBeat data!";

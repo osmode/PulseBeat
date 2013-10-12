@@ -332,8 +332,8 @@
 				FA4817BE17C672D900A4CA4A /* DetailViewController_slider.m */,
 				FA4817BC17C672CE00A4CA4A /* DetailViewController_slider.xib */,
 				FA4E9F1817C2C1D500E421DE /* DetailViewController.h */,
-				FA4E9F1A17C2C1D500E421DE /* DetailViewController.xib */,
 				FA4E9F1917C2C1D500E421DE /* DetailViewController.m */,
+				FA4E9F1A17C2C1D500E421DE /* DetailViewController.xib */,
 			);
 			name = MetasomeParameterViewController;
 			sourceTree = "<group>";

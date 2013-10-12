@@ -185,9 +185,6 @@
     
     //MetasomeParameter *p = [[[MetasomeParameterStore sharedStore] currentList] objectAtIndex:indexPath.row];
     
-    NSLog(@"currentSelection: %i", currentSelection);
-    NSLog(@"total: %i", [[[[[MetasomeParameterStore sharedStore] parameterArray] objectAtIndex:currentSelection] valueForKey:@"list"] count]);
-    
     MetasomeParameter *p = [[[[[MetasomeParameterStore sharedStore] parameterArray] objectAtIndex:[self currentSelection]] valueForKey:@"list"] objectAtIndex:indexPath.row];
         
     NSString *cellValue = [p parameterName];

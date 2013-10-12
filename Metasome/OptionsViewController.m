@@ -85,7 +85,6 @@
 }
 
 - (void)resetParameters {
-    NSLog(@"resetting paramter lists");
     [[MetasomeParameterStore sharedStore] loadDefaultParameters];
     [[MetasomeParameterStore sharedStore] resetAllCheckmarks];
     
@@ -284,7 +283,6 @@
 
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-    NSLog(@"finished showing view controller");
 }
 
 

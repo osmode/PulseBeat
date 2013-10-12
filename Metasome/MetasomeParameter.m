@@ -123,11 +123,11 @@
     NSTimeInterval distanceBetweenDates = [[NSDate date] timeIntervalSinceDate:[self lastChecked]];
     double secondsInAnHour = 3600.0;
     int hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
-    NSLog(@"distanceBetweenDates: %f", distanceBetweenDates);
     
     NSLog(@"hoursBetweenDates: %i", hoursBetweenDates);
     
-    if (hoursBetweenDates < 36 && hoursBetweenDates > 20) {
+    //if (hoursBetweenDates < 36 && hoursBetweenDates > 20) {
+    if (hoursBetweenDates < 36) {
         consecutiveEntries += 1;
         
         return YES;
@@ -137,9 +137,7 @@
         
         return NO;
     }
-        
-    NSLog(@"consecutiveEntries in 'incrementConsecutiveConter': %i", consecutiveEntries);
-    
+            
     return YES;
     
 }

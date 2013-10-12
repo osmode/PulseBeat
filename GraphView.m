@@ -120,8 +120,6 @@ float const HORIZONTAL_AXIS_LABEL_HEIGHT = 30.0;
         
     }
     
-    NSLog(@"pointIndex: %i", pointIndex);
-    
     // return pointIndex to last index position
     pointIndexCounter -= 1;
     

@@ -102,7 +102,6 @@
 
 - (IBAction)backgroundTouched:(id)sender {
     [[self view] endEditing:YES];
-    NSLog(@"Background touched.");
 }
 
 -(void)saveParameter
@@ -126,8 +125,6 @@
     
     [[MetasomeParameterStore sharedStore] saveChanges];
     
-    NSLog(@"newParameter added: %i", newParameter.inputCategory);
-    
     [[self navigationController] popViewControllerAnimated:YES];
     
 }
@@ -139,9 +136,6 @@
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    NSLog(@"Calling numberOfRowsInComponent");
-    NSLog(@"pickView tag: %i", pickerView.tag);
-    
     //category (e.g. vital signs, mind, body, etc)
     
     if (pickerView.tag ==0 ) {
@@ -156,7 +150,6 @@
         return 0;
     
     return 1;
-    NSLog(@"End numberOfRowsInComponent");
 }
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component

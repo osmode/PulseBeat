@@ -126,8 +126,9 @@
     
     NSLog(@"hoursBetweenDates: %i", hoursBetweenDates);
     
-    //if (hoursBetweenDates < 36 && hoursBetweenDates > 20) {
-    if (hoursBetweenDates < 36) {
+    //if (hoursBetweenDates < 36) {
+    if (hoursBetweenDates < 36 && hoursBetweenDates > 20) {
+
         consecutiveEntries += 1;
         
         return YES;

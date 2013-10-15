@@ -18,6 +18,9 @@
     __weak IBOutlet UIButton *graphButton;
 
     UIImage *saveButtonPreChecked, *saveButtonChecked;
+    __weak IBOutlet UIImageView *saluteImage;
+    __weak IBOutlet UILabel *saluteLabel;
+    
     UIColor *initialColor;
     
 }

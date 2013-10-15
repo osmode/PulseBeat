@@ -116,6 +116,7 @@
 		FAE697FB17EC061A00D2630E /* diarysaveButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE697EF17EC061900D2630E /* diarysaveButton.png */; };
 		FAE697FC17EC061A00D2630E /* graphButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE697F017EC061900D2630E /* graphButton.png */; };
 		FAE7CE2B17F3E1B30019E970 /* checkedButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE7CE2A17F3E1B30019E970 /* checkedButton.png */; };
+		FAF70EFD180CF8BA005BAEE7 /* WithingsOAuth1Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF70EFC180CF8BA005BAEE7 /* WithingsOAuth1Controller.m */; };
 		FAF87EB517E2085C00C830D9 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF87EB317E2085C00C830D9 /* PhotoViewController.m */; };
 		FAF87EB617E2085C00C830D9 /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF87EB417E2085C00C830D9 /* PhotoViewController.xib */; };
 		FAF87EBA17E20E8F00C830D9 /* PhotoStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF87EB917E20E8F00C830D9 /* PhotoStore.m */; };
@@ -276,6 +277,8 @@
 		FAE697EF17EC061900D2630E /* diarysaveButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diarysaveButton.png; sourceTree = "<group>"; };
 		FAE697F017EC061900D2630E /* graphButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = graphButton.png; sourceTree = "<group>"; };
 		FAE7CE2A17F3E1B30019E970 /* checkedButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkedButton.png; sourceTree = "<group>"; };
+		FAF70EFB180CF8BA005BAEE7 /* WithingsOAuth1Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WithingsOAuth1Controller.h; sourceTree = "<group>"; };
+		FAF70EFC180CF8BA005BAEE7 /* WithingsOAuth1Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WithingsOAuth1Controller.m; sourceTree = "<group>"; };
 		FAF87EB217E2085C00C830D9 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		FAF87EB317E2085C00C830D9 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		FAF87EB417E2085C00C830D9 /* PhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
@@ -312,6 +315,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA2405021808E00A0047064F /* Withings */ = {
+			isa = PBXGroup;
+			children = (
+				FAF70EFB180CF8BA005BAEE7 /* WithingsOAuth1Controller.h */,
+				FAF70EFC180CF8BA005BAEE7 /* WithingsOAuth1Controller.m */,
+			);
+			name = Withings;
+			sourceTree = "<group>";
+		};
 		FA2B1A6D17DE979700ACD9C7 /* MetasomeParameterViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -419,6 +431,7 @@
 		FA4E9EDF17C1D04D00E421DE = {
 			isa = PBXGroup;
 			children = (
+				FA2405021808E00A0047064F /* Withings */,
 				FA5FAFD1180600F000813DF3 /* Fitbit */,
 				FA3DED8D17E44A5200D7FA87 /* Icon@2x.png */,
 				FA34640B17DD4A64008B5163 /* Metasome.xcdatamodeld */,
@@ -709,6 +722,7 @@
 				FA4E9F1517C277F200E421DE /* MetasomeParameterStore.m in Sources */,
 				FA4E9F1B17C2C1D500E421DE /* DetailViewController.m in Sources */,
 				FA4E9F2217C3807C00E421DE /* MetasomeDataPointStore.m in Sources */,
+				FAF70EFD180CF8BA005BAEE7 /* WithingsOAuth1Controller.m in Sources */,
 				FA5FAFDC1806011F00813DF3 /* Base64Transcoder.c in Sources */,
 				FAC592BC17C55E970004747C /* EventViewController.m in Sources */,
 				FAC592C017C561680004747C /* GraphView.m in Sources */,

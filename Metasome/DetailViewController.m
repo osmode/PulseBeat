@@ -41,7 +41,7 @@
     if ([[[self parameter] parameterName] isEqualToString:@"Sleep hours"]) {
         
         [datePicker setDatePickerMode:UIDatePickerModeDate];
-        
+    
     }
     
     valueField.delegate = self;
@@ -71,9 +71,10 @@
     // create notification to know when text size is changed
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
     
-    // initially hide saluteLabel and saluteLabel
+    // initially hide saluteLabel and saluteImage
     saluteLabel.hidden = YES;
     saluteImage.hidden = YES;
+    
 }
 
 -(void)preferredContentSizeChanged:(NSNotification *)aNotification
@@ -293,39 +294,71 @@
     [saluteImage setImage:[UIImage imageNamed:@"heartButton.png"]];
     
     // fade in saluteLabel and saluteImage
-
-    
     CAKeyframeAnimation *fade = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
     [fade setDelegate:self];
-    [fade setDuration:5.0];
+    [fade setDuration:2.5];
     NSMutableArray *vals = [NSMutableArray array];
     [vals addObject:[NSNumber numberWithFloat:0.0]];
     [vals addObject:[NSNumber numberWithFloat:1.0]];
     [vals addObject:[NSNumber numberWithFloat:0.0]];
     [fade setValues:vals];
     
+    NSString *firstPart = [NSString stringWithFormat:@"%i days in a row! \n", [[self parameter] consecutiveEntries]];
+    NSMutableArray *secondParts = [NSMutableArray array];
+    [secondParts addObject:@"An apple a day keeps the doctor away!"];
+    [secondParts addObject:@"You're on a roll!"];
+    [secondParts addObject:@"Keep it up!"];
+    [secondParts addObject:@"Tracking your health helps you take charge of your medical decisions!"];
+    [secondParts addObject:@"You're on fire!"];
+    [secondParts addObject:@"Your doctor will be proud!"];
+    [secondParts addObject:@"Awesome!!!"];
+    [secondParts addObject:@"You're a lean, mean, health tracking machine!"];
+    [secondParts addObject:@"Drum roll please..."];
+    [secondParts addObject:@"I wish all patients could be like you..."];
+    [secondParts addObject:@"You've come too far to break this hot streak!"];
+    //[secondParts addObject:nil];
     
-    switch ( [[self parameter] consecutiveEntries] ) {
-        case 0:
-            break;
-        case 1:
-            saluteLabel.text = @"Great work! An apple a day keeps the doctor away!";
-            break;
-        case 2:
-            saluteLabel.text = @"2 days in a row! You're on a roll!";
-            break;
-        case 3:
-            saluteLabel.text = @"3 days in a row! You're on a roll!";
-            break;
-        case 4:
-            saluteLabel.text = @"4 days in a row! Your're on fire!";
-            break;
-        case 5:
-            saluteLabel.text = @"5 days in a row! Awesome!!!";
-            break;
-        default:
-            saluteLabel.text = @"Great job tracking your health!";
+    int numConsecutive = [[self parameter] consecutiveEntries];
+    
+    if (numConsecutive == 1)
+        firstPart = @"";
+    
+    if (numConsecutive == 0) return;
+    else if (numConsecutive == 1) {
+        saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:0]];
     }
+    else if (numConsecutive == 2) {
+        saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:1]];
+    }
+    else if (numConsecutive == 3) {
+        saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:2]];
+    }
+    else if (numConsecutive >= 4 && numConsecutive <6 ) {
+        saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:3]];
+    }
+    else if (numConsecutive >= 6 && numConsecutive < 8) {
+        saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:4]];
+    }
+    else if (numConsecutive >= 8 && numConsecutive < 10) {
+        saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:5]];
+    }
+    else if (numConsecutive >= 11 && numConsecutive < 14) {
+        saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:6]];
+    }
+    else if (numConsecutive >= 14 && numConsecutive < 17) {
+        saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:7]];
+    }
+    else if (numConsecutive >= 17 && numConsecutive < 21) {
+        saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:8]];
+    }
+    else if (numConsecutive >= 21 && numConsecutive < 25) {
+        saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:9]];
+    }
+    else {
+        saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:10]];
+        
+    }
+    
     
     // associated animation with saluteLabel and saluteImage
     [saluteLabel.layer addAnimation:fade forKey:@"fadeInAnimation"];

@@ -19,6 +19,10 @@
     __weak IBOutlet UIDatePicker *datePicker;
     
     UIImage *saveButtonPreChecked, *saveButtonChecked;
+    __weak IBOutlet UIImageView *saluteImage;
+    __weak IBOutlet UILabel *saluteLabel;
+    
+    
     UIColor *initialColor;
     
 }

@@ -1,5 +1,5 @@
 //
-//  OAuth1Controller.m
+//  WithingsOAuth1Controller.m
 //  Simple-OAuth1
 //
 //  Created by Christian Hansen on 02/12/12 using bits and pieces of
@@ -16,20 +16,20 @@
 typedef void (^WebWiewDelegateHandler)(NSDictionary *oauthParams);
 
 //Sometimes OAUTH_CALLBACK has to be the same as the registered app callback url
-#define OAUTH_CALLBACK       @"http://www.pulsebeat.io"
-#define CONSUMER_KEY         @"146c72608bb655486c6c47410eb855371b310010b0b691b42502e67174b1"
-#define CONSUMER_SECRET      @"88e0e355950861d475721eebf5ec3117b19618b0670c99460b94befff7"
-#define AUTH_URL             @"https://oauth.withings.com/account/"
-#define REQUEST_TOKEN_URL    @"request_token"
-#define AUTHENTICATE_URL     @"authorize"
-#define ACCESS_TOKEN_URL     @"access_token"
+#define OAUTH_CALLBACK_WITHINGS       @"http://www.pulsebeat.io"
+#define CONSUMER_KEY_WITHINGS         @"146c72608bb655486c6c47410eb855371b310010b0b691b42502e67174b1"
+#define CONSUMER_SECRET_WITHINGS      @"88e0e355950861d475721eebf5ec3117b19618b0670c99460b94befff7"
+#define AUTH_URL_WITHINGS             @"https://oauth.withings.com/account/"
+#define REQUEST_TOKEN_URL_WITHINGS    @"request_token"
+#define AUTHENTICATE_URL_WITHINGS     @"authorize"
+#define ACCESS_TOKEN_URL_WITHINGS     @"access_token"
 
-#define API_URL              @"http://wbsapi.withings.net/"
-#define OAUTH_SCOPE_PARAM    @""
-#define REDIRECT_URL         @"https://oauth.withings.com/account/"
+#define API_URL_WITHINGS              @"http://wbsapi.withings.net/"
+#define OAUTH_SCOPE_PARAM_WITHINGS    @""
+#define REDIRECT_URL_WITHINGS         @"https://oauth.withings.com/account/"
 
-#define REQUEST_TOKEN_METHOD @"GET"
-#define ACCESS_TOKEN_METHOD  @"GET"
+#define REQUEST_TOKEN_METHOD_WITHINGS @"GET"
+#define ACCESS_TOKEN_METHOD_WITHINGS  @"GET"
 
 //--- The part below is from AFNetworking---
 static NSString * CHPercentEscapedQueryStringPairMemberFromStringWithEncoding(NSString *string, NSStringEncoding encoding)
@@ -169,8 +169,18 @@ static inline NSDictionary *CHParametersFromQueryString(NSString *queryString)
 @implementation WithingsOAuth1Controller
 @synthesize userid_class;
 
+-(id)init
+{
+    self = [super init];
+    if (self) {
+        NSLog(@"initializatin of WithingsOAuth1Controller compelete");
+    }
+    return self;
+}
 - (void)loginWithWebView:(UIWebView *)webWiew completion:(void (^)(NSDictionary *oauthTokens, NSError *error))completion
 {
+    NSLog(@"loginWithWebView");
+    
     self.webView = webWiew;
     self.webView.delegate = self;
     
@@ -182,7 +192,6 @@ static inline NSDictionary *CHParametersFromQueryString(NSString *queryString)
     
     [self obtainRequestTokenWithCompletion:^(NSError *error, NSDictionary *responseParams)
      {
-         
          
          NSString *oauth_token_secret = responseParams[@"oauth_token_secret"];
          NSString *oauth_token = responseParams[@"oauth_token"];
@@ -234,20 +243,20 @@ static inline NSDictionary *CHParametersFromQueryString(NSString *queryString)
 #pragma mark - Step 1 Obtaining a request token
 - (void)obtainRequestTokenWithCompletion:(void (^)(NSError *error, NSDictionary *responseParams))completion
 {
-    NSString *request_url = [AUTH_URL stringByAppendingString:REQUEST_TOKEN_URL];
-    NSString *oauth_consumer_secret = CONSUMER_SECRET;
+    NSString *request_url = [AUTH_URL_WITHINGS stringByAppendingString:REQUEST_TOKEN_URL_WITHINGS];
+    NSString *oauth_consumer_secret = CONSUMER_SECRET_WITHINGS;
     
     NSMutableDictionary *allParameters = [self.class standardOauthParameters];
-    if ([OAUTH_SCOPE_PARAM length] > 0) [allParameters setValue:OAUTH_SCOPE_PARAM forKey:@"scope"];
+    if ([OAUTH_SCOPE_PARAM_WITHINGS length] > 0) [allParameters setValue:OAUTH_SCOPE_PARAM_WITHINGS forKey:@"scope"];
     
     NSMutableDictionary *mutableParameters = allParameters.mutableCopy;
     
-    [mutableParameters setValue: OAUTH_CALLBACK.utf8AndURLEncode forKey:@"oauth_callback"];
+    [mutableParameters setValue: OAUTH_CALLBACK_WITHINGS.utf8AndURLEncode forKey:@"oauth_callback"];
     NSString *parametersString = WithingsCHQueryStringFromParametersWithEncoding(mutableParameters, NSUTF8StringEncoding);
     
     //NSString *callbackString = [@"&callback_url=" stringByAppendingString:OAUTH_CALLBACK.utf8AndURLEncode];
     
-    NSString *baseString = [REQUEST_TOKEN_METHOD stringByAppendingFormat:@"&%@&%@", request_url.utf8AndURLEncode, parametersString.utf8AndURLEncode];
+    NSString *baseString = [REQUEST_TOKEN_METHOD_WITHINGS stringByAppendingFormat:@"&%@&%@", request_url.utf8AndURLEncode, parametersString.utf8AndURLEncode];
     
     NSString *secretString = [oauth_consumer_secret.utf8AndURLEncode stringByAppendingString:@"&"];
     
@@ -260,7 +269,7 @@ static inline NSDictionary *CHParametersFromQueryString(NSString *queryString)
     //NSLog(@"parametersString: %@", parametersString);
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:request_url]];
-    request.HTTPMethod = REQUEST_TOKEN_METHOD;
+    request.HTTPMethod = REQUEST_TOKEN_METHOD_WITHINGS;
     
     NSMutableArray *parameterPairs = [NSMutableArray array];
     for (NSString *name in mutableParameters) {
@@ -284,10 +293,10 @@ static inline NSDictionary *CHParametersFromQueryString(NSString *queryString)
 #pragma mark - Step 2 Show login to the user to authorize our app
 - (void)authenticateToken:(NSString *)oauthToken withCompletion:(void (^)(NSError *error, NSDictionary *responseParams))completion
 {
-    NSString *oauth_callback = OAUTH_CALLBACK;
+    NSString *oauth_callback = OAUTH_CALLBACK_WITHINGS;
     
     // changes AUTH_URL to REDIRECT_URL
-    NSString *authenticate_url = [REDIRECT_URL stringByAppendingString:AUTHENTICATE_URL];
+    NSString *authenticate_url = [REDIRECT_URL_WITHINGS stringByAppendingString:AUTHENTICATE_URL_WITHINGS];
     
     authenticate_url = [authenticate_url stringByAppendingFormat:@"?oauth_callback=%@", oauth_callback.utf8AndURLEncode];
     authenticate_url = [authenticate_url stringByAppendingFormat:@"&oauth_token=%@", oauthToken];
@@ -334,7 +343,7 @@ static inline NSDictionary *CHParametersFromQueryString(NSString *queryString)
         NSString *queryString = [request.URL.absoluteString substringFromIndex:[request.URL.absoluteString rangeOfString:@"?"].location + 1];
         //NSLog(@"queryString: %@", queryString);
         
-        if ([urlWithoutQueryString rangeOfString:OAUTH_CALLBACK].location != NSNotFound)
+        if ([urlWithoutQueryString rangeOfString:OAUTH_CALLBACK_WITHINGS].location != NSNotFound)
         {
             NSString *queryString = [request.URL.absoluteString substringFromIndex:[request.URL.absoluteString rangeOfString:@"?"].location + 1];
             NSDictionary *parameters = CHParametersFromQueryString(queryString);
@@ -368,8 +377,8 @@ static inline NSDictionary *CHParametersFromQueryString(NSString *queryString)
              oauthVerifier:(NSString *)oauth_verifier
                 completion:(void (^)(NSError *error, NSDictionary *responseParams))completion
 {
-    NSString *access_url = [AUTH_URL stringByAppendingString:ACCESS_TOKEN_URL];
-    NSString *oauth_consumer_secret = CONSUMER_SECRET;
+    NSString *access_url = [AUTH_URL_WITHINGS stringByAppendingString:ACCESS_TOKEN_URL_WITHINGS];
+    NSString *oauth_consumer_secret = CONSUMER_SECRET_WITHINGS;
     
     NSMutableDictionary *allParameters = [self.class standardOauthParameters].mutableCopy;
     
@@ -380,7 +389,7 @@ static inline NSDictionary *CHParametersFromQueryString(NSString *queryString)
     
     NSString *parametersString = WithingsCHQueryStringFromParametersWithEncoding(allParameters, NSUTF8StringEncoding);
     
-    NSString *baseString = [ACCESS_TOKEN_METHOD stringByAppendingFormat:@"&%@&%@", access_url.utf8AndURLEncode, parametersString.utf8AndURLEncode];
+    NSString *baseString = [ACCESS_TOKEN_METHOD_WITHINGS stringByAppendingFormat:@"&%@&%@", access_url.utf8AndURLEncode, parametersString.utf8AndURLEncode];
     NSString *secretString = [oauth_consumer_secret.utf8AndURLEncode stringByAppendingFormat:@"&%@", oauth_token_secret.utf8AndURLEncode];
     NSString *oauth_signature = [self.class signClearText:baseString withSecret:secretString];
     [allParameters setValue:oauth_signature forKey:@"oauth_signature"];
@@ -388,7 +397,7 @@ static inline NSDictionary *CHParametersFromQueryString(NSString *queryString)
     parametersString = WithingsCHQueryStringFromParametersWithEncoding(allParameters, NSUTF8StringEncoding);
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:access_url]];
-    request.HTTPMethod = ACCESS_TOKEN_METHOD;
+    request.HTTPMethod = ACCESS_TOKEN_METHOD_WITHINGS;
     
     NSMutableArray *parameterPairs = [NSMutableArray array];
     
@@ -417,7 +426,7 @@ static inline NSDictionary *CHParametersFromQueryString(NSString *queryString)
 {
     NSString *oauth_timestamp = [NSString stringWithFormat:@"%i", (NSUInteger)[NSDate.date timeIntervalSince1970]];
     NSString *oauth_nonce = [NSString getNonce];
-    NSString *oauth_consumer_key = CONSUMER_KEY;
+    NSString *oauth_consumer_key = CONSUMER_KEY_WITHINGS;
     NSString *oauth_signature_method = @"HMAC-SHA1";
     NSString *oauth_version = @"1.0";
     
@@ -450,13 +459,13 @@ static inline NSDictionary *CHParametersFromQueryString(NSString *queryString)
     allParameters[@"oauth_token"] = oauth_token;
     //allParameters[@"oauth_timestamp"] = @"1381785987";
     //allParameters[@"oauth_nonce"] = @"1234";
-    NSString *oauth_consumer_secret = CONSUMER_SECRET;
+    NSString *oauth_consumer_secret = CONSUMER_SECRET_WITHINGS;
     
     NSString *parametersString = WithingsCHQueryStringFromParametersWithEncoding(allParameters, NSUTF8StringEncoding);
     
     NSLog(@"parametersString: %@", parametersString);
     
-    NSString *request_url = API_URL;
+    NSString *request_url = API_URL_WITHINGS;
     if (path) request_url = [request_url stringByAppendingString:path];
     
     // baseString is a concatenation of API_URL + path
@@ -475,7 +484,7 @@ static inline NSDictionary *CHParametersFromQueryString(NSString *queryString)
     NSLog(@"oauth_signature: %@", oauth_signature);
     
     NSString *parametersString2 = WithingsCHQueryStringFromParametersWithEncoding(allParameters, NSUTF8StringEncoding);
-    NSString *request_url2 = API_URL;
+    NSString *request_url2 = API_URL_WITHINGS;
     if (path) request_url2 = [request_url stringByAppendingString:path];
     request_url2 = [request_url stringByAppendingFormat:@"?%@", parametersString2];
     

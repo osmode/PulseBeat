@@ -16,9 +16,11 @@
 #import "FitbitLoginViewController.h"
 #import "OAuth1Controller.h"
 #import "FitbitApiDataStore.h"
+#import "WithingsAPIDataStore.h"
+#import "WithingsOAuth1Controller.h"
 
 @implementation OptionsViewController
-@synthesize selectedActionBlock, oauth1Controller;
+@synthesize selectedActionBlock, oauth1Controller, withingsOAuth1Controller;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -97,7 +99,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -110,11 +112,16 @@
     }
     
     switch (indexPath.row) {
-        case 0:  // Sync FitBit cell
+            
+        case 0: // Sync Withings cell
+            [[cell textLabel] setText:@"Sync Withings account"];
+            break;
+            
+        case 1:  // Sync FitBit cell
             [[cell textLabel] setText:@"Sync FitBit account"];
             break;
             
-        case 1:  // Notifications cell
+        case 2:  // Notifications cell
             [[cell textLabel] setText:@"Reminders"];
             if ( [[NSUserDefaults standardUserDefaults] boolForKey:MetasomeNotificationPrefKey] ) {
                 [[cell detailTextLabel] setText:@"Reminders on"];
@@ -126,13 +133,13 @@
             }
             break;
             
-        case 2:  // Reset default parameters
+        case 3:  // Reset default parameters
             [[cell textLabel] setText:@"Reset default lists"];
             break;
-        case 3:  //Delete all records cell
+        case 4:  //Delete all records cell
             [[cell textLabel] setText:@"Delete all records"];
             break;
-        case 4:
+        case 5:
             [[cell textLabel] setText:@"Delete today's records"];
             break;
     }
@@ -153,7 +160,57 @@
 {
     
     switch (indexPath.row) {
+            
         case 0:
+        {
+            FitbitLoginViewController *flvc = [[FitbitLoginViewController alloc] init];
+            self.navigationController.delegate = self;
+            
+            NSLog(@"didSelectWithingsRow");
+            [flvc setCompletionBlock:^{
+                
+                [self.withingsOAuth1Controller loginWithWebView:flvc.webView completion:^(NSDictionary *oauthTokens, NSError *error) {
+                    
+                    NSLog(@"X Y Z");
+                    if (!error) {
+                        // Store your tokens for authenticating your later requests, consider storing the tokens in the Keychain
+                        self.oauthToken = oauthTokens[@"oauth_token"];
+                        self.oauthTokenSecret = oauthTokens[@"oauth_token_secret"];
+                        
+                        NSLog(@"oauthToken: %@, oauthTokenSecret: %@", self.oauthToken, self.oauthTokenSecret);
+                        
+                        [[WithingsApiDataStore sharedStore] getBloodPressureData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
+                        
+                        // populate local database with fitbit data
+                        //[[FitbitApiDataStore sharedStore] getStepData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
+                        //[[FitbitApiDataStore sharedStore] getDistanceData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
+                        //[[FitbitApiDataStore sharedStore] getWeightData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
+                        //[[FitbitApiDataStore sharedStore] getSleepDurationData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
+                        
+                        //[[FitbitApiDataStore sharedStore] getBMIData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
+                        
+                        // save changes to database
+                        //[[MetasomeDataPointStore sharedStore] saveChanges];
+                        
+                    }
+                    else
+                    {
+                        NSLog(@"Error authenticating: %@", error.localizedDescription);
+                    }
+                    [self dismissViewControllerAnimated:YES completion: ^{
+                        self.withingsOAuth1Controller = nil;
+                    }];
+                }];
+            }];
+            
+            
+            [[self navigationController] pushViewController:flvc animated:YES];
+            
+            break;
+            
+            
+        }
+        case 1:
         {
             FitbitLoginViewController *flvc = [[FitbitLoginViewController alloc] init];
             
@@ -177,7 +234,6 @@
                         
                         // save changes to database
                         [[MetasomeDataPointStore sharedStore] saveChanges];
-                        
                     }
                     else
                     {
@@ -195,14 +251,14 @@
             break;
         }
             
-        case 1:
+        case 2:
         {
             NotificationsDetailViewController *ndvc = [[NotificationsDetailViewController alloc] init];
             [[self navigationController] pushViewController:ndvc animated:YES];
             
             break;
         }
-        case 2:
+        case 3:
         {
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             [self setSelectedActionBlock:^{
@@ -215,7 +271,7 @@
             
             break;
         }
-        case 3:
+        case 4:
         {
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             
@@ -230,7 +286,7 @@
             
             break;
         }
-        case 4:
+        case 5:
         {
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             [self setSelectedActionBlock:^{
@@ -279,6 +335,14 @@
         oauth1Controller = [[OAuth1Controller alloc] init];
     }
     return oauth1Controller;
+}
+
+- (WithingsOAuth1Controller *)withingsOAuth1Controller
+{
+    if (withingsOAuth1Controller == nil) {
+        withingsOAuth1Controller = [[WithingsOAuth1Controller alloc] init];
+    }
+    return withingsOAuth1Controller;
 }
 
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated

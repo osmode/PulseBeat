@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		FA19226117E0983300CA0ADF /* iOSDeveloperProfile.developerprofile in Resources */ = {isa = PBXBuildFile; fileRef = FA19226017E0983300CA0ADF /* iOSDeveloperProfile.developerprofile */; };
 		FA2162BF17E52C4D005C836C /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2162BA17E52C4D005C836C /* Icon.png */; };
+		FA218E07180DEFD500A072B1 /* WithingsAPIDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FA218E06180DEFD500A072B1 /* WithingsAPIDataStore.m */; };
+		FA218E0A180DF07300A072B1 /* WithingsJSONData.m in Sources */ = {isa = PBXBuildFile; fileRef = FA218E09180DF07300A072B1 /* WithingsJSONData.m */; };
+		FA218E0C180DFCEF00A072B1 /* File in Resources */ = {isa = PBXBuildFile; fileRef = FA218E0B180DFCEF00A072B1 /* File */; };
 		FA264CC817CC4D7D002ACEDD /* NewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA264CC617CC4D7D002ACEDD /* NewEventViewController.m */; };
 		FA264CC917CC4D7D002ACEDD /* NewEventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA264CC717CC4D7D002ACEDD /* NewEventViewController.xib */; };
 		FA2B1A6B17DE978900ACD9C7 /* MetasomeBloodPressureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2B1A6917DE978900ACD9C7 /* MetasomeBloodPressureViewController.m */; };
@@ -132,6 +135,11 @@
 /* Begin PBXFileReference section */
 		FA19226017E0983300CA0ADF /* iOSDeveloperProfile.developerprofile */ = {isa = PBXFileReference; lastKnownFileType = file; path = iOSDeveloperProfile.developerprofile; sourceTree = SOURCE_ROOT; };
 		FA2162BA17E52C4D005C836C /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = "../../iOS images/Icon.png"; sourceTree = "<group>"; };
+		FA218E05180DEFD500A072B1 /* WithingsAPIDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WithingsAPIDataStore.h; sourceTree = "<group>"; };
+		FA218E06180DEFD500A072B1 /* WithingsAPIDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WithingsAPIDataStore.m; sourceTree = "<group>"; };
+		FA218E08180DF07300A072B1 /* WithingsJSONData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WithingsJSONData.h; sourceTree = "<group>"; };
+		FA218E09180DF07300A072B1 /* WithingsJSONData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WithingsJSONData.m; sourceTree = "<group>"; };
+		FA218E0B180DFCEF00A072B1 /* File */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
 		FA264CC517CC4D7D002ACEDD /* NewEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewEventViewController.h; sourceTree = "<group>"; };
 		FA264CC617CC4D7D002ACEDD /* NewEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewEventViewController.m; sourceTree = "<group>"; };
 		FA264CC717CC4D7D002ACEDD /* NewEventViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewEventViewController.xib; sourceTree = "<group>"; };
@@ -320,6 +328,10 @@
 			children = (
 				FAF70EFB180CF8BA005BAEE7 /* WithingsOAuth1Controller.h */,
 				FAF70EFC180CF8BA005BAEE7 /* WithingsOAuth1Controller.m */,
+				FA218E05180DEFD500A072B1 /* WithingsAPIDataStore.h */,
+				FA218E06180DEFD500A072B1 /* WithingsAPIDataStore.m */,
+				FA218E08180DF07300A072B1 /* WithingsJSONData.h */,
+				FA218E09180DF07300A072B1 /* WithingsJSONData.m */,
 			);
 			name = Withings;
 			sourceTree = "<group>";
@@ -431,6 +443,7 @@
 		FA4E9EDF17C1D04D00E421DE = {
 			isa = PBXGroup;
 			children = (
+				FA218E0B180DFCEF00A072B1 /* File */,
 				FA2405021808E00A0047064F /* Withings */,
 				FA5FAFD1180600F000813DF3 /* Fitbit */,
 				FA3DED8D17E44A5200D7FA87 /* Icon@2x.png */,
@@ -679,6 +692,7 @@
 				FA997FEB17F7CB6400AE5CBB /* smiley3@2x.png in Resources */,
 				FA3DED7C17E4473E00D7FA87 /* diary@2x.png in Resources */,
 				FA997FE517F7CB6400AE5CBB /* smiley0@2x.png in Resources */,
+				FA218E0C180DFCEF00A072B1 /* File in Resources */,
 				FA997FED17F7CB6400AE5CBB /* smiley4@2x.png in Resources */,
 				FA3DED7F17E4475E00D7FA87 /* options.png in Resources */,
 				FA3DED8017E4475E00D7FA87 /* options@2x.png in Resources */,
@@ -733,6 +747,7 @@
 				FADC204E17CC10D200C02F1B /* MetasomeEventStore.m in Sources */,
 				FADC205117CC137100C02F1B /* MetasomeEvent.m in Sources */,
 				FA7DCEC017CC3E51005E5E3E /* EventDetailViewController.m in Sources */,
+				FA218E0A180DF07300A072B1 /* WithingsJSONData.m in Sources */,
 				FA264CC817CC4D7D002ACEDD /* NewEventViewController.m in Sources */,
 				FAAAC11017D15B870046EA0E /* NewParameterViewController.m in Sources */,
 				FA455D9817D6C59A0032BD23 /* Legend.m in Sources */,
@@ -753,6 +768,7 @@
 				FAF87ED417E293EF00C830D9 /* PhotoArchiveStore.m in Sources */,
 				FA5FAFE418061ABA00813DF3 /* FitbitLoginViewController.m in Sources */,
 				FA3DED7217E40C7B00D7FA87 /* HomeViewController.m in Sources */,
+				FA218E07180DEFD500A072B1 /* WithingsAPIDataStore.m in Sources */,
 				FA95875B17E65685007D5EB8 /* NotificationsDetailViewController.m in Sources */,
 				FADC0B6217E7896800829FCF /* AxisView.m in Sources */,
 				FADC0B6517E815DB00829FCF /* HoveringLabel.m in Sources */,

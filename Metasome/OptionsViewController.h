@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class OptionsTableView, OAuth1Controller;
+@class OptionsTableView, OAuth1Controller, WithingsOAuth1Controller;
 @interface OptionsViewController : UITableViewController <UIAlertViewDelegate, UINavigationControllerDelegate>
 {
 
@@ -21,6 +21,7 @@
 
 @property (nonatomic, copy) void (^selectedActionBlock)(void);
 @property (nonatomic, strong) OAuth1Controller *oauth1Controller;
+@property (nonatomic, strong) WithingsOAuth1Controller *withingsOAuth1Controller;
 @property (nonatomic, strong) NSString *oauthToken;
 @property (nonatomic, strong) NSString *oauthTokenSecret;
 

@@ -1,5 +1,5 @@
 //
-//  FitbitApiDataStore.h
+//  WithingsAPIDataStore.h
 //  PulseBeat
 //
 //  Created by Omar Metwally on 10/9/13.
@@ -8,18 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FitbitApiDataStore : NSObject
+@interface WithingsApiDataStore : NSObject
 {
     
 }
 
-+(FitbitApiDataStore *)sharedStore;
++(WithingsApiDataStore *)sharedStore;
 
 - (void)getStepData:(NSString *)oauthTokenIn oauthSecretIn:oauthSecretIn;
 - (void)getDistanceData:(NSString *)oauthTokenIn oauthSecretIn:oauthSecretIn;
 - (void)getWeightData:(NSString *)oauthTokenIn oauthSecretIn:oauthSecretIn;
 - (void)getBMIData:(NSString *)oauthTokenIn oauthSecretIn:oauthSecretIn;
-- (void)getSleepDurationData:(NSString *)oauthTokenIn oauthSecretIn:oauthSecretIn;
+- (void)getSleepDurationData:(NSString *)oauthTokenIn oauthSecretIn:(NSString *)oauthSecretIn;
+- (void)getBloodPressureData:(NSString *)oauthTokenIn oauthSecretIn:(NSString *)oauthSecretIn;
 
 
 @end

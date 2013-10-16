@@ -16,6 +16,7 @@
 typedef void (^WebWiewDelegateHandler)(NSDictionary *oauthParams);
 
 //Sometimes OAUTH_CALLBACK has to be the same as the registered app callback url
+
 #define OAUTH_CALLBACK       @"http://www.pulsebeat.io" 
 #define CONSUMER_KEY         @"751cab8813e84593b88fbbdf4433f7c1"
 #define CONSUMER_SECRET      @"878e76374d684b4883ec7422e508fc17"
@@ -29,6 +30,7 @@ typedef void (^WebWiewDelegateHandler)(NSDictionary *oauthParams);
 
 #define REQUEST_TOKEN_METHOD @"POST"
 #define ACCESS_TOKEN_METHOD  @"POST"
+
 
 //--- The part below is from AFNetworking---
 static NSString * CHPercentEscapedQueryStringPairMemberFromStringWithEncoding(NSString *string, NSStringEncoding encoding)

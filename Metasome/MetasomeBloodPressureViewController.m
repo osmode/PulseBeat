@@ -112,7 +112,6 @@
 }
 -(void)savePoint:(id)sender
 {
-    
     // make sure entered value is not greater than parameter's max allowed value before saving
     if ( [parameter isWithinMaxValue:[[systolicTextField text] floatValue]] == NO) {
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Systolic value is too large!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];

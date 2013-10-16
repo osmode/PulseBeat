@@ -165,13 +165,12 @@
         {
             FitbitLoginViewController *flvc = [[FitbitLoginViewController alloc] init];
             self.navigationController.delegate = self;
+            [[flvc navigationItem] setTitle:@"Sync Withings data"];
             
-            NSLog(@"didSelectWithingsRow");
             [flvc setCompletionBlock:^{
                 
                 [self.withingsOAuth1Controller loginWithWebView:flvc.webView completion:^(NSDictionary *oauthTokens, NSError *error) {
                     
-                    NSLog(@"X Y Z");
                     if (!error) {
                         // Store your tokens for authenticating your later requests, consider storing the tokens in the Keychain
                         self.oauthToken = oauthTokens[@"oauth_token"];
@@ -180,17 +179,6 @@
                         NSLog(@"oauthToken: %@, oauthTokenSecret: %@", self.oauthToken, self.oauthTokenSecret);
                         
                         [[WithingsApiDataStore sharedStore] getBloodPressureData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
-                        
-                        // populate local database with fitbit data
-                        //[[FitbitApiDataStore sharedStore] getStepData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
-                        //[[FitbitApiDataStore sharedStore] getDistanceData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
-                        //[[FitbitApiDataStore sharedStore] getWeightData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
-                        //[[FitbitApiDataStore sharedStore] getSleepDurationData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
-                        
-                        //[[FitbitApiDataStore sharedStore] getBMIData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
-                        
-                        // save changes to database
-                        //[[MetasomeDataPointStore sharedStore] saveChanges];
                         
                     }
                     else

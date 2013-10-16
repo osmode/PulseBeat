@@ -40,6 +40,10 @@
     // iterate through the array of data in "measuregrps"
     for (int counter = 0; counter < [secondIteration count]; counter++) {
         
+        NSString *entryDateTimestampString = [[secondIteration objectAtIndex:counter] valueForKey:@"date"];
+        
+        NSDate *entryDate = [[NSDate alloc] initWithTimeIntervalSince1970:[entryDateTimestampString floatValue]];
+        
         for (int counter2 = 0; counter2 < [[[secondIteration objectAtIndex:counter] valueForKey:@"measures"] count]; counter2++ ) {
             
             NSString *valueString = [[[[secondIteration objectAtIndex:counter] valueForKey:@"measures"] objectAtIndex:counter2] valueForKey:@"value"];
@@ -47,47 +51,36 @@
             NSString *typeString = [[[[secondIteration objectAtIndex:counter] valueForKey:@"measures"] objectAtIndex:counter2] valueForKey:@"type"];
             
             int value = [valueString intValue];
+            int type = [typeString intValue];
             
-            NSLog(@"valueString: %@", valueString);
+            
+            //NSLog(@"valueString: %@, typeString: %@, entryDate: %@", valueString, typeString, entryDate);
+            
+            switch (type) {
+                case 9:  // diastolic blood pressure
+                    [[MetasomeDataPointStore sharedStore] addPointWithName:@"Blood pressure" value:value date:entryDate.timeIntervalSince1970 options:diastolicOptions];
+                    break;
+                    
+                case 10:  // systolic blood pressure
+                    [[MetasomeDataPointStore sharedStore] addPointWithName:@"Blood pressure" value:value date:entryDate.timeIntervalSince1970 options:systolicOptions];
+                    break;
+                case 11:  // heart rate
+                    [[MetasomeDataPointStore sharedStore] addPointWithName:@"Heart rate" value:value date:entryDate.timeIntervalSince1970 options:noOptions];
+                
+                    default:
+                        break;
+            }
+            
         }
-        
-        /*
-        for (int counter2 = 0; counter2 < [secondIteration count] - 1; counter2++) {
-            NSString *string = [[secondIteration objectAtIndex:counter2] valueForKey:@"value"];
-            NSLog(@"string value: %@", string);
-        
-        }
-        */
-        
     }
-    /*
-    for (NSDictionary *d in [jsonData objectForKey:[self name]] ) {
-        NSString *dateString = [d objectForKey:@"dateTime"];
-        NSString *valueString = [d objectForKey:@"value"];
         
-        // NSLog(@"dateString = %@, valueString = %@", dateString, valueString);
-        
-        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"yyyy-MM-dd"];
-        NSDate *date = [dateFormat dateFromString:dateString];
-        
-        float valueToSave = [valueString floatValue];
-        
-        // in case of sleep, convert minutes asleep to hours
-        if ( [parameterName isEqualToString:@"Sleep hours"] ) {
-            valueToSave = (valueToSave / 60.0);
-        }
-        
-        [[MetasomeDataPointStore sharedStore] addPointWithName:parameterName value:valueToSave date:date.timeIntervalSince1970 options:noOptions];
-        
+        // save changes to database
         BOOL result = [[MetasomeDataPointStore sharedStore] saveChanges];
         
         if (!result) {
             NSLog(@"Error saving Fitbit data to CoreData!");
         }
-        
-    }
-    */
+    
 }
 
 @end

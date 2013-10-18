@@ -37,7 +37,7 @@ typedef enum {
 
 +(MetasomeDataPointStore *)sharedStore;
 -(NSMutableArray *)allPoints;
--(MetasomeDataPoint *)addPointWithName:(NSString *)pName value:(float)pValue date:(float)pDate options:(int)optionsValue;
+-(MetasomeDataPoint *)addPointWithName:(NSString *)pName value:(float)pValue date:(float)pDate options:(int)optionsValue fromApi:(NSString *)apiName;
 -(void)removePoint:(MetasomeDataPoint *)p;
 -(NSString *)itemArchivePath;
 -(BOOL)saveChanges;
@@ -45,5 +45,7 @@ typedef enum {
 -(void)deleteAllPoints;
 -(void)deleteTodayPoints;
 -(NSManagedObjectContext *)context;
+-(void)deletePointsFromApi:(NSString *)apiName fromDate:(NSDate *)fromDate toDate:(NSDate *)toDate;
 
 @end
+

@@ -178,8 +178,17 @@
                         
                         NSLog(@"oauthToken: %@, oauthTokenSecret: %@", self.oauthToken, self.oauthTokenSecret);
                         
-                        [[WithingsApiDataStore sharedStore] getBloodPressureData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
+                        UIActivityIndicatorView *aiv = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+                        aiv.color = [UIColor grayColor];
+                        aiv.center = [[flvc webView] center];
+                        [flvc.webView addSubview:aiv];
+                        [aiv startAnimating];
                         
+                        [[WithingsApiDataStore sharedStore] getBloodPressureData:self.oauthToken oauthSecretIn:self.oauthTokenSecret userID:[self.withingsOAuth1Controller userid_class] withCompletion:^{
+                            
+                            [aiv stopAnimating];
+                            
+                        }];
                     }
                     else
                     {
@@ -191,12 +200,10 @@
                 }];
             }];
             
-            
             [[self navigationController] pushViewController:flvc animated:YES];
             
             break;
-            
-            
+    
         }
         case 1:
         {
@@ -212,6 +219,15 @@
                         self.oauthToken = oauthTokens[@"oauth_token"];
                         self.oauthTokenSecret = oauthTokens[@"oauth_token_secret"];
                         
+                        UIActivityIndicatorView *aiv = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+                        aiv.color = [UIColor grayColor];
+                        aiv.center = [[flvc webView] center];
+                        [flvc.webView addSubview:aiv];
+                        [aiv startAnimating];
+                        
+                        // clear all Fitbit data from database
+                        [[MetasomeDataPointStore sharedStore] deletePointsFromApi:@"Fitbit" fromDate:nil toDate:nil];
+                        
                        // populate local database with fitbit data
                         [[FitbitApiDataStore sharedStore] getStepData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
                         [[FitbitApiDataStore sharedStore] getDistanceData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
@@ -222,6 +238,10 @@
                         
                         // save changes to database
                         [[MetasomeDataPointStore sharedStore] saveChanges];
+                        
+                        [aiv stopAnimating];
+                        aiv = nil;
+                        
                     }
                     else
                     {
@@ -336,6 +356,7 @@
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
 }
+
 
 
 @end

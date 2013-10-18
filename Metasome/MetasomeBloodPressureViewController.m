@@ -140,9 +140,9 @@
         return;
     }
     
-    lastPointSavedSystolic = [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:systolicTextField.text.integerValue date:datePicker.date.timeIntervalSince1970 options:systolicOptions];
+    lastPointSavedSystolic = [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:systolicTextField.text.integerValue date:datePicker.date.timeIntervalSince1970 options:systolicOptions fromApi:nil];
     
-    lastPointSavedDiastolic = [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:diastolicTextField.text.integerValue date:datePicker.date.timeIntervalSince1970 options:diastolicOptions];
+    lastPointSavedDiastolic = [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:diastolicTextField.text.integerValue date:datePicker.date.timeIntervalSince1970 options:diastolicOptions fromApi:nil];
     
     BOOL result = [[MetasomeDataPointStore sharedStore] saveChanges];
     [self addUndoButton];

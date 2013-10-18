@@ -59,7 +59,7 @@
     return self;
 }
 
--(MetasomeDataPoint *)addPointWithName:(NSString *)pName value:(float)pValue date:(float)pDate options:(int)optionsValue
+-(MetasomeDataPoint *)addPointWithName:(NSString *)pName value:(float)pValue date:(float)pDate options:(int)optionsValue fromApi:(NSString *)apiName
 {
     // derive the hour of the day to insert into "hour" column
     NSDate *tempDate = [NSDate dateWithTimeIntervalSince1970:pDate];
@@ -89,6 +89,10 @@
     [newPoint setOrderingValue:order];
     [newPoint setHour:newHour];
     [newPoint setOptions:optionsValue];
+    
+    if (apiName) {
+        [newPoint setApi:apiName];
+    }
     
     // set the points' RGB values
     if ( newHour>= 4 && newHour < 9 )
@@ -191,6 +195,38 @@
     
 }
 
+-(void)deletePointsFromApi:(NSString *)apiName fromDate:(NSDate *)fromDate toDate:(NSDate *)toDate
+{
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *e = [[model entitiesByName] objectForKey:@"DataPoints"];
+    [request setEntity:e];
+    
+    NSSortDescriptor *sd = [NSSortDescriptor sortDescriptorWithKey:@"pDate" ascending:YES];
+    
+    NSPredicate *p;
+    
+    if (fromDate) {
+        p = [NSPredicate predicateWithFormat:@"(api like %@) AND (pDate > %f)", apiName, fromDate.timeIntervalSince1970];
+    } else {
+        p = [NSPredicate predicateWithFormat:@"api like %@", apiName];
+    }
+        
+    [request setPredicate:p];
+    [request setSortDescriptors:[NSArray arrayWithObject:sd]];
+    
+    NSError *error;
+    NSArray *result = [context executeFetchRequest:request error:&error];
+    
+    if (!result) {
+        [NSException raise:@"Fetch failed" format:@"Reason: %@", [error localizedDescription]];
+    }
+        
+    for (NSManagedObject *obj in result) {
+        [context deleteObject:obj];
+    }
+    
+    [self saveChanges];
+}
 
 -(void)loadAllPoints
 {
@@ -212,6 +248,7 @@
         allPoints = [[NSMutableArray alloc] initWithArray:result];
     }
 }
+
 -(NSMutableArray *)allPoints
 {
     return allPoints;

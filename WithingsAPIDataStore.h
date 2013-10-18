@@ -20,7 +20,7 @@
 - (void)getWeightData:(NSString *)oauthTokenIn oauthSecretIn:oauthSecretIn;
 - (void)getBMIData:(NSString *)oauthTokenIn oauthSecretIn:oauthSecretIn;
 - (void)getSleepDurationData:(NSString *)oauthTokenIn oauthSecretIn:(NSString *)oauthSecretIn;
-- (void)getBloodPressureData:(NSString *)oauthTokenIn oauthSecretIn:(NSString *)oauthSecretIn;
+- (void)getBloodPressureData:(NSString *)oauthTokenIn oauthSecretIn:(NSString *)oauthSecretIn userID:(NSString *)userid withCompletion:(void (^)(void))completion;
 
 
 @end

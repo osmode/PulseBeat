@@ -49,7 +49,7 @@
             valueToSave = (valueToSave / 60.0);
         }
         
-        [[MetasomeDataPointStore sharedStore] addPointWithName:parameterName value:valueToSave date:date.timeIntervalSince1970 options:noOptions];
+        [[MetasomeDataPointStore sharedStore] addPointWithName:parameterName value:valueToSave date:date.timeIntervalSince1970 options:noOptions fromApi:@"Fitbit"];
         
         BOOL result = [[MetasomeDataPointStore sharedStore] saveChanges];
         

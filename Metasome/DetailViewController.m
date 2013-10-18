@@ -179,11 +179,11 @@
     
     if ([[self parameter] inputType] == ParameterInputFloat) {
         floatToSave = [[valueField text] floatValue];
-        lastPointSaved = [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:floatToSave date:datePicker.date.timeIntervalSince1970 options:noOptions];
+        lastPointSaved = [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:floatToSave date:datePicker.date.timeIntervalSince1970 options:noOptions fromApi:nil];
         
     } else {
         intToSave = [[valueField text] integerValue];
-        lastPointSaved = [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:intToSave date:datePicker.date.timeIntervalSince1970 options:noOptions];
+        lastPointSaved = [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:intToSave date:datePicker.date.timeIntervalSince1970 options:noOptions fromApi:nil];
     }
     
     BOOL result = [[MetasomeDataPointStore sharedStore] saveChanges];
@@ -326,37 +326,56 @@
     if (numConsecutive == 0) return;
     else if (numConsecutive == 1) {
         saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:0]];
+        saluteImage.image = [UIImage imageNamed:@"single_apple"];
     }
     else if (numConsecutive == 2) {
         saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:1]];
+        saluteImage.image = [UIImage imageNamed:@"single_apple"];
+
     }
     else if (numConsecutive == 3) {
         saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:2]];
+        saluteImage.image = [UIImage imageNamed:@"single_apple"];
+
     }
     else if (numConsecutive >= 4 && numConsecutive <6 ) {
         saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:3]];
+        saluteImage.image = [UIImage imageNamed:@"single_apple"];
+
     }
     else if (numConsecutive >= 6 && numConsecutive < 8) {
         saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:4]];
+        saluteImage.image = [UIImage imageNamed:@"single_apple"];
+
     }
     else if (numConsecutive >= 8 && numConsecutive < 10) {
         saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:5]];
+        saluteImage.image = [UIImage imageNamed:@"single_apple"];
+
     }
     else if (numConsecutive >= 11 && numConsecutive < 14) {
         saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:6]];
+        saluteImage.image = [UIImage imageNamed:@"single_apple"];
+
     }
     else if (numConsecutive >= 14 && numConsecutive < 17) {
         saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:7]];
+        saluteImage.image = [UIImage imageNamed:@"single_apple"];
+
     }
     else if (numConsecutive >= 17 && numConsecutive < 21) {
         saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:8]];
+        saluteImage.image = [UIImage imageNamed:@"single_apple"];
+
     }
     else if (numConsecutive >= 21 && numConsecutive < 25) {
         saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:9]];
+        saluteImage.image = [UIImage imageNamed:@"single_apple"];
+
     }
     else {
         saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:10]];
-        
+        saluteImage.image = [UIImage imageNamed:@"single_apple"];
     }
     
     

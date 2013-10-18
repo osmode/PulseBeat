@@ -133,7 +133,7 @@ const int NUM_SLIDER_SECTIONS = 5;
     
     // addPointWithName method in MetasomeDataPointStore returns a pointer to last saved point
     // used for manual undo management
-    lastPointSaved = [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:intValue date:datePicker.date.timeIntervalSince1970 options:noOptions];
+    lastPointSaved = [[MetasomeDataPointStore sharedStore] addPointWithName:[parameter parameterName] value:intValue date:datePicker.date.timeIntervalSince1970 options:noOptions fromApi:nil];
     
     BOOL result = [[MetasomeDataPointStore sharedStore] saveChanges];
     [self addUndoButton];

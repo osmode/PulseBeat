@@ -9,6 +9,7 @@
 #import "WithingsAPIDataStore.h"
 #import "WithingsJSONData.h"
 #import "WithingsOAuth1Controller.h"
+#import "MetasomeDataPointStore.h"
 
 @implementation WithingsApiDataStore
 
@@ -39,13 +40,13 @@
     return self;
 }
 
-- (void)getBloodPressureData:(NSString *)oauthTokenIn oauthSecretIn:(NSString *)oauthSecretIn
+- (void)getBloodPressureData:(NSString *)oauthTokenIn oauthSecretIn:(NSString *)oauthSecretIn userID:(NSString *)userid withCompletion:(void (^)(void))completion
 {
     NSString *path = @"measure";
     NSMutableDictionary *moreParams = [[NSMutableDictionary alloc] init];
     [moreParams setValue:@"getmeas" forKey:@"action"];
     
-    [moreParams setValue:@"2395114" forKey:@"userid"];
+    [moreParams setValue:userid forKey:@"userid"];
     
     NSURLRequest *preparedRequest = [WithingsOAuth1Controller preparedRequestForPath:path
                                                                   parameters:moreParams
@@ -69,15 +70,13 @@
                                    
                                    WithingsJSONData *withingsJSONData = [[WithingsJSONData alloc] initWithDictionary:d dataName:@"body"];
                                    
+                                   // clear pre-existing Withings data before populating DB with new data
+                                   [[MetasomeDataPointStore sharedStore] deletePointsFromApi:@"Withings" fromDate:nil toDate:nil];
+                                   
                                    [withingsJSONData saveToDataPointStore:@"test"];
                                    
-                                   //[withingsJSONData sa
-                                   //NSString *outputString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                                   //NSLog(@"outputString: %@", outputString);
-                                   
-                                   // convert returned data to JSON and parse
-                                   //NSDictionary *d = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                                   //WithingsJSONData *withingsJSONData = [[WithingsJSONData alloc] initWithDictionary:d dataName:<#(NSString *)#>
+                                   completion();
+                                  
                                });
                            }];
 

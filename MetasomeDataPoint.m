@@ -19,7 +19,7 @@
 @dynamic parameterType;
 @dynamic red, green, blue;
 @dynamic options;
-
+@dynamic api;
 
 -(void)awakeFromFetch
 {

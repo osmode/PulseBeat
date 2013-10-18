@@ -16,6 +16,24 @@
 		FA264CC917CC4D7D002ACEDD /* NewEventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA264CC717CC4D7D002ACEDD /* NewEventViewController.xib */; };
 		FA2B1A6B17DE978900ACD9C7 /* MetasomeBloodPressureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2B1A6917DE978900ACD9C7 /* MetasomeBloodPressureViewController.m */; };
 		FA2B1A6C17DE978900ACD9C7 /* MetasomeBloodPressureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA2B1A6A17DE978900ACD9C7 /* MetasomeBloodPressureViewController.xib */; };
+		FA2BC7491810C8080045F6E4 /* apple_bin @2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2BC7371810C8080045F6E4 /* apple_bin @2x.png */; };
+		FA2BC74A1810C8080045F6E4 /* apple_bin.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2BC7381810C8080045F6E4 /* apple_bin.png */; };
+		FA2BC74B1810C8080045F6E4 /* apple_bushel @2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2BC7391810C8080045F6E4 /* apple_bushel @2x.png */; };
+		FA2BC74C1810C8080045F6E4 /* apple_bushel.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2BC73A1810C8080045F6E4 /* apple_bushel.png */; };
+		FA2BC74D1810C8080045F6E4 /* apple_tree_early @2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2BC73B1810C8080045F6E4 /* apple_tree_early @2x.png */; };
+		FA2BC74E1810C8080045F6E4 /* apple_tree_early.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2BC73C1810C8080045F6E4 /* apple_tree_early.png */; };
+		FA2BC74F1810C8080045F6E4 /* apple_tree_full @2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2BC73D1810C8080045F6E4 /* apple_tree_full @2x.png */; };
+		FA2BC7501810C8080045F6E4 /* apple_tree_full.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2BC73E1810C8080045F6E4 /* apple_tree_full.png */; };
+		FA2BC7511810C8080045F6E4 /* double_apple @2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2BC73F1810C8080045F6E4 /* double_apple @2x.png */; };
+		FA2BC7521810C8080045F6E4 /* double_apple.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2BC7401810C8080045F6E4 /* double_apple.png */; };
+		FA2BC7531810C8080045F6E4 /* orchard @2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2BC7411810C8080045F6E4 /* orchard @2x.png */; };
+		FA2BC7541810C8080045F6E4 /* orchard.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2BC7421810C8080045F6E4 /* orchard.png */; };
+		FA2BC7551810C8080045F6E4 /* quadruple_apple @2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2BC7431810C8080045F6E4 /* quadruple_apple @2x.png */; };
+		FA2BC7561810C8080045F6E4 /* quadruple_apple.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2BC7441810C8080045F6E4 /* quadruple_apple.png */; };
+		FA2BC7571810C8080045F6E4 /* single_apple @2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2BC7451810C8080045F6E4 /* single_apple @2x.png */; };
+		FA2BC7581810C8080045F6E4 /* single_apple.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2BC7461810C8080045F6E4 /* single_apple.png */; };
+		FA2BC7591810C8080045F6E4 /* triple_apple @2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2BC7471810C8080045F6E4 /* triple_apple @2x.png */; };
+		FA2BC75A1810C8080045F6E4 /* triple_apple.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2BC7481810C8080045F6E4 /* triple_apple.png */; };
 		FA34640A17DD49AD008B5163 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA34640917DD49AD008B5163 /* CoreData.framework */; };
 		FA34640D17DD4A64008B5163 /* Metasome.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA34640B17DD4A64008B5163 /* Metasome.xcdatamodeld */; };
 		FA34641017DD5030008B5163 /* MetasomeDataPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = FA34640F17DD5030008B5163 /* MetasomeDataPoint.m */; };
@@ -146,6 +164,24 @@
 		FA2B1A6817DE978900ACD9C7 /* MetasomeBloodPressureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MetasomeBloodPressureViewController.h; path = Metasome/MetasomeBloodPressureViewController.h; sourceTree = "<group>"; };
 		FA2B1A6917DE978900ACD9C7 /* MetasomeBloodPressureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MetasomeBloodPressureViewController.m; path = Metasome/MetasomeBloodPressureViewController.m; sourceTree = "<group>"; };
 		FA2B1A6A17DE978900ACD9C7 /* MetasomeBloodPressureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MetasomeBloodPressureViewController.xib; path = Metasome/MetasomeBloodPressureViewController.xib; sourceTree = "<group>"; };
+		FA2BC7371810C8080045F6E4 /* apple_bin @2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple_bin @2x.png"; sourceTree = "<group>"; };
+		FA2BC7381810C8080045F6E4 /* apple_bin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple_bin.png; sourceTree = "<group>"; };
+		FA2BC7391810C8080045F6E4 /* apple_bushel @2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple_bushel @2x.png"; sourceTree = "<group>"; };
+		FA2BC73A1810C8080045F6E4 /* apple_bushel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple_bushel.png; sourceTree = "<group>"; };
+		FA2BC73B1810C8080045F6E4 /* apple_tree_early @2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple_tree_early @2x.png"; sourceTree = "<group>"; };
+		FA2BC73C1810C8080045F6E4 /* apple_tree_early.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple_tree_early.png; sourceTree = "<group>"; };
+		FA2BC73D1810C8080045F6E4 /* apple_tree_full @2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple_tree_full @2x.png"; sourceTree = "<group>"; };
+		FA2BC73E1810C8080045F6E4 /* apple_tree_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple_tree_full.png; sourceTree = "<group>"; };
+		FA2BC73F1810C8080045F6E4 /* double_apple @2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "double_apple @2x.png"; sourceTree = "<group>"; };
+		FA2BC7401810C8080045F6E4 /* double_apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = double_apple.png; sourceTree = "<group>"; };
+		FA2BC7411810C8080045F6E4 /* orchard @2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orchard @2x.png"; sourceTree = "<group>"; };
+		FA2BC7421810C8080045F6E4 /* orchard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orchard.png; sourceTree = "<group>"; };
+		FA2BC7431810C8080045F6E4 /* quadruple_apple @2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "quadruple_apple @2x.png"; sourceTree = "<group>"; };
+		FA2BC7441810C8080045F6E4 /* quadruple_apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quadruple_apple.png; sourceTree = "<group>"; };
+		FA2BC7451810C8080045F6E4 /* single_apple @2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "single_apple @2x.png"; sourceTree = "<group>"; };
+		FA2BC7461810C8080045F6E4 /* single_apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = single_apple.png; sourceTree = "<group>"; };
+		FA2BC7471810C8080045F6E4 /* triple_apple @2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "triple_apple @2x.png"; sourceTree = "<group>"; };
+		FA2BC7481810C8080045F6E4 /* triple_apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = triple_apple.png; sourceTree = "<group>"; };
 		FA34640917DD49AD008B5163 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		FA34640C17DD4A64008B5163 /* Metasome.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Metasome.xcdatamodel; sourceTree = "<group>"; };
 		FA34640E17DD502F008B5163 /* MetasomeDataPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetasomeDataPoint.h; sourceTree = SOURCE_ROOT; };
@@ -444,10 +480,10 @@
 			isa = PBXGroup;
 			children = (
 				FA218E0B180DFCEF00A072B1 /* File */,
+				FA34640B17DD4A64008B5163 /* Metasome.xcdatamodeld */,
 				FA2405021808E00A0047064F /* Withings */,
 				FA5FAFD1180600F000813DF3 /* Fitbit */,
 				FA3DED8D17E44A5200D7FA87 /* Icon@2x.png */,
-				FA34640B17DD4A64008B5163 /* Metasome.xcdatamodeld */,
 				FA3DED7417E40C9500D7FA87 /* Home */,
 				FAF87EB717E2086800C830D9 /* Photos */,
 				FA2B1A7017DE98F000ACD9C7 /* Options */,
@@ -495,6 +531,24 @@
 		FA4E9EF217C1D04D00E421DE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FA2BC7371810C8080045F6E4 /* apple_bin @2x.png */,
+				FA2BC7381810C8080045F6E4 /* apple_bin.png */,
+				FA2BC7391810C8080045F6E4 /* apple_bushel @2x.png */,
+				FA2BC73A1810C8080045F6E4 /* apple_bushel.png */,
+				FA2BC73B1810C8080045F6E4 /* apple_tree_early @2x.png */,
+				FA2BC73C1810C8080045F6E4 /* apple_tree_early.png */,
+				FA2BC73D1810C8080045F6E4 /* apple_tree_full @2x.png */,
+				FA2BC73E1810C8080045F6E4 /* apple_tree_full.png */,
+				FA2BC73F1810C8080045F6E4 /* double_apple @2x.png */,
+				FA2BC7401810C8080045F6E4 /* double_apple.png */,
+				FA2BC7411810C8080045F6E4 /* orchard @2x.png */,
+				FA2BC7421810C8080045F6E4 /* orchard.png */,
+				FA2BC7431810C8080045F6E4 /* quadruple_apple @2x.png */,
+				FA2BC7441810C8080045F6E4 /* quadruple_apple.png */,
+				FA2BC7451810C8080045F6E4 /* single_apple @2x.png */,
+				FA2BC7461810C8080045F6E4 /* single_apple.png */,
+				FA2BC7471810C8080045F6E4 /* triple_apple @2x.png */,
+				FA2BC7481810C8080045F6E4 /* triple_apple.png */,
 				FA9EE06A17FCA013006C4C04 /* Icon58x58.png */,
 				FA9EE06817FC9FC5006C4C04 /* Icon80x80.png */,
 				FA9EE06417FC9F22006C4C04 /* LaunchImage640x960.png */,
@@ -650,16 +704,22 @@
 			files = (
 				FA4E9EF617C1D04D00E421DE /* InfoPlist.strings in Resources */,
 				FA4E9EFE17C1D04D00E421DE /* Default.png in Resources */,
+				FA2BC74A1810C8080045F6E4 /* apple_bin.png in Resources */,
 				FA4E9F0017C1D04D00E421DE /* Default@2x.png in Resources */,
 				FA4E9F0217C1D04D00E421DE /* Default-568h@2x.png in Resources */,
+				FA2BC74D1810C8080045F6E4 /* apple_tree_early @2x.png in Resources */,
 				FA4E9F1717C2A9C000E421DE /* HeaderView.xib in Resources */,
 				FA4E9F1C17C2C1D500E421DE /* DetailViewController.xib in Resources */,
 				FAC592B817C555AD0004747C /* ParameterViewController.xib in Resources */,
+				FA2BC7541810C8080045F6E4 /* orchard.png in Resources */,
+				FA2BC7591810C8080045F6E4 /* triple_apple @2x.png in Resources */,
 				FAC592BD17C55E970004747C /* EventViewController.xib in Resources */,
 				FAE697F817EC061A00D2630E /* highlightedInputmethodButton.png in Resources */,
 				FA997FE817F7CB6400AE5CBB /* smiley2.png in Resources */,
+				FA2BC74F1810C8080045F6E4 /* apple_tree_full @2x.png in Resources */,
 				FA72FA7C17FA6B080072942F /* Icon120x120@2x.png in Resources */,
 				FAC592C517C562D70004747C /* GraphViewController.xib in Resources */,
+				FA2BC7511810C8080045F6E4 /* double_apple @2x.png in Resources */,
 				FA4817BD17C672CE00A4CA4A /* DetailViewController_slider.xib in Resources */,
 				FA997FE917F7CB6400AE5CBB /* smiley2@2x.png in Resources */,
 				FA4817C517C7F93400A4CA4A /* OptionsViewController.xib in Resources */,
@@ -670,11 +730,15 @@
 				FA264CC917CC4D7D002ACEDD /* NewEventViewController.xib in Resources */,
 				FAAAC11117D15B870046EA0E /* NewParameterViewController.xib in Resources */,
 				FA39816717D7A94100EB9948 /* dot.png in Resources */,
+				FA2BC75A1810C8080045F6E4 /* triple_apple.png in Resources */,
 				FA79654917D93E19005A2DB6 /* DatePickerViewController.xib in Resources */,
 				FA5FAFE518061ABA00813DF3 /* FitbitLoginViewController.xib in Resources */,
 				FA79654B17D940F2005A2DB6 /* OK.png in Resources */,
 				FA79654D17D940FA005A2DB6 /* cancel.png in Resources */,
 				FA997FD817F7CB1E00AE5CBB /* heartButton.png in Resources */,
+				FA2BC7521810C8080045F6E4 /* double_apple.png in Resources */,
+				FA2BC7571810C8080045F6E4 /* single_apple @2x.png in Resources */,
+				FA2BC7491810C8080045F6E4 /* apple_bin @2x.png in Resources */,
 				FA9EE06B17FCA013006C4C04 /* Icon58x58.png in Resources */,
 				FAE697F717EC061A00D2630E /* highlightedListButton.png in Resources */,
 				FA99F12017F77D0800B19297 /* brainButton.png in Resources */,
@@ -689,6 +753,7 @@
 				FA3DED7717E4462A00D7FA87 /* home@2x.png in Resources */,
 				FA3DED7817E4462A00D7FA87 /* homex.png in Resources */,
 				FA3DED7B17E4473E00D7FA87 /* diary.png in Resources */,
+				FA2BC74E1810C8080045F6E4 /* apple_tree_early.png in Resources */,
 				FA997FEB17F7CB6400AE5CBB /* smiley3@2x.png in Resources */,
 				FA3DED7C17E4473E00D7FA87 /* diary@2x.png in Resources */,
 				FA997FE517F7CB6400AE5CBB /* smiley0@2x.png in Resources */,
@@ -698,20 +763,27 @@
 				FA3DED8017E4475E00D7FA87 /* options@2x.png in Resources */,
 				FA3DED8317E4477400D7FA87 /* tracker.png in Resources */,
 				FA997FE617F7CB6400AE5CBB /* smiley1.png in Resources */,
+				FA2BC7551810C8080045F6E4 /* quadruple_apple @2x.png in Resources */,
 				FA9EE06917FC9FC5006C4C04 /* Icon80x80.png in Resources */,
 				FA997FE717F7CB6400AE5CBB /* smiley1@2x.png in Resources */,
 				FA99F12817F77D7A00B19297 /* lungButton.png in Resources */,
+				FA2BC7561810C8080045F6E4 /* quadruple_apple.png in Resources */,
+				FA2BC74C1810C8080045F6E4 /* apple_bushel.png in Resources */,
 				FA997FEC17F7CB6400AE5CBB /* smiley4.png in Resources */,
 				FA9EE06D17FCB479006C4C04 /* Launch640x1136.png in Resources */,
 				FA3DED8417E4477400D7FA87 /* tracker@2x.png in Resources */,
 				FA997FEA17F7CB6400AE5CBB /* smiley3.png in Resources */,
 				FA3DED8B17E44A3C00D7FA87 /* Icon.png in Resources */,
 				FA9EE06517FC9F22006C4C04 /* LaunchImage640x960.png in Resources */,
+				FA2BC7501810C8080045F6E4 /* apple_tree_full.png in Resources */,
 				FA3DED8C17E44A3C00D7FA87 /* Icon@2x.png in Resources */,
 				FAE697FB17EC061A00D2630E /* diarysaveButton.png in Resources */,
+				FA2BC7581810C8080045F6E4 /* single_apple.png in Resources */,
 				FA3DED8E17E44A5200D7FA87 /* Icon@2x.png in Resources */,
 				FA99F12117F77D0800B19297 /* brainButton@2x.png in Resources */,
 				FA99F12217F77D0800B19297 /* diabetesButton.png in Resources */,
+				FA2BC74B1810C8080045F6E4 /* apple_bushel @2x.png in Resources */,
+				FA2BC7531810C8080045F6E4 /* orchard @2x.png in Resources */,
 				FA99F12317F77D0800B19297 /* diabetesButton@2x.png in Resources */,
 				FA2162BF17E52C4D005C836C /* Icon.png in Resources */,
 				FAE697FC17EC061A00D2630E /* graphButton.png in Resources */,

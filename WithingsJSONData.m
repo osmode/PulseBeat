@@ -53,19 +53,16 @@
             int value = [valueString intValue];
             int type = [typeString intValue];
             
-            
-            //NSLog(@"valueString: %@, typeString: %@, entryDate: %@", valueString, typeString, entryDate);
-            
             switch (type) {
                 case 9:  // diastolic blood pressure
-                    [[MetasomeDataPointStore sharedStore] addPointWithName:@"Blood pressure" value:value date:entryDate.timeIntervalSince1970 options:diastolicOptions];
+                    [[MetasomeDataPointStore sharedStore] addPointWithName:@"Blood pressure" value:value date:entryDate.timeIntervalSince1970 options:diastolicOptions fromApi:@"Withings"];
                     break;
                     
                 case 10:  // systolic blood pressure
-                    [[MetasomeDataPointStore sharedStore] addPointWithName:@"Blood pressure" value:value date:entryDate.timeIntervalSince1970 options:systolicOptions];
+                    [[MetasomeDataPointStore sharedStore] addPointWithName:@"Blood pressure" value:value date:entryDate.timeIntervalSince1970 options:systolicOptions fromApi:@"Withings"];
                     break;
                 case 11:  // heart rate
-                    [[MetasomeDataPointStore sharedStore] addPointWithName:@"Heart rate" value:value date:entryDate.timeIntervalSince1970 options:noOptions];
+                    [[MetasomeDataPointStore sharedStore] addPointWithName:@"Heart rate" value:value date:entryDate.timeIntervalSince1970 options:noOptions fromApi:@"Withings"];
                 
                     default:
                         break;

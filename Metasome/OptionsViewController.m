@@ -83,7 +83,7 @@
     NSMutableArray *allPoints = [[MetasomeDataPointStore sharedStore] allPoints];
     
     [allPoints removeAllObjects];
-         
+    
 }
 
 - (void)resetParameters {
@@ -307,8 +307,6 @@
     }
     
 }
-
-
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {

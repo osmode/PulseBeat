@@ -253,6 +253,7 @@
 {
     return allPoints;
 }
+
 -(void)deleteAllPoints
 {
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -269,6 +270,7 @@
     
     [self saveChanges];
 }
+
 -(void)deleteTodayPoints
 {
     NSFetchRequest *request = [[NSFetchRequest alloc] init];

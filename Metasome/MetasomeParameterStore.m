@@ -111,6 +111,9 @@ float const MAX_SLIDER_VALUE = 100.0;
         for (MetasomeParameter *p in [[[[MetasomeParameterStore sharedStore] parameterArray] objectAtIndex:counter] objectForKey:@"list"] )
         {
             [p setCheckedStatus:NO];
+            [p setConsecutiveEntries:0];
+            
+            NSLog(@"setting %@ to %i consecutive entries", p.parameterName, p.consecutiveEntries);
         }
         counter += 1;
     }

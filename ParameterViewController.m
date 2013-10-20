@@ -159,7 +159,6 @@
 
 }
 
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -167,7 +166,6 @@
     //return [[[MetasomeParameterStore sharedStore] sections] count];
     return 1;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -177,19 +175,13 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    /*
-    NSDictionary *dictionary = [[[MetasomeParameterStore sharedStore] parameterArray] objectAtIndex:indexPath.section];
-    NSArray *array = [dictionary objectForKey:@"data"];
-    NSString *cellValue = [[array objectAtIndex:indexPath.row] parameterName];
-    */
-    
-    //MetasomeParameter *p = [[[MetasomeParameterStore sharedStore] currentList] objectAtIndex:indexPath.row];
     
     MetasomeParameter *p = [[[[[MetasomeParameterStore sharedStore] parameterArray] objectAtIndex:[self currentSelection]] valueForKey:@"list"] objectAtIndex:indexPath.row];
         
     NSString *cellValue = [p parameterName];
     [[cell textLabel] setText:cellValue];
     cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    
 
     // Check if it's time to reset the checkmark each time the cell loads
     [p resetCheckmark];

@@ -130,9 +130,6 @@
 
 }
 
-
-
-
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
@@ -210,8 +207,10 @@
     }
     
     // color Fitbit parameters blue
-    if ([p isFitbit] == YES) {
+    if ([p apiType] == FitbitInput) {
         cell.textLabel.textColor = [UIColor blueColor];
+    } else if ([p apiType] == WithingsInput) {
+        cell.textLabel.textColor = [UIColor greenColor];
     } else {
         cell.textLabel.textColor = [UIColor blackColor];
     }
@@ -385,6 +384,16 @@ toIndexPath:(NSIndexPath *)destinationIndexPath
     }
     else if (numConsecutive >= 15 ) {
         imageToReturn = [UIImage imageNamed:@"golden_apple"];
+    }
+
+    
+    // When data is pulled from an API, the MetasomeParameter's
+    // consecutiveEntries field is set to -1
+    if ( numConsecutive < 0 && [parameter apiType] == FitbitInput ) {
+        imageToReturn = [UIImage imageNamed:@"Fitbit"];
+    }
+    else if ( numConsecutive < 0 && [parameter apiType] == WithingsInput ) {
+        imageToReturn = [UIImage imageNamed:@"Withings"];
     }
     
     return imageToReturn;

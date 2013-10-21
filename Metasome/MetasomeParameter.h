@@ -30,6 +30,11 @@ typedef enum {
     ParameterBloodPressure  // Contains 2 text input fields
 } ParameterInput;
 
+typedef enum {
+    FitbitInput,
+    WithingsInput
+} InputType;
+
 @interface MetasomeParameter : NSObject <NSCoding>
 {
     
@@ -49,7 +54,7 @@ typedef enum {
 @property (nonatomic) float maxValue;
 @property (nonatomic) BOOL sadOnRightSide;
 @property (nonatomic) BOOL isCustomMade;
-@property (nonatomic) BOOL isFitbit;
+@property (nonatomic) int apiType;
 
 -(id)initWithParameterName:(NSString *)name inputType:(int)type category:(int)newCategory maximumValue:(float)value;
 -(void)resetCheckmark;

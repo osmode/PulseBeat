@@ -9,6 +9,8 @@
 #import "FitbitApiDataStore.h"
 #import "FitbitJSONData.h"
 #import "OAuth1Controller.h"
+#import "MetasomeParameterStore.h"
+#import "MetasomeParameter.h"
 
 @implementation FitbitApiDataStore
 
@@ -22,7 +24,6 @@
     }
     
     return sharedStore;
-    
 }
 
 +(id)allocWithZone:(NSZone *)zone
@@ -63,6 +64,13 @@
                     NSDictionary *d = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
                     //NSLog(@"count: %i", [[d objectForKey:@"activities-steps"] count]);
                     
+                    // if we got data back, mark Steps parameter
+                    // with Fitbit logo
+                    if ( [[d objectForKey:@"activities-steps"] count] > 0) {
+                        MetasomeParameter *p = [[MetasomeParameterStore sharedStore] fitbitParameterWithName:@"Steps"];
+                        [p setConsecutiveEntries:-1];
+                    }
+                    
                     FitbitJSONData *fitbitJSONData = [[FitbitJSONData alloc] initWithDictionary:d dataName:@"activities-steps"];
                     
                     [fitbitJSONData saveToDataPointStore:@"Steps"];
@@ -70,6 +78,8 @@
                 
                 });
             }];
+    
+    
 }
 
 - (void)getDistanceData:(NSString *)oauthTokenIn oauthSecretIn:oauthSecretIn
@@ -93,7 +103,15 @@
                                        
                                        // Turn JSON data into basic model objects
                                        NSDictionary *d = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                                       //NSLog(@"count: %i", [[d objectForKey:@"activities-steps"] count]);
+
+                                       
+                                       // if we got data back, mark Distance parameter
+                                       // with Fitbit logo
+                                       if ( [[d objectForKey:@"activities-distance"] count] > 0) {
+                                           MetasomeParameter *p = [[MetasomeParameterStore sharedStore] fitbitParameterWithName:@"Distance"];
+                                           [p setConsecutiveEntries:-1];
+                                       }
+                                       
                                        
                                        FitbitJSONData *fitbitJSONData = [[FitbitJSONData alloc] initWithDictionary:d dataName:@"activities-distance"];
                                        
@@ -125,7 +143,13 @@
                                        
                                        // Turn JSON data into basic model objects
                                        NSDictionary *d = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                                       //NSLog(@"count: %i", [[d objectForKey:@"activities-steps"] count]);
+
+                                       // if we got data back, mark Weight parameter
+                                       // with Fitbit logo
+                                       if ( [[d objectForKey:@"body-weight"] count] > 0) {
+                                           MetasomeParameter *p = [[MetasomeParameterStore sharedStore] fitbitParameterWithName:@"Weight"];
+                                           [p setConsecutiveEntries:-1];
+                                       }
                                        
                                        FitbitJSONData *fitbitJSONData = [[FitbitJSONData alloc] initWithDictionary:d dataName:@"body-weight"];
                                        
@@ -157,7 +181,13 @@
                                        
                                        // Turn JSON data into basic model objects
                                        NSDictionary *d = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                                       //NSLog(@"count: %i", [[d objectForKey:@"activities-steps"] count]);
+
+                                       // if we got data back, mark BMI parameter
+                                       // with Fitbit logo
+                                       if ( [[d objectForKey:@"body-bmi"] count] > 0) {
+                                           MetasomeParameter *p = [[MetasomeParameterStore sharedStore] fitbitParameterWithName:@"BMI"];
+                                           [p setConsecutiveEntries:-1];
+                                       }
                                        
                                        FitbitJSONData *fitbitJSONData = [[FitbitJSONData alloc] initWithDictionary:d dataName:@"body-bmi"];
                                        
@@ -189,7 +219,13 @@
                                        
                                        // Turn JSON data into basic model objects
                                        NSDictionary *d = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                                       //NSLog(@"count: %i", [[d objectForKey:@"activities-steps"] count]);
+
+                                       // if we got data back, mark Sleep parameter
+                                       // with Fitbit logo
+                                       if ( [[d objectForKey:@"sleep-minutesAsleep"] count] > 0) {
+                                           MetasomeParameter *p = [[MetasomeParameterStore sharedStore] fitbitParameterWithName:@"Sleep hours"];
+                                           [p setConsecutiveEntries:-1];
+                                       }
                                        
                                        FitbitJSONData *fitbitJSONData = [[FitbitJSONData alloc] initWithDictionary:d dataName:@"sleep-minutesAsleep"];
                                        

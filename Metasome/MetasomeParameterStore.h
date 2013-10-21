@@ -35,6 +35,11 @@ typedef enum {
 -(NSString *)itemArchivePath;
 -(BOOL)saveChanges;
 -(void)resetAllCheckmarks;
+-(MetasomeParameter *)fitbitParameterWithName:(NSString *)paramName;
+-(MetasomeParameter *)withingsParameterWithName:(NSString *)paramName;
+-(NSMutableArray *)fitbitParameters;
+-(NSMutableArray *)withingsParameters;
+
 
 
 @end

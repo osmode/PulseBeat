@@ -160,11 +160,10 @@ float const MAX_SLIDER_VALUE = 100.0;
     [legSwelling setSadOnRightSide:YES];
     
     MetasomeParameter *steps = [[MetasomeParameter alloc] initWithParameterName:@"Steps" inputType:ParameterInputInteger category:ParameterCategoryHeart maximumValue:500000];
-    [steps setIsFitbit:YES];
+    [steps setApiType:FitbitInput];
     MetasomeParameter *distance = [[MetasomeParameter alloc] initWithParameterName:@"Distance" inputType:ParameterInputFloat category:ParameterCategoryHeart maximumValue:500000];
-    [distance setIsFitbit:YES];
+    [distance setApiType:FitbitInput];
     
-  
     // lung-related parameters
     MetasomeParameter *shortnessOfBreath = [[MetasomeParameter alloc] initWithParameterName:@"Shortness of breath" inputType:ParameterInputSlider category:ParameterCategoryLung maximumValue:MAX_SLIDER_VALUE];
     [shortnessOfBreath setSadOnRightSide:YES];
@@ -176,10 +175,8 @@ float const MAX_SLIDER_VALUE = 100.0;
     // metabolic-related parameters
     MetasomeParameter *bloodSugar = [[MetasomeParameter alloc] initWithParameterName:@"Blood sugar" inputType:ParameterInputInteger category:ParameterCategoryDiabetes maximumValue:1000.0] ;
     MetasomeParameter *weight = [[MetasomeParameter alloc] initWithParameterName:@"Weight" inputType:ParameterInputFloat category:ParameterCategoryDiabetes maximumValue:1000.0] ;
-    [weight setIsFitbit:YES];
     MetasomeParameter *BMI = [[MetasomeParameter alloc] initWithParameterName:@"BMI" inputType:ParameterInputFloat category:ParameterCategoryDiabetes maximumValue:100.0];
-    [BMI setIsFitbit:YES];
-
+    [BMI setApiType:FitbitInput];
     
     // mind-related parameters
     MetasomeParameter *mood = [[MetasomeParameter alloc] initWithParameterName:@"Mood" inputType:ParameterInputSlider category:ParameterCategoryCustom maximumValue:MAX_SLIDER_VALUE];
@@ -187,7 +184,7 @@ float const MAX_SLIDER_VALUE = 100.0;
     MetasomeParameter *energy = [[MetasomeParameter alloc] initWithParameterName:@"Energy" inputType:ParameterInputSlider category:ParameterCategoryCustom maximumValue:MAX_SLIDER_VALUE];
     [energy setSadOnRightSide:NO];
     MetasomeParameter *sleepHours = [[MetasomeParameter alloc] initWithParameterName:@"Sleep hours" inputType:ParameterInputFloat category:ParameterCategoryCustom maximumValue:20.0];
-    [sleepHours setIsFitbit:YES];
+    [sleepHours setApiType:FitbitInput];
     
     // Each parameter can only belong to one list!
     
@@ -206,6 +203,65 @@ float const MAX_SLIDER_VALUE = 100.0;
     [parameterArray addObject:diabetesListArrayDict];
     [parameterArray addObject:customListArrayDict];
     
+}
+
+-(NSMutableArray *)fitbitParameters
+{
+    int numCategories = [parameterArray count];
+    NSMutableArray *arrayToReturn = [NSMutableArray array];
+    
+    for ( int i = 0; i < (numCategories); i++ ) {
+        NSMutableArray *pa = [[parameterArray objectAtIndex:i] valueForKey:@"list"];
+        
+        NSLog(@"count: %i", [pa count]);
+        
+        for ( MetasomeParameter *p in pa) {
+            
+                if ( [p apiType] == FitbitInput ) {
+                    [arrayToReturn addObject:p];
+                }
+    
+        }
+    }
+    
+    return arrayToReturn;
+}
+
+-(NSMutableArray *)withingsParameters
+{
+    int numCategories = [parameterArray count];
+    NSMutableArray *arrayToReturn = [NSMutableArray array];
+    
+    for ( int i = 0; i < numCategories; i++ ) {
+        for (NSArray *array in [[parameterArray objectAtIndex:i] valueForKey:@"list"]) {
+            for (MetasomeParameter *p in array) {
+                if ( [p apiType] == WithingsInput ) {
+                    [arrayToReturn addObject:p];
+                }
+                
+            }
+        }
+    }
+    
+    return arrayToReturn;
+}
+
+-(MetasomeParameter *)fitbitParameterWithName:(NSString *)paramName
+{
+    for (MetasomeParameter *p in [self fitbitParameters]) {
+        if ([[p parameterName] isEqualToString:paramName])
+            return p;
+    }
+    return nil;
+}
+
+-(MetasomeParameter *)withingsParameterWithName:(NSString *)paramName
+{
+    for (MetasomeParameter *p in [self withingsParameters]) {
+        if ([[p parameterName] isEqualToString:paramName])
+            return p;
+    }
+    return nil;
 }
 
 @end

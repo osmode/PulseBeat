@@ -150,6 +150,8 @@
 		FAFD4E7718147C3800F77071 /* triple_apple.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFD4E6518147C3800F77071 /* triple_apple.png */; };
 		FAFD4E7A1814943B00F77071 /* CustomParameterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFD4E791814943B00F77071 /* CustomParameterCell.m */; };
 		FAFD4E7C181494A800F77071 /* CustomParameterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFD4E7B181494A800F77071 /* CustomParameterCell.xib */; };
+		FAFD4E7F1814BB5F00F77071 /* Fitbit.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFD4E7E1814BB5F00F77071 /* Fitbit.png */; };
+		FAFD4E811814C44100F77071 /* Withings.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFD4E801814C44100F77071 /* Withings.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -345,6 +347,8 @@
 		FAFD4E781814943B00F77071 /* CustomParameterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomParameterCell.h; sourceTree = "<group>"; };
 		FAFD4E791814943B00F77071 /* CustomParameterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomParameterCell.m; sourceTree = "<group>"; };
 		FAFD4E7B181494A800F77071 /* CustomParameterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomParameterCell.xib; sourceTree = "<group>"; };
+		FAFD4E7E1814BB5F00F77071 /* Fitbit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fitbit.png; sourceTree = "<group>"; };
+		FAFD4E801814C44100F77071 /* Withings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Withings.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -539,6 +543,7 @@
 		FA4E9EF217C1D04D00E421DE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FAFD4E7D1814BB5300F77071 /* Logos */,
 				FAFD4E5318147A5900F77071 /* Gamification */,
 				FA9EE06A17FCA013006C4C04 /* Icon58x58.png */,
 				FA9EE06817FC9FC5006C4C04 /* Icon80x80.png */,
@@ -666,6 +671,15 @@
 			name = Gamification;
 			sourceTree = "<group>";
 		};
+		FAFD4E7D1814BB5300F77071 /* Logos */ = {
+			isa = PBXGroup;
+			children = (
+				FAFD4E801814C44100F77071 /* Withings.png */,
+				FAFD4E7E1814BB5F00F77071 /* Fitbit.png */,
+			);
+			name = Logos;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -745,6 +759,7 @@
 				FAE697F617EC061A00D2630E /* inputMethodButton.png in Resources */,
 				FA264CC917CC4D7D002ACEDD /* NewEventViewController.xib in Resources */,
 				FAAAC11117D15B870046EA0E /* NewParameterViewController.xib in Resources */,
+				FAFD4E7F1814BB5F00F77071 /* Fitbit.png in Resources */,
 				FA39816717D7A94100EB9948 /* dot.png in Resources */,
 				FAFD4E7718147C3800F77071 /* triple_apple.png in Resources */,
 				FA79654917D93E19005A2DB6 /* DatePickerViewController.xib in Resources */,
@@ -797,6 +812,7 @@
 				FAE697FB17EC061A00D2630E /* diarysaveButton.png in Resources */,
 				FAFD4E7518147C3800F77071 /* single_apple.png in Resources */,
 				FA3DED8E17E44A5200D7FA87 /* Icon@2x.png in Resources */,
+				FAFD4E811814C44100F77071 /* Withings.png in Resources */,
 				FA99F12117F77D0800B19297 /* brainButton@2x.png in Resources */,
 				FA99F12217F77D0800B19297 /* diabetesButton.png in Resources */,
 				FAFD4E6818147C3800F77071 /* apple_bushel @2x.png in Resources */,

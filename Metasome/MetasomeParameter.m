@@ -10,7 +10,7 @@
 
 @implementation MetasomeParameter
 @synthesize parameterName, inputType, inputCategory, checkedStatus, lastChecked, maxValue, sadOnRightSide;
-@synthesize isCustomMade, consecutiveEntries, isFitbit;
+@synthesize isCustomMade, consecutiveEntries, apiType;
 
 
 -(id)initWithParameterName:(NSString *)name inputType:(int)type category:(int)newCategory maximumValue:(float)value
@@ -26,7 +26,7 @@
         [self setCheckedStatus:NO];
         
         // not a fitbit-derived parameter unless other specified
-        [self setIsFitbit:NO];
+        [self setApiType:0];
         lastChecked = [[NSDate alloc] init];
         
         consecutiveEntries = 0;
@@ -46,7 +46,7 @@
     [aCoder encodeBool:sadOnRightSide forKey:@"sadOnRightSide"];
     [aCoder encodeBool:isCustomMade forKey:@"isCustomMade"];
     [aCoder encodeInt:consecutiveEntries forKey:@"consecutiveEntries"];
-    [aCoder encodeBool:isFitbit forKey:@"isFitbit"];
+    [aCoder encodeInt:apiType forKey:@"apiType"];
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder
@@ -62,7 +62,7 @@
         [self setSadOnRightSide:[aDecoder decodeBoolForKey:@"sadOnRightSide"]];
         [self setIsCustomMade:[aDecoder decodeBoolForKey:@"isCustomMade"]];
         [self setConsecutiveEntries:[aDecoder decodeIntForKey:@"consecutiveEntries"]];
-        [self setIsFitbit:[aDecoder decodeBoolForKey:@"isFitbit"]];
+        [self setApiType:[aDecoder decodeIntForKey:@"apiType"]];
     }
          return self;
 }

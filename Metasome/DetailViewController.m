@@ -279,8 +279,8 @@
     //[[self saveButton] setHidden:NO];
     //valueField.hidden = NO;
     
-    
 }
+
 -(void)animateSaveResponse
 {
     NSLog(@"consecutiveEntries: %i", [[self parameter] consecutiveEntries]);

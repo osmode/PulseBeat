@@ -59,6 +59,7 @@
     // initially hide the salulateLabel and saluteImage
     saluteImage.hidden = YES;
     saluteLabel.hidden = YES;
+    saluteLabel.adjustsFontSizeToFitWidth = YES;
 
 }
 
@@ -243,6 +244,8 @@
 {
     // after the animation is complete, hide saluteLabel,
     // saluteImage, and re-display the buttons and text field
+    
+    /*
     saluteLabel.hidden = YES;
     saluteImage.hidden = YES;
     
@@ -250,7 +253,7 @@
     [saveButton setHidden:NO];
     systolicTextField.hidden = NO;
     diastolicTextField.hidden = NO;
-    
+    */
 }
 
 -(void)animateSaveResponse
@@ -259,7 +262,6 @@
     // hide UITextField and buttons
     systolicTextField.hidden = YES;
     diastolicTextField.hidden = YES;
-    
     [graphButton setHidden:YES];
     [saveButton setHidden:YES];
     
@@ -271,71 +273,92 @@
     // fade in saluteLabel and saluteImage
     CAKeyframeAnimation *fade = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
     [fade setDelegate:self];
-    [fade setDuration:2.5];
+    [fade setDuration:3.0];
     NSMutableArray *vals = [NSMutableArray array];
     [vals addObject:[NSNumber numberWithFloat:0.0]];
     [vals addObject:[NSNumber numberWithFloat:1.0]];
-    [vals addObject:[NSNumber numberWithFloat:0.0]];
+    //[vals addObject:[NSNumber numberWithFloat:0.0]];
     [fade setValues:vals];
     
-    NSString *firstPart = [NSString stringWithFormat:@"%i days in a row! \n", [[self parameter] consecutiveEntries]];
+    NSString *firstPart;
+    if ([[self parameter] consecutiveEntries] < 2 )
+        firstPart = @"";
+    else
+        firstPart = [NSString stringWithFormat:@"%i days in a row! \n", [[self parameter] consecutiveEntries]];
+    
     NSMutableArray *secondParts = [NSMutableArray array];
-    [secondParts addObject:@"You're on a roll!"];
+    [secondParts addObject:@"Your first apple! An an apple a day keeps the doctor away."];
+    [secondParts addObject:@"You've earned yourself another apple. You're on a roll!"];
     [secondParts addObject:@"Keep it up!"];
-    [secondParts addObject:@"Tracking your health helps you take charge of your medical decisions."];
-    [secondParts addObject:@"Prevention is the best medicine!"];
+    [secondParts addObject:@"You're really on top of things"];
     [secondParts addObject:@"You're on fire!"];
     [secondParts addObject:@"Your doctor will be proud!"];
     [secondParts addObject:@"Awesome!!!"];
     [secondParts addObject:@"You're a lean, mean, health tracking machine!"];
-    [secondParts addObject:@"Drum roll please..."];
-    [secondParts addObject:@"I wish all patients could be like you..."];
-    [secondParts addObject:@"You've come too far to break this hot streak!"];
-    //[secondParts addObject:nil];
+    [secondParts addObject:@"I present you with the Golden Apple Award!"];
     
     int numConsecutive = [[self parameter] consecutiveEntries];
     
-    if (numConsecutive == 0) return;
-    else if (numConsecutive == 1) {
+    if (numConsecutive == 1) {  // first entry
         saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:0]];
+        saluteImage.image = [UIImage imageNamed:@"single_apple"];
     }
     else if (numConsecutive == 2) {
         saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:1]];
+        saluteImage.image = [UIImage imageNamed:@"double_apple"];
+        
     }
     else if (numConsecutive == 3) {
         saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:2]];
-    }
-    else if (numConsecutive >= 4 && numConsecutive <6 ) {
-        saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:3]];
-    }
-    else if (numConsecutive >= 6 && numConsecutive < 8) {
-        saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:4]];
-    }
-    else if (numConsecutive >= 8 && numConsecutive < 10) {
-        saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:5]];
-    }
-    else if (numConsecutive >= 11 && numConsecutive < 14) {
-        saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:6]];
-    }
-    else if (numConsecutive >= 14 && numConsecutive < 17) {
-        saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:7]];
-    }
-    else if (numConsecutive >= 17 && numConsecutive < 21) {
-        saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:8]];
-    }
-    else if (numConsecutive >= 21 && numConsecutive < 25) {
-        saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:9]];
-    }
-    else {
-        saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:10]];
+        saluteImage.image = [UIImage imageNamed:@"triple_apple"];
         
     }
+    else if (numConsecutive == 4) {
+        saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:3]];
+        saluteImage.image = [UIImage imageNamed:@"quadruple_apple"];
+    }
+    else if (numConsecutive >= 5 && numConsecutive <7 ) {
+        saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:4]];
+        saluteImage.image = [UIImage imageNamed:@"apple_bushel"];
+        
+    }
+    else if (numConsecutive >= 7 && numConsecutive < 9) {
+        saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:5]];
+        saluteImage.image = [UIImage imageNamed:@"apple_bin"];
+        
+    }
+    else if (numConsecutive >= 9 && numConsecutive < 11) {
+        saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:6]];
+        saluteImage.image = [UIImage imageNamed:@"simple_tree"];
+        
+    }
+    else if (numConsecutive >= 11 && numConsecutive < 15) {
+        saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:7]];
+        saluteImage.image = [UIImage imageNamed:@"full_apple_tree"];
+        
+    }
+    else if (numConsecutive >= 15 ) {
+        saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:8]];
+        saluteImage.image = [UIImage imageNamed:@"golden_apple"];
+        
+    }
+    
+    /*
+     else if (numConsecutive >= 21 && numConsecutive < 25) {
+     saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:9]];
+     saluteImage.image = [UIImage imageNamed:@"single_apple"];
+     
+     }
+     else {
+     saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:10]];
+     saluteImage.image = [UIImage imageNamed:@"single_apple"];
+     }
+     */
     
     // associated animation with saluteLabel and saluteImage
     [saluteLabel.layer addAnimation:fade forKey:@"fadeInAnimation"];
     [saluteImage.layer addAnimation:fade forKey:@"fadeInAnimation"];
     
 }
-
 
 @end

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HomeViewController.h"
 
+@class MetasomeParameter;
 @interface ParameterViewController : UITableViewController 
 {
 }
@@ -19,6 +20,6 @@
 
 -(IBAction)addNewItem:(id)sender;
 -(void)updateTitle:(UILabel *)label;
-
+-(UIImage *)getGamificationImage:(MetasomeParameter *)parameter;
 
 @end

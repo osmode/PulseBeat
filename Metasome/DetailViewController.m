@@ -367,7 +367,6 @@
 
     }
 
-    
     /*
     else if (numConsecutive >= 21 && numConsecutive < 25) {
         saluteLabel.text = [firstPart stringByAppendingString:[secondParts objectAtIndex:9]];

@@ -18,6 +18,7 @@
 #import "HomeViewController.h"
 #import "LoginScreenViewController.h"
 #import "TextFormatter.h"
+#import "CustomParameterCell.h"
 
 
 @implementation ParameterViewController
@@ -98,6 +99,10 @@
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
     
+    // load the custom cell XIB file
+    UINib *nib = [UINib nibWithNibName:@"CustomParameterCell" bundle:nil];
+    // register this NIB
+    [[self tableView] registerNib:nib forCellReuseIdentifier:@"CustomParameterCell"];
 
     switch ([self currentSelection]) {
         case heartSelection:
@@ -169,20 +174,28 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"UITableViewCell";
-
+    //static NSString *CellIdentifier = @"UITableViewCell";
+    static NSString *CellIdentifier = @"CustomParameterCell";
+    
+    /*
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
+    */
+    
+    CustomParameterCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     MetasomeParameter *p = [[[[[MetasomeParameterStore sharedStore] parameterArray] objectAtIndex:[self currentSelection]] valueForKey:@"list"] objectAtIndex:indexPath.row];
         
     NSString *cellValue = [p parameterName];
-    [[cell textLabel] setText:cellValue];
-    cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    //[[cell textLabel] setText:cellValue];
+    [[cell titleLabel] setText:cellValue];
+    [[cell subtitleLabel] setText:@""];
+    [[cell gamificationImage] setImage:[self getGamificationImage:p]];
+        
+    //cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     
-
     // Check if it's time to reset the checkmark each time the cell loads
     [p resetCheckmark];
     
@@ -341,5 +354,40 @@ toIndexPath:(NSIndexPath *)destinationIndexPath
     [[self navigationItem] setTitleView:label];
 }
 
+-(UIImage *)getGamificationImage:(MetasomeParameter *)parameter
+{
+    int numConsecutive = [parameter consecutiveEntries];
+    UIImage *imageToReturn;
+    
+    if (numConsecutive == 1) {  // first entry
+        imageToReturn = [UIImage imageNamed:@"single_apple"];
+    }
+    else if (numConsecutive == 2) {
+        imageToReturn = [UIImage imageNamed:@"double_apple"];
+    }
+    else if (numConsecutive == 3) {
+        imageToReturn = [UIImage imageNamed:@"triple_apple"];
+    }
+    else if (numConsecutive == 4) {
+        imageToReturn = [UIImage imageNamed:@"quadruple_apple"];
+    }
+    else if (numConsecutive >= 5 && numConsecutive <7 ) {
+        imageToReturn = [UIImage imageNamed:@"apple_bushel"];
+    }
+    else if (numConsecutive >= 7 && numConsecutive < 9) {
+        imageToReturn = [UIImage imageNamed:@"apple_bin"];
+    }
+    else if (numConsecutive >= 9 && numConsecutive < 11) {
+        imageToReturn = [UIImage imageNamed:@"simple_tree"];
+    }
+    else if (numConsecutive >= 11 && numConsecutive < 15) {
+        imageToReturn = [UIImage imageNamed:@"full_apple_tree"];
+    }
+    else if (numConsecutive >= 15 ) {
+        imageToReturn = [UIImage imageNamed:@"golden_apple"];
+    }
+    
+    return imageToReturn;
 
+}
 @end

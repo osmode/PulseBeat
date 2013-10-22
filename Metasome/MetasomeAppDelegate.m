@@ -91,7 +91,7 @@
     [eventButton setTitle:@"Diary"];
     [eventButton setImage:eventImage];
     [optionsButton setImage:optionsImage];
-    [optionsButton setTitle:@"Options"];
+    [optionsButton setTitle:@"Settings"];
     
     //[[self window] setRootViewController:navController];
     

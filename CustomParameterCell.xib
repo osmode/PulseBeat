@@ -14,16 +14,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WwV-AW-1LW">
-                        <rect key="frame" x="15" y="2" width="213" height="21"/>
+                        <rect key="frame" x="15" y="11" width="213" height="21"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LKc-30-qo7">
-                        <rect key="frame" x="15" y="20" width="213" height="21"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="xmW-lH-0JL">
@@ -34,7 +28,6 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="gamificationImage" destination="xmW-lH-0JL" id="6iy-7W-8mQ"/>
-                <outlet property="subtitleLabel" destination="LKc-30-qo7" id="ou1-dZ-GuQ"/>
                 <outlet property="titleLabel" destination="WwV-AW-1LW" id="xDt-0N-2C7"/>
             </connections>
         </tableViewCell>

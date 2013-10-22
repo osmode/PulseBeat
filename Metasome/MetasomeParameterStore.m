@@ -155,7 +155,11 @@ float const MAX_SLIDER_VALUE = 100.0;
     // heart-related parameters
     
     MetasomeParameter *heartRate = [[MetasomeParameter alloc] initWithParameterName:@"Heart rate" inputType:ParameterInputInteger category:ParameterCategoryHeart maximumValue:200.0];
+    [heartRate setApiType:WithingsInput];
+    
     MetasomeParameter *bloodPressure = [[MetasomeParameter alloc] initWithParameterName:@"Blood pressure" inputType:ParameterBloodPressure category:ParameterCategoryHeart maximumValue:220.0];
+    [bloodPressure setApiType:WithingsInput];
+    
     MetasomeParameter *legSwelling = [[MetasomeParameter alloc] initWithParameterName:@"Leg swelling" inputType:ParameterInputSlider category:ParameterCategoryHeart maximumValue:MAX_SLIDER_VALUE];
     [legSwelling setSadOnRightSide:YES];
     
@@ -220,7 +224,6 @@ float const MAX_SLIDER_VALUE = 100.0;
                 if ( [p apiType] == FitbitInput ) {
                     [arrayToReturn addObject:p];
                 }
-    
         }
     }
     

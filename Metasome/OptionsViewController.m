@@ -13,14 +13,11 @@
 #import "MetasomeDataPoint.h"
 #import "NotificationsDetailViewController.h"
 #import "TextFormatter.h"
-#import "FitbitLoginViewController.h"
-#import "OAuth1Controller.h"
-#import "FitbitApiDataStore.h"
-#import "WithingsAPIDataStore.h"
-#import "WithingsOAuth1Controller.h"
+#import "DeviceController.h"
+
 
 @implementation OptionsViewController
-@synthesize selectedActionBlock, oauth1Controller, withingsOAuth1Controller;
+@synthesize selectedActionBlock;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -51,7 +48,6 @@
     // Register this NIB which contains the cell
     [tableView  registerNib:nibSwitch forCellReuseIdentifier:@"OptionsSwitchCell"];
     [tableView registerNib:nibNormal forCellReuseIdentifier:@"OptionsNormalCell"];
-
 
 }
 
@@ -99,7 +95,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -113,15 +109,11 @@
     
     switch (indexPath.row) {
             
-        case 0: // Sync Withings cell
-            [[cell textLabel] setText:@"Sync Withings account"];
+        case 0:
+            [[cell textLabel] setText:@"Sync devices"];
             break;
             
-        case 1:  // Sync FitBit cell
-            [[cell textLabel] setText:@"Sync FitBit account"];
-            break;
-            
-        case 2:  // Notifications cell
+        case 1:  // Notifications cell
             [[cell textLabel] setText:@"Reminders"];
             if ( [[NSUserDefaults standardUserDefaults] boolForKey:MetasomeNotificationPrefKey] ) {
                 [[cell detailTextLabel] setText:@"Reminders on"];
@@ -133,13 +125,13 @@
             }
             break;
             
-        case 3:  // Reset default parameters
+        case 2:  // Reset default parameters
             [[cell textLabel] setText:@"Reset default lists"];
             break;
-        case 4:  //Delete all records cell
+        case 3:  //Delete all records cell
             [[cell textLabel] setText:@"Delete all records"];
             break;
-        case 5:
+        case 4:
             [[cell textLabel] setText:@"Delete today's records"];
             break;
     }
@@ -163,110 +155,22 @@
             
         case 0:
         {
-            FitbitLoginViewController *flvc = [[FitbitLoginViewController alloc] init];
-            self.navigationController.delegate = self;
-            [[flvc navigationItem] setTitle:@"Sync Withings data"];
-            
-            [flvc setCompletionBlock:^{
-                
-                [self.withingsOAuth1Controller loginWithWebView:flvc.webView completion:^(NSDictionary *oauthTokens, NSError *error) {
-                    
-                    if (!error) {
-                        // Store your tokens for authenticating your later requests, consider storing the tokens in the Keychain
-                        self.oauthToken = oauthTokens[@"oauth_token"];
-                        self.oauthTokenSecret = oauthTokens[@"oauth_token_secret"];
-                        
-                        NSLog(@"oauthToken: %@, oauthTokenSecret: %@", self.oauthToken, self.oauthTokenSecret);
-                        
-                        UIActivityIndicatorView *aiv = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-                        aiv.color = [UIColor grayColor];
-                        aiv.center = [[flvc webView] center];
-                        [flvc.webView addSubview:aiv];
-                        [aiv startAnimating];
-                        
-                        [[WithingsApiDataStore sharedStore] getBloodPressureData:self.oauthToken oauthSecretIn:self.oauthTokenSecret userID:[self.withingsOAuth1Controller userid_class] withCompletion:^{
-                            
-                            [aiv stopAnimating];
-                            
-                        }];
-                    }
-                    else
-                    {
-                        NSLog(@"Error authenticating: %@", error.localizedDescription);
-                    }
-                    [self dismissViewControllerAnimated:YES completion: ^{
-                        self.withingsOAuth1Controller = nil;
-                    }];
-                }];
-            }];
-            
-            [[self navigationController] pushViewController:flvc animated:YES];
+            DeviceController *dc = [[DeviceController alloc] init];
+            [[dc navigationItem] setTitle:@"Sync devices"];
+            [[self navigationController] pushViewController:dc animated:YES];
             
             break;
     
         }
+            
         case 1:
-        {
-            FitbitLoginViewController *flvc = [[FitbitLoginViewController alloc] init];
-            
-            self.navigationController.delegate = self;
-
-            [flvc setCompletionBlock:^{
-  
-                [self.oauth1Controller loginWithWebView:flvc.webView completion:^(NSDictionary *oauthTokens, NSError *error) {
-                    if (!error) {
-                        // Store your tokens for authenticating your later requests, consider storing the tokens in the Keychain
-                        self.oauthToken = oauthTokens[@"oauth_token"];
-                        self.oauthTokenSecret = oauthTokens[@"oauth_token_secret"];
-                        
-                        UIActivityIndicatorView *aiv = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-                        aiv.color = [UIColor grayColor];
-                        aiv.center = [[flvc webView] center];
-                        [flvc.webView addSubview:aiv];
-                        [aiv startAnimating];
-                        
-                        // clear all Fitbit data from database
-                        [[MetasomeDataPointStore sharedStore] deletePointsFromApi:@"Fitbit" fromDate:nil toDate:nil];
-                        
-                       // populate local database with fitbit data
-                        [[FitbitApiDataStore sharedStore] getStepData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
-                        [[FitbitApiDataStore sharedStore] getDistanceData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
-                        [[FitbitApiDataStore sharedStore] getWeightData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
-                        [[FitbitApiDataStore sharedStore] getSleepDurationData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
-                        
-                        [[FitbitApiDataStore sharedStore] getBMIData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
-                        
-                        // save changes to database
-                        [[MetasomeDataPointStore sharedStore] saveChanges];
-                        
-                        [aiv stopAnimating];
-                        aiv = nil;
-                        
-                    }
-                    else
-                    {
-                        NSLog(@"Error authenticating: %@", error.localizedDescription);
-                    }
-                    [self dismissViewControllerAnimated:YES completion: ^{
-                        self.oauth1Controller = nil;
-                    }];
-                }];
-            }];
-            
-            
-            [[self navigationController] pushViewController:flvc animated:YES];
-            
-            break;
-        }
-            
-        case 2:
         {
             NotificationsDetailViewController *ndvc = [[NotificationsDetailViewController alloc] init];
             [[self navigationController] pushViewController:ndvc animated:YES];
             
             break;
         }
-        case 3:
+        case 2:
         {
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             [self setSelectedActionBlock:^{
@@ -279,7 +183,7 @@
             
             break;
         }
-        case 4:
+        case 3:
         {
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             
@@ -294,7 +198,7 @@
             
             break;
         }
-        case 5:
+        case 4:
         {
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             [self setSelectedActionBlock:^{
@@ -333,22 +237,6 @@
 {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
-}
-
-- (OAuth1Controller *)oauth1Controller
-{
-    if (oauth1Controller == nil) {
-        oauth1Controller = [[OAuth1Controller alloc] init];
-    }
-    return oauth1Controller;
-}
-
-- (WithingsOAuth1Controller *)withingsOAuth1Controller
-{
-    if (withingsOAuth1Controller == nil) {
-        withingsOAuth1Controller = [[WithingsOAuth1Controller alloc] init];
-    }
-    return withingsOAuth1Controller;
 }
 
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated

@@ -37,5 +37,6 @@ typedef  enum {
 - (IBAction)lungSelected:(id)sender;
 - (IBAction)diabetesSelected:(id)sender;
 - (IBAction)customSelected:(id)sender;
+- (IBAction)syncButtonSelected:(id)sender;
 
 @end

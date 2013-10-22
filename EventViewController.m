@@ -26,13 +26,13 @@
         
         [[self navigationItem] setRightBarButtonItem:bbi];
         [[self navigationItem] setLeftBarButtonItem:[self editButtonItem]];
-        emptyListLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 110, 250, 50)];
+        emptyListLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 90, 300, 200)];
         emptyListLabel.backgroundColor = [UIColor clearColor];
         emptyListLabel.numberOfLines = 2;
-        emptyListLabel.text = @"No events entered yet.\nPress the [+] button to get started";
+        emptyListLabel.text = @"Your diary is empty.\nPress the [+] button to get started";
         emptyListLabel.textColor = [UIColor darkGrayColor];
         emptyListLabel.textAlignment = NSTextAlignmentCenter;
-        emptyListLabel.font = [UIFont fontWithName:@"Avenir" size:22.0];
+        emptyListLabel.font = [UIFont systemFontOfSize:30.0];
         emptyListLabel.adjustsFontSizeToFitWidth = YES;
         
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -42,6 +42,7 @@
     }
     return self;
 }
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     return [self init];

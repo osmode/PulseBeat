@@ -34,6 +34,9 @@
 		FA3DED8C17E44A3C00D7FA87 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3DED8A17E44A3C00D7FA87 /* Icon@2x.png */; };
 		FA3DED8E17E44A5200D7FA87 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3DED8D17E44A5200D7FA87 /* Icon@2x.png */; };
 		FA44EDE117ECB20100E40094 /* TextFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA44EDE017ECB20100E40094 /* TextFormatter.m */; };
+		FA45036618158CDB00A1EFD7 /* DeviceController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA45036418158CDB00A1EFD7 /* DeviceController.m */; };
+		FA45036718158CDB00A1EFD7 /* DeviceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA45036518158CDB00A1EFD7 /* DeviceController.xib */; };
+		FA45036E18158F2F00A1EFD7 /* Fitbit_Full_Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = FA45036D18158F2F00A1EFD7 /* Fitbit_Full_Dark.png */; };
 		FA455D9817D6C59A0032BD23 /* Legend.m in Sources */ = {isa = PBXBuildFile; fileRef = FA455D9717D6C59A0032BD23 /* Legend.m */; };
 		FA4817BD17C672CE00A4CA4A /* DetailViewController_slider.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA4817BC17C672CE00A4CA4A /* DetailViewController_slider.xib */; };
 		FA4817BF17C672D900A4CA4A /* DetailViewController_slider.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4817BE17C672D900A4CA4A /* DetailViewController_slider.m */; };
@@ -189,6 +192,10 @@
 		FA3DED8D17E44A5200D7FA87 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		FA44EDDF17ECB20100E40094 /* TextFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFormatter.h; sourceTree = "<group>"; };
 		FA44EDE017ECB20100E40094 /* TextFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFormatter.m; sourceTree = "<group>"; };
+		FA45036318158CDB00A1EFD7 /* DeviceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceController.h; sourceTree = "<group>"; };
+		FA45036418158CDB00A1EFD7 /* DeviceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceController.m; sourceTree = "<group>"; };
+		FA45036518158CDB00A1EFD7 /* DeviceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceController.xib; sourceTree = "<group>"; };
+		FA45036D18158F2F00A1EFD7 /* Fitbit_Full_Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fitbit_Full_Dark.png; sourceTree = "<group>"; };
 		FA455D9617D6C59A0032BD23 /* Legend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Legend.h; path = Metasome/Legend.h; sourceTree = "<group>"; };
 		FA455D9717D6C59A0032BD23 /* Legend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Legend.m; path = Metasome/Legend.m; sourceTree = "<group>"; };
 		FA4817BC17C672CE00A4CA4A /* DetailViewController_slider.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DetailViewController_slider.xib; path = Metasome/DetailViewController_slider.xib; sourceTree = "<group>"; };
@@ -461,6 +468,9 @@
 			isa = PBXGroup;
 			children = (
 				FA4817C317C7F93400A4CA4A /* OptionsViewController.xib */,
+				FA45036318158CDB00A1EFD7 /* DeviceController.h */,
+				FA45036418158CDB00A1EFD7 /* DeviceController.m */,
+				FA45036518158CDB00A1EFD7 /* DeviceController.xib */,
 				FA4817C117C7F93400A4CA4A /* OptionsViewController.h */,
 				FA4817C217C7F93400A4CA4A /* OptionsViewController.m */,
 				FA95875817E65685007D5EB8 /* NotificationsDetailViewController.h */,
@@ -676,6 +686,7 @@
 			children = (
 				FAFD4E801814C44100F77071 /* Withings.png */,
 				FAFD4E7E1814BB5F00F77071 /* Fitbit.png */,
+				FA45036D18158F2F00A1EFD7 /* Fitbit_Full_Dark.png */,
 			);
 			name = Logos;
 			sourceTree = "<group>";
@@ -737,6 +748,7 @@
 				FAFD4E6718147C3800F77071 /* apple_bin.png in Resources */,
 				FA4E9F0017C1D04D00E421DE /* Default@2x.png in Resources */,
 				FA4E9F0217C1D04D00E421DE /* Default-568h@2x.png in Resources */,
+				FA45036718158CDB00A1EFD7 /* DeviceController.xib in Resources */,
 				FA4E9F1717C2A9C000E421DE /* HeaderView.xib in Resources */,
 				FA4E9F1C17C2C1D500E421DE /* DetailViewController.xib in Resources */,
 				FAC592B817C555AD0004747C /* ParameterViewController.xib in Resources */,
@@ -782,6 +794,7 @@
 				FA99F12917F77D7A00B19297 /* lungButton@2x.png in Resources */,
 				FAF87EB617E2085C00C830D9 /* PhotoViewController.xib in Resources */,
 				FAF87ED117E27F8900C830D9 /* NewPhotoGroupViewController.xib in Resources */,
+				FA45036E18158F2F00A1EFD7 /* Fitbit_Full_Dark.png in Resources */,
 				FA3DED7317E40C7B00D7FA87 /* HomeViewController.xib in Resources */,
 				FA3DED7717E4462A00D7FA87 /* home@2x.png in Resources */,
 				FA3DED7817E4462A00D7FA87 /* homex.png in Resources */,
@@ -841,6 +854,7 @@
 				FA4E9F1517C277F200E421DE /* MetasomeParameterStore.m in Sources */,
 				FA4E9F1B17C2C1D500E421DE /* DetailViewController.m in Sources */,
 				FA4E9F2217C3807C00E421DE /* MetasomeDataPointStore.m in Sources */,
+				FA45036618158CDB00A1EFD7 /* DeviceController.m in Sources */,
 				FAF70EFD180CF8BA005BAEE7 /* WithingsOAuth1Controller.m in Sources */,
 				FA5FAFDC1806011F00813DF3 /* Base64Transcoder.c in Sources */,
 				FAC592BC17C55E970004747C /* EventViewController.m in Sources */,

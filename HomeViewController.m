@@ -10,7 +10,7 @@
 #import "MetasomeParameterStore.h"
 #import "TextFormatter.h"
 #import "ParameterViewController.h"
-
+#import "DeviceController.h"
 
 @interface HomeViewController ()
 
@@ -192,6 +192,14 @@
     [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
     [[self tabBarController] setSelectedIndex:1];
     
+}
+
+- (IBAction)syncButtonSelected:(id)sender {
+    
+    DeviceController *dc = [[DeviceController alloc] init];
+    //[[self tabBarController] setSelectedIndex:3];
+    [[self navigationController] pushViewController:dc animated:YES];
+     
 }
 
 

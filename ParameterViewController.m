@@ -174,13 +174,6 @@
     //static NSString *CellIdentifier = @"UITableViewCell";
     static NSString *CellIdentifier = @"CustomParameterCell";
     
-    /*
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    }
-    */
-    
     CustomParameterCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     MetasomeParameter *p = [[[[[MetasomeParameterStore sharedStore] parameterArray] objectAtIndex:[self currentSelection]] valueForKey:@"list"] objectAtIndex:indexPath.row];
@@ -188,7 +181,7 @@
     NSString *cellValue = [p parameterName];
     //[[cell textLabel] setText:cellValue];
     [[cell titleLabel] setText:cellValue];
-    [[cell subtitleLabel] setText:@""];
+    [[cell titleLabel] setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
     [[cell gamificationImage] setImage:[self getGamificationImage:p]];
         
     //cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
@@ -208,11 +201,11 @@
     
     // color Fitbit parameters blue
     if ([p apiType] == FitbitInput) {
-        cell.textLabel.textColor = [UIColor blueColor];
+        cell.titleLabel.textColor = [UIColor blueColor];
     } else if ([p apiType] == WithingsInput) {
-        cell.textLabel.textColor = [UIColor greenColor];
+        cell.titleLabel.textColor = [UIColor orangeColor];
     } else {
-        cell.textLabel.textColor = [UIColor blackColor];
+        cell.titleLabel.textColor = [UIColor blackColor];
     }
     
     return cell;

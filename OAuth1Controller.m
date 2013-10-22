@@ -206,11 +206,16 @@ static inline NSDictionary *CHParametersFromQueryString(NSString *queryString)
                   }
               }];
          }
-         else
+         else  // could not obtain request token
          {
+             NSLog(@"could not obtain request token");
+             
              if (!error) error = [NSError errorWithDomain:@"oauth.requestToken" code:0 userInfo:@{@"userInfo" : @"oauth_token and oauth_token_secret were not both returned from request token step"}];
              completion(responseParams, error);
          }
+         
+         [self.loadingIndicator stopAnimating];
+         self.loadingIndicator = nil;
      }];
 }
 
@@ -464,6 +469,15 @@ static inline NSDictionary *CHParametersFromQueryString(NSString *queryString)
     NSData *theData = [NSData dataWithBytes:base64Result length:theResultLength];
     
     return [NSString.alloc initWithData:theData encoding:NSUTF8StringEncoding];
+}
+
+-(void)showConnectionError:(NSString *)localizedDescription
+{
+    NSString *displayString = [localizedDescription stringByAppendingString:@" Check your internet connection and try again."];
+    
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error" message:displayString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [av show];
+
 }
 
 @end

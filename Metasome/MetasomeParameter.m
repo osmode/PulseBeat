@@ -26,7 +26,7 @@
         [self setCheckedStatus:NO];
         
         // not a fitbit-derived parameter unless other specified
-        [self setApiType:0];
+        [self setApiType:-1];
         lastChecked = [[NSDate alloc] init];
         
         consecutiveEntries = 0;

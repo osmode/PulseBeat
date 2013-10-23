@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GAITrackedViewController.h"
 
 @class ParameterViewController;
 typedef  enum {
@@ -16,7 +17,7 @@ typedef  enum {
     customSelection
 } selectionTypeOnLaunch;
 
-@interface HomeViewController : UIViewController
+@interface HomeViewController : GAITrackedViewController
 {
  
     __weak IBOutlet UIButton *heartButton;
@@ -25,18 +26,22 @@ typedef  enum {
     __weak IBOutlet UIButton *customButton;
     
     UIColor *normalColor;
-    
+    NSString *MetasomeNotificationPrefKey;
 }
 
 // create pointer to pvc to change title before it loads
 // this is necessary because pressing a button in HomeViewController
 // manually changes the tab
 @property (nonatomic, strong) ParameterViewController *paramViewController;
+@property (weak, nonatomic) IBOutlet UIButton *reminderButton;
+@property (weak, nonatomic) IBOutlet UIImageView *bellImageView;
+
 
 - (IBAction)heartSelected:(id)sender;
 - (IBAction)lungSelected:(id)sender;
 - (IBAction)diabetesSelected:(id)sender;
 - (IBAction)customSelected:(id)sender;
-- (IBAction)syncButtonSelected:(id)sender;
+- (IBAction)reminderButtonPressed:(id)sender;
+
 
 @end

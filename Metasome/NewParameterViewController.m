@@ -10,6 +10,9 @@
 #import "MetasomeParameterStore.h"
 #import "MetasomeParameter.h"
 #import "TextFormatter.h"
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
+
 
 @implementation NewParameterViewController
 @synthesize parameterCategory, parameterInput;
@@ -36,6 +39,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self setScreenName:@"NewParameterViewController"];
     
     // The order of these two arrays is important and must correspond to the enumerated types in
     // "MetasomeParameter.h"
@@ -124,6 +129,11 @@
     [[MetasomeParameterStore sharedStore] addParameter:newParameter];
     
     [[MetasomeParameterStore sharedStore] saveChanges];
+    
+    // send hit data to google analytics
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action" action:@"button_press" label:[NSString stringWithFormat:@"new parameter created: %@",newName] value:nil] build]];
+    
     
     [[self navigationController] popViewControllerAnimated:YES];
     

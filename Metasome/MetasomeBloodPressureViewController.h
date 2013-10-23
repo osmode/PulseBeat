@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GAITrackedViewController.h"
 
 @class MetasomeParameter, MetasomeDataPoint;
-@interface MetasomeBloodPressureViewController : UIViewController
+@interface MetasomeBloodPressureViewController : GAITrackedViewController
 {
     
     __weak IBOutlet UITextField *systolicTextField;

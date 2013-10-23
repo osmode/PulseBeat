@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface FitbitLoginViewController : UIViewController
-
+{
+    
+    __weak IBOutlet UILabel *webviewLabel;
+    
+}
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (nonatomic, copy) void (^completionBlock)(void);
 

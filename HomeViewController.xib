@@ -7,10 +7,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController">
             <connections>
+                <outlet property="bellImageView" destination="q73-p9-3M4" id="qQB-MB-7uT"/>
                 <outlet property="customButton" destination="77" id="81"/>
                 <outlet property="diabetesButton" destination="82" id="86"/>
                 <outlet property="heartButton" destination="4" id="58"/>
                 <outlet property="lungButton" destination="87" id="93"/>
+                <outlet property="reminderButton" destination="bHu-SH-0ch" id="IlF-R4-YL3"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -23,13 +25,9 @@
             </userGuides>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4">
-                    <rect key="frame" x="24" y="109" width="130" height="115"/>
+                    <rect key="frame" x="24" y="93" width="130" height="115"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.40000000596046448" green="0.40000000596046448" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="115" id="343"/>
-                        <constraint firstAttribute="width" constant="130" id="350"/>
-                    </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                     <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-73"/>
                     <state key="normal" title="Heart" backgroundImage="heartButton.png">
@@ -41,7 +39,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77">
-                    <rect key="frame" x="168" y="248" width="128" height="115"/>
+                    <rect key="frame" x="168" y="232" width="128" height="115"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.40000000596046448" green="0.40000000596046448" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
@@ -55,12 +53,9 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="82">
-                    <rect key="frame" x="24" y="248" width="130" height="115"/>
+                    <rect key="frame" x="24" y="232" width="130" height="115"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.40000000596046448" green="0.40000000596046448" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="115" id="367"/>
-                    </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                     <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-68"/>
                     <state key="normal" title="Metabolic" backgroundImage="diabetesButton.png">
@@ -72,11 +67,11 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="87">
-                    <rect key="frame" x="168" y="109" width="128" height="115"/>
+                    <rect key="frame" x="168" y="93" width="128" height="115"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.40000000596046448" green="0.40000000596046448" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="128" id="353"/>
+                        <constraint firstAttribute="width" constant="128" id="Mc0-ss-OjN"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                     <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-72"/>
@@ -88,40 +83,36 @@
                         <action selector="lungSelected:" destination="-1" eventType="touchUpInside" id="112"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wrr-SJ-ARH">
-                    <rect key="frame" x="68" y="425" width="185" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bHu-SH-0ch">
+                    <rect key="frame" x="24" y="365" width="109" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="1" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <state key="normal" title="Sync my devices >">
+                    <state key="normal" title="Reminders:">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="syncButtonSelected:" destination="-1" eventType="touchUpInside" id="qPE-ww-WQb"/>
+                        <action selector="reminderButtonPressed:" destination="-1" eventType="touchUpInside" id="Q2J-g6-a45"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q73-p9-3M4">
+                    <rect key="frame" x="141" y="360" width="40" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.97025464429999997" green="0.97456492179999998" blue="0.98749575410000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="87" firstAttribute="top" secondItem="4" secondAttribute="top" id="159"/>
-                <constraint firstItem="4" firstAttribute="leading" secondItem="82" secondAttribute="leading" id="214"/>
-                <constraint firstItem="4" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="24" id="234"/>
-                <constraint firstItem="4" firstAttribute="bottom" secondItem="87" secondAttribute="bottom" id="344"/>
-                <constraint firstAttribute="trailing" secondItem="87" secondAttribute="trailing" constant="24" id="352"/>
-                <constraint firstItem="4" firstAttribute="trailing" secondItem="82" secondAttribute="trailing" id="354"/>
-                <constraint firstItem="4" firstAttribute="top" secondItem="1" secondAttribute="top" constant="109" id="360"/>
-                <constraint firstItem="82" firstAttribute="top" secondItem="1" secondAttribute="top" constant="248" id="366"/>
-                <constraint firstAttribute="trailing" secondItem="77" secondAttribute="trailing" constant="24" id="370"/>
-                <constraint firstItem="77" firstAttribute="bottom" secondItem="82" secondAttribute="bottom" id="371"/>
-                <constraint firstItem="77" firstAttribute="leading" secondItem="87" secondAttribute="leading" id="372"/>
-                <constraint firstItem="77" firstAttribute="top" secondItem="82" secondAttribute="top" id="373"/>
-                <constraint firstItem="77" firstAttribute="leading" secondItem="82" secondAttribute="trailing" constant="14" id="1WG-j3-coX"/>
-                <constraint firstItem="4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1" secondAttribute="leading" constant="24" id="1hS-FD-XSI"/>
-                <constraint firstItem="77" firstAttribute="top" secondItem="87" secondAttribute="bottom" constant="24" id="FxQ-0M-jrd"/>
-                <constraint firstItem="4" firstAttribute="top" relation="greaterThanOrEqual" secondItem="1" secondAttribute="top" constant="109" id="Gvc-Wn-lRA"/>
-                <constraint firstItem="87" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="168" id="Lq3-49-Egi"/>
-                <constraint firstItem="87" firstAttribute="leading" secondItem="4" secondAttribute="trailing" constant="14" id="afd-13-IIV"/>
-                <constraint firstItem="82" firstAttribute="top" secondItem="4" secondAttribute="bottom" constant="24" id="ebm-kJ-ha1"/>
-                <constraint firstItem="87" firstAttribute="top" secondItem="1" secondAttribute="top" constant="109" id="ffR-KC-Fab"/>
+                <constraint firstItem="4" firstAttribute="baseline" secondItem="87" secondAttribute="baseline" id="2fU-g2-rIH"/>
+                <constraint firstItem="82" firstAttribute="top" secondItem="4" secondAttribute="bottom" constant="24" id="EUA-oB-hFH"/>
+                <constraint firstItem="4" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="24" id="Jyt-RH-HeA"/>
+                <constraint firstItem="77" firstAttribute="top" secondItem="82" secondAttribute="top" id="RjN-yb-SVj"/>
+                <constraint firstItem="87" firstAttribute="leading" secondItem="4" secondAttribute="trailing" constant="14" id="XKH-fc-i2f"/>
+                <constraint firstItem="77" firstAttribute="leading" secondItem="87" secondAttribute="leading" id="biA-3V-uMO"/>
+                <constraint firstItem="4" firstAttribute="top" secondItem="1" secondAttribute="top" constant="93" id="kPG-eA-tJj"/>
+                <constraint firstItem="4" firstAttribute="leading" secondItem="82" secondAttribute="leading" id="koy-7J-BYq"/>
+                <constraint firstItem="87" firstAttribute="trailing" secondItem="77" secondAttribute="trailing" id="odv-Wp-Ddb"/>
+                <constraint firstItem="4" firstAttribute="top" secondItem="87" secondAttribute="top" id="rch-RJ-mJW"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

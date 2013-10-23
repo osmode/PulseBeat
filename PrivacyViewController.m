@@ -1,25 +1,24 @@
 //
-//  FitbitLoginViewController.m
+//  PrivacyViewController.m
 //  PulseBeat
 //
-//  Created by Omar Metwally on 10/9/13.
+//  Created by Omar Metwally on 10/23/13.
 //  Copyright (c) 2013 Logisome. All rights reserved.
 //
 
-#import "FitbitLoginViewController.h"
+#import "PrivacyViewController.h"
 
-@interface FitbitLoginViewController ()
+@interface PrivacyViewController ()
 
 @end
 
-@implementation FitbitLoginViewController
-@synthesize completionBlock;
+@implementation PrivacyViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        //[[self navigationItem] setTitle:@"Sync Fitbit Data"];
+        // Custom initialization
     }
     return self;
 }
@@ -27,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    completionBlock();
+    backgroundLabel.layer.cornerRadius = 10.0;
 }
 
 - (void)didReceiveMemoryWarning

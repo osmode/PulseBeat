@@ -14,6 +14,9 @@
 #import "WithingsOAuth1Controller.h"
 #import "MetasomeDataPointStore.h"
 #import "TextFormatter.h"
+#import "GAI.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
 
 @interface DeviceController ()
 
@@ -37,6 +40,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.screenName = @"DeviceController";
 
 }
 
@@ -47,6 +51,14 @@
 }
 
 - (IBAction)fitbitButtonPressed:(id)sender {
+    
+    // sent hit data to google analytics
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"     // Event category (required)
+                                                          action:@"button_press"  // Event action (required)
+                                                           label:@"fitbitSyncButton"          // Event label
+                                                           value:nil] build]];    // Event value
     
     FitbitLoginViewController *flvc = [[FitbitLoginViewController alloc] init];
     
@@ -86,6 +98,7 @@
                 [aiv stopAnimating];
                 aiv = nil;
                 
+                
             }
             else
             {
@@ -95,21 +108,29 @@
                 NSLog(@"Error authenticating: %@", error.localizedDescription);
                 [self showConnectionError:error.localizedDescription];
             }
+            
             /*
             [self dismissViewControllerAnimated:YES completion: ^{
                 self.oauth1Controller = nil;
             }];
             */
+            
         }];
     }];
     
-    if (loadedWithoutError == 3) {
-        [[self navigationController] pushViewController:flvc animated:YES];
-    }
-    
+    [[self navigationController] pushViewController:flvc animated:YES];
+
 }
 
 - (IBAction)withingsButtonPressed:(id)sender {
+    
+    // sent hit data to google analytics
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"     // Event category (required)
+                                                          action:@"button_press"  // Event action (required)
+                                                           label:@"withingsSyncButton"          // Event label
+                                                           value:nil] build]];    // Event value
     
     BOOL loadedWithoutError = NO;
     

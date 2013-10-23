@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GAITrackedViewController.h"
 
 @class OAuth1Controller, WithingsOAuth1Controller;
-@interface DeviceController : UIViewController
+@interface DeviceController : GAITrackedViewController
 {
     
 }

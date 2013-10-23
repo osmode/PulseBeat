@@ -14,7 +14,8 @@
 #import "ParameterViewController.h"
 #import "TextFormatter.h"
 #import "MetasomeParameterStore.h"
-
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
 
 @implementation DetailViewController
 @synthesize parameter, isDataPointStoreNonEmpty, isSaved, lastPointSaved;
@@ -33,6 +34,9 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // initialize google tracking
+    [self setScreenName:@"DetailViewController"];
     
     if ([[self parameter] inputType] == ParameterInputInteger)
         valueField.keyboardType = UIKeyboardTypeNumberPad;
@@ -211,6 +215,14 @@
     
     //[[self navigationController]popViewControllerAnimated:YES];
     [self changeToSaved:YES];
+    
+    // sent hit data to google analytics
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"     // Event category (required)
+                                                          action:@"button_press"  // Event action (required)
+                                                           label:self.parameter.parameterName          // Event label
+                                                           value:nil] build]];    // Event value
     
 }
 

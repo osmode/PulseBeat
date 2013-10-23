@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GAITrackedViewController.h"
 
-@interface NotificationsDetailViewController : UIViewController
+@interface NotificationsDetailViewController : GAITrackedViewController
 {
     __weak IBOutlet UILabel *promptLabel;
     __weak IBOutlet UISwitch *notificationSwitch;

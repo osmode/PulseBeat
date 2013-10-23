@@ -8,6 +8,8 @@
 
 #import "NotificationsDetailViewController.h"
 #import "TextFormatter.h"
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
 
 @interface NotificationsDetailViewController ()
 
@@ -40,6 +42,10 @@ NSString * const MetasomeNotificationPrefKey = @"MetasomeNotificationPrefKey";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // set up google analytics view
+    [self setScreenName:@"NotificationsDetailViewController"];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
     
     [notificationSwitch addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
@@ -98,6 +104,11 @@ NSString * const MetasomeNotificationPrefKey = @"MetasomeNotificationPrefKey";
     localNotification.applicationIconBadgeNumber = 1;
     [localNotification setRepeatInterval:NSDayCalendarUnit ];
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    
+    
+    // send hit data to google analytics
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action" action:@"button_press" label:@"notifications set ON" value:nil] build]];
     
 }
 

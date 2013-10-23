@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GAITrackedViewController.h"
 
-@interface NewParameterViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
+@interface NewParameterViewController : GAITrackedViewController <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
 {
     NSArray *categoryChoices;
     NSArray *inputChoices;
@@ -20,7 +21,6 @@
     __weak IBOutlet UIButton *inputButton;
     
     UIColor *initialColor;
-    
 }
 
 - (IBAction)changeCategory:(id)sender;

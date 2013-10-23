@@ -12,6 +12,8 @@
 #import "DatePickerViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "TextFormatter.h"
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
 
 @implementation NewEventViewController
 
@@ -155,6 +157,11 @@
             NSLog(@"Unable to save event!");
         }
         
+        // sent hit data to google analytics
+        id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+        
+        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"     action:@"button_press" label:@"New diary entry" value:nil] build]];
+        
         [[self navigationController] popViewControllerAnimated:YES];
 
     }
@@ -199,6 +206,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Initialize google analytics
+    [self setScreenName:@"NewEventViewController"];
     
     initialColor = [[self dateButton] backgroundColor];
     dateButton.layer.cornerRadius = 10.0;

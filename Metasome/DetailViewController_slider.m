@@ -13,6 +13,8 @@
 #import "GraphViewController.h"
 #import "TextFormatter.h"
 #import "MetasomeParameterStore.h"
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
 
 
 @implementation DetailViewController_slider
@@ -34,6 +36,9 @@ const int NUM_SLIDER_SECTIONS = 5;
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    // initialize google tracking
+    [self setScreenName:@"DetailViewController_slider"];
+    
     [valueSlider addTarget:self action:@selector(sliderValueChanged) forControlEvents:UIControlEventValueChanged];
     
     initialColor = [graphButton backgroundColor];
@@ -161,8 +166,14 @@ const int NUM_SLIDER_SECTIONS = 5;
 
     
     [self changeToSaved:YES];
-    //[[self navigationController]popViewControllerAnimated:YES];
- 
+    // sent hit data to google analytics
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"     // Event category (required)
+                                                          action:@"button_press"  // Event action (required)
+                                                           label:self.parameter.parameterName          // Event label
+                                                           value:nil] build]];    // Event value
+    
 }
 
 -(IBAction)graphParameter:(id)sender

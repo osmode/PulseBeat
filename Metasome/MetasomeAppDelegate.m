@@ -15,6 +15,7 @@
 #import "HomeViewController.h"
 #import "PhotoViewController.h"
 #import "GraphView.h"
+#import "GAI.h"
 
 @implementation MetasomeAppDelegate
 
@@ -22,13 +23,6 @@
 {
     // Handle launching from notification
     [application setApplicationIconBadgeNumber:0];
-    
-    /*
-    UILocalNotification *locationNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
-    if (locationNotification) {
-        application.applicationIconBadgeNumber = 0;
-    }
-    */
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
@@ -48,15 +42,6 @@
     
     UINavigationController *eventNavController = [[UINavigationController alloc] initWithRootViewController:evc];
     UINavigationController *optionsNavController = [[UINavigationController alloc] initWithRootViewController:ovc];
-
-    /*
-    UIColor *color = [UIColor colorWithRed:1.0 green:0.5 blue:0.5 alpha:1.0];
-    
-    [[homeNavController navigationBar] setBarTintColor:[UIColor redColor]];
-    [[parameterNavController navigationBar] setBarTintColor:[UIColor redColor]];
-    [[eventNavController navigationBar] setBarTintColor:[UIColor redColor]];
-    [[optionsNavController navigationBar] setBarTintColor:[UIColor redColor]];
-     */
     
     UIColor *navBarColor = [UIColor redColor];
     UIColor *navBarTextColor = [UIColor whiteColor];
@@ -93,14 +78,9 @@
     [optionsButton setImage:optionsImage];
     [optionsButton setTitle:@"Settings"];
     
-    //[[self window] setRootViewController:navController];
-    
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
     
     NSArray *viewControllers = [NSArray arrayWithObjects: homeNavController, parameterNavController, eventNavController, optionsNavController, nil];
-    
-    //parameterNavController.navigationBar.tintColor = [UIColor colorWithRed:0.0 green:0.05 blue:0.65 alpha:0.75];
-    //eventNavController.navigationBar.tintColor = [UIColor colorWithRed:1.0 green:0.4 blue:0 alpha:1.0];
     
     [tabBarController setViewControllers:viewControllers];
     
@@ -120,6 +100,20 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];    
     [self.window makeKeyAndVisible];
+    
+    // Initialize Google Analytics
+    // Optional: automatically send uncaught exceptions to Google Analytics.
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    [GAI sharedInstance].dispatchInterval = 20;
+    
+    // Optional: set Logger to VERBOSE for debug information.
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    
+    // Initialize tracker.
+    id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-37335051-2"];
+    
     return YES;
 }
 -(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification

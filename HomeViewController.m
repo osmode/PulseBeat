@@ -11,13 +11,15 @@
 #import "TextFormatter.h"
 #import "ParameterViewController.h"
 #import "DeviceController.h"
+#import "GAITrackedViewController.h"
+#import "GAI.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
+#import "NotificationsDetailViewController.h"
 
-@interface HomeViewController ()
-
-@end
 
 @implementation HomeViewController
-@synthesize paramViewController;
+@synthesize paramViewController, reminderButton, bellImageView;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -28,6 +30,8 @@
         [TextFormatter formatTitleLabel:titleLabel withTitle:@"PulseBeat"];
         [[self navigationItem] setTitleView:titleLabel];
         
+        MetasomeNotificationPrefKey = @"MetasomeNotificationPrefKey";
+    
     }
     return self;
 }
@@ -64,6 +68,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setScreenName:@"HomeViewController"];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
     
@@ -72,13 +77,13 @@
     lungButton.layer.cornerRadius = 10.0;
     diabetesButton.layer.cornerRadius = 10.0;
     customButton.layer.cornerRadius = 10.0;
+    reminderButton.layer.cornerRadius = 10.0;
     
     heartButton.layer.drawsAsynchronously = YES;
     lungButton.layer.drawsAsynchronously = YES;
     diabetesButton.layer.drawsAsynchronously = YES;
     customButton.layer.drawsAsynchronously = YES;
     
-
     normalColor = heartButton.backgroundColor;
     
     // change background colors when buttons are clicked
@@ -99,8 +104,8 @@
     [customButton addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchUpOutside];
     [customButton addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchDragOutside];
 
-    
 
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -109,6 +114,19 @@
     lungButton.backgroundColor = normalColor;
     diabetesButton.backgroundColor = normalColor;
     customButton.backgroundColor = normalColor;
+    
+    // Display bell image and reminder button only if reminders are OFF
+    NSLog(@"viewWillAppear");
+    
+    if ( ![[NSUserDefaults standardUserDefaults] boolForKey:MetasomeNotificationPrefKey] ) {
+        reminderButton.hidden = NO;
+        bellImageView.hidden = NO;
+        NSLog(@"hiding buttons");
+    } else {
+        reminderButton.hidden = YES;
+        bellImageView.hidden = YES;
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -118,6 +136,15 @@
 }
 
 - (IBAction)heartSelected:(id)sender {
+    
+    // sent hit data to google analytics
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"     // Event category (required)
+                                                          action:@"button_press"  // Event action (required)
+                                                           label:@"heart"          // Event label
+                                                           value:nil] build]];    // Event value
+    
     [[MetasomeParameterStore sharedStore] setCurrentList:[[MetasomeParameterStore sharedStore] heartList]];
     
     // Remember that this app has now been opened once and remember the selection
@@ -136,6 +163,16 @@
 }
 
 - (IBAction)lungSelected:(id)sender {
+    
+    // sent hit data to google analytics
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"     // Event category (required)
+                                                          action:@"button_press"  // Event action (required)
+                                                           label:@"lung"          // Event label
+                                                           value:nil] build]];    // Event value
+    
+    
     [[MetasomeParameterStore sharedStore] setCurrentList:[[MetasomeParameterStore sharedStore] lungList]];
     
     // Remember that this app has now been opened once and remember the selection
@@ -156,6 +193,14 @@
 }
 
 - (IBAction)diabetesSelected:(id)sender {
+    
+    // sent hit data to google analytics
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"     // Event category (required)
+                                                          action:@"button_press"  // Event action (required)
+                                                           label:@"metabolic"          // Event label
+                                                           value:nil] build]];    // Event value
     
     int currentLoadCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"launchCount"];
     [[NSUserDefaults standardUserDefaults] setInteger:(currentLoadCount + 1) forKey:@"launchCount"];
@@ -191,16 +236,13 @@
     
     [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
     [[self tabBarController] setSelectedIndex:1];
-    
 }
 
-- (IBAction)syncButtonSelected:(id)sender {
+- (IBAction)reminderButtonPressed:(id)sender {
     
-    DeviceController *dc = [[DeviceController alloc] init];
-    //[[self tabBarController] setSelectedIndex:3];
-    [[self navigationController] pushViewController:dc animated:YES];
-     
-}
+    NotificationsDetailViewController *ndvc = [[NotificationsDetailViewController alloc] init];
+    [[self navigationController] pushViewController:ndvc animated:YES];
 
+}
 
 @end

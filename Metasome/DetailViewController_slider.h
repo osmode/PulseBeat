@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GAITrackedViewController.h"
+
 @class MetasomeParameter, MetasomeDataPoint;
 
-@interface DetailViewController_slider : UIViewController <UITextFieldDelegate>
+@interface DetailViewController_slider : GAITrackedViewController <UITextFieldDelegate>
 {
         
     __weak IBOutlet UIButton *saveButton;

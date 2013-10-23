@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GAITrackedViewController.h"
 @class MetasomeParameter, MetasomeDataPoint;
 
-@interface DetailViewController : UIViewController <UITextFieldDelegate>
+@interface DetailViewController : GAITrackedViewController <UITextFieldDelegate>
 {
         
     __weak IBOutlet UITextField *valueField;

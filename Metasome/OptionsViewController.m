@@ -14,6 +14,7 @@
 #import "NotificationsDetailViewController.h"
 #import "TextFormatter.h"
 #import "DeviceController.h"
+#import "PrivacyViewController.h"
 
 
 @implementation OptionsViewController
@@ -95,12 +96,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
     static NSString *CellIdentifier = @"UITableViewCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -134,6 +134,9 @@
         case 4:
             [[cell textLabel] setText:@"Delete today's records"];
             break;
+        case 5:
+            [[cell textLabel] setText:@"Privacy"];
+            break;
     }
     
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
@@ -155,6 +158,7 @@
             
         case 0:
         {
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
             DeviceController *dc = [[DeviceController alloc] init];
             [[dc navigationItem] setTitle:@"Sync devices"];
             [[self navigationController] pushViewController:dc animated:YES];
@@ -165,6 +169,7 @@
             
         case 1:
         {
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
             NotificationsDetailViewController *ndvc = [[NotificationsDetailViewController alloc] init];
             [[self navigationController] pushViewController:ndvc animated:YES];
             
@@ -207,6 +212,12 @@
             
             [self promptWithString:@"Are you sure you want to delete all points entered today? This action cannot be undone"];
             break;
+        }
+        case 5:
+        {
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            PrivacyViewController *pvc = [[PrivacyViewController alloc] init];
+            [[self navigationController] pushViewController:pvc animated:YES];
         }
     }
     

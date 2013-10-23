@@ -216,6 +216,7 @@ static inline NSDictionary *CHParametersFromQueryString(NSString *queryString)
          
          [self.loadingIndicator stopAnimating];
          self.loadingIndicator = nil;
+         
      }];
 }
 
@@ -479,5 +480,6 @@ static inline NSDictionary *CHParametersFromQueryString(NSString *queryString)
     [av show];
 
 }
+
 
 @end

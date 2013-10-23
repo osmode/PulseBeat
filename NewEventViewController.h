@@ -10,8 +10,9 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "MetasomeEvent.h"
+#import "GAITrackedViewController.h"
 
-@interface NewEventViewController : UIViewController <UITextFieldDelegate>
+@interface NewEventViewController : GAITrackedViewController <UITextFieldDelegate>
 {
     NSString *hintText;
     int offset;

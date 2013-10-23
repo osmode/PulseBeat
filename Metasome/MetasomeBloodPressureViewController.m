@@ -12,7 +12,8 @@
 #import "GraphViewController.h"
 #import "TextFormatter.h"
 #import "MetasomeParameterStore.h"
-
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
 
 @interface MetasomeBloodPressureViewController ()
 
@@ -35,6 +36,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //Initialize google analytics
+    [self setScreenName:@"MetasomeBloodPressureViewController"];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow) name:UIKeyboardWillShowNotification object:nil];
     
@@ -168,7 +171,13 @@
     }
     
     [self changeToSaved:YES];
-    //[[self navigationController]popViewControllerAnimated:YES];
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"     // Event category (required)
+                                                          action:@"button_press"  // Event action (required)
+                                                           label:self.parameter.parameterName          // Event label
+                                                           value:nil] build]];    // Event value
 }
 
 -(void)viewWillAppear:(BOOL)animated

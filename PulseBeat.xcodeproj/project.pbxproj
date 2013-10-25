@@ -19,7 +19,6 @@
 		FA34640A17DD49AD008B5163 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA34640917DD49AD008B5163 /* CoreData.framework */; };
 		FA34640D17DD4A64008B5163 /* Metasome.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA34640B17DD4A64008B5163 /* Metasome.xcdatamodeld */; };
 		FA34641017DD5030008B5163 /* MetasomeDataPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = FA34640F17DD5030008B5163 /* MetasomeDataPoint.m */; };
-		FA39816717D7A94100EB9948 /* dot.png in Resources */ = {isa = PBXBuildFile; fileRef = FA39816617D7A94100EB9948 /* dot.png */; };
 		FA3C5D7318170D7100ADCF0C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA3C5D7218170D7100ADCF0C /* SystemConfiguration.framework */; };
 		FA3C5D7518170D8C00ADCF0C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FA3C5D7418170D8C00ADCF0C /* libz.dylib */; };
 		FA3DED7217E40C7B00D7FA87 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3DED7017E40C7B00D7FA87 /* HomeViewController.m */; };
@@ -38,7 +37,6 @@
 		FA44EDE117ECB20100E40094 /* TextFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA44EDE017ECB20100E40094 /* TextFormatter.m */; };
 		FA45036618158CDB00A1EFD7 /* DeviceController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA45036418158CDB00A1EFD7 /* DeviceController.m */; };
 		FA45036718158CDB00A1EFD7 /* DeviceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA45036518158CDB00A1EFD7 /* DeviceController.xib */; };
-		FA45036E18158F2F00A1EFD7 /* Fitbit_Full_Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = FA45036D18158F2F00A1EFD7 /* Fitbit_Full_Dark.png */; };
 		FA455D9817D6C59A0032BD23 /* Legend.m in Sources */ = {isa = PBXBuildFile; fileRef = FA455D9717D6C59A0032BD23 /* Legend.m */; };
 		FA4817BD17C672CE00A4CA4A /* DetailViewController_slider.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA4817BC17C672CE00A4CA4A /* DetailViewController_slider.xib */; };
 		FA4817BF17C672D900A4CA4A /* DetailViewController_slider.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4817BE17C672D900A4CA4A /* DetailViewController_slider.m */; };
@@ -77,7 +75,6 @@
 		FA72FA7C17FA6B080072942F /* Icon120x120@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA72FA7B17FA6B080072942F /* Icon120x120@2x.png */; };
 		FA79654817D93E19005A2DB6 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA79654617D93E19005A2DB6 /* DatePickerViewController.m */; };
 		FA79654917D93E19005A2DB6 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA79654717D93E19005A2DB6 /* DatePickerViewController.xib */; };
-		FA79654B17D940F2005A2DB6 /* OK.png in Resources */ = {isa = PBXBuildFile; fileRef = FA79654A17D940F2005A2DB6 /* OK.png */; };
 		FA79654D17D940FA005A2DB6 /* cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = FA79654C17D940FA005A2DB6 /* cancel.png */; };
 		FA7DCEC017CC3E51005E5E3E /* EventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7DCEBE17CC3E51005E5E3E /* EventDetailViewController.m */; };
 		FA7DCEC117CC3E51005E5E3E /* EventDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA7DCEBF17CC3E51005E5E3E /* EventDetailViewController.xib */; };
@@ -101,6 +98,10 @@
 		FA99F12317F77D0800B19297 /* diabetesButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA99F11D17F77D0800B19297 /* diabetesButton@2x.png */; };
 		FA99F12817F77D7A00B19297 /* lungButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FA99F12617F77D7A00B19297 /* lungButton.png */; };
 		FA99F12917F77D7A00B19297 /* lungButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA99F12717F77D7A00B19297 /* lungButton@2x.png */; };
+		FA9D13471818F36D00BF749F /* fitbit_logo @2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9D13431818F36D00BF749F /* fitbit_logo @2x.png */; };
+		FA9D13481818F36D00BF749F /* fitbit_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9D13441818F36D00BF749F /* fitbit_logo.png */; };
+		FA9D13491818F36D00BF749F /* withings.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9D13451818F36D00BF749F /* withings.png */; };
+		FA9D134A1818F36D00BF749F /* withings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9D13461818F36D00BF749F /* withings@2x.png */; };
 		FA9EE06517FC9F22006C4C04 /* LaunchImage640x960.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EE06417FC9F22006C4C04 /* LaunchImage640x960.png */; };
 		FA9EE06917FC9FC5006C4C04 /* Icon80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EE06817FC9FC5006C4C04 /* Icon80x80.png */; };
 		FA9EE06B17FCA013006C4C04 /* Icon58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EE06A17FCA013006C4C04 /* Icon58x58.png */; };
@@ -113,6 +114,10 @@
 		FAC592C017C561680004747C /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC592BF17C561670004747C /* GraphView.m */; };
 		FAC592C417C562D70004747C /* GraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC592C217C562D60004747C /* GraphViewController.m */; };
 		FAC592C517C562D70004747C /* GraphViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC592C317C562D60004747C /* GraphViewController.xib */; };
+		FAD4C006181B35D800F71796 /* bell @2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD4C002181B35D800F71796 /* bell @2x.png */; };
+		FAD4C007181B35D800F71796 /* bell.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD4C003181B35D800F71796 /* bell.png */; };
+		FAD4C008181B35D800F71796 /* crossed_out_bell @2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD4C004181B35D800F71796 /* crossed_out_bell @2x.png */; };
+		FAD4C009181B35D800F71796 /* crossed_out_bell.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD4C005181B35D800F71796 /* crossed_out_bell.png */; };
 		FADA9811180624C100BB228E /* FitbitApiDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FADA9810180624C100BB228E /* FitbitApiDataStore.m */; };
 		FADA981418066DF200BB228E /* FitbitJSONData.m in Sources */ = {isa = PBXBuildFile; fileRef = FADA981318066DF200BB228E /* FitbitJSONData.m */; };
 		FADC0B6217E7896800829FCF /* AxisView.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC0B6117E7896800829FCF /* AxisView.m */; };
@@ -120,13 +125,6 @@
 		FADC0B6817E8303C00829FCF /* LineView.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC0B6717E8303B00829FCF /* LineView.m */; };
 		FADC204E17CC10D200C02F1B /* MetasomeEventStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC204D17CC10D200C02F1B /* MetasomeEventStore.m */; };
 		FADC205117CC137100C02F1B /* MetasomeEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC205017CC137100C02F1B /* MetasomeEvent.m */; };
-		FAE697F517EC061A00D2630E /* changeDateButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE697E917EC061900D2630E /* changeDateButton.png */; };
-		FAE697F617EC061A00D2630E /* inputMethodButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE697EA17EC061900D2630E /* inputMethodButton.png */; };
-		FAE697F717EC061A00D2630E /* highlightedListButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE697EB17EC061900D2630E /* highlightedListButton.png */; };
-		FAE697F817EC061A00D2630E /* highlightedInputmethodButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE697EC17EC061900D2630E /* highlightedInputmethodButton.png */; };
-		FAE697FB17EC061A00D2630E /* diarysaveButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE697EF17EC061900D2630E /* diarysaveButton.png */; };
-		FAE697FC17EC061A00D2630E /* graphButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE697F017EC061900D2630E /* graphButton.png */; };
-		FAE7CE2B17F3E1B30019E970 /* checkedButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE7CE2A17F3E1B30019E970 /* checkedButton.png */; };
 		FAF70EFD180CF8BA005BAEE7 /* WithingsOAuth1Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF70EFC180CF8BA005BAEE7 /* WithingsOAuth1Controller.m */; };
 		FAF87EB517E2085C00C830D9 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF87EB317E2085C00C830D9 /* PhotoViewController.m */; };
 		FAF87EB617E2085C00C830D9 /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF87EB417E2085C00C830D9 /* PhotoViewController.xib */; };
@@ -158,8 +156,6 @@
 		FAFD4E7718147C3800F77071 /* triple_apple.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFD4E6518147C3800F77071 /* triple_apple.png */; };
 		FAFD4E7A1814943B00F77071 /* CustomParameterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFD4E791814943B00F77071 /* CustomParameterCell.m */; };
 		FAFD4E7C181494A800F77071 /* CustomParameterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFD4E7B181494A800F77071 /* CustomParameterCell.xib */; };
-		FAFD4E7F1814BB5F00F77071 /* Fitbit.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFD4E7E1814BB5F00F77071 /* Fitbit.png */; };
-		FAFD4E811814C44100F77071 /* Withings.png in Resources */ = {isa = PBXBuildFile; fileRef = FAFD4E801814C44100F77071 /* Withings.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -180,7 +176,6 @@
 		FA34640C17DD4A64008B5163 /* Metasome.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Metasome.xcdatamodel; sourceTree = "<group>"; };
 		FA34640E17DD502F008B5163 /* MetasomeDataPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetasomeDataPoint.h; sourceTree = SOURCE_ROOT; };
 		FA34640F17DD5030008B5163 /* MetasomeDataPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetasomeDataPoint.m; sourceTree = SOURCE_ROOT; };
-		FA39816617D7A94100EB9948 /* dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dot.png; sourceTree = "<group>"; };
 		FA3C5D6A18170D4500ADCF0C /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
 		FA3C5D6B18170D4500ADCF0C /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
 		FA3C5D6C18170D4500ADCF0C /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
@@ -208,7 +203,6 @@
 		FA45036318158CDB00A1EFD7 /* DeviceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceController.h; sourceTree = "<group>"; };
 		FA45036418158CDB00A1EFD7 /* DeviceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceController.m; sourceTree = "<group>"; };
 		FA45036518158CDB00A1EFD7 /* DeviceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceController.xib; sourceTree = "<group>"; };
-		FA45036D18158F2F00A1EFD7 /* Fitbit_Full_Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fitbit_Full_Dark.png; sourceTree = "<group>"; };
 		FA455D9617D6C59A0032BD23 /* Legend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Legend.h; path = Metasome/Legend.h; sourceTree = "<group>"; };
 		FA455D9717D6C59A0032BD23 /* Legend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Legend.m; path = Metasome/Legend.m; sourceTree = "<group>"; };
 		FA4817BC17C672CE00A4CA4A /* DetailViewController_slider.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DetailViewController_slider.xib; path = Metasome/DetailViewController_slider.xib; sourceTree = "<group>"; };
@@ -268,7 +262,6 @@
 		FA79654517D93E19005A2DB6 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		FA79654617D93E19005A2DB6 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		FA79654717D93E19005A2DB6 /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
-		FA79654A17D940F2005A2DB6 /* OK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OK.png; sourceTree = "<group>"; };
 		FA79654C17D940FA005A2DB6 /* cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancel.png; sourceTree = "<group>"; };
 		FA7DCEBD17CC3E51005E5E3E /* EventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventDetailViewController.h; path = Metasome/EventDetailViewController.h; sourceTree = "<group>"; };
 		FA7DCEBE17CC3E51005E5E3E /* EventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventDetailViewController.m; path = Metasome/EventDetailViewController.m; sourceTree = "<group>"; };
@@ -294,6 +287,10 @@
 		FA99F11D17F77D0800B19297 /* diabetesButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "diabetesButton@2x.png"; sourceTree = "<group>"; };
 		FA99F12617F77D7A00B19297 /* lungButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lungButton.png; sourceTree = "<group>"; };
 		FA99F12717F77D7A00B19297 /* lungButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lungButton@2x.png"; sourceTree = "<group>"; };
+		FA9D13431818F36D00BF749F /* fitbit_logo @2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fitbit_logo @2x.png"; sourceTree = "<group>"; };
+		FA9D13441818F36D00BF749F /* fitbit_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fitbit_logo.png; sourceTree = "<group>"; };
+		FA9D13451818F36D00BF749F /* withings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = withings.png; sourceTree = "<group>"; };
+		FA9D13461818F36D00BF749F /* withings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "withings@2x.png"; sourceTree = "<group>"; };
 		FA9EE06417FC9F22006C4C04 /* LaunchImage640x960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage640x960.png; sourceTree = "<group>"; };
 		FA9EE06817FC9FC5006C4C04 /* Icon80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon80x80.png; sourceTree = "<group>"; };
 		FA9EE06A17FCA013006C4C04 /* Icon58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon58x58.png; sourceTree = "<group>"; };
@@ -310,6 +307,10 @@
 		FAC592C117C562D60004747C /* GraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphViewController.h; sourceTree = "<group>"; };
 		FAC592C217C562D60004747C /* GraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphViewController.m; sourceTree = "<group>"; };
 		FAC592C317C562D60004747C /* GraphViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GraphViewController.xib; sourceTree = "<group>"; };
+		FAD4C002181B35D800F71796 /* bell @2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bell @2x.png"; sourceTree = "<group>"; };
+		FAD4C003181B35D800F71796 /* bell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bell.png; sourceTree = "<group>"; };
+		FAD4C004181B35D800F71796 /* crossed_out_bell @2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "crossed_out_bell @2x.png"; sourceTree = "<group>"; };
+		FAD4C005181B35D800F71796 /* crossed_out_bell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crossed_out_bell.png; sourceTree = "<group>"; };
 		FADA980F180624C100BB228E /* FitbitApiDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitbitApiDataStore.h; sourceTree = "<group>"; };
 		FADA9810180624C100BB228E /* FitbitApiDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitbitApiDataStore.m; sourceTree = "<group>"; };
 		FADA981218066DF200BB228E /* FitbitJSONData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitbitJSONData.h; sourceTree = "<group>"; };
@@ -324,13 +325,6 @@
 		FADC204D17CC10D200C02F1B /* MetasomeEventStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetasomeEventStore.m; sourceTree = "<group>"; };
 		FADC204F17CC137000C02F1B /* MetasomeEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetasomeEvent.h; sourceTree = "<group>"; };
 		FADC205017CC137100C02F1B /* MetasomeEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetasomeEvent.m; sourceTree = "<group>"; };
-		FAE697E917EC061900D2630E /* changeDateButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = changeDateButton.png; sourceTree = "<group>"; };
-		FAE697EA17EC061900D2630E /* inputMethodButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inputMethodButton.png; sourceTree = "<group>"; };
-		FAE697EB17EC061900D2630E /* highlightedListButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highlightedListButton.png; sourceTree = "<group>"; };
-		FAE697EC17EC061900D2630E /* highlightedInputmethodButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highlightedInputmethodButton.png; sourceTree = "<group>"; };
-		FAE697EF17EC061900D2630E /* diarysaveButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diarysaveButton.png; sourceTree = "<group>"; };
-		FAE697F017EC061900D2630E /* graphButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = graphButton.png; sourceTree = "<group>"; };
-		FAE7CE2A17F3E1B30019E970 /* checkedButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkedButton.png; sourceTree = "<group>"; };
 		FAF70EFB180CF8BA005BAEE7 /* WithingsOAuth1Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WithingsOAuth1Controller.h; sourceTree = "<group>"; };
 		FAF70EFC180CF8BA005BAEE7 /* WithingsOAuth1Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WithingsOAuth1Controller.m; sourceTree = "<group>"; };
 		FAF87EB217E2085C00C830D9 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
@@ -371,8 +365,6 @@
 		FAFD4E781814943B00F77071 /* CustomParameterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomParameterCell.h; sourceTree = "<group>"; };
 		FAFD4E791814943B00F77071 /* CustomParameterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomParameterCell.m; sourceTree = "<group>"; };
 		FAFD4E7B181494A800F77071 /* CustomParameterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomParameterCell.xib; sourceTree = "<group>"; };
-		FAFD4E7E1814BB5F00F77071 /* Fitbit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fitbit.png; sourceTree = "<group>"; };
-		FAFD4E801814C44100F77071 /* Withings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Withings.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -593,61 +585,19 @@
 		FA4E9EF217C1D04D00E421DE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FAD4C001181B357A00F71796 /* Tab Bar */,
+				FAD4C000181B353B00F71796 /* HomeScreen */,
+				FAD4BFFF181B352C00F71796 /* Bells */,
+				FAD4BFFE181B34F600F71796 /* Icons */,
+				FAD4BFFD181B34DE00F71796 /* Smileys */,
 				FAFD4E7D1814BB5300F77071 /* Logos */,
 				FAFD4E5318147A5900F77071 /* Gamification */,
-				FA9EE06A17FCA013006C4C04 /* Icon58x58.png */,
-				FA9EE06817FC9FC5006C4C04 /* Icon80x80.png */,
-				FA9EE06417FC9F22006C4C04 /* LaunchImage640x960.png */,
-				FA9EE06C17FCB479006C4C04 /* Launch640x1136.png */,
-				FA997FD617F7CB1E00AE5CBB /* heartButton.png */,
-				FA997FD717F7CB1E00AE5CBB /* heartButton@2x.png */,
-				FA99F12617F77D7A00B19297 /* lungButton.png */,
-				FA99F12717F77D7A00B19297 /* lungButton@2x.png */,
-				FA99F11A17F77D0800B19297 /* brainButton.png */,
-				FA99F11B17F77D0800B19297 /* brainButton@2x.png */,
-				FA997FDA17F7CB6400AE5CBB /* smiley0.png */,
-				FA997FDB17F7CB6400AE5CBB /* smiley0@2x.png */,
-				FA997FDC17F7CB6400AE5CBB /* smiley1.png */,
-				FA997FDD17F7CB6400AE5CBB /* smiley1@2x.png */,
-				FA997FDE17F7CB6400AE5CBB /* smiley2.png */,
-				FA997FDF17F7CB6400AE5CBB /* smiley2@2x.png */,
-				FA997FE017F7CB6400AE5CBB /* smiley3.png */,
-				FA997FE117F7CB6400AE5CBB /* smiley3@2x.png */,
-				FA997FE217F7CB6400AE5CBB /* smiley4.png */,
-				FA997FE317F7CB6400AE5CBB /* smiley4@2x.png */,
-				FA99F11C17F77D0800B19297 /* diabetesButton.png */,
-				FA99F11D17F77D0800B19297 /* diabetesButton@2x.png */,
-				FAE7CE2A17F3E1B30019E970 /* checkedButton.png */,
-				FAE697E917EC061900D2630E /* changeDateButton.png */,
-				FAE697EA17EC061900D2630E /* inputMethodButton.png */,
-				FAE697EB17EC061900D2630E /* highlightedListButton.png */,
-				FAE697EC17EC061900D2630E /* highlightedInputmethodButton.png */,
-				FAE697EF17EC061900D2630E /* diarysaveButton.png */,
-				FAE697F017EC061900D2630E /* graphButton.png */,
-				FA59AE0517E9570700CB0629 /* largePulseBeat.png */,
-				FA72FA7B17FA6B080072942F /* Icon120x120@2x.png */,
-				FA2162BA17E52C4D005C836C /* Icon.png */,
-				FA3DED8917E44A3C00D7FA87 /* Icon.png */,
-				FA3DED8A17E44A3C00D7FA87 /* Icon@2x.png */,
-				FA3DED8117E4477400D7FA87 /* tracker.png */,
-				FA3DED8217E4477400D7FA87 /* tracker@2x.png */,
-				FA3DED7D17E4475E00D7FA87 /* options.png */,
-				FA3DED7E17E4475E00D7FA87 /* options@2x.png */,
-				FA3DED7917E4473E00D7FA87 /* diary.png */,
-				FA3DED7A17E4473E00D7FA87 /* diary@2x.png */,
-				FA3DED7517E4462A00D7FA87 /* home@2x.png */,
-				FA3DED7617E4462A00D7FA87 /* homex.png */,
 				FA19226017E0983300CA0ADF /* iOSDeveloperProfile.developerprofile */,
 				FA79654C17D940FA005A2DB6 /* cancel.png */,
-				FA79654A17D940F2005A2DB6 /* OK.png */,
-				FA39816617D7A94100EB9948 /* dot.png */,
 				FA4E9EF317C1D04D00E421DE /* PulseBeat-Info.plist */,
 				FA4E9EF417C1D04D00E421DE /* InfoPlist.strings */,
 				FA4E9EF717C1D04D00E421DE /* main.m */,
 				FA4E9EF917C1D04D00E421DE /* PulseBeat-Prefix.pch */,
-				FA4E9EFD17C1D04D00E421DE /* Default.png */,
-				FA4E9EFF17C1D04D00E421DE /* Default@2x.png */,
-				FA4E9F0117C1D04D00E421DE /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -671,6 +621,83 @@
 				FADA981318066DF200BB228E /* FitbitJSONData.m */,
 			);
 			name = Fitbit;
+			sourceTree = "<group>";
+		};
+		FAD4BFFD181B34DE00F71796 /* Smileys */ = {
+			isa = PBXGroup;
+			children = (
+				FA997FDA17F7CB6400AE5CBB /* smiley0.png */,
+				FA997FDB17F7CB6400AE5CBB /* smiley0@2x.png */,
+				FA997FDC17F7CB6400AE5CBB /* smiley1.png */,
+				FA997FDD17F7CB6400AE5CBB /* smiley1@2x.png */,
+				FA997FDE17F7CB6400AE5CBB /* smiley2.png */,
+				FA997FDF17F7CB6400AE5CBB /* smiley2@2x.png */,
+				FA997FE017F7CB6400AE5CBB /* smiley3.png */,
+				FA997FE117F7CB6400AE5CBB /* smiley3@2x.png */,
+				FA997FE217F7CB6400AE5CBB /* smiley4.png */,
+				FA997FE317F7CB6400AE5CBB /* smiley4@2x.png */,
+			);
+			name = Smileys;
+			sourceTree = "<group>";
+		};
+		FAD4BFFE181B34F600F71796 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				FA59AE0517E9570700CB0629 /* largePulseBeat.png */,
+				FA9EE06A17FCA013006C4C04 /* Icon58x58.png */,
+				FA9EE06817FC9FC5006C4C04 /* Icon80x80.png */,
+				FA9EE06417FC9F22006C4C04 /* LaunchImage640x960.png */,
+				FA9EE06C17FCB479006C4C04 /* Launch640x1136.png */,
+				FA72FA7B17FA6B080072942F /* Icon120x120@2x.png */,
+				FA2162BA17E52C4D005C836C /* Icon.png */,
+				FA3DED8917E44A3C00D7FA87 /* Icon.png */,
+				FA3DED8A17E44A3C00D7FA87 /* Icon@2x.png */,
+				FA4E9EFD17C1D04D00E421DE /* Default.png */,
+				FA4E9EFF17C1D04D00E421DE /* Default@2x.png */,
+				FA4E9F0117C1D04D00E421DE /* Default-568h@2x.png */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
+		FAD4BFFF181B352C00F71796 /* Bells */ = {
+			isa = PBXGroup;
+			children = (
+				FAD4C002181B35D800F71796 /* bell @2x.png */,
+				FAD4C003181B35D800F71796 /* bell.png */,
+				FAD4C004181B35D800F71796 /* crossed_out_bell @2x.png */,
+				FAD4C005181B35D800F71796 /* crossed_out_bell.png */,
+			);
+			name = Bells;
+			sourceTree = "<group>";
+		};
+		FAD4C000181B353B00F71796 /* HomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FA997FD617F7CB1E00AE5CBB /* heartButton.png */,
+				FA997FD717F7CB1E00AE5CBB /* heartButton@2x.png */,
+				FA99F12617F77D7A00B19297 /* lungButton.png */,
+				FA99F12717F77D7A00B19297 /* lungButton@2x.png */,
+				FA99F11A17F77D0800B19297 /* brainButton.png */,
+				FA99F11B17F77D0800B19297 /* brainButton@2x.png */,
+				FA99F11C17F77D0800B19297 /* diabetesButton.png */,
+				FA99F11D17F77D0800B19297 /* diabetesButton@2x.png */,
+			);
+			name = HomeScreen;
+			sourceTree = "<group>";
+		};
+		FAD4C001181B357A00F71796 /* Tab Bar */ = {
+			isa = PBXGroup;
+			children = (
+				FA3DED8117E4477400D7FA87 /* tracker.png */,
+				FA3DED8217E4477400D7FA87 /* tracker@2x.png */,
+				FA3DED7D17E4475E00D7FA87 /* options.png */,
+				FA3DED7E17E4475E00D7FA87 /* options@2x.png */,
+				FA3DED7917E4473E00D7FA87 /* diary.png */,
+				FA3DED7A17E4473E00D7FA87 /* diary@2x.png */,
+				FA3DED7517E4462A00D7FA87 /* home@2x.png */,
+				FA3DED7617E4462A00D7FA87 /* homex.png */,
+			);
+			name = "Tab Bar";
 			sourceTree = "<group>";
 		};
 		FAF87EB717E2086800C830D9 /* Photos */ = {
@@ -724,9 +751,10 @@
 		FAFD4E7D1814BB5300F77071 /* Logos */ = {
 			isa = PBXGroup;
 			children = (
-				FAFD4E801814C44100F77071 /* Withings.png */,
-				FAFD4E7E1814BB5F00F77071 /* Fitbit.png */,
-				FA45036D18158F2F00A1EFD7 /* Fitbit_Full_Dark.png */,
+				FA9D13431818F36D00BF749F /* fitbit_logo @2x.png */,
+				FA9D13441818F36D00BF749F /* fitbit_logo.png */,
+				FA9D13451818F36D00BF749F /* withings.png */,
+				FA9D13461818F36D00BF749F /* withings@2x.png */,
 			);
 			name = Logos;
 			sourceTree = "<group>";
@@ -783,6 +811,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA9D13471818F36D00BF749F /* fitbit_logo @2x.png in Resources */,
 				FA4E9EF617C1D04D00E421DE /* InfoPlist.strings in Resources */,
 				FA4E9EFE17C1D04D00E421DE /* Default.png in Resources */,
 				FAFD4E6718147C3800F77071 /* apple_bin.png in Resources */,
@@ -792,11 +821,12 @@
 				FA4E9F1717C2A9C000E421DE /* HeaderView.xib in Resources */,
 				FA4E9F1C17C2C1D500E421DE /* DetailViewController.xib in Resources */,
 				FAC592B817C555AD0004747C /* ParameterViewController.xib in Resources */,
+				FAD4C007181B35D800F71796 /* bell.png in Resources */,
 				FAC592BD17C55E970004747C /* EventViewController.xib in Resources */,
-				FAE697F817EC061A00D2630E /* highlightedInputmethodButton.png in Resources */,
 				FAFD4E7618147C3800F77071 /* triple_apple @2x.png in Resources */,
 				FA997FE817F7CB6400AE5CBB /* smiley2.png in Resources */,
 				FA72FA7C17FA6B080072942F /* Icon120x120@2x.png in Resources */,
+				FAD4C009181B35D800F71796 /* crossed_out_bell.png in Resources */,
 				FAC592C517C562D70004747C /* GraphViewController.xib in Resources */,
 				FAFD4E6F18147C3800F77071 /* golden_apple.png in Resources */,
 				FAFD4E7218147C3800F77071 /* simple_tree @2x.png in Resources */,
@@ -805,18 +835,12 @@
 				FA997FE917F7CB6400AE5CBB /* smiley2@2x.png in Resources */,
 				FAFD4E6D18147C3800F77071 /* full_apple_tree.png in Resources */,
 				FA4817C517C7F93400A4CA4A /* OptionsViewController.xib in Resources */,
-				FAE697F517EC061A00D2630E /* changeDateButton.png in Resources */,
-				FAE7CE2B17F3E1B30019E970 /* checkedButton.png in Resources */,
 				FA7DCEC117CC3E51005E5E3E /* EventDetailViewController.xib in Resources */,
-				FAE697F617EC061A00D2630E /* inputMethodButton.png in Resources */,
 				FA264CC917CC4D7D002ACEDD /* NewEventViewController.xib in Resources */,
 				FAAAC11117D15B870046EA0E /* NewParameterViewController.xib in Resources */,
-				FAFD4E7F1814BB5F00F77071 /* Fitbit.png in Resources */,
-				FA39816717D7A94100EB9948 /* dot.png in Resources */,
 				FAFD4E7718147C3800F77071 /* triple_apple.png in Resources */,
 				FA79654917D93E19005A2DB6 /* DatePickerViewController.xib in Resources */,
 				FA5FAFE518061ABA00813DF3 /* FitbitLoginViewController.xib in Resources */,
-				FA79654B17D940F2005A2DB6 /* OK.png in Resources */,
 				FA79654D17D940FA005A2DB6 /* cancel.png in Resources */,
 				FAFD4E6E18147C3800F77071 /* golden_apple @2x.png in Resources */,
 				FAFD4E7118147C3800F77071 /* quadruple_apple.png in Resources */,
@@ -824,7 +848,6 @@
 				FA997FD817F7CB1E00AE5CBB /* heartButton.png in Resources */,
 				FAFD4E6618147C3800F77071 /* apple_bin @2x.png in Resources */,
 				FA9EE06B17FCA013006C4C04 /* Icon58x58.png in Resources */,
-				FAE697F717EC061A00D2630E /* highlightedListButton.png in Resources */,
 				FA99F12017F77D0800B19297 /* brainButton.png in Resources */,
 				FA997FE417F7CB6400AE5CBB /* smiley0.png in Resources */,
 				FA997FD917F7CB1E00AE5CBB /* heartButton@2x.png in Resources */,
@@ -834,13 +857,14 @@
 				FA99F12917F77D7A00B19297 /* lungButton@2x.png in Resources */,
 				FAF87EB617E2085C00C830D9 /* PhotoViewController.xib in Resources */,
 				FAF87ED117E27F8900C830D9 /* NewPhotoGroupViewController.xib in Resources */,
-				FA45036E18158F2F00A1EFD7 /* Fitbit_Full_Dark.png in Resources */,
 				FA3DED7317E40C7B00D7FA87 /* HomeViewController.xib in Resources */,
 				FA3DED7717E4462A00D7FA87 /* home@2x.png in Resources */,
 				FA3DED7817E4462A00D7FA87 /* homex.png in Resources */,
 				FA3DED7B17E4473E00D7FA87 /* diary.png in Resources */,
 				FA997FEB17F7CB6400AE5CBB /* smiley3@2x.png in Resources */,
 				FA3DED7C17E4473E00D7FA87 /* diary@2x.png in Resources */,
+				FA9D13481818F36D00BF749F /* fitbit_logo.png in Resources */,
+				FA9D134A1818F36D00BF749F /* withings@2x.png in Resources */,
 				FA997FE517F7CB6400AE5CBB /* smiley0@2x.png in Resources */,
 				FA5681FC18185D400011A237 /* PrivacyViewController.xib in Resources */,
 				FA218E0C180DFCEF00A072B1 /* File in Resources */,
@@ -856,23 +880,23 @@
 				FAFD4E6918147C3800F77071 /* apple_bushel.png in Resources */,
 				FA997FEC17F7CB6400AE5CBB /* smiley4.png in Resources */,
 				FA9EE06D17FCB479006C4C04 /* Launch640x1136.png in Resources */,
+				FAD4C006181B35D800F71796 /* bell @2x.png in Resources */,
 				FA3DED8417E4477400D7FA87 /* tracker@2x.png in Resources */,
 				FA997FEA17F7CB6400AE5CBB /* smiley3.png in Resources */,
+				FA9D13491818F36D00BF749F /* withings.png in Resources */,
+				FAD4C008181B35D800F71796 /* crossed_out_bell @2x.png in Resources */,
 				FA3DED8B17E44A3C00D7FA87 /* Icon.png in Resources */,
 				FA9EE06517FC9F22006C4C04 /* LaunchImage640x960.png in Resources */,
 				FA3DED8C17E44A3C00D7FA87 /* Icon@2x.png in Resources */,
 				FAFD4E6B18147C3800F77071 /* double_apple.png in Resources */,
 				FAFD4E6A18147C3800F77071 /* double_apple @2x.png in Resources */,
-				FAE697FB17EC061A00D2630E /* diarysaveButton.png in Resources */,
 				FAFD4E7518147C3800F77071 /* single_apple.png in Resources */,
 				FA3DED8E17E44A5200D7FA87 /* Icon@2x.png in Resources */,
-				FAFD4E811814C44100F77071 /* Withings.png in Resources */,
 				FA99F12117F77D0800B19297 /* brainButton@2x.png in Resources */,
 				FA99F12217F77D0800B19297 /* diabetesButton.png in Resources */,
 				FAFD4E6818147C3800F77071 /* apple_bushel @2x.png in Resources */,
 				FA99F12317F77D0800B19297 /* diabetesButton@2x.png in Resources */,
 				FA2162BF17E52C4D005C836C /* Icon.png in Resources */,
-				FAE697FC17EC061A00D2630E /* graphButton.png in Resources */,
 				FA95875C17E65685007D5EB8 /* NotificationsDetailViewController.xib in Resources */,
 				FA59AE0417E9566C00CB0629 /* LoginScreenViewController.xib in Resources */,
 				FA59AE0617E9570800CB0629 /* largePulseBeat.png in Resources */,

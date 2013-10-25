@@ -149,7 +149,6 @@ float const MAX_SLIDER_VALUE = 100.0;
 
 -(void)loadDefaultParameters
 {
-    
     parameterArray = [[NSMutableArray alloc] init];
     
     // heart-related parameters

@@ -17,7 +17,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jY1-Ck-N9C">
                     <rect key="frame" x="60" y="147" width="200" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button" image="Fitbit_Full_Dark.png">
+                    <state key="normal" title="Button" image="fitbit_logo.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -25,9 +25,9 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQe-ub-ZZL">
-                    <rect key="frame" x="60" y="327" width="200" height="60"/>
+                    <rect key="frame" x="60" y="282" width="200" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button" image="Withings.png">
+                    <state key="normal" title="Button" image="withings.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -41,7 +41,7 @@
         </view>
     </objects>
     <resources>
-        <image name="Fitbit_Full_Dark.png" width="1000" height="250"/>
-        <image name="Withings.png" width="386" height="132"/>
+        <image name="fitbit_logo.png" width="200" height="50"/>
+        <image name="withings.png" width="200" height="50"/>
     </resources>
 </document>

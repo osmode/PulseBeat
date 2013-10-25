@@ -16,9 +16,9 @@
 typedef void (^WebWiewDelegateHandler)(NSDictionary *oauthParams);
 
 //Sometimes OAUTH_CALLBACK has to be the same as the registered app callback url
-#define OAUTH_CALLBACK_WITHINGS       @"http://www.pulsebeat.io"
-#define CONSUMER_KEY_WITHINGS         @"146c72608bb655486c6c47410eb855371b310010b0b691b42502e67174b1"
-#define CONSUMER_SECRET_WITHINGS      @"88e0e355950861d475721eebf5ec3117b19618b0670c99460b94befff7"
+#define OAUTH_CALLBACK_WITHINGS       @"http://www.pulsebeat.io/pages/success"
+#define CONSUMER_KEY_WITHINGS         @"c819f71bd97e720d9754ccced38b5613ebec906158045fef1f0429233d"
+#define CONSUMER_SECRET_WITHINGS      @"ccdbc0db0267d4c7f1b38091778f0e1c02e64ebc7e39b8fb0c0f3db1211583"
 #define AUTH_URL_WITHINGS             @"https://oauth.withings.com/account/"
 #define REQUEST_TOKEN_URL_WITHINGS    @"request_token"
 #define AUTHENTICATE_URL_WITHINGS     @"authorize"

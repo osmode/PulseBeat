@@ -46,7 +46,6 @@
     UIColor *navBarColor = [UIColor redColor];
     UIColor *navBarTextColor = [UIColor whiteColor];
     
-    
     // set all navigation bars to navBarColor
     [[homeNavController navigationBar] setBarTintColor:navBarColor];
     [[parameterNavController navigationBar] setBarTintColor:navBarColor];

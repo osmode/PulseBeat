@@ -10,7 +10,7 @@
 
 @implementation MetasomeParameter
 @synthesize parameterName, inputType, inputCategory, checkedStatus, lastChecked, maxValue, sadOnRightSide;
-@synthesize isCustomMade, consecutiveEntries, apiType;
+@synthesize isCustomMade, consecutiveEntries, apiType, units;
 
 
 -(id)initWithParameterName:(NSString *)name inputType:(int)type category:(int)newCategory maximumValue:(float)value

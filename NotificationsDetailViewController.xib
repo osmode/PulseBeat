@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1552" identifier="iOS"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NotificationsDetailViewController">
             <connections>
+                <outlet property="bellImage" destination="bLS-gq-pa2" id="Ykm-vH-MG5"/>
                 <outlet property="notificationSwitch" destination="16" id="52"/>
                 <outlet property="promptLabel" destination="4" id="51"/>
                 <outlet property="promptLabel2" destination="ffa-9u-DS3" id="bQT-P0-1bW"/>
@@ -31,7 +32,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </switch>
                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="25">
-                    <rect key="frame" x="0.0" y="230" width="320" height="162"/>
+                    <rect key="frame" x="0.0" y="244" width="320" height="162"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <date key="date" timeIntervalSinceReferenceDate="400971624.36949301">
                         <!--2013-09-15 21:00:24 +0000-->
@@ -59,7 +60,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </timeZone>
                 </datePicker>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remind me each day at" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffa-9u-DS3">
-                    <rect key="frame" x="33" y="189" width="267" height="41"/>
+                    <rect key="frame" x="33" y="203" width="267" height="41"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="41" id="yUQ-CI-9Af"/>
@@ -67,6 +68,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bLS-gq-pa2">
+                    <rect key="frame" x="53" y="151" width="44" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.97025464429999997" green="0.97456492179999998" blue="0.98749575410000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
@@ -76,11 +81,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <constraint firstItem="16" firstAttribute="leading" secondItem="4" secondAttribute="trailing" constant="37" id="E4n-Pe-OnD"/>
                 <constraint firstItem="ffa-9u-DS3" firstAttribute="leading" secondItem="4" secondAttribute="leading" id="HPv-AH-y83"/>
                 <constraint firstAttribute="trailing" secondItem="25" secondAttribute="trailing" id="KQM-7C-W0Q"/>
-                <constraint firstItem="ffa-9u-DS3" firstAttribute="top" secondItem="4" secondAttribute="bottom" constant="46" id="baa-Kx-L0D"/>
+                <constraint firstItem="ffa-9u-DS3" firstAttribute="top" secondItem="4" secondAttribute="bottom" constant="60" id="baa-Kx-L0D"/>
                 <constraint firstItem="4" firstAttribute="top" secondItem="1" secondAttribute="top" constant="104" id="bwr-fX-ua5"/>
                 <constraint firstItem="4" firstAttribute="centerY" secondItem="16" secondAttribute="centerY" id="hyc-vW-m1f"/>
                 <constraint firstItem="25" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="i5T-tE-NIR"/>
-                <constraint firstItem="ffa-9u-DS3" firstAttribute="top" secondItem="16" secondAttribute="bottom" constant="50" id="nhd-Ll-C6o"/>
+                <constraint firstItem="ffa-9u-DS3" firstAttribute="top" secondItem="16" secondAttribute="bottom" constant="64" id="nhd-Ll-C6o"/>
                 <constraint firstItem="4" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="33" id="q0O-qD-1N2"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

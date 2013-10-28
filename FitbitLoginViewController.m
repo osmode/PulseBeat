@@ -27,6 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"running completion block");
     completionBlock();
 }
 

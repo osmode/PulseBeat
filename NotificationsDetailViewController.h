@@ -16,6 +16,8 @@
     __weak IBOutlet UIDatePicker *timePicker;
     __weak IBOutlet UILabel *promptLabel2;
     
+    __weak IBOutlet UIImageView *bellImage;
+    
 }
 
 -(void)switchChanged:(id)sender;

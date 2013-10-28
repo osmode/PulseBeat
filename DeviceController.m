@@ -41,6 +41,8 @@
 {
     [super viewDidLoad];
     self.screenName = @"DeviceController";
+    fitbitButton.layer.cornerRadius = 10.0;
+    withingsButton.layer.cornerRadius = 10.0;
 
 }
 
@@ -52,28 +54,34 @@
 
 - (IBAction)fitbitButtonPressed:(id)sender {
     
+    NSLog(@"fitbitButtonPressed");
+    
     // sent hit data to google analytics
+    /*
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     
     [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"     // Event category (required)
                                                           action:@"button_press"  // Event action (required)
                                                            label:@"fitbitSyncButton"          // Event label
                                                            value:nil] build]];    // Event value
+     */
     
     FitbitLoginViewController *flvc = [[FitbitLoginViewController alloc] init];
     
-    int __block loadedWithoutError = 3;
     
     self.navigationController.delegate = self;
     
     [flvc setCompletionBlock:^{
         
         [self.oauth1Controller loginWithWebView:flvc.webView completion:^(NSDictionary *oauthTokens, NSError *error) {
+            
             if (!error) {
                 
                 // Store your tokens for authenticating your later requests, consider storing the tokens in the Keychain
                 self.oauthToken = oauthTokens[@"oauth_token"];
                 self.oauthTokenSecret = oauthTokens[@"oauth_token_secret"];
+                
+                NSLog(@"oauthToken = %@", self.oauthToken);
                 
                 UIActivityIndicatorView *aiv = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
                 aiv.color = [UIColor grayColor];
@@ -85,6 +93,7 @@
                 [[MetasomeDataPointStore sharedStore] deletePointsFromApi:@"Fitbit" fromDate:nil toDate:nil];
                 
                 // populate local database with fitbit data
+                NSLog(@"calling getStepData");
                 [[FitbitApiDataStore sharedStore] getStepData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
                 [[FitbitApiDataStore sharedStore] getDistanceData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
                 [[FitbitApiDataStore sharedStore] getWeightData:self.oauthToken oauthSecretIn:self.oauthTokenSecret];
@@ -102,9 +111,6 @@
             }
             else
             {
-                loadedWithoutError = 2;
-                NSLog(@"loadedWithoutError: %i", loadedWithoutError);
-                
                 NSLog(@"Error authenticating: %@", error.localizedDescription);
                 [self showConnectionError:error.localizedDescription];
             }

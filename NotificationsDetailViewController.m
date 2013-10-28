@@ -52,6 +52,13 @@ NSString * const MetasomeNotificationPrefKey = @"MetasomeNotificationPrefKey";
 
     BOOL onState = [[NSUserDefaults standardUserDefaults] boolForKey:MetasomeNotificationPrefKey];
     [notificationSwitch setOn:onState];
+    
+    if ( [[NSUserDefaults standardUserDefaults] boolForKey:MetasomeNotificationPrefKey] ) {
+        bellImage.image = [UIImage imageNamed:@"bell.png"];
+    } else {
+        bellImage.image = [UIImage imageNamed:@"crossed_out_bell.png"];
+    }
+
 
 }
 
@@ -67,6 +74,12 @@ NSString * const MetasomeNotificationPrefKey = @"MetasomeNotificationPrefKey";
     UISwitch *s = (UISwitch *)sender;
     
     [[NSUserDefaults standardUserDefaults] setBool:s.on forKey:MetasomeNotificationPrefKey];
+    
+    if ( [[NSUserDefaults standardUserDefaults] boolForKey:MetasomeNotificationPrefKey] ) {
+        bellImage.image = [UIImage imageNamed:@"bell.png"];
+    } else {
+        bellImage.image = [UIImage imageNamed:@"crossed_out_bell.png"];
+    }
 
 }
 

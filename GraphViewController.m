@@ -49,6 +49,7 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
         titleHoveringLabel = [[HoveringLabel alloc] initWithLabel:titleLabel point:titleLabel.frame.origin];
         titleLabel.backgroundColor = [UIColor clearColor];
         titleLabel.text = [graphView graphTitle];
+        
         titleLabel.textColor = [UIColor blackColor];
         //titleLabel.font = [UIFont fontWithName:@"AvenirNext-Bold" size:15.0];
         [titleLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];

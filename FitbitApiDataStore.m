@@ -43,6 +43,8 @@
 
 - (void)getStepData:(NSString *)oauthTokenIn oauthSecretIn:oauthSecretIn
 {
+    NSLog(@"getStepData");
+    
     NSString *path = @"1/user/-/activities/steps/date/today/1y.json";
     
     NSURLRequest *preparedRequest = [OAuth1Controller preparedRequestForPath:path parameters:nil HTTPmethod:@"GET"
@@ -62,13 +64,18 @@
                     
                     // Turn JSON data into basic model objects
                     NSDictionary *d = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                    //NSLog(@"count: %i", [[d objectForKey:@"activities-steps"] count]);
                     
                     // if we got data back, mark Steps parameter
                     // with Fitbit logo
                     if ( [[d objectForKey:@"activities-steps"] count] > 0) {
                         MetasomeParameter *p = [[MetasomeParameterStore sharedStore] fitbitParameterWithName:@"Steps"];
                         [p setConsecutiveEntries:-1];
+                        
+                        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Fitibt data successfully imported!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                        [av show];
+                    } else {
+                        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Unable to import Fitbit data. Please check your internet connection and try again." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                        [av show];
                     }
                     
                     FitbitJSONData *fitbitJSONData = [[FitbitJSONData alloc] initWithDictionary:d dataName:@"activities-steps"];

@@ -116,7 +116,7 @@
 		FAC592C517C562D70004747C /* GraphViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC592C317C562D60004747C /* GraphViewController.xib */; };
 		FAD4C006181B35D800F71796 /* bell @2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD4C002181B35D800F71796 /* bell @2x.png */; };
 		FAD4C007181B35D800F71796 /* bell.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD4C003181B35D800F71796 /* bell.png */; };
-		FAD4C008181B35D800F71796 /* crossed_out_bell @2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD4C004181B35D800F71796 /* crossed_out_bell @2x.png */; };
+		FAD4C008181B35D800F71796 /* crossed_out_bell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD4C004181B35D800F71796 /* crossed_out_bell@2x.png */; };
 		FAD4C009181B35D800F71796 /* crossed_out_bell.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD4C005181B35D800F71796 /* crossed_out_bell.png */; };
 		FADA9811180624C100BB228E /* FitbitApiDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FADA9810180624C100BB228E /* FitbitApiDataStore.m */; };
 		FADA981418066DF200BB228E /* FitbitJSONData.m in Sources */ = {isa = PBXBuildFile; fileRef = FADA981318066DF200BB228E /* FitbitJSONData.m */; };
@@ -309,7 +309,7 @@
 		FAC592C317C562D60004747C /* GraphViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GraphViewController.xib; sourceTree = "<group>"; };
 		FAD4C002181B35D800F71796 /* bell @2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bell @2x.png"; sourceTree = "<group>"; };
 		FAD4C003181B35D800F71796 /* bell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bell.png; sourceTree = "<group>"; };
-		FAD4C004181B35D800F71796 /* crossed_out_bell @2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "crossed_out_bell @2x.png"; sourceTree = "<group>"; };
+		FAD4C004181B35D800F71796 /* crossed_out_bell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "crossed_out_bell@2x.png"; sourceTree = "<group>"; };
 		FAD4C005181B35D800F71796 /* crossed_out_bell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crossed_out_bell.png; sourceTree = "<group>"; };
 		FADA980F180624C100BB228E /* FitbitApiDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitbitApiDataStore.h; sourceTree = "<group>"; };
 		FADA9810180624C100BB228E /* FitbitApiDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitbitApiDataStore.m; sourceTree = "<group>"; };
@@ -664,7 +664,7 @@
 			children = (
 				FAD4C002181B35D800F71796 /* bell @2x.png */,
 				FAD4C003181B35D800F71796 /* bell.png */,
-				FAD4C004181B35D800F71796 /* crossed_out_bell @2x.png */,
+				FAD4C004181B35D800F71796 /* crossed_out_bell@2x.png */,
 				FAD4C005181B35D800F71796 /* crossed_out_bell.png */,
 			);
 			name = Bells;
@@ -884,7 +884,7 @@
 				FA3DED8417E4477400D7FA87 /* tracker@2x.png in Resources */,
 				FA997FEA17F7CB6400AE5CBB /* smiley3.png in Resources */,
 				FA9D13491818F36D00BF749F /* withings.png in Resources */,
-				FAD4C008181B35D800F71796 /* crossed_out_bell @2x.png in Resources */,
+				FAD4C008181B35D800F71796 /* crossed_out_bell@2x.png in Resources */,
 				FA3DED8B17E44A3C00D7FA87 /* Icon.png in Resources */,
 				FA9EE06517FC9F22006C4C04 /* LaunchImage640x960.png in Resources */,
 				FA3DED8C17E44A3C00D7FA87 /* Icon@2x.png in Resources */,

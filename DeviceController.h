@@ -12,6 +12,8 @@
 @class OAuth1Controller, WithingsOAuth1Controller;
 @interface DeviceController : GAITrackedViewController
 {
+    __weak IBOutlet UIButton *fitbitButton;
+    __weak IBOutlet UIButton *withingsButton;
     
 }
 

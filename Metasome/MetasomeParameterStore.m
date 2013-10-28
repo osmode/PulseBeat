@@ -166,6 +166,7 @@ float const MAX_SLIDER_VALUE = 100.0;
     [steps setApiType:FitbitInput];
     MetasomeParameter *distance = [[MetasomeParameter alloc] initWithParameterName:@"Distance" inputType:ParameterInputFloat category:ParameterCategoryHeart maximumValue:500000];
     [distance setApiType:FitbitInput];
+    [distance setUnits:@"mi/km"];
     
     // lung-related parameters
     MetasomeParameter *shortnessOfBreath = [[MetasomeParameter alloc] initWithParameterName:@"Shortness of breath" inputType:ParameterInputSlider category:ParameterCategoryLung maximumValue:MAX_SLIDER_VALUE];
@@ -178,6 +179,7 @@ float const MAX_SLIDER_VALUE = 100.0;
     // metabolic-related parameters
     MetasomeParameter *bloodSugar = [[MetasomeParameter alloc] initWithParameterName:@"Blood sugar" inputType:ParameterInputInteger category:ParameterCategoryDiabetes maximumValue:1000.0] ;
     MetasomeParameter *weight = [[MetasomeParameter alloc] initWithParameterName:@"Weight" inputType:ParameterInputFloat category:ParameterCategoryDiabetes maximumValue:1000.0] ;
+    [weight setUnits:@"lb/kg"];
     MetasomeParameter *BMI = [[MetasomeParameter alloc] initWithParameterName:@"BMI" inputType:ParameterInputFloat category:ParameterCategoryDiabetes maximumValue:100.0];
     [BMI setApiType:FitbitInput];
     

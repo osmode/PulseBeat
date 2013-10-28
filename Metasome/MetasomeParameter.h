@@ -55,6 +55,8 @@ typedef enum {
 @property (nonatomic) BOOL sadOnRightSide;
 @property (nonatomic) BOOL isCustomMade;
 @property (nonatomic) int apiType;
+@property (nonatomic, strong) NSString *units;
+
 
 -(id)initWithParameterName:(NSString *)name inputType:(int)type category:(int)newCategory maximumValue:(float)value;
 -(void)resetCheckmark;

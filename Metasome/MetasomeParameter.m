@@ -47,6 +47,7 @@
     [aCoder encodeBool:isCustomMade forKey:@"isCustomMade"];
     [aCoder encodeInt:consecutiveEntries forKey:@"consecutiveEntries"];
     [aCoder encodeInt:apiType forKey:@"apiType"];
+    [aCoder encodeObject:units forKey:@"units"];
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder
@@ -63,6 +64,7 @@
         [self setIsCustomMade:[aDecoder decodeBoolForKey:@"isCustomMade"]];
         [self setConsecutiveEntries:[aDecoder decodeIntForKey:@"consecutiveEntries"]];
         [self setApiType:[aDecoder decodeIntForKey:@"apiType"]];
+        [self setUnits:[aDecoder decodeObjectForKey:@"units"]];
     }
          return self;
 }

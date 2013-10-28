@@ -16,6 +16,7 @@
 #import "MetasomeEvent.h"
 #import "Legend.h"
 #import "MetasomeParameter.h"
+#import "MetasomeParameterStore.h"
 #import "HoveringLabel.h"
 
 @implementation GraphViewController
@@ -46,10 +47,31 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
         
         hoveringLabels = [[NSMutableArray alloc] init];
         titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 0, 200, 30)];
+        titleLabel.backgroundColor = [UIColor colorWithRed:0.2 green:0.0 blue:1.0 alpha:0.2];
+        titleLabel.layer.cornerRadius = 10.0;
+        
         titleHoveringLabel = [[HoveringLabel alloc] initWithLabel:titleLabel point:titleLabel.frame.origin];
         titleLabel.backgroundColor = [UIColor clearColor];
-        titleLabel.text = [graphView graphTitle];
         
+        NSLog(@"units: %@", [[[MetasomeDataPointStore sharedStore] parameterToGraph] units]);
+        
+        // if the selected parameter has associated units, add them in parenthesis
+        if ([[[MetasomeDataPointStore sharedStore] parameterToGraph] units]) {
+            
+            NSString *zeroPart = [[[[MetasomeDataPointStore sharedStore] parameterToGraph] parameterName] stringByAppendingString:@" vs time "];
+            
+            NSString *firstPart = @" (";
+            NSString *middlePart = [[[MetasomeDataPointStore sharedStore] parameterToGraph] units];
+            NSString *lastPart = @")";
+            NSString *longTitle = [[firstPart stringByAppendingString:middlePart] stringByAppendingString:lastPart];
+            titleLabel.text = [zeroPart stringByAppendingString:longTitle];
+            NSLog(@"longTitle: %@", longTitle);
+             
+            
+        } else {
+            titleLabel.text = [[[[MetasomeDataPointStore sharedStore] parameterToGraph] parameterName] stringByAppendingString:@" vs time "];
+        }
+            
         titleLabel.textColor = [UIColor blackColor];
         //titleLabel.font = [UIFont fontWithName:@"AvenirNext-Bold" size:15.0];
         [titleLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
@@ -73,7 +95,7 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
 -(void)addTitle
 {
     [titleLabel removeFromSuperview];
-    [titleLabel setText:[graphView graphTitle]];
+    //[titleLabel setText:[graphView graphTitle]];
     [[titleLabel layer] setDrawsAsynchronously:YES];
     [scrollView addSubview:titleLabel];
 }

@@ -25,7 +25,7 @@ typedef  enum {
     __weak IBOutlet UIButton *diabetesButton;
     __weak IBOutlet UIButton *customButton;
     
-    UIColor *normalColor;
+    UIColor *normalColor, *normalNotifColor;
     NSString *MetasomeNotificationPrefKey;
 }
 

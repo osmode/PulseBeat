@@ -49,6 +49,11 @@
 {
     UIButton *button = (UIButton *)sender;
     button.backgroundColor = normalColor;
+    
+    if (button.tag == 1) {
+        button.backgroundColor = normalNotifColor;
+    }
+
 }
 
 
@@ -85,6 +90,7 @@
     customButton.layer.drawsAsynchronously = YES;
     
     normalColor = heartButton.backgroundColor;
+    normalNotifColor = reminderButton.backgroundColor;
     
     // change background colors when buttons are clicked
     
@@ -103,8 +109,12 @@
     [customButton addTarget:self action:@selector(buttonHighlight:) forControlEvents:UIControlEventTouchDown];
     [customButton addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchUpOutside];
     [customButton addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchDragOutside];
-
-
+    
+    
+    [reminderButton addTarget:self action:@selector(buttonHighlight:) forControlEvents:UIControlEventTouchDown];
+    [reminderButton addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchUpOutside];
+    [reminderButton addTarget:self action:@selector(buttonNormal:) forControlEvents:UIControlEventTouchDragOutside];
+    reminderButton.tag = 1;
     
 }
 
@@ -114,6 +124,7 @@
     lungButton.backgroundColor = normalColor;
     diabetesButton.backgroundColor = normalColor;
     customButton.backgroundColor = normalColor;
+    reminderButton.backgroundColor = normalNotifColor;
     
     // Display bell image and reminder button only if reminders are OFF
     NSLog(@"viewWillAppear");

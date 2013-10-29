@@ -40,10 +40,43 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    normalColor = fitbitButton.backgroundColor;
+    
     self.screenName = @"DeviceController";
+    
     fitbitButton.layer.cornerRadius = 10.0;
     withingsButton.layer.cornerRadius = 10.0;
+    
+    [fitbitButton addTarget:self action:@selector(highlightButton:) forControlEvents:UIControlEventTouchDown];
+    [fitbitButton addTarget:self action:@selector(normalButton:) forControlEvents:UIControlEventTouchUpOutside];
+    [fitbitButton addTarget:self action:@selector(normalButton:) forControlEvents:UIControlEventTouchDragOutside];
+    
+    [withingsButton addTarget:self action:@selector(highlightButton:) forControlEvents:UIControlEventTouchDown];
+    [withingsButton addTarget:self action:@selector(normalButton:) forControlEvents:UIControlEventTouchUpOutside];
+    [withingsButton addTarget:self action:@selector(normalButton:) forControlEvents:UIControlEventTouchDragOutside];
+    
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    if (normalColor) {
+        fitbitButton.backgroundColor = normalColor;
+        withingsButton.backgroundColor = normalColor;
+    }
+}
 
+-(IBAction)highlightButton:(id)sender
+{
+    UIButton *button = (UIButton *)sender;
+    
+    button.backgroundColor = [UIColor greenColor];
+}
+
+-(IBAction)normalButton:(id)sender
+{
+    UIButton *button = (UIButton *)sender;
+    
+    button.backgroundColor = normalColor;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -142,7 +175,6 @@
     
     FitbitLoginViewController *flvc = [[FitbitLoginViewController alloc] init];
     self.navigationController.delegate = self;
-    [[flvc navigationItem] setTitle:@"Sync Withings data"];
     
     [flvc setCompletionBlock:^{
         

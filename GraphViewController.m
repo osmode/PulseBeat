@@ -31,7 +31,7 @@ float const SCROLL_VIEW_CORRECTION_FACTOR = 64.0;
 float const VERTICAL_INTERVALS = 10.0;
 float const HOVERING_AXIS_LABEL_WIDTH = 35;
 float const HOVERING_AXIS_LABEL_HEIGHT = 20;
-float const HOVERING_AXIS_LABEL_X_OFFSET = -35;
+float const HOVERING_AXIS_LABEL_X_OFFSET = -45;
 float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
 
 @synthesize ctx, verticalAxisLine, verticalAxisBackground, verticalAxisBackgroundX, verticalAxisBackgroundY, verticalAxisBackgroundWidth, verticalAxisBackgroundHeight;
@@ -424,6 +424,7 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
         l.adjustsFontSizeToFitWidth = YES;
         l.layer.zPosition = 15;
         l.layer.drawsAsynchronously = YES;
+        l.textAlignment = NSTextAlignmentRight;
         
         [hoveringVerticalLabels addObject:l];
         

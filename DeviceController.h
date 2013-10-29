@@ -14,6 +14,7 @@
 {
     __weak IBOutlet UIButton *fitbitButton;
     __weak IBOutlet UIButton *withingsButton;
+    UIColor *normalColor;
     
 }
 

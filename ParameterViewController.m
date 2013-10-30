@@ -383,11 +383,18 @@ toIndexPath:(NSIndexPath *)destinationIndexPath
     
     // When data is pulled from an API, the MetasomeParameter's
     // consecutiveEntries field is set to -1
+    /*
     if ( numConsecutive < 0 && [parameter apiType] == FitbitInput ) {
-        imageToReturn = [UIImage imageNamed:@"Fitbit"];
+        imageToReturn = [UIImage imageNamed:@"fitbit_integrated"];
     }
     else if ( numConsecutive < 0 && [parameter apiType] == WithingsInput ) {
-        imageToReturn = [UIImage imageNamed:@"Withings"];
+        imageToReturn = [UIImage imageNamed:@"withings_integrated"];
+    }
+    */
+    if ( [parameter apiType] == FitbitInput ) {
+        imageToReturn = [UIImage imageNamed:@"fitbit_integrated"];
+    } else if ( [parameter apiType] == WithingsInput ) {
+        imageToReturn = [UIImage imageNamed:@"withings_integrated"];
     }
     
     return imageToReturn;

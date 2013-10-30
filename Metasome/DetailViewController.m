@@ -88,6 +88,9 @@
     [saluteImage addGestureRecognizer:tap];
     [saluteLabel addGestureRecognizer:tap];
     
+    // customize appearance of UITextField
+
+    
 }
 
 -(void)tapped:(UITapGestureRecognizer *)tgr
@@ -302,6 +305,8 @@
     [[self saveButton] setHidden:NO];
     [self changeToSaved:NO];
     valueField.hidden = NO;
+    
+
 }
 
 -(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag

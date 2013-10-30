@@ -51,15 +51,15 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </timeZone>
                 </datePicker>
                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="82">
-                    <rect key="frame" x="31" y="152" width="267" height="34"/>
+                    <rect key="frame" x="31" y="161" width="267" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </slider>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smiley2.png" translatesAutoresizingMaskIntoConstraints="NO" id="yFh-ab-0Tw">
-                    <rect key="frame" x="124" y="65" width="80" height="80"/>
+                    <rect key="frame" x="124" y="74" width="80" height="80"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UEp-p2-CI0">
-                    <rect key="frame" x="40" y="190" width="88" height="50"/>
+                    <rect key="frame" x="40" y="199" width="88" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -76,7 +76,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQJ-Bx-0jP">
-                    <rect key="frame" x="185" y="190" width="88" height="50"/>
+                    <rect key="frame" x="185" y="199" width="88" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
@@ -89,7 +89,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="fO9-aJ-7tz">
-                    <rect key="frame" x="20" y="199" width="280" height="84"/>
+                    <rect key="frame" x="20" y="208" width="280" height="84"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="84" id="x30-D3-3vL"/>
@@ -99,7 +99,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mv6-17-IJA">
-                    <rect key="frame" x="88" y="97" width="152" height="102"/>
+                    <rect key="frame" x="88" y="106" width="152" height="102"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
             </subviews>
@@ -110,12 +110,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <constraint firstItem="UEp-p2-CI0" firstAttribute="bottom" secondItem="pQJ-Bx-0jP" secondAttribute="bottom" id="Q6T-2M-f8J"/>
                 <constraint firstItem="fO9-aJ-7tz" firstAttribute="top" secondItem="82" secondAttribute="bottom" constant="14" id="Qes-LQ-HXi"/>
                 <constraint firstItem="82" firstAttribute="centerX" secondItem="yFh-ab-0Tw" secondAttribute="centerX" id="VFY-Nl-xY2"/>
-                <constraint firstItem="yFh-ab-0Tw" firstAttribute="top" secondItem="1" secondAttribute="top" constant="65" id="VQM-Vp-v2X"/>
+                <constraint firstItem="yFh-ab-0Tw" firstAttribute="top" secondItem="1" secondAttribute="top" constant="74" id="VQM-Vp-v2X"/>
                 <constraint firstAttribute="trailing" secondItem="fO9-aJ-7tz" secondAttribute="trailing" constant="20" symbolic="YES" id="ZL9-YX-jDA"/>
                 <constraint firstItem="25" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="hYF-rv-Wsf"/>
                 <constraint firstAttribute="trailing" secondItem="82" secondAttribute="trailing" constant="24" id="lnz-51-Q07"/>
                 <constraint firstAttribute="bottom" secondItem="25" secondAttribute="bottom" constant="27" id="oXl-Lw-tRb"/>
-                <constraint firstItem="82" firstAttribute="top" secondItem="1" secondAttribute="top" constant="152" id="rte-FQ-Kgr"/>
+                <constraint firstItem="82" firstAttribute="top" secondItem="1" secondAttribute="top" constant="161" id="rte-FQ-Kgr"/>
                 <constraint firstItem="fO9-aJ-7tz" firstAttribute="centerX" secondItem="25" secondAttribute="centerX" id="sMH-CV-maM"/>
                 <constraint firstItem="82" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="33" id="tko-8E-dCR"/>
                 <constraint firstItem="pQJ-Bx-0jP" firstAttribute="leading" secondItem="UEp-p2-CI0" secondAttribute="trailing" constant="57" id="vzt-EA-b2b"/>

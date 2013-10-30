@@ -58,7 +58,7 @@
                                        queue:NSOperationQueue.mainQueue
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
                                dispatch_async(dispatch_get_main_queue(), ^{
-                                   NSLog(@"path35 %@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+                                   //NSLog(@"path35 %@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
                                    
                                    if (error) {
                                        

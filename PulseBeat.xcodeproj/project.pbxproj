@@ -108,6 +108,10 @@
 		FA9EE06D17FCB479006C4C04 /* Launch640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9EE06C17FCB479006C4C04 /* Launch640x1136.png */; };
 		FAAAC11017D15B870046EA0E /* NewParameterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAAC10E17D15B860046EA0E /* NewParameterViewController.m */; };
 		FAAAC11117D15B870046EA0E /* NewParameterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAAAC10F17D15B870046EA0E /* NewParameterViewController.xib */; };
+		FABA8A901821A69200A90454 /* fitbit_integrated @2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FABA8A8E1821A69100A90454 /* fitbit_integrated @2x.png */; };
+		FABA8A911821A69200A90454 /* fitbit_integrated.png in Resources */ = {isa = PBXBuildFile; fileRef = FABA8A8F1821A69200A90454 /* fitbit_integrated.png */; };
+		FABA8A941821A6C900A90454 /* withings_integrated @2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FABA8A921821A6C900A90454 /* withings_integrated @2x.png */; };
+		FABA8A951821A6C900A90454 /* withings_integrated.png in Resources */ = {isa = PBXBuildFile; fileRef = FABA8A931821A6C900A90454 /* withings_integrated.png */; };
 		FAC592B817C555AD0004747C /* ParameterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC592B717C555AD0004747C /* ParameterViewController.xib */; };
 		FAC592BC17C55E970004747C /* EventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC592BA17C55E970004747C /* EventViewController.m */; };
 		FAC592BD17C55E970004747C /* EventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC592BB17C55E970004747C /* EventViewController.xib */; };
@@ -298,6 +302,10 @@
 		FAAAC10D17D15B860046EA0E /* NewParameterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewParameterViewController.h; path = Metasome/NewParameterViewController.h; sourceTree = "<group>"; };
 		FAAAC10E17D15B860046EA0E /* NewParameterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewParameterViewController.m; path = Metasome/NewParameterViewController.m; sourceTree = "<group>"; };
 		FAAAC10F17D15B870046EA0E /* NewParameterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NewParameterViewController.xib; path = Metasome/NewParameterViewController.xib; sourceTree = "<group>"; };
+		FABA8A8E1821A69100A90454 /* fitbit_integrated @2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fitbit_integrated @2x.png"; path = "../fitbit_integrated @2x.png"; sourceTree = "<group>"; };
+		FABA8A8F1821A69200A90454 /* fitbit_integrated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fitbit_integrated.png; path = ../fitbit_integrated.png; sourceTree = "<group>"; };
+		FABA8A921821A6C900A90454 /* withings_integrated @2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "withings_integrated @2x.png"; path = "../withings_integrated @2x.png"; sourceTree = "<group>"; };
+		FABA8A931821A6C900A90454 /* withings_integrated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = withings_integrated.png; path = ../withings_integrated.png; sourceTree = "<group>"; };
 		FAC592B717C555AD0004747C /* ParameterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ParameterViewController.xib; path = Metasome/ParameterViewController.xib; sourceTree = "<group>"; };
 		FAC592B917C55E970004747C /* EventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventViewController.h; sourceTree = "<group>"; };
 		FAC592BA17C55E970004747C /* EventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventViewController.m; sourceTree = "<group>"; };
@@ -751,6 +759,10 @@
 		FAFD4E7D1814BB5300F77071 /* Logos */ = {
 			isa = PBXGroup;
 			children = (
+				FABA8A8E1821A69100A90454 /* fitbit_integrated @2x.png */,
+				FABA8A8F1821A69200A90454 /* fitbit_integrated.png */,
+				FABA8A921821A6C900A90454 /* withings_integrated @2x.png */,
+				FABA8A931821A6C900A90454 /* withings_integrated.png */,
 				FA9D13431818F36D00BF749F /* fitbit_logo @2x.png */,
 				FA9D13441818F36D00BF749F /* fitbit_logo.png */,
 				FA9D13451818F36D00BF749F /* withings.png */,
@@ -815,9 +827,12 @@
 				FA4E9EF617C1D04D00E421DE /* InfoPlist.strings in Resources */,
 				FA4E9EFE17C1D04D00E421DE /* Default.png in Resources */,
 				FAFD4E6718147C3800F77071 /* apple_bin.png in Resources */,
+				FABA8A901821A69200A90454 /* fitbit_integrated @2x.png in Resources */,
 				FA4E9F0017C1D04D00E421DE /* Default@2x.png in Resources */,
 				FA4E9F0217C1D04D00E421DE /* Default-568h@2x.png in Resources */,
+				FABA8A951821A6C900A90454 /* withings_integrated.png in Resources */,
 				FA45036718158CDB00A1EFD7 /* DeviceController.xib in Resources */,
+				FABA8A911821A69200A90454 /* fitbit_integrated.png in Resources */,
 				FA4E9F1717C2A9C000E421DE /* HeaderView.xib in Resources */,
 				FA4E9F1C17C2C1D500E421DE /* DetailViewController.xib in Resources */,
 				FAC592B817C555AD0004747C /* ParameterViewController.xib in Resources */,
@@ -853,6 +868,7 @@
 				FA997FD917F7CB1E00AE5CBB /* heartButton@2x.png in Resources */,
 				FA2B1A6C17DE978900ACD9C7 /* MetasomeBloodPressureViewController.xib in Resources */,
 				FAFD4E6C18147C3800F77071 /* full_apple_tree @2x.png in Resources */,
+				FABA8A941821A6C900A90454 /* withings_integrated @2x.png in Resources */,
 				FA19226117E0983300CA0ADF /* iOSDeveloperProfile.developerprofile in Resources */,
 				FA99F12917F77D7A00B19297 /* lungButton@2x.png in Resources */,
 				FAF87EB617E2085C00C830D9 /* PhotoViewController.xib in Resources */,

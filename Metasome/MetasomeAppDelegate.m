@@ -43,7 +43,8 @@
     UINavigationController *eventNavController = [[UINavigationController alloc] initWithRootViewController:evc];
     UINavigationController *optionsNavController = [[UINavigationController alloc] initWithRootViewController:ovc];
     
-    UIColor *navBarColor = [UIColor redColor];
+    //UIColor *navBarColor = [UIColor colorWithRed:0.95 green:0.09 blue:0.0 alpha:1.0];
+    UIColor *navBarColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.7];
     UIColor *navBarTextColor = [UIColor whiteColor];
     
     // set all navigation bars to navBarColor

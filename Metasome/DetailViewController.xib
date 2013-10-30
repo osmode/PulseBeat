@@ -49,10 +49,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
 </data>
                     </timeZone>
                 </datePicker>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter value" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="43">
-                    <rect key="frame" x="83" y="148" width="154" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter value" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="43">
+                    <rect key="frame" x="83" y="145" width="154" height="70"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="70" id="CLv-8H-Siy"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="48">
@@ -105,7 +109,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <constraint firstItem="197" firstAttribute="centerY" secondItem="1" secondAttribute="centerY" id="7W4-qp-ZwK"/>
                 <constraint firstItem="43" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="83" id="7hj-MF-ujL"/>
                 <constraint firstItem="25" firstAttribute="top" secondItem="Yo5-a6-rW7" secondAttribute="bottom" constant="-12" id="88k-eG-Awi"/>
-                <constraint firstItem="Yo5-a6-rW7" firstAttribute="top" secondItem="43" secondAttribute="bottom" constant="60" id="AoJ-xr-QGk"/>
+                <constraint firstItem="Yo5-a6-rW7" firstAttribute="top" secondItem="43" secondAttribute="bottom" constant="23" id="AoJ-xr-QGk"/>
                 <constraint firstItem="197" firstAttribute="leading" secondItem="48" secondAttribute="trailing" constant="39" id="CVZ-B3-UFA"/>
                 <constraint firstItem="Yo5-a6-rW7" firstAttribute="centerX" secondItem="43" secondAttribute="centerX" id="Fkf-SZ-AyM"/>
                 <constraint firstAttribute="trailing" secondItem="Yo5-a6-rW7" secondAttribute="trailing" constant="20" symbolic="YES" id="GSK-CK-TAS"/>

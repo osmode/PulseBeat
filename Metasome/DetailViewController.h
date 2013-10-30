@@ -10,7 +10,7 @@
 #import "GAITrackedViewController.h"
 @class MetasomeParameter, MetasomeDataPoint;
 
-@interface DetailViewController : GAITrackedViewController <UITextFieldDelegate>
+@interface DetailViewController : GAITrackedViewController <UITextFieldDelegate, UIGestureRecognizerDelegate>
 {
         
     __weak IBOutlet UITextField *valueField;
@@ -37,5 +37,7 @@
 - (IBAction)backgroundTapped:(id)sender;
 -(void)keyboardWillShow;
 -(void)changeToSaved:(BOOL)savedState;
+-(void)tapped:(UIGestureRecognizer *)gr;
+
 
 @end

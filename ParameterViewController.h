@@ -10,13 +10,14 @@
 #import "HomeViewController.h"
 
 @class MetasomeParameter;
-@interface ParameterViewController : UITableViewController 
+@interface ParameterViewController : UITableViewController <UITableViewDelegate>
 {
 }
 
 @property (nonatomic) selectionTypeOnLaunch currentSelection;
 @property (nonatomic, strong) NSString *titleString;
 @property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, copy) BOOL (^isDataPointStoreNonEmpty)(void);
 
 -(IBAction)addNewItem:(id)sender;
 -(void)updateTitle:(UILabel *)label;

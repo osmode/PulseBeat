@@ -67,6 +67,19 @@ const int NUM_SLIDER_SECTIONS = 5;
     saluteLabel.hidden = YES;
     saluteImage.hidden = YES;
     saluteLabel.adjustsFontSizeToFitWidth = YES;
+    
+    [saluteImage setUserInteractionEnabled:YES];
+    [saluteLabel setUserInteractionEnabled:YES];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
+    [saluteImage addGestureRecognizer:tap];
+    [saluteLabel addGestureRecognizer:tap];
+    [self.view addSubview:saluteImage];
+    
+}
+
+-(void)tapped:(UITapGestureRecognizer *)tgr
+{
+    NSLog(@"tapped!");
 }
 
 -(IBAction)buttonHighlight:(id)sender
@@ -271,13 +284,24 @@ const int NUM_SLIDER_SECTIONS = 5;
     [[MetasomeDataPointStore sharedStore] saveChanges];
     
     [[self navigationItem] setRightBarButtonItem:nil];
+    
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Undo" message:@"The last data point was successfully removed!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [av show];
+    
+    // hide gamification text and image; re-display buttons and text field
+    saluteImage.hidden = YES;
+    saluteLabel.hidden = YES;
+    [graphButton setHidden:NO];
+    [saveButton setHidden:NO];
+    [self changeToSaved:NO];
+    valueSlider.hidden = NO;
 }
 
 -(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
     // after the animation is complete, hide saluteLabel,
     // saluteImage, and re-display the buttons, smiley and slider
-    /*
+    
     saluteLabel.hidden = YES;
     saluteImage.hidden = YES;
     
@@ -285,7 +309,8 @@ const int NUM_SLIDER_SECTIONS = 5;
     [saveButton setHidden:NO];
     valueSlider.hidden = NO;
     smileyImage.hidden = NO;
-     */
+    datePicker.hidden = NO;
+    
     
 }
 
@@ -298,6 +323,7 @@ const int NUM_SLIDER_SECTIONS = 5;
     [graphButton setHidden:YES];
     [saveButton setHidden:YES];
     [smileyImage setHidden:YES];
+    [datePicker setHidden:YES];
     
     // make saluteLabel and saluteText visible
     saluteLabel.hidden = NO;
@@ -307,11 +333,11 @@ const int NUM_SLIDER_SECTIONS = 5;
     // fade in saluteLabel and saluteImage
     CAKeyframeAnimation *fade = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
     [fade setDelegate:self];
-    [fade setDuration:3.0];
+    [fade setDuration:4.0];
     NSMutableArray *vals = [NSMutableArray array];
     [vals addObject:[NSNumber numberWithFloat:0.0]];
     [vals addObject:[NSNumber numberWithFloat:1.0]];
-    //[vals addObject:[NSNumber numberWithFloat:0.0]];
+    [vals addObject:[NSNumber numberWithFloat:0.0]];
     [fade setValues:vals];
     
     NSString *firstPart;

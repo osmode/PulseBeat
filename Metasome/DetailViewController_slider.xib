@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="datePicker" destination="25" id="62"/>
                 <outlet property="graphButton" destination="UEp-p2-CI0" id="OZj-HE-43S"/>
+                <outlet property="saluteImage" destination="mv6-17-IJA" id="5aq-RE-BM3"/>
                 <outlet property="saluteLabel" destination="fO9-aJ-7tz" id="WUA-oV-QH1"/>
                 <outlet property="saveButton" destination="pQJ-Bx-0jP" id="wjL-nf-QaB"/>
                 <outlet property="smileyImage" destination="yFh-ab-0Tw" id="bWv-oE-hxv"/>
@@ -88,7 +89,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="fO9-aJ-7tz">
-                    <rect key="frame" x="20" y="128" width="280" height="84"/>
+                    <rect key="frame" x="20" y="199" width="280" height="84"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="84" id="x30-D3-3vL"/>
@@ -97,13 +98,17 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mv6-17-IJA">
+                    <rect key="frame" x="88" y="97" width="152" height="102"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.97025464429999997" green="0.97456492179999998" blue="0.98749575410000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="UEp-p2-CI0" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="40" id="FYL-uo-FQl"/>
                 <constraint firstItem="UEp-p2-CI0" firstAttribute="top" secondItem="pQJ-Bx-0jP" secondAttribute="top" id="HaJ-Gz-cUB"/>
                 <constraint firstItem="UEp-p2-CI0" firstAttribute="bottom" secondItem="pQJ-Bx-0jP" secondAttribute="bottom" id="Q6T-2M-f8J"/>
-                <constraint firstItem="fO9-aJ-7tz" firstAttribute="top" secondItem="82" secondAttribute="bottom" constant="-57" id="Qes-LQ-HXi"/>
+                <constraint firstItem="fO9-aJ-7tz" firstAttribute="top" secondItem="82" secondAttribute="bottom" constant="14" id="Qes-LQ-HXi"/>
                 <constraint firstItem="82" firstAttribute="centerX" secondItem="yFh-ab-0Tw" secondAttribute="centerX" id="VFY-Nl-xY2"/>
                 <constraint firstItem="yFh-ab-0Tw" firstAttribute="top" secondItem="1" secondAttribute="top" constant="65" id="VQM-Vp-v2X"/>
                 <constraint firstAttribute="trailing" secondItem="fO9-aJ-7tz" secondAttribute="trailing" constant="20" symbolic="YES" id="ZL9-YX-jDA"/>
@@ -115,7 +120,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <constraint firstItem="82" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="33" id="tko-8E-dCR"/>
                 <constraint firstItem="pQJ-Bx-0jP" firstAttribute="leading" secondItem="UEp-p2-CI0" secondAttribute="trailing" constant="57" id="vzt-EA-b2b"/>
                 <constraint firstItem="fO9-aJ-7tz" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" symbolic="YES" id="x7q-Wa-o1o"/>
-                <constraint firstItem="fO9-aJ-7tz" firstAttribute="baseline" secondItem="pQJ-Bx-0jP" secondAttribute="baseline" constant="-18" id="xIx-tS-hxu"/>
+                <constraint firstItem="fO9-aJ-7tz" firstAttribute="baseline" secondItem="pQJ-Bx-0jP" secondAttribute="baseline" constant="53" id="xIx-tS-hxu"/>
                 <constraint firstAttribute="trailing" secondItem="pQJ-Bx-0jP" secondAttribute="trailing" constant="47" id="xJV-Nj-QpY"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

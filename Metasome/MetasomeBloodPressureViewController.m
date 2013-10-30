@@ -247,6 +247,18 @@
     [[MetasomeDataPointStore sharedStore] saveChanges];
     
     [[self navigationItem] setRightBarButtonItem:nil];
+    
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Undo" message:@"The last data point was successfully removed!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [av show];
+    
+    // hide gamification text and image; re-display buttons and text field
+    saluteImage.hidden = YES;
+    saluteLabel.hidden = YES;
+    [graphButton setHidden:NO];
+    [saveButton setHidden:NO];
+    [self changeToSaved:NO];
+    systolicTextField.hidden = NO;
+    diastolicTextField.hidden = NO;
 }
 
 -(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
@@ -254,7 +266,7 @@
     // after the animation is complete, hide saluteLabel,
     // saluteImage, and re-display the buttons and text field
     
-    /*
+    
     saluteLabel.hidden = YES;
     saluteImage.hidden = YES;
     
@@ -262,7 +274,8 @@
     [saveButton setHidden:NO];
     systolicTextField.hidden = NO;
     diastolicTextField.hidden = NO;
-    */
+    datePicker.hidden = NO;
+    
 }
 
 -(void)animateSaveResponse
@@ -273,6 +286,7 @@
     diastolicTextField.hidden = YES;
     [graphButton setHidden:YES];
     [saveButton setHidden:YES];
+    [datePicker setHidden:YES];
     
     // make saluteLabel and saluteText visible
     saluteLabel.hidden = NO;
@@ -282,11 +296,11 @@
     // fade in saluteLabel and saluteImage
     CAKeyframeAnimation *fade = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
     [fade setDelegate:self];
-    [fade setDuration:3.0];
+    [fade setDuration:4.0];
     NSMutableArray *vals = [NSMutableArray array];
     [vals addObject:[NSNumber numberWithFloat:0.0]];
     [vals addObject:[NSNumber numberWithFloat:1.0]];
-    //[vals addObject:[NSNumber numberWithFloat:0.0]];
+    [vals addObject:[NSNumber numberWithFloat:0.0]];
     [fade setValues:vals];
     
     NSString *firstPart;

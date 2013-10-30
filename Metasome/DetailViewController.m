@@ -80,6 +80,23 @@
     saluteLabel.adjustsFontSizeToFitWidth = YES;
     saluteImage.hidden = YES;
     
+    [saluteImage setUserInteractionEnabled:YES];
+    [saluteLabel setUserInteractionEnabled:YES];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
+    [tap setDelegate:self];
+    
+    [saluteImage addGestureRecognizer:tap];
+    [saluteLabel addGestureRecognizer:tap];
+    
+}
+
+-(void)tapped:(UITapGestureRecognizer *)tgr
+{
+    NSLog(@"tapped!");
+}
+-(void)longPress:(UILongPressGestureRecognizer *)gr
+{
+    NSLog(@"long press");
 }
 
 -(void)preferredContentSizeChanged:(NSNotification *)aNotification
@@ -278,18 +295,26 @@
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Undo" message:@"The last data point was successfully removed!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [av show];
     
+    // hide gamification text and image; re-display buttons and text field
+    saluteImage.hidden = YES;
+    saluteLabel.hidden = YES;
+    [[self graphButton] setHidden:NO];
+    [[self saveButton] setHidden:NO];
+    [self changeToSaved:NO];
+    valueField.hidden = NO;
 }
 
 -(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
     // after the animation is complete, hide saluteLabel,
     // saluteImage, and re-display the buttons and text field
-    //saluteLabel.hidden = YES;
-    //saluteImage.hidden = YES;
+    saluteLabel.hidden = YES;
+    saluteImage.hidden = YES;
     
-    //[[self graphButton] setHidden:NO];
-    //[[self saveButton] setHidden:NO];
-    //valueField.hidden = NO;
+    [[self graphButton] setHidden:NO];
+    [[self saveButton] setHidden:NO];
+    valueField.hidden = NO;
+    [datePicker setHidden:NO];
     
 }
 
@@ -300,20 +325,21 @@
     valueField.hidden = YES;
     [[self graphButton] setHidden:YES];
     [[self saveButton] setHidden:YES];
+    [datePicker setHidden:YES];
     
     // make saluteLabel and saluteText visible
     saluteLabel.hidden = NO;
     saluteImage.hidden = NO;
-    [saluteImage setImage:[UIImage imageNamed:@"heartButton.png"]];
+    [saluteImage setImage:[UIImage imageNamed:@"single_apple"]];
     
     // fade in saluteLabel and saluteImage
     CAKeyframeAnimation *fade = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
     [fade setDelegate:self];
-    [fade setDuration:3.0];
+    [fade setDuration:4.0];
     NSMutableArray *vals = [NSMutableArray array];
     [vals addObject:[NSNumber numberWithFloat:0.0]];
     [vals addObject:[NSNumber numberWithFloat:1.0]];
-    //[vals addObject:[NSNumber numberWithFloat:0.0]];
+    [vals addObject:[NSNumber numberWithFloat:0.0]];
     [fade setValues:vals];
     
     NSString *firstPart;

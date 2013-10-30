@@ -29,10 +29,11 @@ float const SCROLL_VIEW_CORRECTION_FACTOR = 64.0;
 // hovering labels are the vertical axis labels as UILabels
 
 float const VERTICAL_INTERVALS = 10.0;
-float const HOVERING_AXIS_LABEL_WIDTH = 35;
+float const HOVERING_AXIS_LABEL_WIDTH = 45;
 float const HOVERING_AXIS_LABEL_HEIGHT = 20;
 float const HOVERING_AXIS_LABEL_X_OFFSET = -45;
 float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
+float const VERTICAL_AXIS_LABEL_FONTSIZE = 14.0;
 
 @synthesize ctx, verticalAxisLine, verticalAxisBackground, verticalAxisBackgroundX, verticalAxisBackgroundY, verticalAxisBackgroundWidth, verticalAxisBackgroundHeight;
 @synthesize hoveringLabels, titleLabel, hoveringVerticalAxisLine;
@@ -420,8 +421,8 @@ float const HOVERING_AXIS_LABEL_Y_OFFSET = -10;
         l.text = verticalDisplay;
         l.textColor = [UIColor blackColor];
         l.backgroundColor = [UIColor clearColor];
-        l.font = [UIFont systemFontOfSize:20.0];
-        l.adjustsFontSizeToFitWidth = YES;
+        l.font = [UIFont systemFontOfSize:VERTICAL_AXIS_LABEL_FONTSIZE];
+        //l.adjustsFontSizeToFitWidth = YES;
         l.layer.zPosition = 15;
         l.layer.drawsAsynchronously = YES;
         l.textAlignment = NSTextAlignmentRight;

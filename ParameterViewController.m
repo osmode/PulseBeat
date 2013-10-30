@@ -127,6 +127,7 @@
             
     }
     
+    [[self tableView] setDelegate:self];
 
 }
 
@@ -141,6 +142,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Index of  MetasomeParameterStore.sharedStore.parameterArray
@@ -203,7 +205,7 @@
     if ([p apiType] == FitbitInput) {
         cell.titleLabel.textColor = [UIColor blueColor];
     } else if ([p apiType] == WithingsInput) {
-        cell.titleLabel.textColor = [UIColor orangeColor];
+        //cell.titleLabel.textColor = [UIColor orangeColor];
     } else {
         cell.titleLabel.textColor = [UIColor blackColor];
     }
@@ -251,23 +253,22 @@ toIndexPath:(NSIndexPath *)destinationIndexPath
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     DetailViewController *detailViewController;
     DetailViewController_slider *detailViewController_slider;
     
-    /*
-    NSDictionary *dictionary = [[[MetasomeParameterStore sharedStore] parameterArray] objectAtIndex:indexPath.section];
-    NSArray *array = [dictionary objectForKey:@"data"];
-    MetasomeParameter *p = [array objectAtIndex:indexPath.row];
-    */
-    
-    //MetasomeParameter *p = [[[MetasomeParameterStore sharedStore] currentList] objectAtIndex:indexPath.row];
-    
     MetasomeParameter *p = [[[[[MetasomeParameterStore sharedStore] parameterArray] objectAtIndex:[self currentSelection]] valueForKey:@"list"] objectAtIndex:indexPath.row];
     
-    // Set parameter as marked
-    //[p setCheckedStatus:YES];
-    //[p setLastChecked:[NSDate date]];
-    //[[MetasomeParameterStore sharedStore] saveChanges];
+    // Steps and Distance data can only be entered via Fitibit integration
+    /*
+    if ([[p parameterName] isEqualToString:@"Distance"] || [[p parameterName] isEqualToString:@"Steps"]) {
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"Sync your wearable device to import %@ data.", [p parameterName]] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [tableView reloadData];
+        
+        return;
+    }
+    */
     
     // Create block to check for presence of at least one data point
     BOOL (^block)(void) = ^ {
@@ -392,4 +393,27 @@ toIndexPath:(NSIndexPath *)destinationIndexPath
     return imageToReturn;
 
 }
+
+-(void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    [super setEditing:editing animated:animated];
+    NSLog(@"setEditing");
+    
+    if (editing == NO) {
+        
+        [[self tableView] reloadData];
+        return;
+    }
+    
+    NSArray *visibleCells = [[self tableView] visibleCells];
+    for (CustomParameterCell *cpc in visibleCells) {
+        [[cpc gamificationImage] setImage:nil];
+    }
+    
+}
+-(void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"entering edit mode");
+}
+
 @end

@@ -122,7 +122,6 @@
     return (todayDay == lastEnteredDay);
     */
     
-    
     NSTimeInterval distanceBetweenDates = [[NSDate date] timeIntervalSinceDate:[self lastChecked]];
     double secondsInAnHour = 3600.0;
     int hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
@@ -130,23 +129,23 @@
     //NSLog(@"hoursBetweenDates: %i", hoursBetweenDates);
         
     // if saving parameter for the first time...
+    
     if ( consecutiveEntries == 0 ) {
         
         consecutiveEntries += 1;
         return YES;
-    } else if (hoursBetweenDates < 36 && hoursBetweenDates > 18) {
+    } else if (hoursBetweenDates < 36 && hoursBetweenDates > 18 ) {
 
         consecutiveEntries += 1;
         
         return YES;
-    }
-    else {
+    } else if ( hoursBetweenDates > 36) {
         consecutiveEntries = 0;
         
         return NO;
     }
             
-    return YES;
+    return NO;
     
 }
 

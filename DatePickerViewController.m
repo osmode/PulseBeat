@@ -75,7 +75,7 @@
     [[[self parentDateController] view] setNeedsDisplay];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"dd MMM yyyy HH:mm"];
+    [dateFormatter setDateFormat:@"dd MMM yyyy"];
     self.parentDateController.dateSelected = [[self datePicker] date];
     [[[self parentDateController] dateLabel] setText:[dateFormatter stringFromDate:self.parentDateController.dateSelected]];
     

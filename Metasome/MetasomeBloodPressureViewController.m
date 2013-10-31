@@ -310,15 +310,15 @@
         firstPart = [NSString stringWithFormat:@"%i days in a row! \n", [[self parameter] consecutiveEntries]];
     
     NSMutableArray *secondParts = [NSMutableArray array];
-    [secondParts addObject:@"Your first apple! An an apple a day keeps the doctor away."];
-    [secondParts addObject:@"You've earned yourself another apple. You're on a roll!"];
+    [secondParts addObject:@"You've earned an apple! An apple a day keeps the doctor away."];
+    [secondParts addObject:@"Another apple. You're on a roll!"];
     [secondParts addObject:@"Keep it up!"];
-    [secondParts addObject:@"You're really on top of things"];
-    [secondParts addObject:@"You're on fire!"];
-    [secondParts addObject:@"Your doctor will be proud!"];
-    [secondParts addObject:@"Awesome!!!"];
-    [secondParts addObject:@"You're a lean, mean, health tracking machine!"];
-    [secondParts addObject:@"I present you with the Golden Apple Award!"];
+    [secondParts addObject:@"It'll be a bushel before you know it!"];
+    [secondParts addObject:@"Wow, a bushel of apples! You're doing great!"];
+    [secondParts addObject:@"Here's a bin to hold all your apples! Your doctor will be proud."];
+    [secondParts addObject:@"Great work! You've sown the seeds of an apple tree."];
+    [secondParts addObject:@"Your fully grown tree bears the fruit of your effort!"];
+    [secondParts addObject:@"You're officially a tracking pro! You've earned the Golden Apple!"];
     
     int numConsecutive = [[self parameter] consecutiveEntries];
     

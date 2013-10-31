@@ -20,7 +20,7 @@
                     <rect key="frame" x="60" y="147" width="200" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <inset key="contentEdgeInsets" minX="20" minY="10" maxX="20" maxY="10"/>
+                    <inset key="contentEdgeInsets" minX="40" minY="10" maxX="40" maxY="10"/>
                     <state key="normal" title="Button" image="fitbit_logo.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>

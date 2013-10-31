@@ -90,14 +90,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Great work! An apple a day keeps the doctor away." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Yo5-a6-rW7">
-                    <rect key="frame" x="20" y="238" width="280" height="91"/>
+                    <rect key="frame" x="20" y="267" width="280" height="91"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                     <nil key="highlightedColor"/>
                     <size key="shadowOffset" width="0.0" height="0.0"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nsW-DS-QMt">
-                    <rect key="frame" x="85" y="116" width="152" height="102"/>
+                    <rect key="frame" x="85" y="145" width="152" height="102"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="102" id="MnA-l2-eNB"/>
@@ -108,12 +108,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <constraints>
                 <constraint firstItem="197" firstAttribute="centerY" secondItem="1" secondAttribute="centerY" id="7W4-qp-ZwK"/>
                 <constraint firstItem="43" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="83" id="7hj-MF-ujL"/>
-                <constraint firstItem="25" firstAttribute="top" secondItem="Yo5-a6-rW7" secondAttribute="bottom" constant="-12" id="88k-eG-Awi"/>
-                <constraint firstItem="Yo5-a6-rW7" firstAttribute="top" secondItem="43" secondAttribute="bottom" constant="23" id="AoJ-xr-QGk"/>
+                <constraint firstItem="25" firstAttribute="top" secondItem="Yo5-a6-rW7" secondAttribute="bottom" constant="-41" id="88k-eG-Awi"/>
+                <constraint firstItem="Yo5-a6-rW7" firstAttribute="top" secondItem="43" secondAttribute="bottom" constant="52" id="AoJ-xr-QGk"/>
                 <constraint firstItem="197" firstAttribute="leading" secondItem="48" secondAttribute="trailing" constant="39" id="CVZ-B3-UFA"/>
                 <constraint firstItem="Yo5-a6-rW7" firstAttribute="centerX" secondItem="43" secondAttribute="centerX" id="Fkf-SZ-AyM"/>
                 <constraint firstAttribute="trailing" secondItem="Yo5-a6-rW7" secondAttribute="trailing" constant="20" symbolic="YES" id="GSK-CK-TAS"/>
-                <constraint firstItem="48" firstAttribute="top" secondItem="nsW-DS-QMt" secondAttribute="bottom" constant="41" id="O9L-8a-LXa"/>
+                <constraint firstItem="48" firstAttribute="top" secondItem="nsW-DS-QMt" secondAttribute="bottom" constant="12" id="O9L-8a-LXa"/>
                 <constraint firstItem="Yo5-a6-rW7" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" symbolic="YES" id="Tvh-wb-M8E"/>
                 <constraint firstItem="43" firstAttribute="trailing" secondItem="nsW-DS-QMt" secondAttribute="trailing" id="ZeY-bR-7Sm"/>
                 <constraint firstItem="Yo5-a6-rW7" firstAttribute="top" secondItem="nsW-DS-QMt" secondAttribute="bottom" constant="20" id="g65-wQ-VBC"/>

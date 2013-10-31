@@ -179,7 +179,7 @@
     titleTextField.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     descriptionTextView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     descriptionLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    dateLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    //dateLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     dateButton.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     dateButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     visibilityLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];

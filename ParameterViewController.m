@@ -154,13 +154,31 @@
     
     if ( editingStyle == UITableViewCellEditingStyleDelete ) {
         
-        [[[MetasomeParameterStore sharedStore] currentList] removeObjectAtIndex:indexPath.row];
+        [[[[[MetasomeParameterStore sharedStore] parameterArray] objectAtIndex:[self currentSelection]] valueForKey:@"list"] removeObjectAtIndex:indexPath.row];
+        
+        //[[[MetasomeParameterStore sharedStore] currentList] removeObjectAtIndex:indexPath.row];
         
         [[MetasomeParameterStore sharedStore] saveChanges];
         
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [[self tableView] reloadData];
+        
+        //[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 
+}
+
+-(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    if (sourceIndexPath.row == destinationIndexPath.row)
+        return;
+    
+    MetasomeParameter *p = [[[[[MetasomeParameterStore sharedStore] parameterArray] objectAtIndex:[self currentSelection]] valueForKey:@"list"] objectAtIndex:sourceIndexPath.row];
+    
+    [[[[[MetasomeParameterStore sharedStore] parameterArray] objectAtIndex:[self currentSelection]] valueForKey:@"list"] removeObjectAtIndex:sourceIndexPath.row];
+    
+    [[[[[MetasomeParameterStore sharedStore] parameterArray] objectAtIndex:[self currentSelection]] valueForKey:@"list"] insertObject:p atIndex:destinationIndexPath.row];
+    [[MetasomeParameterStore sharedStore] saveChanges];
+    
 }
 
 #pragma mark - Table view data source
@@ -222,6 +240,7 @@
 }
 
 
+/*
 -(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
 toIndexPath:(NSIndexPath *)destinationIndexPath
 {
@@ -233,8 +252,9 @@ toIndexPath:(NSIndexPath *)destinationIndexPath
     [[MetasomeParameterStore sharedStore] moveItemAtIndex:[sourceIndexPath row] toIndex:[destinationIndexPath row] inSection:[sourceIndexPath section]];
     [[MetasomeParameterStore sharedStore] saveChanges];
     
-    
 }
+*/
+
 - (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
 {
     if (sourceIndexPath.section != proposedDestinationIndexPath.section) {
